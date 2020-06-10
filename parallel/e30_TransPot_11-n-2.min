@@ -1,0 +1,310 @@
+ N + 90Zr at 40 MeV using FSDs PH TPs                         Tue Jul 17 11:22:26 2007  
+NAMELIST
+&FRESCO hcm=0.100 rmatch=  13.000 rintp=0.100 hnl=0.100 rnl= 3.000 centre=0.000
+ jtmin=  0.00 jtmax= 30.00 absend=    0.0010 dry= F
+ thmin=  0.00 thmax=  0.00 thinc=  2.00 ips=0.0000
+ cutl=  0.000000 cutc=  0.100000 cutr=  0.000000
+ it0= 0 iter= 0 iblock=-9 nnu=30 chans= 1 listcc= 0
+ pade= 0   numnode=000 TMP='/tmp'
+ smats= 2 xstabl= 1 fatal= T ccreal=T
+ wdisk= 0 treneg= 0
+ expand(6)=  0.010000 maxcoup(3)=-4
+ inh= 0 pel= 1 exl= 1 lab= 1 lin= 1 lex= 1
+ elab= 40.0000 /
+  
+&PARTITION namep='Neutr' massp=  1.0087 zp=  0.0000 nex=279
+           namet='90-ZR' masst= 90.0000 zt= 40.0000 pwf= F qval=  0.0000 /
+&STATES jp= 0.0 ptyp= 1 ep= 0.0000 cpot=10 jt= 0.0 ptyt= 1 et= 0.0000 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 17.5519 cpot=10 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 21.6447 cpot=10 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 22.1039 cpot=10 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 22.9758 cpot=10 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 23.7850 cpot=10 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 24.6093 cpot=10 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 24.8998 cpot=10 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 25.9178 cpot=10 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 27.2610 cpot=10 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 28.1793 cpot=10 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 28.8260 cpot=10 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 29.5259 cpot=10 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 29.6937 cpot=10 /
+&STATES copyp= 1 jt= 0.0 ptyt= 1 et= 29.9732 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et=  9.7456 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 10.4523 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 11.7966 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 12.0377 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 12.5678 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 12.6808 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 12.8032 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 12.8528 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 13.0691 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 13.9877 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 14.0841 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 14.5908 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 14.6998 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 14.8681 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 15.1393 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 16.0218 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 16.1217 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 17.3833 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 18.2296 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 19.4388 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 20.2670 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 20.5401 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 22.6720 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 26.0138 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 27.0272 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 27.1713 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 28.3160 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 28.6351 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 28.8612 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 29.2428 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 29.3155 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 29.5748 cpot=10 /
+&STATES copyp= 1 jt= 1.0 ptyt=-1 et= 29.7571 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et=  4.6027 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et=  7.5937 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 15.0899 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 19.7833 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 21.2112 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 21.3581 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 22.1490 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 22.2504 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 22.4176 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 22.5577 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 22.7370 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 22.8901 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 22.9748 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 23.2031 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 23.2754 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 23.3510 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 23.3537 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 23.5234 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 23.6548 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 23.8143 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 23.9495 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 24.1255 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 24.2336 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 24.4335 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 24.6188 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 24.7044 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 24.9661 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 25.1595 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 25.4381 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 25.4967 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 25.6746 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 26.5282 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 26.5727 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 26.9463 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 27.0338 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 27.3579 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 27.7163 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 27.9744 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 28.1442 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 28.3200 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 28.6856 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 29.0890 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 29.2489 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 29.3519 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 29.3923 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 29.6132 cpot=10 /
+&STATES copyp= 1 jt= 2.0 ptyt= 1 et= 29.9785 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et=  2.8287 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et=  5.4639 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et=  7.6280 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 10.0954 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 10.4802 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 10.7745 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 11.3544 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 11.8131 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 11.9990 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 12.2115 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 12.3160 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 12.7539 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 12.8562 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 13.1520 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 13.6435 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 14.0055 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 14.1227 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 14.3439 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 14.8567 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 15.0637 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 15.2025 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 15.3416 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 15.8026 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 16.5067 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 17.2849 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 17.8500 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 18.5583 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 19.2014 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 19.3703 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 19.6628 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 20.0112 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 20.4119 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 21.4279 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 21.6850 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 26.8196 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 27.3738 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 28.0005 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 28.7303 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 28.7892 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 29.1434 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 29.3396 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 29.4995 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 29.5365 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 29.6266 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 29.6749 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 29.8003 cpot=10 /
+&STATES copyp= 1 jt= 3.0 ptyt=-1 et= 29.9657 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et=  4.9581 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et=  6.7195 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et=  7.3869 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et=  7.8224 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 14.4639 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 16.7612 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 17.2096 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 18.4336 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 18.5852 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 19.3027 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 19.6015 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 20.5495 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 21.0587 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 21.7996 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 22.1738 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 22.2139 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 22.3708 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 22.5540 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 22.6439 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 22.7942 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 23.0308 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 23.1846 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 23.3329 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 23.4839 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 23.5036 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 23.7522 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 24.1042 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 24.2041 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 24.4163 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 24.5537 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 24.8145 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 25.0796 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 25.1472 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 25.3253 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 25.4307 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 25.7629 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 26.0871 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 26.5006 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 26.8536 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 27.0981 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 27.2364 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 27.7745 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 27.9526 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 28.5042 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 28.7730 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 29.0082 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 29.0786 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 29.1483 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 29.8458 cpot=10 /
+&STATES copyp= 1 jt= 4.0 ptyt= 1 et= 29.8725 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et=  2.3020 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et=  4.3501 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et=  5.3803 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 10.5901 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 11.3262 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 11.8485 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 12.0455 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 12.7296 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 13.4796 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 14.0375 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 14.3200 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 15.6156 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 16.4329 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 16.9086 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 17.1828 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 17.6807 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 18.3662 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 18.9838 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 19.4246 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 19.9699 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 20.2303 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 21.6591 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 26.0607 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 27.3546 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 27.5018 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 28.2257 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 28.4184 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 28.9122 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 29.0157 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 29.3601 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 29.3963 cpot=10 /
+&STATES copyp= 1 jt= 5.0 ptyt=-1 et= 29.5951 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et=  5.2330 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et=  6.9084 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et=  7.7690 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 13.7418 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 15.6263 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 16.3727 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 16.9299 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 18.1161 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 18.4723 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 19.7674 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 21.7306 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 21.9959 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 22.4652 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 22.7674 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 23.0905 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 23.3343 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 23.4513 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 23.5876 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 23.8809 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 24.5189 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 25.1406 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 25.7842 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 26.5028 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 26.7138 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 27.6705 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 28.6025 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 29.0613 cpot=10 /
+&STATES copyp= 1 jt= 6.0 ptyt= 1 et= 29.6221 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et=  5.5245 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et= 11.5843 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et= 11.7906 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et= 15.5779 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et= 17.2285 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et= 18.7286 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et= 19.4862 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et= 20.3184 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et= 24.6314 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et= 26.4426 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et= 26.9432 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et= 27.6108 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et= 28.6434 cpot=10 /
+&STATES copyp= 1 jt= 7.0 ptyt=-1 et= 28.9892 cpot=10 /
+&STATES copyp= 1 jt= 8.0 ptyt= 1 et=  7.1729 cpot=10 /
+&STATES copyp= 1 jt= 8.0 ptyt= 1 et= 16.9961 cpot=10 /
+&STATES copyp= 1 jt= 8.0 ptyt= 1 et= 18.7999 cpot=10 /
+&STATES copyp= 1 jt= 8.0 ptyt= 1 et= 22.0452 cpot=10 /
+&STATES copyp= 1 jt= 8.0 ptyt= 1 et= 23.1667 cpot=10 /
+&STATES copyp= 1 jt= 8.0 ptyt= 1 et= 23.4068 cpot=10 /
+&STATES copyp= 1 jt= 8.0 ptyt= 1 et= 23.6529 cpot=10 /
+&STATES copyp= 1 jt= 8.0 ptyt= 1 et= 25.0801 cpot=10 /
+&STATES copyp= 1 jt= 8.0 ptyt= 1 et= 28.7448 cpot=10 /
+&STATES copyp= 1 jt= 9.0 ptyt=-1 et= 11.5894 cpot=10 /
+&STATES copyp= 1 jt= 9.0 ptyt=-1 et= 19.4555 cpot=10 /
+&STATES copyp= 1 jt= 9.0 ptyt=-1 et= 27.7529 cpot=10 /
+&STATES copyp= 1 jt= 9.0 ptyt=-1 et= 29.2483 cpot=10 /
+
+&partition /
+&pot kp=10 type= 0 ap= 0.0000 at=90.0000 rc=1.240 /
+&pot kp=10 type= 1 shape= 0 P(1:6)=  40.83333   1.17000   0.75000   0.00000   1.17000   0.75000 /
+&pot kp=10 type= 2 shape= 0 P(1:6)=   0.00000   1.17000   0.75000   0.00000   1.17000   0.75000 /
+
+&pot /
+
+&overlap /
+
+&COUPLING icto= 1 icfrom= 1 kind= 9 ip1= 0 ip2= 2 ip3= 0 p1=1.000 p2=0.000 /
+
+&cfp /
+
+&coupling /

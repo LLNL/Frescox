@@ -1,0 +1,190 @@
+1c1
+<  	program cdc4   ! Version 4k    including core deformation
+---
+>  	program cdc4   ! Version 4l    including core deformation
+16c16
+<      x          n(mp),ngs(mp),kindpp(8),lmaxpp(8)
+---
+>      x          n(mp),ngs(mp),kindpp(8),lmaxpp(8),exch
+40,41c40,41
+<      x 		lab,lin,lex,remnant,postprior,ipcgs,dry,
+<      x          sumform,qc,la,static,expand,maxcoup,ompform,TMP
+---
+>      x 		lab,lin,lex,remnant,postprior,ipcgs,dry,iblock,cf,
+>      x          sumform,qc,la,static,expand,maxcoup,ompform,TMP,exch,ips
+87c87
+< 	write(0,*) 'CDC: Fresco front end for CDCC, version cdc4k'
+---
+> 	write(0,*) 'CDC: Fresco front end for CDCC, version cdc4l'
+146a147
+>         if(exch>0) nin= 5
+411c412
+<       iblock = nex+max(1,pauli)
+---
+>       if(iblock/=0)iblock = nex+max(1,pauli)
+434a436
+> 	if(exch>0) icm=icp+2
+445a448,458
+> 	 else if(ic>icp.and.ic-icp==1.and.exch>0) then
+> 	   namep=namen(4) ; massp=massn(4); zp=chargen(4)
+>    	   namet=namen(1) ; masst=massn(1); zt=chargen(1)
+> 	   nexc=-nex
+> 	 else if(ic>icp.and.ic-icp==2.and.exch>0) then
+> 	   namet=namen(2) ; masst=massn(2); zt=chargen(2)
+>    	   namep=namen(4)(1:6)//'+'//namen(3)(1:1)
+>            massp=massn(4)+massn(3)
+>            zp=chargen(4)+chargen(3)
+> 	   nexc = -1
+>            if(nce>0) nexc=nexc-nce
+484a498
+>          if(ic==3.and.exch>0) qval = begs
+498a513,524
+>       if(exch>0.and.ic>icp)then
+>        do 59 ia=1,abs(nexc)
+>         copyp=-(ic-icp)
+>         copyt=-(ic-icp)
+>         cpot=ic-icp
+>         write(ko1,1151) copyp,cpot,copyt
+>         write(kos,11512) copyp,cpot,copyt
+>  1151   format(4x,i2,18x,i4,6x,i2)
+> 11512   format(' &States copyp=',i2,' cpot=',i3,' copyt=',i2,'/')
+>    59  continue
+>        goto 61
+>       endif
+569c595
+< 	if(part(1:1)=='E'.or.part(1:1)=='e') kp=7  ! projectile tr bs 
+---
+> 	if(part(1:1)=='E'.or.part(1:1)=='e') kp=7  ! projectile tr bs or exchange bs
+570a597
+> 	if(part(1:1)=='F'.or.part(1:1)=='f') kp=9  ! core-valence optical for cluster folding with core-target to create exit optical
+857a885
+>         if(exch>0) inmin=2
+866c894
+< 	ic1 = 1; kind=0; kbpot=6+ini; isc=1; ipc=0
+---
+> 	ic1 = 1; kind=0; kbpot=6+ini; isc=1; ipc=0; nam=1; amp=1.0
+875c903
+<      &         kbpot,be,isc,ipc
+---
+>      &         kbpot,be,isc,ipc,nam,amp
+882c910
+<       	  write(kos,8524) kind,nn,l,lmax,sn,j
+---
+>       	  write(kos,8524) kind,nn,l,lmax,sn,j,nam,amp
+889a918,942
+>       if(exch>0)then
+>         do ini=1,2
+>         kn1=kn1+1
+>         no=5
+> 	ic1 = 1; ic2 = 3; ib=1; kind=0; kbpot=7; isc=1; ipc=0
+> 	nn=nodpp(no,1); l=lpp(no); j=jpp(no); be=bepp(no)
+>         kind=kindpp(no) ; lmax=lmaxpp(no); sn=spinn(no)
+> !        if(kind>0)then
+> !          kn2=kn1+1
+> !          isc=0
+> !        endif
+> !      if(kind==0) then
+>          write(ko1,852) kn1,ic1,ic2,ini,kind,nn,l,sn,j,
+>      &                  kbpot,be,isc,ipc,nam,amp,nk,-er
+>          write(kos,8521) kn1,0,ic1,ic2,ini
+> !	else
+> !         write(ko1,8520) kn1,kn2,ic1,ic2,ini,kind,nn,l,lmax,sn,
+> !     &                  iai,j,ia,kbpot,be,isc,ipc,nam,amp,0,0
+> !         write(kos,8521) kn1,kn2,ic1,ic2,ini,iai,ia
+> !	endif
+>       	  write(kos,8524) kind,nn,l,lmax,sn,j,1,1.0
+>           write(kos,8526) kbpot,be,isc,ipc
+>         enddo
+>       endif
+> 
+911a965,966
+> 
+>       if(iblock/=0.or.(trans==0.and.iblock==0))then
+956a1012,1035
+>        endif
+> 
+> C				Cluster Folding potential for exit transfer channel
+>        if(cf>0)then
+>         icto = 1; icfrom=2; kind=4
+>         irem = ncoul
+>         kpcore = reor
+>         betar = 9.0
+>         betai = 2.0
+> 
+>         write(ko1,1220) icto,icfrom,kind,2,irem,kpcore,betar,betai
+>         write(kos,112) icto,icfrom,kind,2,irem,kpcore,betar,betai
+> 	ia = 1; ib = 1; in = 2; a=1.0
+> 	if(ccbins)then
+>          write(ko1,*)
+>          write(kos,'(''   &Cfp /'')')
+>         else
+> 	 kn=lastbin+1
+>           in=-in
+>    	   write(ko1,8739) in,ib,ia,kn,a
+>    	   write(kos,8740) in,ib,ia,kn,a
+> 	endif
+>        endif
+> 
+995c1074,1082
+< 	 do in=inmin,2
+---
+> 	 if(iblock==0)then
+> 	  ia = 1; in = 1; a=1.0
+>           do 877 ib=1,nex
+> 	   kn=knex(ib)
+>    	   write(ko1,8739) in,ib,ia,kn,a
+>    	   write(kos,8740) in,ib,ia,kn,a
+> 877	  continue
+>          endif
+>          do in=inmin,2
+1027a1115,1122
+> 	 if(iblock==0)then
+> 	  ia = 1; in = 1; a=1.0
+>           do 878 ib=1,nex
+> 	   kn=knex(ib)
+>    	   write(ko1,8739) in,ib,ia,kn,a
+>    	   write(kos,8740) in,ib,ia,kn,a
+> 878	  continue
+>          endif
+1037a1133,1166
+> 
+> C			Transfer couplings for exchange
+>       	icfrom=1; kind=7
+> 	no=5
+>       	npp = 0; if(postprior>-10) npp=postprior
+>       	irem = 2; if(remnant>-10) irem=remnant
+>       	kpcore = 0
+>         kn1 = kn
+>         do icto=icp+1,icp+exch
+>          icto1=icto
+>          if(pel==1) then
+>       	  if(ccbins.or.iter==1) icto1=-icto
+>           write(ko1,1220) icto1,icfrom,kind,npp,irem,kpcore
+>       	  write(kos,113)  icto1,icfrom,kind,npp,irem,kpcore
+> 	 else
+>           if(ccbins.or.iter==1) icfrom=-icfrom
+>       	  write(ko1,1220) icfrom,icto1,kind,npp,irem,kpcore
+>       	  write(kos,113)  icfrom,icto1,kind,npp,irem,kpcore
+> 	 endif
+> 	 do in=1,2
+>           kn = kn+1
+> 	  ia = 1; ib=1 ;  a=app(no)  
+> 	  ini=in; if(in==2) ini=-in
+>           if(ccbins)then
+>    	   do ia=1,1
+>             write(ko1,8739) ini,ib,ia,kn,a
+>    	    write(kos,8740) ini,ib,ia,kn,a
+>            enddo
+>           else
+>            write(ko1,8739) ini,ib,ia,kn,a
+>    	   write(kos,8740) ini,ib,ia,kn,a
+>           endif
+>           enddo
+>    	 enddo
+1038a1168,1169
+>          write(ko1,*)
+>          write(kos,'(''   &Cfp /'')')
+1151c1282
+< 	 remnant=-10; postprior=-10
+---
+> 	 remnant=-10; postprior=-10; cf=0

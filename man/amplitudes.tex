@@ -1,0 +1,107 @@
+%***********************************************************************
+% 
+%    Copyright 2018, I.J. Thompson
+%
+%    This file is part of FRESCOX.
+%
+%    FRESCOX is free software: you can redistribute it and/or modify it
+%    under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    FRESCOX is distributed in the hope that it will be useful, but
+%    WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with FRESCOX. If not, see <http://www.gnu.org/licenses/>.
+%
+%    OUR NOTICE AND TERMS AND CONDITIONS OF THE GNU GENERAL PUBLIC
+%    LICENSE
+%
+%    The precise terms and conditions for copying, distribution and
+%    modification are contained in the file COPYING.
+%
+%***********************************************************************
+\documentclass[11pt,a4paper]{article}
+\input wider.sty
+\parindent 0pt
+\parskip 10pt
+\newcommand{\vecr}{{\bf r}}
+\newcommand{\veck}{{\bf k}}
+\newcommand{\vecR}{{\bf R}}
+\newcommand{\vecl}{{\bf l}}
+\newcommand{\vecL}{{\bf L}}
+\newcommand{\vecJ}{{\bf J}}
+\newcommand{\vecs}{{\bf s}}
+\newcommand{\vecx}{{\bf x}}
+\newcommand{\Vee}{{\sf V}}
+\newcommand{\brho}{{\mbox{\boldmath $\rho$}}}
+\newcommand{\half}{\frac{1}{2}}
+\begin{document}
+
+
+\subsection*{Scattering Amplitudes}
+
+%%.rc 5 on
+The Rutherford amplitude for pure Coulomb scattering
+(with no $ e^{2i \sigma_0} $ factor) is
+\begin{eqnarray} \label{ruther}
+F_c ( \theta ) = - {\eta \over 2k} ~~
+               { \exp (-2 i \eta \ln(\sin \theta /2))  \over  \sin^2 \theta /2}
+\end{eqnarray}
+%%.rc 5 off
+The Legendre coefficients for the scattering to the projectile state
+$ J'_ p $ and target state $ J'_ t $
+from initial projectile state $ J_p $
+and target state $ J_t $ are given by
+\begin{eqnarray}  \nonumber
+ A^{L'}_{m' M' ;mM} &=&
+   \sum_{L,J,J' ,J_T }
+    \langle L0 J_p m | Jm\rangle\langle Jm J_t M |J_T M_T\rangle \\
+&& \langle L' M_{L'} J'_ p m' | J' M_{L'} + m'\rangle
+    \langle J' M_{L'}  +m' J'_ t M' |J_T M_T\rangle \nonumber\\
+&&  \nonumber
+  {4 \pi \over k} \sqrt {\frac{k'}{\mu'}\frac{\mu}{k}}
+    e^{i( \sigma_L - \sigma_0 )}
+      e^{i( \sigma'_ {L'} - \sigma'_ 0 )}\\
+&&  \label{ALeg}
+  \left ( {i \over 2} \right )
+      \left [ \delta_{\alpha ,\alpha'} - S^{J_T}_{\alpha ,\alpha'} \right ]
+    \sqrt {{2L+1 \over {4 \pi}}}~ Y_c (L' ,M_{L'})
+\end{eqnarray}
+where $Y_c (L,M)$ is the coefficient of
+$P_L^{|M|} (\cos \theta )
+    e^{iM\phi}$ in $Y_L^M (\theta ,\phi )$,
+$  \sigma_L = \arg \Gamma (1 + L + i \eta )$ is the Coulomb phase shift,
+$\alpha'$ refers to the primed values
+$ L'  J'_ p J'_ t  k' \mu' $ etc.,
+and $\alpha$ refers to the unprimed values
+$ L J_p J_t k \mu $.
+
+For each outgoing channel $J'_ p , J'_ t $,
+we may then calculate the angular-dependent scattering amplitudes
+\begin{eqnarray}
+f_{m' M' : mM} (\theta) =
+    \delta_{J_p , J'_ p}
+    \delta_{J_t , J'_ t}
+     F_c (\theta) +
+  \sum_{L'} A_{m' M' : mM}^{L'}
+                    P_{L'}^{m' +M' -m-M} (\cos \theta)
+\end{eqnarray}
+in terms of which the differential cross section is
+\begin{eqnarray}
+  {d \sigma(\theta) \over d \Omega} =
+   {1 \over (2J_p + 1)(2J_t + 1) }
+   \sum_{m' M' m M}
+           \left | f_{m' M' : mM} (\theta) \right | ^2 .
+\end{eqnarray}
+
+
+\subsection*{Improvements?}
+Can we avoid the excessive recalculation of the second two Clebsch-Gordan coefficients in eq.(\ref{ALeg})?
+Do they really have to be recalculated for every $m' M' ;mM'$ and $\alpha,\alpha'$?
+
+\end{document}
+

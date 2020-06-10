@@ -1,0 +1,52 @@
+#***********************************************************************
+# 
+#    Copyright 2018, I.J. Thompson
+#
+#    This file is part of FRESCOX.
+#
+#    FRESCOX is free software: you can redistribute it and/or modify it
+#    under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    FRESCOX is distributed in the hope that it will be useful, but
+#    WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with FRESCOX. If not, see <http://www.gnu.org/licenses/>.
+#
+#    OUR NOTICE AND TERMS AND CONDITIONS OF THE GNU GENERAL PUBLIC
+#    LICENSE
+#
+#    The precise terms and conditions for copying, distribution and
+#    modification are contained in the file COPYING.
+#
+#***********************************************************************
+mk g95  -j6 -k  | grep -v 'indirect jmp' |& grep -v 'will never be executed'
+mk g95-g  -j6 -k  | grep -v 'indirect jmp' |& grep -v 'will never be executed'
+mk g95-pg  -j6 -k  | grep -v 'indirect jmp' |& grep -v 'will never be executed'
+mk gfortran  -j6 -k  
+mk i386  -j6 -k  |& grep -v 'indirect jmp' |& grep -v 'will never be executed'
+mk i386-cx  -j6 -k  |& grep -v 'indirect jmp' |& grep -v 'will never be executed'
+mk i386-cx-g  -j6 -k  |& grep -v 'indirect jmp' |& grep -v 'will never be executed'
+mk i386-g  -j6 -k  |& grep -v 'indirect jmp' |& grep -v 'will never be executed'
+mk i686  -j2 -k
+mk i686-g  -j2 -k
+mk intel  -j6 -k
+mk intel-cx  -j6 -k
+mk intel-cx-g  -j6 -k
+mk intel-g  -j6 -k
+mk intel-mpich  -j6 -k
+mk intel-mpich-cx  -j6 -k
+mk intel-mpich-g  -j6 -k
+mk intel-mpich-scp  -j6 -k
+mk intel-op-mpi  -j6 -k
+mk intel-openmp  -j6 -k
+mk intel-openmp-g  -j6 -k
+mk intel-pg  -j6 -k
+mk intel64  -j6 -k
+mk intel64-mpech  -j6 -k
+mk intel64-mpech-scp  -j6 -k
+mk intel64-mpech-scp-g  -j6 -k

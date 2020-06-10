@@ -1,0 +1,10 @@
+ss.search
+plot ss-init.plot
+show
+q
+min
+migrad
+end
+show
+plot ss-fit.plot
+done

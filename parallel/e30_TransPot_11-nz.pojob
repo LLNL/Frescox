@@ -1,0 +1,32 @@
+#!/bin/csh
+#PSUB -tM 00:30  	# sets maximum total per cpu time (12:00 is the limit on zeus and thunder)
+#PSUB -c zeus           # machine
+#PSUB -eo 		# sends error to stout
+#PSUB -nr 		# do NOT rerun job after system reboot
+#PSUB -ro 		# send output log directly to file
+#PSUB -me 		# send email at execution finish
+
+#PSUB -ln 2 		# sets number of nodes
+set CPUSPN=6		# sets the number of CPUs per node
+
+setenv OMP_NUM_THREADS $CPUSPN			# number of OPENMP threads per MPI node
+set NODES=$SLURM_NNODES 			# grabs the number of nodes from the ln option above
+@ NMPI = $NODES * $CPUSPN / $OMP_NUM_THREADS	# calculates the total number of MPI nodes
+set TMPDIR=/p/lscratcha/`whoami`/$PSUB_JOBID	# sets a unique scratch directory for the job
+mkdir $TMPDIR					# makes the scratch directory, used for parallel output files
+cd $PSUB_SUBDIR					# changes directory to the job submission directory
+echo Starting on `hostname` with $NODES x $CPUSPN cpus for $OMP_NUM_THREADS at `date`
+
+\rm fresco.in fort.4 fort.24 fort.21 >& /dev/null
+ln -s tp.11 fort.4
+
+cat e30_TransPot_11-n.min | sed s/numnode=000/numnode=$NMPI/ | sed  s-/tmp-$TMPDIR- > fresco.in
+grep TMP fresco.in
+
+srun -N$NODES -n$NMPI frescom >& e30_TransPot_11-nz-$NMPI-$OMP_NUM_THREADS.out
+rm -rf $TMPDIR
+#\rm fresco.in
+\rm fort.20?
+
+echo Finished on `hostname` with $NODES x $CPUSPN cpus for $OMP_NUM_THREADS at `date`.
+exit

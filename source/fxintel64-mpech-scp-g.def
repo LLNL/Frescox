@@ -1,0 +1,58 @@
+#***********************************************************************
+# 
+#    Copyright 2018, I.J. Thompson
+#
+#    This file is part of FRESCOX.
+#
+#    FRESCOX is free software: you can redistribute it and/or modify it
+#    under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    FRESCOX is distributed in the hope that it will be useful, but
+#    WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with FRESCOX. If not, see <http://www.gnu.org/licenses/>.
+#
+#    OUR NOTICE AND TERMS AND CONDITIONS OF THE GNU GENERAL PUBLIC
+#    LICENSE
+#
+#    The precise terms and conditions for copying, distribution and
+#    modification are contained in the file COPYING.
+#
+#***********************************************************************
+####          ifort with MacOSX and mpi and scalapack, with mpe logging
+FC = mpif90 -mpe=mpilog
+F90C = $(FC) 
+#FPP = fpp -B -C -fixed -DMPI
+FORM = -FI -cm -w -fpp -DMPI -DSCP # -Dcorex
+PARALLEL = frxx45
+BINSI = frxx4.$(O) frxx7a.$(O)
+BINS = frxx0.$(O) $(BINSI)
+
+
+#### Without nag library:
+#
+NAG = nagstub.$(O)
+
+#### Without blas library:
+BLAS = lapack.$(O) 
+#LBLAS = -lmkl -lmkl_lapack64 # -L/usr/local/lib/mkl
+LBLAS =  -lscalapack -lblacsF77init -lblacs -framework veclib
+
+FFLAGS  = -O3 -ip -zero  -m64 -g -check all -O0 -debug
+FFLAGS1 = -O0     -zero -m64 -g -check all -O0 -debug
+LFLAGS  = -m64 -g -check all -O0 -debug
+
+
+O = o
+E =
+FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
+LINK = $(F90C) $(FFLAGS) -o frescom $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
+LINKS = $(F90C) $(FFLAGS) -o sfrescom $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
+# INST = install sfrescox frescox $(FRESCOXLIB)
+INST = cp  intel64-mpech-scp-g/sfrescom intel64-mpech-scp-g/frescom $(HOME)/binw/i386
+RM = rm -f

@@ -1,0 +1,160 @@
+%***********************************************************************
+% 
+%    Copyright 2018, I.J. Thompson
+%
+%    This file is part of FRESCOX.
+%
+%    FRESCOX is free software: you can redistribute it and/or modify it
+%    under the terms of the GNU General Public License as published by
+%    the Free Software Foundation, either version 3 of the License, or
+%    (at your option) any later version.
+%
+%    FRESCOX is distributed in the hope that it will be useful, but
+%    WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with FRESCOX. If not, see <http://www.gnu.org/licenses/>.
+%
+%    OUR NOTICE AND TERMS AND CONDITIONS OF THE GNU GENERAL PUBLIC
+%    LICENSE
+%
+%    The precise terms and conditions for copying, distribution and
+%    modification are contained in the file COPYING.
+%
+%***********************************************************************
+\documentclass[11pt]{article}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsbsy}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+%\newcommand{\T}{{\rm tot}}  % total
+\newcommand{\T}{{}}  % total
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+
+
+\title{OPENMP and MPI Parallelisation in FRESCO}
+\author{Ian Thompson, LLNL}
+\date{\today }                                           % Activate to display a given date or no date
+
+\begin{document}
+\maketitle
+\section{Solving the Coupled Equations}
+%\subsection{}
+WIth only local couplings, the coupled equations for a given $J_\T^\pi$ 
+describe a {\em vector} of $M$ channel wave functions $\psi_{\alpha\alpha_i}$, and
+a {\em matrix} of coupling potentials ${\sf V}(R)$. We integrate a trial
+solutions, grouped together into a matrix ${\sf Y}$, as the solution of
+\bea  \label{odecc}
+{\sf Y}''(R) &=& {\sf F}(R) {\sf Y}(R) \\
+\text{~for~}
+    {\sf F}(R) &=&  \frac{2\mu_\alpha}{\hbar^2}[{\sf V}(R) - E_\alpha]
+               + \frac{L_\alpha(L_\alpha{+}1)}{R^2} ,
+\eea
+where the energies $E_\alpha$ and centrifugal barriers are diagonal matrices. In component form, Eq.\ (\ref{odecc}) is
+\bea \label{odeccc}
+{\sf Y}_{\alpha \beta} ''(R) &=& \sum_{\alpha'=1}^M  {\sf F}_{\alpha \alpha'}(R) {\sf Y}_{\alpha' \beta}(R)\ .
+\eea
+
+These coupled differential equations can be solved by forming the linearly independent solution
+sets $\{{\sf Y}_{\alpha\beta}(R)\}$, where the $\beta$'th solution consists of
+a set of all channels ($\alpha=1 \ldots M$) that is made linearly independent of
+the other sets by having a distinctive starting value at $R=R_{\rm min}$:
+\index{linear dependence}
+\begin{eqnarray} \label{rstart}
+    {\sf Y}_{\alpha \beta} (R_{\rm min} - h) = 0, ~~~~~
+    {\sf Y}_{\alpha \beta} (R_{\rm min}) = \delta_{\alpha\beta}
+      \frac{ (k_\alpha R_{\rm min})^{L_\alpha + 1} }{(2L_\alpha {+} 1)!!} ~
+\end{eqnarray}
+for the initial conditions in the radial integration of equations
+(\ref{odecc}). The factor of $\delta_{\alpha\beta}$ may be varied.
+These solutions together form a matrix,  where the row index of ${\sf
+Y}$ refers to the channel within the coupled channels, and the column index
+refers to a linearly independent solution. The scattering boundary conditions of
+are to be satisfied by the $\psi_{\alpha\alpha_i}$
+solution, for incoming plane wave in channel $\alpha_i$.
+
+The solutions $\psi_{\alpha\alpha_i}$ are linear combinations of the
+${\sf Y}_{\alpha\beta}(R) $
+\begin{eqnarray} \label{linsum}
+     \psi_{\alpha\alpha_i}  = \sum _{\beta=1}^M c_{\beta\alpha_i} {\sf Y}_{\alpha \beta}(R)\ ,
+\end{eqnarray}
+again by satisfying the boundary conditions at $R = a$
+and say $R = a - 5h. $ The column of S matrix elements  $S_{\alpha\alpha_i}$ are a product of the
+matching procedure.
+
+\section{Parallelisation}
+\subsection{MPI}
+The coupled channels sets for each  $J_\T^\pi$ set are logically independent, and so may be calculated in parallel. This is done using MPI parallelisation, is organised so the different calculations may be on different mpi nodes, without any shared fast memory. 
+
+Information specifying the couplings has to be passed from the primary node to the slave nodes. All the nodes calculate the coupling matrix ${\sf V}(R)$, first generically, and then later for each $J_\T^\pi$ set. The resulting groups of columns of the S matrix are sent back in turn to the primary node, along with the segments of stdout file for inclusion in the primary job output.
+
+This works well, especially with reactions of heavier particles when the coupled channels sets are all approximately of the same size. For nucleon incident particles, by constrast, there are only 20  to 30 sets, and the sets with small $J_\T$ are smaller in size.
+
+
+\subsubsection*{Performance}
+Works efficiently if number of mpi nodes is less than half of the number of $J_\T^\pi$ sets.
+Also need all the $J_\T^\pi$ set calculations for a given cluster-node to fit in the memory available.  If there are 8 mpi-nodes per cluster-node for example, then only 1/8 of the cluster-node memory is available for each $J_\T^\pi$ set.
+
+\subsection{OPENMP}
+
+We use OPENMP parallelisation primarily to divide up in Eq.\ (\ref{odeccc}) the calculations for different $\beta$ values. These separate columns of the ${\sf Y}_{\alpha \beta}$ are distinct solutions of the coupled equations that are linearly independence. This independence implies that they may be calculated in parallel. 
+
+OPENMP parallelisation works with shared-memory computers, such as several CPUs do on a single node. Many large computers now have 8 cpus (or at least 8 parallel threads) on each node. The shared memory suits the parallelisation over $\beta$, since the coupling matrix coefficients  ${\sf F}_{\alpha \alpha'}(R)$ may be shared between the OPENMP threads.
+
+We can also use parallel OpenMP to calculate the Racah algebra coefficients for the couplings between all pairs of channels. A parallelisation of the outer channel loop is all that is needed.
+
+
+
+\begin{table} 
+\label{perf-openmp}
+\begin{tabular}{lcc}
+\hline \hline
+Intel Core Duo / Macbook &    Total CPU    & Elapsed Time \\
+\hline
+Serial  & 140.0  &  \\
+1 openmp & 157.1 & 160.4 \\
+2              & 185.6 & 115.0 \\
+3              & 180.7 & 111.9 \\
+\hline \hline
+AMD Opteron / Yana & & \\
+\hline
+serial &      309.4 & \\
+1 openmp &      341.5 &     344.6  \\
+2 openmp &      273.7 &     188.7  \\
+4 openmp &      286.1 &     143.2  \\
+6 openmp &      305.4 &     121.4 \\
+8 openmp &      346.5 &     134.0 \\
+\hline \hline
+\end{tabular}
+\caption{OPENMP Performance Tests} 
+\end{table}
+
+\subsubsection*{Performance}
+
+Consider an example of neutron+Zr scattering with up to $M=385$ channels (ph-e20-cc/e20-s). 
+The performances for OPENMP are given in Table \ref{perf-openmp} for first a two-threaded Intel Core Duo at 2.16 GHz in a Macbook Pro, and secondly on a Yana node with up to 8 threads with AMD Opterons at 2.4 GHz. Both machines used the Intel ifort compiler: the macbook using version 10.1 and Yana using version 9.1. 
+
+\subsubsection*{Conclusions}
+
+On a  dedicated machine such as the Macbook, the elapsed times are reduced by 30\% (theoretical maximum is 50\%).
+
+On the Yana 8-way cluster, efficiencies are gained for 2 -- 6 openmp threads, but with diminishing returns. Using all 8 cpus on 
+the node appears to increase the elapsed time. (We will have to recheck that the cluster was correctly dedicated to this job).
+
+
+
+
+
+\end{document}  

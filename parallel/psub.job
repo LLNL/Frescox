@@ -1,0 +1,60 @@
+#!/bin/csh
+#PSUB -tM 12:00  	# sets maximum total per cpu time (this is the limit on zeus and thunder)
+#PSUB -eo 		# sends error to stout
+#PSUB -nr 		# do NOT rerun job after system reboot
+#PSUB -ro 		# send output log directly to file
+#PSUB -me 		# send email at execution finish
+
+#PSUB -ln 2 		# sets number of nodes
+set CPUSPN=2		# sets the number of CPUs per node
+
+set NODES=$SLURM_NNODES 			# grabs the number of nodes from the ln option above
+@ NCPUS = $NODES * $CPUSPN			# calculates the total number of CPUs
+set TMPDIR=/p/lscratcha/`whoami`/$PSUB_JOBID	# sets a unique scratch directory for the job
+mkdir $TMPDIR					# makes the scratch directory, used for parallel output files
+cd $PSUB_SUBDIR					# changes directory to the job submission directory
+
+# if using CDC style input
+cat > Cdc.$$ << EOF
+&CDCC
+    numnode=$NCPUS TMP="$TMPDIR"
+EOF
+cdc4 < Cdc.$$ > fresco.in
+
+# if using Namelist input
+cat > fresco.in << EOF
+&Fresco
+    numnode=$NCPUS TMP="$TMPDIR"
+EOF
+
+srun -N$NODES -n$NCPUS frescom
+rm -rf $TMPDIR
+exit
+
+
+#***********************************************************************
+# 
+#    Copyright 2018, I.J. Thompson
+#
+#    This file is part of FRESCOX.
+#
+#    FRESCOX is free software: you can redistribute it and/or modify it
+#    under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    FRESCOX is distributed in the hope that it will be useful, but
+#    WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with FRESCOX. If not, see <http://www.gnu.org/licenses/>.
+#
+#    OUR NOTICE AND TERMS AND CONDITIONS OF THE GNU GENERAL PUBLIC
+#    LICENSE
+#
+#    The precise terms and conditions for copying, distribution and
+#    modification are contained in the file COPYING.
+#
+#***********************************************************************

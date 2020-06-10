@@ -1,0 +1,69 @@
+#***********************************************************************
+# 
+#    Copyright 2018, I.J. Thompson
+#
+#    This file is part of FRESCOX.
+#
+#    FRESCOX is free software: you can redistribute it and/or modify it
+#    under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    FRESCOX is distributed in the hope that it will be useful, but
+#    WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with FRESCOX. If not, see <http://www.gnu.org/licenses/>.
+#
+#    OUR NOTICE AND TERMS AND CONDITIONS OF THE GNU GENERAL PUBLIC
+#    LICENSE
+#
+#    The precise terms and conditions for copying, distribution and
+#    modification are contained in the file COPYING.
+#
+#***********************************************************************
+####            SUN Unix f90
+####		with BLAS routines in sun-performance-library
+####  		for Ultra III cpus with 64-bit Solaris
+FC = f90
+F90C = $(FC)
+FORM = -fixed -fpp
+PARALLEL = frxx15
+BINSI = frxx4.$(O) frxx7a.$(O)
+BINS = frxx0.$(O) $(BINSI)
+
+
+#### Without nag library:
+#
+NAG = nagstub.$(O)
+
+BLAS =
+LBLAS =  -xlic_lib=sunperf
+
+FFLAGS = -fast -xarch=v9b
+FFLAGS1 = -O1 -dalign -xarch=v9b
+LFLAGS = -xarch=v9b
+
+# FFLAGS = -O3
+# FFLAGS1 = -O1
+
+# 		DEBUGGING OPTIONS:
+# FFLAGS = -g  -dalign
+# FFLAGS1 = -g  -dalign
+# LFLAGS =  -g
+
+# 		PROFILING OPTIONS:
+# FFLAGS = -fast -pg
+# FFLAGS1 = -O1 -dalign -pg
+# LFLAGS =  -pg
+O = o
+E =
+
+FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
+LINK = $(F90C) $(FFLAGS) -o frescox $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
+LINKS = $(F90C) $(FFLAGS) -o sfrescox $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
+INST = install sfrescox frescox fr2nl $(FRESCOXLIB)
+# INST =
+RM = rm -f

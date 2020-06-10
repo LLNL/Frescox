@@ -1,0 +1,62 @@
+#***********************************************************************
+# 
+#    Copyright 2018, I.J. Thompson
+#
+#    This file is part of FRESCOX.
+#
+#    FRESCOX is free software: you can redistribute it and/or modify it
+#    under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    FRESCOX is distributed in the hope that it will be useful, but
+#    WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with FRESCOX. If not, see <http://www.gnu.org/licenses/>.
+#
+#    OUR NOTICE AND TERMS AND CONDITIONS OF THE GNU GENERAL PUBLIC
+#    LICENSE
+#
+#    The precise terms and conditions for copying, distribution and
+#    modification are contained in the file COPYING.
+#
+#***********************************************************************
+####            PC SALFORD FTN90:
+F90C = ftn95
+FC = $(F90C)
+#FORM = /fixed/debug
+FORM = /fixed
+F95FLAGS = $(FORM) #/old_arrays
+FFLAGS = $(FORM)
+PARALLEL = frxx15
+BINSI = frxx4.$(O) frxx7a.$(O)
+BINS = frxx0.$(O) $(BINSI)
+
+NAG = nagstub.$(O)
+BLAS = lapack.$(O)
+LBLAS =
+
+O =obj
+E =.exe
+
+.SUFFIXES : $(SUFFIXES) .obj .f
+
+.f.obj	 :
+	$(COMPILE.f95) $<
+
+FGO  = $(FC) $(FORM)
+FGO2 = /link
+LINK = slink frxx3a.lk
+LINKS = slink sfrxx3a.lk
+INST = copy /y *.exe C:\bin
+# INST =
+RM = DEL
+
+FFLAGS =
+FFLAGS1 =
+
+# FFLAGS = /check_sub/debug
+# FFLAGS1 = /check_sub/debug

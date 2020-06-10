@@ -1,0 +1,46 @@
+#!/bin/tcsh 
+
+if(! $?ARCH) setenv ARCH `arch`
+if( -X hostsurname ) setenv MACH `hostsurname`
+if(! $?MACH) then
+     set try=$1
+     if (-e fx${try}.def)  then
+     if ($#argv != 0)  then
+	 set MACH = $try
+	 echo MACH=$MACH
+	 shift
+     endif
+     endif
+   endif
+if(! $?MACH) set MACH = ${ARCH}
+
+# change to any local preferences: 
+#  copy & edit these lines yourself
+if(${MACH} == sun4) set MACH=sun4-spl
+
+set COMPILER = ''
+if( ${MACH} == 'x86_64' ) then
+      if( -X g95 )     set COMPILER = 'g95'
+      if( -X pathf90 ) set COMPILER = 'pathf90'
+      if( -X pgf90 )   set COMPILER = 'pgf90'
+      if( -X ifort )   set COMPILER = 'ifort'
+endif
+if( ${MACH} == 'i686' ) then
+      if( -X g95 )     set COMPILER = 'g95'
+      if( -X pathf90 ) set COMPILER = 'pathf90'
+      if( -X pgf90 )   set COMPILER = 'pgf90'
+      if( -X ifort )   set COMPILER = 'intel'
+endif
+if( -e fx${ARCH}-${COMPILER}.def ) then
+      ln -sf fx${ARCH}-mpi-${COMPILER}-g.def fx${ARCH}-mpi-g.def
+endif
+
+set MACH = ${MACH}-mpi-g
+
+if( ! -e ${MACH}) mkdir ${MACH}
+
+echo chdir ${MACH}
+chdir ${MACH}
+ln -s ../*.f ../*.F ../*.inc ../*.h ../makefile ../*${MACH}* .  >& /dev/null
+echo make ${argv}  MACH=${MACH}
+make ${argv} MACH=${MACH}

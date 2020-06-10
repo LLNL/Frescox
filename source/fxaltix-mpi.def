@@ -1,0 +1,60 @@
+#***********************************************************************
+# 
+#    Copyright 2018, I.J. Thompson
+#
+#    This file is part of FRESCOX.
+#
+#    FRESCOX is free software: you can redistribute it and/or modify it
+#    under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    FRESCOX is distributed in the hope that it will be useful, but
+#    WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with FRESCOX. If not, see <http://www.gnu.org/licenses/>.
+#
+#    OUR NOTICE AND TERMS AND CONDITIONS OF THE GNU GENERAL PUBLIC
+#    LICENSE
+#
+#    The precise terms and conditions for copying, distribution and
+#    modification are contained in the file COPYING.
+#
+#***********************************************************************
+####         SGI Altix 3700 IA64 with Linux and Intel ifort v9:
+####		with MPI for each J/Pi set and and FORMF calc
+FC = ifort
+F90C = $(FC)
+FPP = fpp -B -C -fixed -DMPI -DALTIXMPI
+FORM = -FI -cm -w
+PARALLEL = frxx45
+BINSI = frxx4.$(O) frxx7a.$(O)
+BINS = frxx0.$(O) $(BINSI)
+
+
+
+#### Without nag library:
+#
+
+
+#### Without blas library:
+BLAS = lapack.$(O) 
+#LBLAS = -L/opt/intel/mkl721/lib/64 -lmkl_lapack -lmkl_ipf -lguide -lpthread
+
+FFLAGS  = -O2 -zero -lmpi -DMPI
+FFLAGS1 = -O0 -zero -lmpi -DMPI
+FFLAGS3 = -O3 -zero -lmpi -DMPI
+LFLAGS  = -lmpi
+
+
+O = o
+E =
+FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
+LINK = $(F90C) $(FFLAGS) -o frescom $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
+LINKS = $(F90C) $(FFLAGS) -o sfrescom $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
+# INST = install sfrescox frescox $(FRESCOXLIB)
+INST = cp  altix/sfrescom altix/frescom $(HOME)/binw/ia64
+RM = rm -f
