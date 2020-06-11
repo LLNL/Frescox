@@ -1,0 +1,73 @@
+Changes from Fresco to Frescox
+
+1. RELA options for relativistic kinematics
+
+2. DGAM for decay angular distributions
+
+3. NUMNODE for MPI operation and NTHREAD for OPENMP
+   CCREAL: all potentials and couplings are real-valued, to speed CC solutions
+   ELPMAX = energy ELAB below which the LPMAX in each partition are applied 
+
+4. ISO for isocentrifugal approximations
+
+5. BTYPE for type of R-matrix boundary condition (including 'A' for Brune basis)
+   BNDX replaces EBETA for value in boundary condition
+
+6. MELFIL to write coupling files in mel and spec formats for sturmxx
+
+7. Core-excitation options for XCDCC calculations, with more details in CDCC outputs in fort.57
+
+8. TCFILE to generate transmission coefficients in fort.5420
+
+9. Options PRMAX and LPRMAX1 to vary Rmax and Lmax in each partition separately
+ 
+10. More SHAPEs for couplings:
+    14  SHAPE  Projectile second-order coupled by matrix elements read in.
+    15  SHAPE  Target second-order coupled by matrix elements read in.
+    16  SHAPE  Target & projectile simultaneous second-order coupled by matrix elements read in.
+    17         Target & projectile all-order coupled by matrix elements read in.
+    20  NUM  Super-soft N-N potl. of de Tourreil & Sprung (SSC(C))
+    21  NUM  User-supplied N-N potential via subroutine NNPOT.
+
+11. RSMIN, RSMAX,RSALPHA for truncating or damping single-particle states.
+
+12. NLAG for bound states: Use Lagrange mesh to find bound states with NLAG basis functions with code PLUTO
+
+13. PHASE for bin states: Find potential to give phase shift of PHASE degrees at energy -BE for bins. Requires NLAG>0.
+
+Searching:
+
+1. DAMP for Reich-Moore imaginary energy for damping
+   KIND=7 parameters for searching on this value
+
+2. RWA to indicate RWA for R-matrix widths, not formal widths
+   B for specific boundary condition number
+
+3. KIND=6 for searching on data energy shifts DATAESHIFT
+
+4. LEG for searching on Legendre coefficients of angular distributions
+
+5. Aflip for changing angle to 180-angle
+
+6. IB for final state after decay step.
+
+7. More searching commands:
+
+  V: query status of unfixed search variables
+  CHA: query status of changed search variables
+  CHI: list chi^2 status by dataset
+  FXWID : fix all R-matrix widths variables.
+  FXRPE : fix all R-matrix pole energy variables.
+  FXPBG : fix all pole energies variables with 'BG' in their name.
+  FXBG : fix all variables with 'BG' in their name.
+  FXNOR : fix all dataset norm variables (kind=5)
+  FXSHF : fix all dataset energy shift variables (kind=6)
+  FREE : free all R-matrix energies and widths variables. 
+  ELIM {\tt emin emax}: restrict data scans to this energy range for plots and chi^2 sums
+  POLES {\tt emin emax}: vary only R-matrix poles in this energy range (others are fixed)
+
+Only Fresco has the stabilization method for coupled-channels solutions.
+   
+
+
+
