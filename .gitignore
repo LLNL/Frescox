@@ -1,0 +1,8 @@
+*.o
+*.mod
+intel*
+gfortran*
+*.aux
+*.log
+*.synctex.gz
+fort.*

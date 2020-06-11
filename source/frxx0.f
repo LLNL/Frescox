@@ -173,8 +173,8 @@
         call version_number(version)
 
     	if(pr) write(koe,1002) version,comp
- 1002 	format(' FRESCOX - FRXY.7 version',a,': Coupled Reaction Channels',
-     X '             on ',a30/)
+ 1002 	format(' FRESCOX - version ',a,
+     X      ': Coupled Reaction Channels             on ',a30/)
 	uu = .false.
 	inquire(file='fresco.in',exist=uu)
 	if(uu) then

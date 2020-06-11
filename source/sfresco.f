@@ -122,7 +122,7 @@
 	written = .false.; written(3) = .true.
         call version_number(version)
 1	write(6,1000)  version
- 1000   format('SFRESCOX - FRXY.7 version',a,
+ 1000   format('SFRESCOX - version ',a,
      x       ': Search Coupled Reaction Channels'/)
 	esmin=0 ; esmax = 1e30
 !
