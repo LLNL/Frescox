@@ -1,6 +1,7 @@
 *.o
 *.mod
 intel*
+i386
 gfortran*
 *.aux
 *.log
