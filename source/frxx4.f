@@ -3567,11 +3567,11 @@ C                    Any additional L-dependent factors:
       INTEGER PEL,EXL,PART(MMXCH),EXCIT(MMXCH),LVAL(MMXCH),C,EL,XSTRAC
      &       ,JUMP(7,3),PP,CDCC,BSIGN,INFAM,OUTFAM,KAD(mds),
      &        KANG(mds),IANGLS(mdl,mds),TCFILE,
-     &        DMULTIES(NMULTIES),DLEVEL(NMULTIES)
+     &        DMULTIES(NMULTIES),DLEVEL(NMULTIES),iSgn
       REAL*8 RR(MMXCH,MAXF),ANGLES(mds*mdl),KYY,CM_LAB(mds*mdl)
       COMPLEX*16 O,C6,C7,C9,C0,FCOUL,C6D,FAM(MAXF),SMAT(MMXCH),
      &           ASCALE,AMP,FA(KQMAX0,KQMAX0,KQMAX0,2-KQMAX0:KQMAX0),
-     &           CI,FAMN(MAXF)
+     &           CI,FAMN(MAXF),FAR,NEAR
       REAL*8 CSIG(LMAX1,MXPEX),K(MXP,MXX),ETA(MXP,MXX),FUSL(1+NFUS1)
       REAL*8 PL(LMAX1,MAXPLM+1,2),PLEG(maxleg+1),SIGL(maxleg+1),
      &       RCOEF(KQMAX0,NMULTIES),DSPINS(NMULTIES),GXSECS(NMULTIES),
@@ -3976,7 +3976,7 @@ C:    IF(LAMPL.EQ.0 ) GO TO 230
      x   IC,IA,NANGL,abs(THINC),THMIN,SIGCHAN,'IC,IA,NA,THI,THMIN'
 
 	
-	 DO 290 NEARF = 1,ABS(NEARFA)
+	 DO 290 NEARF = 1,ABS(mod(NEARFA,10))
          IF(NEARFA.GT.0 .AND. NEARF.GT.1
      X                  .AND. (IC.NE.PEL.OR.IA.NE.EXL)) GO TO 290
       IF(ABS(NEARFA).GT.1) WRITE(KO,2301) SIDES(NEARF)
@@ -4111,6 +4111,7 @@ C
       MP = NINT(MAA + MA + MJA - MB - MJB)
       MPA = ABS(MP)
 	          if(MPA>MAXPLM) stop 'MAXPLM'
+! NUCLEAR:
       C6D = 0.0
       IF(NEARF.EQ.1) THEN
       DO 234 LP=MPA,MAL
@@ -4120,9 +4121,29 @@ C
 2345  C6D = C6D + AMPL(LP*MAM + IAM) *
      &             0.5 * CMPLX(PL(LP+1,MPA+1,1),RX*PL(LP+1,MPA+1,2))
       ENDIF
-      ! FAMN(IAM) = FAMN(IAM) + C6D
-      IF(IMA.EQ.IMB.AND.IJA.EQ.IJB .AND. NEARF.NE.2)
-     &                              C6D = C6D + FCOUL  + C9
+      
+! COULOMB:
+      IF(IMA.EQ.IMB.AND.IJA.EQ.IJB) then   !diagonal on m-values
+
+      if(abs(NEARFA)<=11) then   ! all Coulomb is near-side, so for all but far-side
+         if(NEARF.NE.2) C6D = C6D + FCOUL
+
+!   split also the Coulomb amplitude if near or far wanted separately:
+      else if(NEARF.eq.1) then   ! add all Coulomb
+         C6D = C6D + FCOUL
+      else if(NEARF.eq.2) then   ! add far-side Coulomb
+         iSgn= 1
+         call Fuller(ETA(PEL,EXL),TH,iSgn,far)
+         C6D = C6D + far*FCOUL
+      else if(NEARF.eq.3) then   ! add near-side Coulomb
+         iSgn=-1
+         call Fuller(ETA(PEL,EXL),TH,iSgn,near)
+         C6D = C6D + near*FCOUL
+        endif
+
+       C6D = C6D + C9   ! any constant-diagonal term from input file
+      endif  ! diagonal in Ms
+
 235   FAM(IAM) = FAM(IAM) + C6D
 C
       DO 248 KQ2 = 1,KQMAX2
@@ -4625,4 +4646,126 @@ C                       by 'dataset' index or by reffile
         endif
         refer = nm
         end
+
+C **** SUBROUTINE FULLER START *****************************
+C **** PURPOSE                                             *
+C Calculates the ratio (CuRat) between the Near (iSgn=-1)  *
+C or Far (iSgn=1) Coulomb Amplitude and the Rutherford     *
+C Amplitude at Ang (in Rad)                                *
+C **** ARGS                                                *
+C (eta,Ang,iSgn,CuRat)                                     *
+C **** INPUTS                                              *
+C    eta  Sommerfeld Parameter                             *
+C    Ang  Angle in Rad                                     *
+C   iSgn  Side Index                                       *
+C    -1   Near-Side                                        *
+C    +1   Far-Side                                         *
+C **** OUTPUT                                              *
+C cuRat   f_Ruth({N, F})/f_Ruth                            *
+C **** SUBPROGRAM USED                                     *
+C FUNCTION cPSI                                            *
+C
+      SUBROUTINE FULLER(eta,Ang,iSgn,CuRat)
+      IMPLICIT COMPLEX*16(C)
+      IMPLICIT REAL*8 (A-B,D-H,O-z)
+      deta = eta
+      dAng=Ang
+      ceta=DCMPLX(0.D0,deta)
+      ci=(0.D0,1.D0)
+      dpai=2.D0*ASIN(1.D0)
+      dC2=COS(dAng/2.D0)**2
+      dS2=SIN(dAng/2.D0)**2
+C calculate the Fuller S(theta) function
+        IF (dC2.LT.dS2) THEN
+        k=0
+        c1=cPsi(0.D0)-cPsi(deta)-LOG(dC2)
+        c2=DCMPLX(1.D0,0.D0)
+        cAdd=c1*c2
+        cSum=cAdd
+        kont=0
+        kGo=1
+        dMax=0.D0
+          DO WHILE (kGo.EQ.1)
+          dk=DFLOAT(k+1)
+          c1=c1+1.D0/dk-1.D0/(dk+ceta)
+          c2=(dk+ceta)/dk*dC2*c2
+          cAdd=c1*c2
+          IF (ABS(cAdd).GT.dMax) dMax=ABS(cAdd)
+          cSum=cSum+cAdd
+            IF (ABS(cAdd/cSum).LT.1.D-14) THEN
+            kont=kont+1
+            IF (kont.EQ.5) kGo=0
+            ELSE
+            kont=0
+            ENDIF
+          k=k+1
+          ENDDO
+        ELSE
+C Direct Formula
+        k=0
+        c2=DCMPLX(1.D0,0.D0)
+        cAdd=DCMPLX(1.D0,0.D0)
+        cSum=cAdd
+        kont=0
+        kGo=1
+        dMax=0.D0
+          DO WHILE (kGo.EQ.1)
+          dk=DFLOAT(k+1)
+          c2=(dk+ceta)/dk*dS2*c2
+          cAdd=(dk+ceta)/(dk+1.D0+ceta)*dS2*cAdd
+          IF (ABS(cAdd).GT.dMax) dMax=ABS(cAdd)
+          cSum=cSum+cAdd
+            IF (ABS(cAdd/cSum).LT.1.D-14) THEN
+            kont=kont+1
+            IF (kont.EQ.5) kGo=0
+            ELSE
+            kont=0
+            ENDIF
+          k=k+1
+          ENDDO
+        cSum=cSum/(1.D0+ceta)
+        ENDIF
+      cSum=ci/(2.D0*dpai)*EXP((1.D0+ceta)*LOG(dS2))*cSum
+      dTmp=EXP(-2*dpai*deta)
+        IF (iSgn.EQ.-1) THEN
+C Near 
+        CuRat=1.D0/(1.D0-dTmp)-cSum
+        ELSEIF (iSgn.EQ.1) THEN
+C Far 
+        CuRat=-dTmp/(1.D0-dTmp)+cSum
+        ELSE
+C Set Zero
+        CuRat=(0.D0,0.D0)
+        ENDIF
+       RETURN
+       END
+C **** SUBROUTINE FULLER END *****************************
+C>>>
+C<<<
+C **** FUNCTION cPsi START *******************************
+C **** PURPOSE                                           *
+C Calculate the function psi(1+iy)                       *
+C **** ARGS                                              *
+C (y)                                                    *
+C **** INPUT                                             *
+C  y                                                     *
+C **** OUTPUT                                            *
+C cPsi psi(1+iy)                                         *
+      FUNCTION cPsi(y)
+      IMPLICIT REAL*8 (y)
+      IMPLICIT COMPLEX*16(C)
+      cZ=DCMPLX(21.D0,y)
+      cZ1=1.D0/cZ
+      cZ2=cZ1*cZ1
+      cZ4=cZ2*cZ2
+      cZ6=cZ4*cZ2
+      cF=LOG(cZ)-cZ1/2.D0-cZ2/12.D0+cZ4/120.D0-cZ6/252.D0
+        DO i=1,20
+        cZ=cZ-1.D0
+        cF=cF-1.D0/cZ
+        ENDDO
+      cPsi=cF
+      RETURN
+      END
+C **** FUNCTION cPsi END *********************************
 
