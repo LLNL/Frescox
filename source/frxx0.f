@@ -780,7 +780,7 @@ C     IF(PADE.GE.1) VEFF=0
       if(pr)
      >WRITE(koe,1123) FMSCAL,1d0/FMSCAL,ETACNS,COULCN,muN
  1123 FORMAT( '  thus 2*amu/hbar^2 =',F10.7,' = 1/',f7.4,
-     x        	' and Coulomb constant =',F10.7,' so e^2 =',f8.5,
+     x        	' and Coulomb constant =',F10.7,' so e^2 =',f12.8,
      x   ', and nuclear magneton=',f10.7/)
 	
       if(INH/=0.and.pr) then

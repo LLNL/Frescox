@@ -4249,16 +4249,16 @@ C240    FORMAT(' ',2I3,5F5.1,    7F10.4,2F13.5)
       endif
       if(tcfile>1) write(5420,254) THETA,XSEC(1,1)
 254   FORMAT(F8.3,1p,e13.4)
-255   FORMAT(1X,F8.2,' deg.: X-S =', F13.6,' mb/sr,',:,22X,' & pols =',
+255   FORMAT(1X,F8.2,' deg.: X-S =', F15.6,' mb/sr,',:,22X,' & pols =',
      & F3.0,F9.5,3X,3F9.5,:,/,78X,4F9.5,:,/,78X,5F9.5,
      &                    :,/,72X,6F9.5,:,/,60X,7F9.5)
-256   FORMAT(1X,F8.2,' deg.: X-S =',1P,E13.4,' mb/sr,',:,22X,' & pols ='
+256   FORMAT(1X,F8.2,' deg.: X-S =',1P,E15.6,' mb/sr,',:,22X,' & pols ='
      &,0P,F3.0,F9.5,3X,3F9.5,:,/,78X,4F9.5,:,/,78X,5F9.5,
      &                       :,/,60X,6F9.5,:,/,42X,7F9.5)
-2551  FORMAT(1X,F8.2,' deg.: X-S =', F13.6,' mb/sr,',:,22X,' & pols =',
+2551  FORMAT(1X,F8.2,' deg.: X-S =', F15.6,' mb/sr,',:,22X,' & pols =',
      & F3.0,2F9.5,3X,3F9.5,:,/,78X,4F9.5,:,/,78X,5F9.5,
      &                     :,/,72X,6F9.5,:,/,60X,7F9.5)
-2561  FORMAT(1X,F8.2,' deg.: X-S =',1P,E13.4,' mb/sr,',:,22X,' & pols ='
+2561  FORMAT(1X,F8.2,' deg.: X-S =',1P,E15.6,' mb/sr,',:,22X,' & pols ='
      &,0P,F3.0,2F9.5,3X,3F9.5,:,/,78X,4F9.5,:,/,78X,5F9.5,
      &                        :,/,60X,6F9.5,:,/,42X,7F9.5)
       IF(KQMAX1.GE.3.AND.KOORDS.GE.1) THEN
@@ -4322,7 +4322,7 @@ C      Print Hooton-Johnson second-rank tensors from above:
             WRITE(KO,257) RUTHR,SIGRDIFF(ITH)
 	 endif
         XEL = RUTHR
-257     FORMAT('+',40X, ' /R =',1P,E13.4,:,' Diff=',e13.4)
+257     FORMAT('+',40X, ' /R =',1P,E15.6,:,' Diff=',e13.4)
         RUTH = RUTH*10  ! to mb
        ELSE ! no Coulomb:
            if(dist0>0.) SIGRDIFF(ITH) = XSEC(1,1) ! *WT
