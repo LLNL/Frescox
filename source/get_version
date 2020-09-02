@@ -25,7 +25,6 @@
 #
 #***********************************************************************
 
-#svn info | grep Revision | awk -F " " '{print "      n_svn = " $2}' > version.f
-
-echo "      character*14 version"  > version.f
-echo "      version ='"`git describe`"'" >> version.f
+echo                                          "      character*14 version"  > version.f
+echo                                          "      version ='"`git describe|& grep -v git`"'" >> version.f
+svn info |& grep Revision | awk -F " " '{print "      version = \47svn #" $2 "\47"}' >> version.f
