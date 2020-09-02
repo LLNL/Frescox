@@ -1,6 +1,0 @@
-rsync . ../frxy-svn -av \
-  --exclude .git --exclude .svn \
-  --exclude '.o' --exclude '*.mod' \
-  --exclude 'i386*' --exclude 'gfortran*' --exclude 'intel*' \
-  --exclude frxy-svn-copy \
-  $*

@@ -7,4 +7,5 @@ gfortran*
 *.log
 *.synctex.gz
 fort.*
-frxy7.1-release-copy
+frxy-svn-copy
+source/version_number.f

@@ -1,7 +1,7 @@
 # Frescox
 Scattering code Frescox for coupled-channels calculations
 
-FRESCO   FRXY version 7 at https://github.com/LLNL/Frescox
+FRESCO   FRXY version 7.1 at https://github.com/LLNL/Frescox
 LLNL-CODE-811517
 
 

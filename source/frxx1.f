@@ -1332,8 +1332,8 @@ C
 	   call flush(F51)
       DONE = DONE + DONES
       T = TM(I)
-      if(say.and.final)write(48,*) 'DONE incremented a by ',DONES,' to ',
-     x     DONE,real(T)
+      if(say.and.final)write(48,*) 'DONE incremented a by ',DONES,
+     x     ' to ',DONE,real(T)
 
          I = (JTOTAL-JAP)/JUMP(JBLOCK,1) + 0.5
          IF(DONE.GE.MAX(MDONE,MINTL+1).and.I.gt.4) DONE=DONE+1000
@@ -1537,8 +1537,8 @@ C
            call flush(F51)
       DONE = DONE + DONES
       T = TM(I)
-      if(say.and.final)write(48,*) 'DONE incremented b by ',DONES,' to ',
-     x                    DONE,real(T)
+      if(say.and.final)write(48,*) 'DONE incremented b by ',DONES,
+     x                    ' to ',DONE,real(T)
       call flush(48)
          I = (JTOTAL-JAP)/JUMP(JBLOCK,1) + 0.5
          IF(DONE.GE.MAX(MDONE,MINTL+1).and.I.gt.4) then
