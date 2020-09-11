@@ -8,4 +8,3 @@ gfortran*
 *.synctex.gz
 fort.*
 frxy-svn-copy
-source/version_number.f
