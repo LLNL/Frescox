@@ -1,0 +1,271 @@
+SFRESCOX - version 7.1-4-gbbcaa9a: Search Coupled Reaction Channels
+
+ Please give search file name
+ SFrescox search file = ss.search                                                                       
+
+ Frescox input file = p-cd.nin                                                                        
+    and output file = p-cd.frout                                                                      
+ Search on   4 variables for   1 datasets,
+ Frescox input file = p-cd.nin rewritten
+
+  MINUIT RELEASE 96.03  INITIALIZED.   DIMENSIONS 4000/4000  EPSMAC=  0.89E-15
+
+  Define SEARCH VARIABLES:
+
+   Variable   1=r0              is 1 potential KP= 1, line= 2 col= 2
+     value       1.1710         step  0.0100, min,max   0.0000  0.0000
+
+   Variable   2=V               is 1 potential KP= 1, line= 2 col= 1
+     value      52.5000         step  0.1000, min,max   0.0000  0.0000
+
+   Variable   3=W               is 1 potential KP= 1, line= 2 col= 4
+     value       3.5000         step  0.1000, min,max   0.0000  0.0000
+
+   Variable   4=WD              is 1 potential KP= 1, line= 3 col= 4
+     value       8.5000         step  0.1000, min,max   0.0000  0.0000
+
+ 
+** Read DATA SET   1 from file =                                                                               
+    of type  0           with absolute errors, CM  for state/excit  1  1,  idir= 1
+                               Detailed info=F;   set info =            eplots=F with log(Y)=F Mflip=F
+
+  Angular cross section T00 for energy  27.900 MeV
+  Read data set            1
+   28 data points: for lab energy    27.900
+  Angle CM  Datum     Absolute error
+   22.00000   0.5480      0.4400E-01
+   26.00000   0.4750      0.2400E-01
+   30.00000   0.4810      0.1400E-01
+   34.00000   0.5020      0.1000E-01
+   38.00000   0.4470      0.9000E-02
+   42.00000   0.2560      0.5000E-02
+   46.00000   0.1150      0.3000E-02
+   50.00000   0.1440      0.4000E-02
+   54.00000   0.3710      0.1100E-01
+   58.00000   0.6120      0.1200E-01
+   62.00000   0.6780      0.1400E-01
+   66.00000   0.4990      0.1000E-01
+   70.00000   0.2480      0.5000E-02
+   74.00000   0.8600E-01  0.3000E-02
+   78.00000   0.1190      0.4000E-02
+   82.00000   0.2890      0.9000E-02
+   86.00000   0.4630      0.1400E-01
+   90.00000   0.4850      0.1500E-01
+   94.00000   0.3980      0.1200E-01
+   98.00000   0.2350      0.7000E-02
+  102.00000   0.1230      0.4000E-02
+  106.00000   0.8700E-01  0.3000E-02
+  110.00000   0.1350      0.4000E-02
+  114.00000   0.1980      0.6000E-02
+  118.00000   0.2250      0.9000E-02
+  122.00000   0.2230      0.9000E-02
+  126.00000   0.1890      0.6000E-02
+  130.00000   0.1610      0.5000E-02
+ Scattering energies:  27.90000 to  27.90000 MeV(lab)
+ 
+  FRESCOX output to p-cd.frout*
+ 
+Running on viserys.llnl.gov
+ Calculate scattering at     1 energies
+   27.900000,1
+        1
+ 
+ grace: T
+     4 parameters (   4 variable) and     28 data points, so dof=     24
+
+  Total ChiSq/df=    23.9431 from     20.523
+
+  Total ChiSq   =      574.6 from      574.6
+
+ PARAMETER DEFINITIONS:
+    NO.   NAME              VALUE      STEP SIZE      LIMITS
+     1 'r0             '    1.1710      0.10000E-01     no limits
+     2 'V              '    52.500      0.10000         no limits
+     3 'W              '    3.5000      0.10000         no limits
+     4 'WD             '    8.5000      0.10000         no limits
+sfrescox> >plot ss-init.plot
+  file = <ss-init.plot> for sets           1           1
+
+  ChiSq/df=     23.943 from     20.523
+  xmgr file written: ss-init.plot with            1  graphs
+sfrescox> >show
+     4 parameters (   4 variable) and     28 data points, so dof=     24
+ 
+  Dataset            1  <=>
+    Angle   Datum      Abs. error  Theory         Chi
+   22.00000 0.54800     0.44000E-01 0.57624          0.4121
+   26.00000 0.47500     0.24000E-01 0.47017          0.0405
+   30.00000 0.48100     0.14000E-01 0.46050          2.1437
+   34.00000 0.50200     0.10000E-01 0.51057          0.7344
+   38.00000 0.44700     0.90000E-02 0.48109         14.3505
+   42.00000 0.25600     0.50000E-02 0.32240        176.3619
+   46.00000 0.11500     0.30000E-02 0.15682        194.3574
+   50.00000 0.14400     0.40000E-02 0.15326          5.3589
+   54.00000 0.37100     0.11000E-01 0.34135          7.2631
+   58.00000 0.61200     0.12000E-01 0.56888         12.9111
+   62.00000 0.67800     0.14000E-01 0.64086          7.0379
+   66.00000 0.49900     0.10000E-01 0.49450          0.2029
+   70.00000 0.24800     0.50000E-02 0.24565          0.2211
+   74.00000 0.86000E-01 0.30000E-02 0.79896E-01      4.1397
+   78.00000 0.11900     0.40000E-02 0.10015         22.2022
+   82.00000 0.28900     0.90000E-02 0.26042         10.0827
+   86.00000 0.46300     0.14000E-01 0.42229          8.4561
+   90.00000 0.48500     0.15000E-01 0.46842          1.2213
+   94.00000 0.39800     0.12000E-01 0.37892          2.5275
+   98.00000 0.23500     0.70000E-02 0.22491          2.0781
+  102.00000 0.12300     0.40000E-02 0.10311         24.7177
+  106.00000 0.87000E-01 0.30000E-02 0.69539E-01     33.8761
+  110.00000 0.13500     0.40000E-02 0.11549         23.7928
+  114.00000 0.19800     0.60000E-02 0.18963          1.9473
+  118.00000 0.22500     0.90000E-02 0.23929          2.5218
+  122.00000 0.22300     0.90000E-02 0.24023          3.6634
+  126.00000 0.18900     0.60000E-02 0.20075          3.8364
+  130.00000 0.16100     0.50000E-02 0.14670          8.1755
+ Tot Chisq=  5.7463E+02 Chisq/N=     20.5226,  Penalty=      0.0000
+
+  Total ChiSq/df=    23.9431 from     20.523
+
+  Total ChiSq   =      574.6 from      574.6
+sfrescox> >q
+    Var     1=r0              value     1.171000, step   0.0100, error   0.0000 rwa =F
+    Var     2=V               value    52.500000, step   0.1000, error   0.0000 rwa =F
+    Var     3=W               value     3.500000, step   0.1000, error   0.0000 rwa =F
+    Var     4=WD              value     8.500000, step   0.1000, error   0.0000 rwa =F
+sfrescox> >min
+
+   Call MINUIT
+   with NOGradient, STRategy=0, ERRordef=  0.0417
+ **********
+ **    1 **SET NOGRADIENT 
+ **********
+ **********
+ **    2 **SET ERRORDEF  0.4167E-01
+ **********
+minuit>  **********
+ **    3 **MIGRAD 
+ **********
+
+ FIRST CALL TO USER FUNCTION AT NEW START POINT, WITH IFLAG=4.
+ START MIGRAD MINIMIZATION.  STRATEGY 1.  CONVERGENCE WHEN EDM .LT. 0.42E-05
+
+ FCN=   23.94309     FROM MIGRAD    STATUS=INITIATE      12 CALLS       13 TOTAL
+                     EDM= unknown      STRATEGY= 1      NO ERROR MATRIX       
+
+  EXT   PARAMETER                CURRENT GUESS       STEP         FIRST   
+  NO.     NAME         VALUE          ERROR          SIZE      DERIVATIVE 
+   1      r0            1.1710       0.10000E-01   0.10000E-01   -914.85    
+   2      V             52.500       0.10000       0.10000       -9.4528    
+   3      W             3.5000       0.10000       0.10000        21.890    
+   4      WD            8.5000       0.10000       0.10000        10.644    
+                               ERR DEF= 0.417E-01
+ MIGRAD FAILS TO FIND IMPROVEMENT
+ COVARIANCE MATRIX CALCULATED SUCCESSFULLY
+
+ FCN=   10.42446     FROM HESSE     STATUS=OK            31 CALLS      190 TOTAL
+                     EDM=  0.15E-03    STRATEGY= 1      ERROR MATRIX ACCURATE 
+
+  EXT   PARAMETER                                    STEP         FIRST   
+  NO.     NAME         VALUE          ERROR          SIZE      DERIVATIVE 
+   1      r0            1.1814       0.21870E-03   0.13545E-05   -2.6125    
+   2      V             52.185       0.24532E-01   0.20591E-03  -0.16629E-01
+   3      W             2.8958       0.90685E-01   0.32641E-03   0.53394E-02
+   4      WD            8.1820       0.11754       0.48954E-03  -0.40826E-01
+                               ERR DEF= 0.417E-01
+ MIGRAD FAILS TO FIND IMPROVEMENT
+
+ MIGRAD MINIMIZATION HAS CONVERGED.
+
+ MIGRAD WILL VERIFY CONVERGENCE AND ERROR MATRIX.
+ MINUIT WARNING IN HESSE   
+ ============== Negative diagonal element  4 in Error Matrix
+ MINUIT WARNING IN HESSE   
+ ==============     0.65E+01 added to diagonal of error matrix
+ EIGENVALUES OF SECOND-DERIVATIVE MATRIX:
+        -0.3674E+01 -0.2048E+00  0.2185E+01  0.5694E+01
+ MINUIT WARNING IN HESSE   
+ ============== MATRIX FORCED POS-DEF BY ADDING   3.6795     TO DIAGONAL.
+ MIGRAD TERMINATED WITHOUT CONVERGENCE.
+
+ FCN=   10.42446     FROM MIGRAD    STATUS=FAILED       246 CALLS      247 TOTAL
+                     EDM=  0.64E-01    STRATEGY= 1      ERR MATRIX NOT POS-DEF
+
+  EXT   PARAMETER                 APPROXIMATE        STEP         FIRST   
+  NO.     NAME         VALUE          ERROR          SIZE      DERIVATIVE 
+   1      r0            1.1814       0.23487E-03   0.15753E-05    17.712    
+   2      V             52.185       0.61518E-02   0.12049E-03  -0.13107    
+   3      W             2.8958       0.37383       0.38530E-03   0.24622E-02
+   4      WD            8.1820        2.7075       0.31117E-03   0.28527E-01
+                               ERR DEF= 0.417E-01
+
+ EXTERNAL ERROR MATRIX.    NDIM=4000    NPAR=  4    ERR DEF= 0.417E-01
+  5.516E-08 2.313E-07 7.944E-05-5.762E-04
+  2.313E-07 3.784E-05 6.705E-04-4.860E-03
+  7.944E-05 6.705E-04 1.397E-01-1.011E+00
+ -5.762E-04-4.860E-03-1.011E+00 7.331E+00
+ ERR MATRIX NOT POS-DEF
+
+ PARAMETER  CORRELATION COEFFICIENTS
+       NO.  GLOBAL     1     2     3     4
+        1  0.91263  1.000 0.160 0.905-0.906
+        2  0.38194  0.160 1.000 0.292-0.292
+        3  0.99877  0.905 0.292 1.000-0.999
+        4  0.99878 -0.906-0.292-0.999 1.000
+ ERR MATRIX NOT POS-DEF
+minuit>  **********
+ **    4 **END 
+ **********
+
+ CALL TO USER FUNCTION WITH IFLAG = 3
+
+ END OF MINUIT COMMAND INPUT.    RETURN TO USER PROGRAM.
+
+     4 parameters (   4 variable) and     28 data points, so dof=     24
+sfrescox> >show
+     4 parameters (   4 variable) and     28 data points, so dof=     24
+ 
+  Dataset            1  <=>
+    Angle   Datum      Abs. error  Theory         Chi
+   22.00000 0.54800     0.44000E-01 0.57593          0.4029
+   26.00000 0.47500     0.24000E-01 0.47976          0.0394
+   30.00000 0.48100     0.14000E-01 0.47411          0.2420
+   34.00000 0.50200     0.10000E-01 0.51656          2.1187
+   38.00000 0.44700     0.90000E-02 0.46941          6.1980
+   42.00000 0.25600     0.50000E-02 0.29532         61.8367
+   46.00000 0.11500     0.30000E-02 0.13197         32.0068
+   50.00000 0.14400     0.40000E-02 0.15255          4.5656
+   54.00000 0.37100     0.11000E-01 0.37344          0.0493
+   58.00000 0.61200     0.12000E-01 0.62076          0.5328
+   62.00000 0.67800     0.14000E-01 0.68688          0.4026
+   66.00000 0.49900     0.10000E-01 0.51582          2.8282
+   70.00000 0.24800     0.50000E-02 0.24406          0.6218
+   74.00000 0.86000E-01 0.30000E-02 0.75284E-01     12.7588
+   78.00000 0.11900     0.40000E-02 0.11456          1.2312
+   82.00000 0.28900     0.90000E-02 0.30173          1.9995
+   86.00000 0.46300     0.14000E-01 0.47955          1.3972
+   90.00000 0.48500     0.15000E-01 0.52101          5.7634
+   94.00000 0.39800     0.12000E-01 0.41135          1.2378
+   98.00000 0.23500     0.70000E-02 0.23630          0.0346
+  102.00000 0.12300     0.40000E-02 0.10552         19.1040
+  106.00000 0.87000E-01 0.30000E-02 0.77857E-01      9.2888
+  110.00000 0.13500     0.40000E-02 0.13721          0.3061
+  114.00000 0.19800     0.60000E-02 0.22142         15.2406
+  118.00000 0.22500     0.90000E-02 0.27157         26.7733
+  122.00000 0.22300     0.90000E-02 0.26497         21.7517
+  126.00000 0.18900     0.60000E-02 0.21644         20.9104
+  130.00000 0.16100     0.50000E-02 0.15731          0.5445
+ Tot Chisq=  2.5019E+02 Chisq/N=      8.9352,  Penalty=      0.0000
+
+  Total ChiSq/df=    10.4245 from      8.935
+
+  Total ChiSq   =      250.2 from      250.2
+sfrescox> >plot ss-fit.plot
+  file = <ss-fit.plot> for sets           1           1
+
+  ChiSq/df=     10.424 from      8.935
+  xmgr file written: ss-fit.plot with            1  graphs
+sfrescox> >done
+           4 variables of Covariance matrix
+   1  1.000E-02,   2  1.000E-01,   3  1.000E-01,   4  1.000E-01,
+  New search file written: ss.searched
+  Data adjustment csv file written: ss.searched-datafit.csv
+sfrescox> 

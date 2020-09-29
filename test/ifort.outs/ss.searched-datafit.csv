@@ -1,0 +1,4 @@
+segment,dataset,filedir,source,EXFOR,points,low angle bound,high angle bound,aframe,low energy bound,high energy bound,eframe,norm,shift,chi^2,chi^2/pt
+int,str,str,str,int,int,float,float,str,float,float,str,float,float,float,float,
+,,,,,,deg,deg,str,MeV,MeV,str,,MeV,,,
+1,=,,=,,28,22.,130.,com,27.9,27.9,lab,1.,0.,250.187,8.9352

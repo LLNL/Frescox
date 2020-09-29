@@ -9,7 +9,7 @@
 #    the Free Software Foundation, either version 2 of the License, or
 #    (at your option) any later version.
 #
-#    FRESCOX is distributed in the hope that it will be useful, but
+#    FRESCOX is distributed.nin the hope that it will be useful, but
 #    WITHOUT ANY WARRANTY; without even the implied warranty of
 #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 #    GNU General Public License for more details.
@@ -21,34 +21,35 @@
 #    LICENSE
 #
 #    The precise terms and conditions for copying, distribution and
-#    modification are contained in the file COPYING.
+#    modification are contained.nin the file COPYING.
 #
 #***********************************************************************
-frescox < be11.in > be11.out
 
-frescox < cadprsc.in > capdrsc.out
+frescox < 11be+He200na1.cin > 11be+He200na1.out
 
-frescox < cadprsc-n.in > capdrsc-n.out
+frescox < b8ex.nin > b8ex.out
 
-frescox < f19xfs.in > f19xfs.out
+frescox < be11.nin > be11.out
 
-frescox < f19xfs-n.in > f19xfs-n.out
+frescox < cadprsc.nin > cadprsc.out
 
-frescox < lane20.in > lane20.out
+frescox < dex.nin > dex.out
 
-frescox < on2.in > on2.out
+frescox < dexcc.nin > dexcc.out
 
-frescox < xeta.in > xeta.out
+frescox < e80f49b.nin > e80f49b.out
 
-frescox < e80f49b.in > e80f94b.out
+frescox < f19xfs.nin > f19xfs.out
 
-frescox < e80f49b-n.in > e80f94b-n.out
+frescox < lane20.nin > lane20.out
 
-frescox < b8ex.in > b8ex.out
+frescox < li7p-EM.nin > li7p-EM.out
 
-frescox < dex.in > dex.out
+frescox < li9tpss0.nin  > li9tpss0.out
 
-frescox < li7p-EM.in > li7p-EM.out
+frescox < on2.nin > on2.out
+
+frescox < xeta.nin > xeta.out
 
 sfrescox <  na.min > na.out
 sfrescox <  ss.min > ss.out
