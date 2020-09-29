@@ -422,7 +422,7 @@ C    --------------------------------------------------------------
               OP = .true.
             endif
            endif
-            if(listcc>4) write(6,4801) MIXPOT,PTYPE(1,JF),KPA,KPB,OP
+            if(listcc>4) write(6,4801) MIXPOT(IC),PTYPE(1,JF),KPA,KPB,OP
 4801	    format('MIXPOT =',I2,' potl',I3,' KPA,B =',2i3,' => OP:',L1)
  
            if( .not. OP) go to 300
@@ -498,8 +498,9 @@ C			Normal KK=0 should exclude off-diagonal monopoles
             if(JFT==13) T = sqrt(2*JTARG(C)+1.)   ! target couplings
        ENDIF
 C
-        if (JFTT.eq.10.and.BAND(1,ic,ia).ne.BAND(1,ic,ib) .or.
-     x      JFTT.eq.11.and.BAND(2,ic,ia).ne.BAND(2,ic,ib) ) go to 300
+        KP = (-1)**KK   ! allow parity change for odd multipoles
+        if (JFTT.eq.10.and.BAND(1,ic,ia).ne.BAND(1,ic,ib)*KP .or.
+     x      JFTT.eq.11.and.BAND(2,ic,ia).ne.BAND(2,ic,ib)*KP ) go to 300
 
 C
       IF(JFT>=12.and.JFT<=13.and.PTYPE(3,JF)>0) THEN
