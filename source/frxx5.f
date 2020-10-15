@@ -59,7 +59,7 @@ C				mp should be defined here the same as in fread
       REAL*8 CCFRAC(MXPEX,2,MXPEX)
       real*8,allocatable:: PSI(:,:),CC(:,:,:,:)
       complex*16,allocatable:: PSIC(:,:)
-      CHARACTER*3 VAR(18),ADJ,VARK*4,FFKIND*7,CHME*4,cbin*3
+      CHARACTER*3 VAR(31),ADJ,VARK*4,FFKIND*7,CHME*4,cbin*3
       CHARACTER*8 NAME(2,MXP),TFACTS,TBIN*6,NORMS*4,KFA*2
       CHARACTER CH1,CH2,PSIGN(3)
       data PSIGN / '-','?','+' /
@@ -74,7 +74,9 @@ C				mp should be defined here the same as in fread
 	namelist/dalitz/ triton
 	namelist/twont/ tnt,coef
       DATA VAR /'BE','VR','WR','VSO','USO','VTR','UTR','T2R','DEF',
-     &          'DEF','DF0','DF1','DF2','DF3','DF4','DF5','DF6','DF7' /
+     &          'DEF','DF0','DF1','DF2','DF3','DF4','DF5','DF6','ALL',
+     &          '','','SSC','USR','','','LVD','LDD','LVC',
+     &          'LDC', '','','Lsq'/
       DATA TRITON /  .224, 0.50, 1.00, 1.38, 5.5, 0.0, 1.38, 4.2405 /
       FRAC(X) = ABS(X-NINT(X)).GT.1E-5
       FAIL3(X,Y,Z) = FRAC(X+Y+Z) .OR. X.GT.Y+Z .OR. X.LT.ABS(Y-Z)

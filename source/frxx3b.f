@@ -121,7 +121,7 @@ C     AL = 0.0
       NVREQ =  NN*NLIF
 !      write(48,*) 'NICH,IEX,NITS,NLIF,NN =',NICH,IEX,NITS,NLIF,NN
 !#      write(48,*)  'NN,NLIF,NVREQ,NFDEC',NN,NLIF,NVREQ,NFDEC
-      write(48,*) 'ERWIN solutions, with IEX=',IEX,NEQS
+!      write(48,*) 'ERWIN solutions, with IEX=',IEX,NEQS
       call flush(48)
       CALL CHECK(NVREQ,NFDEC,17)
       if(SHOW>1) then

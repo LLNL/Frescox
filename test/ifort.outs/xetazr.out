@@ -1,0 +1,684 @@
+Running on viserys.llnl.gov
+ FRESCOX - version 7.1-4-gbbcaa9a: Coupled Reaction Channels             on intel64-cx                    
+
+ Assuming NAMELIST input.
+
+ ZR (T,ALPHA) REACTION ON 136-XENON AT SUB-BARRIER ENERGIES                                                              
+
+   0.100  25.000   0.500   0.200   5.000   0.900   0.000   0.000   0.000   0.000
+
+ Centre-of-mass Range is    252 * 0.1000 fm., Maximum at  25.00 fm., Interpolating NL forms every  0.50 fm.
+ Non - locality width is     26 * 0.2000 fm., Maximum of   5.00 fm., Centred at  0.80 fm.
+ 2-Nucleon Separation of      0 * 0.5000 fm., Maximum of   0.00 fm., Minimum at  0.00 fm.
+ Maximum single particle bins of 25.0000 fm.
+               M,Mint =          251         251
+
+
+ Range of total J is     0.0 <= J <=    10.0 (at least     0.0) and Absorbtion =>    -0.1000 mb.
+ Dry Run = F, CC set limits =  0  0, Relativistic kinematics =   , Both/Far/Near Analyses =  1                     
+
+ Cross Sections (and up to T0 for 0=projectile) for Theta from  66.0 to 146.0 in steps of  5.0 degrees, DGAM=0, grace=T,  Coordinates = 0 (Mads)
+
+ Lower Radial Cutoff = maximum of -1.60*L*h &       0.0 fm.,  Lower Cutoff for Couplings =   0.0  fm.
+
+
+ Iterate Couplings between   0 and   1 times, to  0.000 % if sooner.                                          
+  Block solved exactly =   0 chs., with Pade = 0 & Isocen =  =0, NOSOL = F, CCREAL = F, initwf =  0
+    Small channels are  0.00E+00 and small couplings are  1.00E-12 of unitarity
+
+  NL quadrature with   18 Gaussian points, Calculate multipoles up to    20 from   0
+  M-transfers for lp+lt greater than or equal to  6, Angular Integration Cutoff below  2.7778 %
+
+
+ Trace switches are :  CHANS =  1, LISTCC =  0, TRENEG =  0, CDETR =  0, SMATS =  4, XSTABL =  1, NLPL =  0
+
+                       WAVES =  0, LAMPL =  0, VEFF =  0, KFUS =  0, WDISK =  0, BPM =  0, MELFIL =  0
+
+                       CDCC =  0, NFUS =  0, TCFILE =  0
+
+ Using unit mass = 1.000000 amu and 1/fine-structure constant = 137.03599 ( 1.000000 * true ) with hc = 197.32705 MeV.fm,
+  thus 2*amu/hbar^2 = 0.0478450 = 1/20.9008 and Coulomb constant = 0.1574855 so e^2 =  1.43996515, and nuclear magneton= 0.1261183
+
+ Now pre-scan input and save to file 3
+
+  WARNING: target longitudinal recoil NOT included in the ZR coupling # 
+           1
+
+
+ *********** PARTITION NUMBER  1 ******************************************************************************************
+
+   PROJ=TRITON     MASS=  3.0160 Z=   1.0,        # STATES=    1T, TARG=XE-136   MASS=135.9072 Z=  54.0,     Q-VALUE =  -9.8790 MeV
+
+   MIXPOT =  0: no couplings (default)
+
+     1:  J= 0.5+ (B# 1), E=  0.0000, K= 0.5              Potl#  1       J= 0.0+ (B# 1), E=  0.0000, K= 0.0    
+
+
+ *********** PARTITION NUMBER  2 ******************************************************************************************
+
+   PROJ=ALPHA      MASS=  4.0026 Z=   2.0,        # STATES=    1T, TARG=I-135    MASS=134.9100 Z=  53.0,     Q-VALUE =   0.0000 MeV
+
+   MIXPOT =  0: no couplings (default)
+
+     1:  J= 0.0+ (B# 1), E=  0.0000, K= 0.0              Potl#  2       J= 3.5+ (B# 1), E=  0.0000, K= 0.5    
+
+
+ ************************************************************************************************************************************
+
+ The following POTENTIALS are defined :
+
+  KP#       TYPE      IT    SHAPE      at     V1        r1        a1        V2        r2        a2        A-in     A-used
+
+
+                                            A#1       A#2        r0c       ac                                                h @ 1
+    1    0=Coulomb       0=CHARGE (WS)  1   135.900     0.000    1.2500    0.6500    0.0000    0.0000     0.000   135.900   0.10000
+
+    1    1=Volume        0=Woods-Saxon  2  150.0000    1.2800    0.6800   10.0000    1.4200    0.8800     0.000   135.900
+   --------------------------------------------------------------------------------------------------------------------
+
+                                            A#1       A#2        r0c       ac                                                h @ 2
+    2    0=Coulomb       0=CHARGE (WS)  3   134.910     0.000    1.2500    0.6500    0.0000    0.0000     0.000   134.910   0.10000
+
+    2    1=Volume        0=Woods-Saxon  4  225.0000    1.3200    0.5850   33.0000    1.3200    0.5850     0.000   134.910
+   --------------------------------------------------------------------------------------------------------------------
+
+                                            A#1       A#2        r0c       ac                                                h @ 0
+    3    0=Coulomb       0=CHARGE (WS)  5     3.000     0.000    1.2500    0.6500    0.0000    0.0000     0.000     3.000   0.10000
+
+    3    1=Volume        0=Woods-Saxon  6   75.0000    1.1750    0.6500    0.0000    0.0000    0.0000     0.000     3.000
+
+    3    3=Projtl S.O.   0=Woods-Saxon  7    8.0000    1.1750    0.6500    0.0000    0.0000    0.0000     0.000     3.000
+   --------------------------------------------------------------------------------------------------------------------
+
+                                            A#1       A#2        r0c       ac                                                h @ 0
+    4    0=Coulomb       0=CHARGE (WS)  8   135.000     0.000    1.2500    0.6500    0.0000    0.0000     0.000   135.000   0.10000
+
+    4    1=Volume        0=Woods-Saxon  9   60.0000    1.2500    0.6500    0.0000    0.0000    0.0000     0.000   135.000
+
+    4    3=Projtl S.O.   0=Woods-Saxon 10    8.0000    1.2500    0.6500    0.0000    0.0000    0.0000     0.000   135.000
+
+
+ ************************************************************************************************************************************
+
+ The following    real SINGLE-PARTICLE FORM FACTORS are  constructed:
+
+
+ No.   P1 P2 IN KIND T N  L  S1 IA J/S  IB BIND XFER  BE    SC PC FIL AFRAC Adjust  to  Z  Mass   K     Norm    rms      D0     D   ANC/Gsp
+
+    1:  1  2  1  0     1  0 0.5  1 0.5   0   3   0  19.8142  1  0  0 1.0000 VR  1.0171; 1. 0.987 0.8395 1.0000  1.901 -298.3 -424.6  4.7751
+
+    2:  2  1  2  0     1  4 0.5  1 3.5   0   4   0   9.9360  1  0  0 1.0000 VR  1.0134; 1. 0.997 0.6860 1.0000  4.989   -1.5   69.6  4.79E+03
+
+ ************************************************************************************************************************************
+
+ TWO-way COUPLING # 1 for partitions  2 <-  1 of KIND  5,   0 -1  0 -1 -1 & P1,P2 = -600.0000   0.0000 : for J <=    10.5 & R <  24.7 fm.
+
+
+ data = -2  1  1  2  1.0000,  so  < [XE-136   #  1] / [I-135    #  1]  * Eigen-form #  2>  =   1.0000            BE =  9.936     2
+ KNT =   2, KNP =   1: NK,NG,loc=   1   1   1      11  T  T  F
+ KNT =   2, KNP =   1: NK,NG,loc=   1   1   1      11
+
+     So ZERO-RANGE TRANSFER, with D0 =  -600.000 and finite-range effective radius   0.0000 fm.
+
+   2  1  1 11    19.815  -600.000  -600.000     0.987     0.743     0.000     0.100
+
+ Incoming partition  1 in excitation state # 1,   Laboratory Energy given for partition  1 Nucleus 1 in Excitation pair 1
+
+0Lab. ENERGY ranges :
+
+   from    5.89000     to   0.00000     in        0 intervals
+   from    0.00000     to   0.00000     in        0 intervals
+   from    0.00000     to   0.00000     in        0 intervals
+
+ Largest real,imaginary parts of any form factor at R=   24.00 are   6.00E-02  5.74E-08 MeV
+ Finished all Couplings @   5.3050006E-03
+
+ Symmetric Hamiltonian
+1***********************************************************************************************************************************
+************************************************************************************************************************************
+
+        INCOMING TRITON   ;    LABORATORY TRITON   ENERGY =   5.8900     MeV.
+
+ ***********************************************************************************************************************************
+ ***********************************************************************************************************************************
+
+ Allocate arrays for            2  channels, of which            2  need wfs.
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     0.5 +,      2 channels,    0 in 1st block.  Rmin & Coul turning =    0.0   13.5 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+
+
+    C Projectl Target   #   EX.   (L  Proj) J  + Targ = Jtotal     E-cm      Re K     Re Eta     RM*K            CH                     G-REL
+    1 TRITON   XE-136   #    1: I   0 0.5    0.5  0.0     0.5     5.76213   0.90190   6.08544   22.5476   0.16699   0.58299 1 1 1   1  1.00000
+    2 ALPHA    I-135    #    1:     4 0.0    4.0  3.5     0.5    15.64113   1.70559   8.32213   42.6398   0.02208  -0.56793 2 1 2   1  1.00000
+   S-matrix    1 =    0.94956   0.01877 for L=    0, J=    0.5 channel on core I =   0.0 from L=    0,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.566   1.477 deg. for the L =    0, J =    0.5 channel.
+   S-matrix    1 =    0.94956   0.01877 for L=    0, J=    0.5 channel on core I =   0.0 from L=    0,  Acc. loss =  0.0 D.
+   S-matrix    2 =    0.00558  -0.00449 for L=    4, J=    4.0 channel on core I =   3.5 from L=    0,  Acc. loss =  1.0 D.
+       0.5  0.94955664  0.01877058i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.94956 +i*  0.01877,     0.00669 +i* -0.00538,
+ Reaction Xsec     0.5+/ 0 @ 1 =     3.785 , Out:   0.000#   2.844/   3.782f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     0.5 -,      2 channels,    0 in 1st block.  Rmin & Coul turning =    0.0   13.5 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.95485   0.01432 for L=    1, J=    0.5 channel on core I =   0.0 from L=    1,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.430   1.320 deg. for the L =    1, J =    0.5 channel.
+   S-matrix    1 =    0.95485   0.01432 for L=    1, J=    0.5 channel on core I =   0.0 from L=    1,  Acc. loss =  0.0 D.
+   S-matrix    2 =   -0.00437   0.00315 for L=    3, J=    3.0 channel on core I =   3.5 from L=    1,  Acc. loss =  0.8 D.
+       0.5  0.95484878  0.01431842i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.95485 +i*  0.01432,    -0.00524 +i*  0.00378,
+ Reaction Xsec     0.5-/ 1 @ 1 =     3.401 , Out:   0.000#   1.611/   3.399f
+ 
+ Allocate arrays for            3  channels, of which            3  need wfs.
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     1.5 +,      3 channels,    0 in 1st block.  Rmin & Coul turning =    0.1   13.7 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.97236   0.01374 for L=    2, J=    1.5 channel on core I =   0.0 from L=    2,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.405   0.800 deg. for the L =    2, J =    1.5 channel.
+   S-matrix    1 =    0.97236   0.01374 for L=    2, J=    1.5 channel on core I =   0.0 from L=    2,  Acc. loss =  0.0 D.
+   S-matrix    2 =   -0.00313   0.00245 for L=    2, J=    2.0 channel on core I =   3.5 from L=    2,  Acc. loss =  0.4 D.
+   S-matrix    3 =   -0.00239   0.00223 for L=    4, J=    4.0 channel on core I =   3.5 from L=    2,  Acc. loss =  0.9 D.
+       1.5  0.97235936  0.01373509i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.97236 +i*  0.01374,    -0.00375 +i*  0.00293,    -0.00287 +i*  0.00267,
+ Reaction Xsec     1.5+/ 2 @ 1 =     4.197 , Out:   0.000#   2.938/   4.194f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     1.5 -,      3 channels,    0 in 1st block.  Rmin & Coul turning =    0.1   13.7 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.95485   0.01432 for L=    1, J=    1.5 channel on core I =   0.0 from L=    1,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.430   1.320 deg. for the L =    1, J =    1.5 channel.
+   S-matrix    1 =    0.95485   0.01432 for L=    1, J=    1.5 channel on core I =   0.0 from L=    1,  Acc. loss =  0.0 D.
+   S-matrix    2 =    0.00179  -0.00129 for L=    3, J=    3.0 channel on core I =   3.5 from L=    1,  Acc. loss =  0.8 D.
+   S-matrix    3 =    0.00386  -0.00377 for L=    5, J=    5.0 channel on core I =   3.5 from L=    1,  Acc. loss =  1.3 D.
+       1.5  0.95484878  0.01431842i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.95485 +i*  0.01432,     0.00214 +i* -0.00154,     0.00462 +i* -0.00452,
+ Reaction Xsec     1.5-/ 1 @ 1 =     6.802 , Out:   0.000#   3.762/   6.798f
+ 
+ Allocate arrays for            4  channels, of which            4  need wfs.
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     2.5 +,      4 channels,    0 in 1st block.  Rmin & Coul turning =    0.3   14.0 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.97236   0.01374 for L=    2, J=    2.5 channel on core I =   0.0 from L=    2,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.405   0.800 deg. for the L =    2, J =    2.5 channel.
+   S-matrix    1 =    0.97236   0.01374 for L=    2, J=    2.5 channel on core I =   0.0 from L=    2,  Acc. loss =  0.0 D.
+   S-matrix    2 =    0.00085  -0.00067 for L=    2, J=    2.0 channel on core I =   3.5 from L=    2,  Acc. loss =  0.4 D.
+   S-matrix    3 =    0.00177  -0.00165 for L=    4, J=    4.0 channel on core I =   3.5 from L=    2,  Acc. loss =  0.9 D.
+   S-matrix    4 =    0.00267  -0.00386 for L=    6, J=    6.0 channel on core I =   3.5 from L=    2,  Acc. loss =  1.5 D.
+       2.5  0.97235936  0.01373509i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.97236 +i*  0.01374,     0.00102 +i* -0.00080,     0.00212 +i* -0.00197,     0.00320 +i* -0.00462,
+ Reaction Xsec     2.5+/ 2 @ 1 =     6.295 , Out:   0.000#   4.828/   6.290f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     2.5 -,      4 channels,    0 in 1st block.  Rmin & Coul turning =    0.3   14.0 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.98346   0.00846 for L=    3, J=    2.5 channel on core I =   0.0 from L=    3,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.246   0.477 deg. for the L =    3, J =    2.5 channel.
+   S-matrix    1 =    0.98346   0.00846 for L=    3, J=    2.5 channel on core I =   0.0 from L=    3,  Acc. loss =  0.0 D.
+   S-matrix    2 =   -0.00152   0.00137 for L=    1, J=    1.0 channel on core I =   3.5 from L=    3,  Acc. loss =  0.3 D.
+   S-matrix    3 =   -0.00147   0.00139 for L=    3, J=    3.0 channel on core I =   3.5 from L=    3,  Acc. loss =  0.6 D.
+   S-matrix    4 =   -0.00118   0.00148 for L=    5, J=    5.0 channel on core I =   3.5 from L=    3,  Acc. loss =  1.1 D.
+       2.5  0.98346055  0.00845750i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.98346 +i*  0.00846,    -0.00182 +i*  0.00164,    -0.00176 +i*  0.00167,    -0.00142 +i*  0.00177,
+ Reaction Xsec     2.5-/ 3 @ 1 =     3.793 , Out:   0.000#   1.972/   3.791f
+ 
+ Allocate arrays for            5  channels, of which            5  need wfs.
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     3.5 +,      5 channels,    0 in 1st block.  Rmin & Coul turning =    0.4   14.5 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99283   0.00493 for L=    4, J=    3.5 channel on core I =   0.0 from L=    4,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.142   0.206 deg. for the L =    4, J =    3.5 channel.
+   S-matrix    1 =    0.99283   0.00493 for L=    4, J=    3.5 channel on core I =   0.0 from L=    4,  Acc. loss =  0.0 D.
+   S-matrix    2 =   -0.00082   0.00084 for L=    0, J=    0.0 channel on core I =   3.5 from L=    4,  Acc. loss =  0.0 D.
+   S-matrix    3 =   -0.00095   0.00099 for L=    2, J=    2.0 channel on core I =   3.5 from L=    4,  Acc. loss =  0.3 D.
+   S-matrix    4 =   -0.00092   0.00112 for L=    4, J=    4.0 channel on core I =   3.5 from L=    4,  Acc. loss =  0.7 D.
+   S-matrix    5 =   -0.00059   0.00110 for L=    6, J=    6.0 channel on core I =   3.5 from L=    4,  Acc. loss =  1.2 D.
+       3.5  0.99282528  0.00492580i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99283 +i*  0.00493,    -0.00098 +i*  0.00100,    -0.00114 +i*  0.00118,    -0.00111 +i*  0.00134,    -0.00071 +i*  0.00132,
+ Reaction Xsec     3.5+/ 4 @ 1 =     2.205 , Out:   0.000#   1.534/   2.204f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     3.5 -,      5 channels,    0 in 1st block.  Rmin & Coul turning =    0.4   14.5 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.98346   0.00846 for L=    3, J=    3.5 channel on core I =   0.0 from L=    3,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.246   0.477 deg. for the L =    3, J =    3.5 channel.
+   S-matrix    1 =    0.98346   0.00846 for L=    3, J=    3.5 channel on core I =   0.0 from L=    3,  Acc. loss =  0.0 D.
+   S-matrix    2 =    0.00025  -0.00023 for L=    1, J=    1.0 channel on core I =   3.5 from L=    3,  Acc. loss =  0.3 D.
+   S-matrix    3 =    0.00066  -0.00063 for L=    3, J=    3.0 channel on core I =   3.5 from L=    3,  Acc. loss =  0.6 D.
+   S-matrix    4 =    0.00110  -0.00137 for L=    5, J=    5.0 channel on core I =   3.5 from L=    3,  Acc. loss =  1.1 D.
+   S-matrix    5 =    0.00129  -0.00272 for L=    7, J=    7.0 channel on core I =   3.5 from L=    3,  Acc. loss =  1.7 D.
+       3.5  0.98346055  0.00845750i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.98346 +i*  0.00846,     0.00030 +i* -0.00027,     0.00080 +i* -0.00075,     0.00132 +i* -0.00165,     0.00154 +i* -0.00325,
+ Reaction Xsec     3.5-/ 3 @ 1 =     5.057 , Out:   0.000#   2.903/   5.054f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     4.5 +,      5 channels,    0 in 1st block.  Rmin & Coul turning =    0.6   15.1 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99283   0.00493 for L=    4, J=    4.5 channel on core I =   0.0 from L=    4,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.142   0.206 deg. for the L =    4, J =    4.5 channel.
+   S-matrix    1 =    0.99283   0.00493 for L=    4, J=    4.5 channel on core I =   0.0 from L=    4,  Acc. loss =  0.0 D.
+   S-matrix    2 =    0.00026  -0.00027 for L=    2, J=    2.0 channel on core I =   3.5 from L=    4,  Acc. loss =  0.3 D.
+   S-matrix    3 =    0.00051  -0.00062 for L=    4, J=    4.0 channel on core I =   3.5 from L=    4,  Acc. loss =  0.7 D.
+   S-matrix    4 =    0.00062  -0.00117 for L=    6, J=    6.0 channel on core I =   3.5 from L=    4,  Acc. loss =  1.2 D.
+   S-matrix    5 =    0.00052  -0.00185 for L=    8, J=    8.0 channel on core I =   3.5 from L=    4,  Acc. loss =  1.6 D.
+       4.5  0.99282528  0.00492580i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99283 +i*  0.00493,     0.00031 +i* -0.00032,     0.00061 +i* -0.00074,     0.00075 +i* -0.00140,     0.00062 +i* -0.00222,
+ Reaction Xsec     4.5+/ 4 @ 1 =     2.756 , Out:   0.000#   1.728/   2.755f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     4.5 -,      5 channels,    0 in 1st block.  Rmin & Coul turning =    0.6   15.1 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99688   0.00214 for L=    5, J=    4.5 channel on core I =   0.0 from L=    5,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.061   0.090 deg. for the L =    5, J =    4.5 channel.
+   S-matrix    1 =    0.99688   0.00214 for L=    5, J=    4.5 channel on core I =   0.0 from L=    5,  Acc. loss =  0.0 D.
+   S-matrix    2 =   -0.00048   0.00062 for L=    1, J=    1.0 channel on core I =   3.5 from L=    5,  Acc. loss =  0.1 D.
+   S-matrix    3 =   -0.00048   0.00064 for L=    3, J=    3.0 channel on core I =   3.5 from L=    5,  Acc. loss =  0.5 D.
+   S-matrix    4 =   -0.00042   0.00072 for L=    5, J=    5.0 channel on core I =   3.5 from L=    5,  Acc. loss =  0.9 D.
+   S-matrix    5 =   -0.00021   0.00063 for L=    7, J=    7.0 channel on core I =   3.5 from L=    5,  Acc. loss =  1.3 D.
+       4.5  0.99687743  0.00213793i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99688 +i*  0.00214,    -0.00057 +i*  0.00074,    -0.00058 +i*  0.00077,    -0.00050 +i*  0.00086,    -0.00025 +i*  0.00076,
+ Reaction Xsec     4.5-/ 5 @ 1 =     1.203 , Out:   0.000#   0.664/   1.203f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     5.5 +,      5 channels,    0 in 1st block.  Rmin & Coul turning =    0.8   15.8 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99884   0.00083 for L=    6, J=    5.5 channel on core I =   0.0 from L=    6,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.024   0.033 deg. for the L =    6, J =    5.5 channel.
+   S-matrix    1 =    0.99884   0.00083 for L=    6, J=    5.5 channel on core I =   0.0 from L=    6,  Acc. loss =  0.0 D.
+   S-matrix    2 =   -0.00030   0.00043 for L=    2, J=    2.0 channel on core I =   3.5 from L=    6,  Acc. loss =  0.2 D.
+   S-matrix    3 =   -0.00026   0.00043 for L=    4, J=    4.0 channel on core I =   3.5 from L=    6,  Acc. loss =  0.6 D.
+   S-matrix    4 =   -0.00018   0.00045 for L=    6, J=    6.0 channel on core I =   3.5 from L=    6,  Acc. loss =  1.0 D.
+   S-matrix    5 =   -0.00007   0.00034 for L=    8, J=    8.0 channel on core I =   3.5 from L=    6,  Acc. loss =  1.1 D.
+       5.5  0.99883843  0.00082625i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99884 +i*  0.00083,    -0.00036 +i*  0.00052,    -0.00032 +i*  0.00052,    -0.00021 +i*  0.00054,    -0.00008 +i*  0.00041,
+ Reaction Xsec     5.5+/ 6 @ 1 =     0.538 , Out:   0.000#   0.296/   0.538f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     5.5 -,      5 channels,    0 in 1st block.  Rmin & Coul turning =    0.8   15.8 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99688   0.00214 for L=    5, J=    5.5 channel on core I =   0.0 from L=    5,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.061   0.090 deg. for the L =    5, J =    5.5 channel.
+   S-matrix    1 =    0.99688   0.00214 for L=    5, J=    5.5 channel on core I =   0.0 from L=    5,  Acc. loss =  0.0 D.
+   S-matrix    2 =    0.00016  -0.00021 for L=    3, J=    3.0 channel on core I =   3.5 from L=    5,  Acc. loss =  0.5 D.
+   S-matrix    3 =    0.00026  -0.00045 for L=    5, J=    5.0 channel on core I =   3.5 from L=    5,  Acc. loss =  0.9 D.
+   S-matrix    4 =    0.00024  -0.00073 for L=    7, J=    7.0 channel on core I =   3.5 from L=    5,  Acc. loss =  1.3 D.
+   S-matrix    5 =    0.00017  -0.00102 for L=    9, J=    9.0 channel on core I =   3.5 from L=    5,  Acc. loss =  1.2 D.
+       5.5  0.99687743  0.00213793i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99688 +i*  0.00214,     0.00019 +i* -0.00025,     0.00031 +i* -0.00054,     0.00029 +i* -0.00087,     0.00020 +i* -0.00123,
+ Reaction Xsec     5.5-/ 5 @ 1 =     1.444 , Out:   0.000#   0.666/   1.443f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     6.5 +,      5 channels,    0 in 1st block.  Rmin & Coul turning =    0.9   16.6 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99884   0.00083 for L=    6, J=    6.5 channel on core I =   0.0 from L=    6,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.024   0.033 deg. for the L =    6, J =    6.5 channel.
+   S-matrix    1 =    0.99884   0.00083 for L=    6, J=    6.5 channel on core I =   0.0 from L=    6,  Acc. loss =  0.0 D.
+   S-matrix    2 =    0.00010  -0.00016 for L=    4, J=    4.0 channel on core I =   3.5 from L=    6,  Acc. loss =  0.6 D.
+   S-matrix    3 =    0.00012  -0.00030 for L=    6, J=    6.0 channel on core I =   3.5 from L=    6,  Acc. loss =  1.0 D.
+   S-matrix    4 =    0.00008  -0.00042 for L=    8, J=    8.0 channel on core I =   3.5 from L=    6,  Acc. loss =  1.1 D.
+   S-matrix    5 =    0.00004  -0.00054 for L=   10, J=   10.0 channel on core I =   3.5 from L=    6,  Acc. loss =  2.3 D.
+       6.5  0.99883843  0.00082625i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99884 +i*  0.00083,     0.00012 +i* -0.00019,     0.00014 +i* -0.00036,     0.00010 +i* -0.00050,     0.00005 +i* -0.00065,
+ Reaction Xsec     6.5+/ 6 @ 1 =     0.628 , Out:   0.000#   0.241/   0.627f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     6.5 -,      5 channels,    0 in 1st block.  Rmin & Coul turning =    0.9   16.6 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99956   0.00027 for L=    7, J=    6.5 channel on core I =   0.0 from L=    7,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.008   0.013 deg. for the L =    7, J =    6.5 channel.
+   S-matrix    1 =    0.99956   0.00027 for L=    7, J=    6.5 channel on core I =   0.0 from L=    7,  Acc. loss =  0.0 D.
+   S-matrix    2 =   -0.00014   0.00026 for L=    3, J=    3.0 channel on core I =   3.5 from L=    7,  Acc. loss =  0.3 D.
+   S-matrix    3 =   -0.00011   0.00025 for L=    5, J=    5.0 channel on core I =   3.5 from L=    7,  Acc. loss =  0.7 D.
+   S-matrix    4 =   -0.00005   0.00023 for L=    7, J=    7.0 channel on core I =   3.5 from L=    7,  Acc. loss =  1.0 D.
+   S-matrix    5 =   -0.00002   0.00016 for L=    9, J=    9.0 channel on core I =   3.5 from L=    7,  Acc. loss =  0.8 D.
+       6.5  0.99955718  0.00027287i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99956 +i*  0.00027,    -0.00016 +i*  0.00031,    -0.00013 +i*  0.00030,    -0.00006 +i*  0.00028,    -0.00002 +i*  0.00020,
+ Reaction Xsec     6.5-/ 7 @ 1 =     0.239 , Out:   0.000#   0.095/   0.239f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     7.5 +,      5 channels,    0 in 1st block.  Rmin & Coul turning =    1.1   17.4 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99984   0.00008 for L=    8, J=    7.5 channel on core I =   0.0 from L=    8,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.002   0.005 deg. for the L =    8, J =    7.5 channel.
+   S-matrix    1 =    0.99984   0.00008 for L=    8, J=    7.5 channel on core I =   0.0 from L=    8,  Acc. loss =  0.0 D.
+   S-matrix    2 =   -0.00006   0.00015 for L=    4, J=    4.0 channel on core I =   3.5 from L=    8,  Acc. loss =  0.4 D.
+   S-matrix    3 =   -0.00004   0.00013 for L=    6, J=    6.0 channel on core I =   3.5 from L=    8,  Acc. loss =  0.7 D.
+   S-matrix    4 =   -0.00001   0.00011 for L=    8, J=    8.0 channel on core I =   3.5 from L=    8,  Acc. loss =  0.7 D.
+   S-matrix    5 =   -0.00000   0.00008 for L=   10, J=   10.0 channel on core I =   3.5 from L=    8,  Acc. loss =  1.6 D.
+       7.5  0.99983741  0.00008375i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99984 +i*  0.00008,    -0.00008 +i*  0.00017,    -0.00005 +i*  0.00016,    -0.00002 +i*  0.00014,    -0.00000 +i*  0.00009,
+ Reaction Xsec     7.5+/ 8 @ 1 =     0.100 , Out:   0.000#   0.028/   0.100f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     7.5 -,      5 channels,    0 in 1st block.  Rmin & Coul turning =    1.1   17.4 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99956   0.00027 for L=    7, J=    7.5 channel on core I =   0.0 from L=    7,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.008   0.013 deg. for the L =    7, J =    7.5 channel.
+   S-matrix    1 =    0.99956   0.00027 for L=    7, J=    7.5 channel on core I =   0.0 from L=    7,  Acc. loss =  0.0 D.
+   S-matrix    2 =    0.00004  -0.00010 for L=    5, J=    5.0 channel on core I =   3.5 from L=    7,  Acc. loss =  0.7 D.
+   S-matrix    3 =    0.00004  -0.00017 for L=    7, J=    7.0 channel on core I =   3.5 from L=    7,  Acc. loss =  1.0 D.
+   S-matrix    4 =    0.00002  -0.00021 for L=    9, J=    9.0 channel on core I =   3.5 from L=    7,  Acc. loss =  0.8 D.
+   S-matrix    5 =    0.00001  -0.00027 for L=   11, J=   11.0 channel on core I =   3.5 from L=    7,  Acc. loss =  2.7 D.
+       7.5  0.99955718  0.00027287i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99956 +i*  0.00027,     0.00005 +i* -0.00012,     0.00005 +i* -0.00020,     0.00002 +i* -0.00025,     0.00001 +i* -0.00032,
+ Reaction Xsec     7.5-/ 7 @ 1 =     0.274 , Out:   0.000#   0.070/   0.273f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     8.5 +,      5 channels,    0 in 1st block.  Rmin & Coul turning =    1.2   18.3 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99984   0.00008 for L=    8, J=    8.5 channel on core I =   0.0 from L=    8,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.002   0.005 deg. for the L =    8, J =    8.5 channel.
+   S-matrix    1 =    0.99984   0.00008 for L=    8, J=    8.5 channel on core I =   0.0 from L=    8,  Acc. loss =  0.0 D.
+   S-matrix    2 =    0.00002  -0.00006 for L=    6, J=    6.0 channel on core I =   3.5 from L=    8,  Acc. loss =  0.7 D.
+   S-matrix    3 =    0.00001  -0.00008 for L=    8, J=    8.0 channel on core I =   3.5 from L=    8,  Acc. loss =  0.7 D.
+   S-matrix    4 =    0.00000  -0.00010 for L=   10, J=   10.0 channel on core I =   3.5 from L=    8,  Acc. loss =  1.6 D.
+   S-matrix    5 =    0.00000  -0.00013 for L=   12, J=   12.0 channel on core I =   3.5 from L=    8,  Acc. loss =  2.9 D.
+       8.5  0.99983741  0.00008375i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99984 +i*  0.00008,     0.00002 +i* -0.00007,     0.00001 +i* -0.00010,     0.00001 +i* -0.00012,     0.00000 +i* -0.00016,
+ Reaction Xsec     8.5+/ 8 @ 1 =     0.113 , Out:   0.000#   0.019/   0.113f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     8.5 -,      5 channels,    0 in 1st block.  Rmin & Coul turning =    1.2   18.3 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99994   0.00002 for L=    9, J=    8.5 channel on core I =   0.0 from L=    9,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.001   0.002 deg. for the L =    9, J =    8.5 channel.
+   S-matrix    1 =    0.99994   0.00002 for L=    9, J=    8.5 channel on core I =   0.0 from L=    9,  Acc. loss =  0.0 D.
+   S-matrix    2 =   -0.00002   0.00007 for L=    5, J=    5.0 channel on core I =   3.5 from L=    9,  Acc. loss =  0.5 D.
+   S-matrix    3 =   -0.00001   0.00006 for L=    7, J=    7.0 channel on core I =   3.5 from L=    9,  Acc. loss =  0.6 D.
+   S-matrix    4 =   -0.00000   0.00005 for L=    9, J=    9.0 channel on core I =   3.5 from L=    9,  Acc. loss =  0.4 D.
+   S-matrix    5 =   -0.00000   0.00003 for L=   11, J=   11.0 channel on core I =   3.5 from L=    9,  Acc. loss =  2.0 D.
+       8.5  0.99994044  0.00002402i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99994 +i*  0.00002,    -0.00003 +i*  0.00009,    -0.00001 +i*  0.00008,    -0.00000 +i*  0.00006,    -0.00000 +i*  0.00004,
+ Reaction Xsec     8.5-/ 9 @ 1 =     0.041 , Out:   0.000#   6.946#   0.041f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     9.5 +,      5 channels,    0 in 1st block.  Rmin & Coul turning =    1.4   19.2 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99998   0.00001 for L=   10, J=    9.5 channel on core I =   0.0 from L=   10,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.000   0.001 deg. for the L =   10, J =    9.5 channel.
+   S-matrix    1 =    0.99998   0.00001 for L=   10, J=    9.5 channel on core I =   0.0 from L=   10,  Acc. loss =  0.0 D.
+   S-matrix    2 =   -0.00001   0.00004 for L=    6, J=    6.0 channel on core I =   3.5 from L=   10,  Acc. loss =  0.4 D.
+   S-matrix    3 =   -0.00000   0.00003 for L=    8, J=    8.0 channel on core I =   3.5 from L=   10,  Acc. loss =  0.3 D.
+   S-matrix    4 =   -0.00000   0.00002 for L=   10, J=   10.0 channel on core I =   3.5 from L=   10,  Acc. loss =  1.2 D.
+   S-matrix    5 =   -0.00000   0.00002 for L=   12, J=   12.0 channel on core I =   3.5 from L=   10,  Acc. loss =  2.1 D.
+       9.5  0.99997861  0.00000664i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99998 +i*  0.00001,    -0.00001 +i*  0.00004,    -0.00000 +i*  0.00003,    -0.00000 +i*  0.00003,    -0.00000 +i*  0.00002,
+ Reaction Xsec     9.5+/10 @ 1 =     0.017 , Out:   0.000#   1.540#   0.017f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =     9.5 -,      5 channels,    0 in 1st block.  Rmin & Coul turning =    1.4   19.2 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99994   0.00002 for L=    9, J=    9.5 channel on core I =   0.0 from L=    9,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.001   0.002 deg. for the L =    9, J =    9.5 channel.
+   S-matrix    1 =    0.99994   0.00002 for L=    9, J=    9.5 channel on core I =   0.0 from L=    9,  Acc. loss =  0.0 D.
+   S-matrix    2 =    0.00000  -0.00003 for L=    7, J=    7.0 channel on core I =   3.5 from L=    9,  Acc. loss =  0.6 D.
+   S-matrix    3 =    0.00000  -0.00004 for L=    9, J=    9.0 channel on core I =   3.5 from L=    9,  Acc. loss =  0.4 D.
+   S-matrix    4 =    0.00000  -0.00005 for L=   11, J=   11.0 channel on core I =   3.5 from L=    9,  Acc. loss =  2.0 D.
+   S-matrix    5 =    0.00000  -0.00006 for L=   13, J=   13.0 channel on core I =   3.5 from L=    9,  Acc. loss =  2.9 D.
+       9.5  0.99994044  0.00002402i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99994 +i*  0.00002,     0.00001 +i* -0.00003,     0.00000 +i* -0.00005,     0.00000 +i* -0.00006,     0.00000 +i* -0.00007,
+ Reaction Xsec     9.5-/ 9 @ 1 =     0.046 , Out:   0.000#   4.647#   0.046f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =    10.5 +,      5 channels,    0 in 1st block.  Rmin & Coul turning =    1.6   20.2 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99998   0.00001 for L=   10, J=   10.5 channel on core I =   0.0 from L=   10,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.000   0.001 deg. for the L =   10, J =   10.5 channel.
+   S-matrix    1 =    0.99998   0.00001 for L=   10, J=   10.5 channel on core I =   0.0 from L=   10,  Acc. loss =  0.0 D.
+   S-matrix    2 =    0.00000  -0.00001 for L=    8, J=    8.0 channel on core I =   3.5 from L=   10,  Acc. loss =  0.3 D.
+   S-matrix    3 =    0.00000  -0.00002 for L=   10, J=   10.0 channel on core I =   3.5 from L=   10,  Acc. loss =  1.2 D.
+   S-matrix    4 =    0.00000  -0.00002 for L=   12, J=   12.0 channel on core I =   3.5 from L=   10,  Acc. loss =  2.1 D.
+   S-matrix    5 =    0.00000  -0.00003 for L=   14, J=   14.0 channel on core I =   3.5 from L=   10,  Acc. loss =  2.4 D.
+      10.5  0.99997861  0.00000664i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99998 +i*  0.00001,     0.00000 +i* -0.00001,     0.00000 +i* -0.00002,     0.00000 +i* -0.00003,     0.00000 +i* -0.00004,
+ Reaction Xsec    10.5+/10 @ 1 =     0.018 , Out:   0.000#   1.085#   0.018f
+ 
+
+
+ ######################################################################################################################
+ #                                                                                                                    #
+ # Total SPIN and PARITY =    10.5 -,      5 channels,    0 in 1st block.  Rmin & Coul turning =    1.6   20.2 fm.    #
+ #                                                                                                                    #
+ ######################################################################################################################
+
+   S-matrix    1 =    0.99999   0.00000 for L=   11, J=   10.5 channel on core I =   0.0 from L=   11,  Acc. loss =  0.0 D.
+ Elastic phase shift   1 =    0.000   0.000 deg. for the L =   11, J =   10.5 channel.
+   S-matrix    1 =    0.99999   0.00000 for L=   11, J=   10.5 channel on core I =   0.0 from L=   11,  Acc. loss =  0.0 D.
+   S-matrix    2 =   -0.00000   0.00002 for L=    7, J=    7.0 channel on core I =   3.5 from L=   11,  Acc. loss =  0.3 D.
+   S-matrix    3 =   -0.00000   0.00001 for L=    9, J=    9.0 channel on core I =   3.5 from L=   11,  Acc. loss =  0.2 D.
+   S-matrix    4 =   -0.00000   0.00001 for L=   11, J=   11.0 channel on core I =   3.5 from L=   11,  Acc. loss =  1.5 D.
+   S-matrix    5 =   -0.00000   0.00001 for L=   13, J=   13.0 channel on core I =   3.5 from L=   11,  Acc. loss =  2.0 D.
+      10.5  0.99999246  0.00000177i: elastic S-matrix  @@      0.00  0   0 F  0  4  4  T
+ With velocity factors, final S-matrix elements:
+     0.99999 +i*  0.00000,    -0.00000 +i*  0.00002,    -0.00000 +i*  0.00001,    -0.00000 +i*  0.00001,    -0.00000 +i*  0.00001,
+ Reaction Xsec    10.5-/11 @ 1 =     6.404/, Out:   0.000#   0.309#   0.006f
+ 
+ Finished all CC sets @   1.3772001E-02
+0CUMULATIVE REACTION cross section               =         42.95725  <L> =     2.56  <L**2> =      9.2
+0CUMULATIVE  ELASTIC cross section               =          0.00000
+0CUMULATIVE outgoing cross sections in partition 1 :    0.00000
+0CUMULATIVE outgoing cross sections in partition 2 :    0.02622
+0Cumulative ABSORBTION by Imaginary Potentials    =        42.93104  <L> =     2.56  <L**2> =      9.2
+   Fusion for specific TRITON   M-states :      42.931039      42.931039
+0CUMULATIVE OUTGOING cross section               =          0.02622
+ Strength functions * 10^4 for L=0-2  =   0.06497   0.05987   0.36297 (with r0= 1.35 fm).  R' =  -0.011 fm
+ To convert to S-factors (MeV.mb = keV.b),  multiply by  2.3241E+17
+
+
+ CROSS SECTIONS FOR OUTGOING TRITON   & XE-136   in state #   1 with spins & parities 0.5  + &  0.0  +;  0
+
+    66.00 deg.: X-S =    1296.755295 mb/sr,
++                                         /R =   1.002507E+00
+    71.00 deg.: X-S =    1002.985473 mb/sr,
++                                         /R =   1.002087E+00
+    76.00 deg.: X-S =     793.260035 mb/sr,
++                                         /R =   1.001332E+00
+    81.00 deg.: X-S =     639.821388 mb/sr,
++                                         /R =   1.000071E+00
+    86.00 deg.: X-S =     524.996595 mb/sr,
++                                         /R =   9.978937E-01
+    91.00 deg.: X-S =     437.362183 mb/sr,
++                                         /R =   9.944980E-01
+    96.00 deg.: X-S =     369.397882 mb/sr,
++                                         /R =   9.898803E-01
+   101.00 deg.: X-S =     316.012750 mb/sr,
++                                         /R =   9.842905E-01
+   106.00 deg.: X-S =     273.642117 mb/sr,
++                                         /R =   9.780744E-01
+   111.00 deg.: X-S =     239.712133 mb/sr,
++                                         /R =   9.715370E-01
+   116.00 deg.: X-S =     212.323984 mb/sr,
++                                         /R =   9.648848E-01
+   121.00 deg.: X-S =     190.060297 mb/sr,
++                                         /R =   9.582371E-01
+   126.00 deg.: X-S =     171.857444 mb/sr,
++                                         /R =   9.516699E-01
+   131.00 deg.: X-S =     156.914792 mb/sr,
++                                         /R =   9.452572E-01
+   136.00 deg.: X-S =     144.627130 mb/sr,
++                                         /R =   9.390910E-01
+   141.00 deg.: X-S =     134.533827 mb/sr,
++                                         /R =   9.332804E-01
+   146.00 deg.: X-S =     126.281265 mb/sr,
++                                         /R =   9.279373E-01
+                                           Integrated  3.5788E+03 mb, over [  66.000, 146.000] at     5.8900 MeV 
+
+ CROSS SECTIONS FOR OUTGOING ALPHA    & I-135    in state #   1 with spins & parities 0.0  + &  3.5  +;  0
+
+    66.00 deg.: X-S =       0.000321 mb/sr,
++                                         REAC   2.6216E-02 mb
+    71.00 deg.: X-S =       0.000489 mb/sr,
+    76.00 deg.: X-S =       0.000713 mb/sr,
+    81.00 deg.: X-S =       0.000994 mb/sr,
+    86.00 deg.: X-S =       0.001325 mb/sr,
+    91.00 deg.: X-S =       0.001691 mb/sr,
+    96.00 deg.: X-S =       0.002078 mb/sr,
+   101.00 deg.: X-S =       0.002472 mb/sr,
+   106.00 deg.: X-S =       0.002863 mb/sr,
+   111.00 deg.: X-S =       0.003240 mb/sr,
+   116.00 deg.: X-S =       0.003596 mb/sr,
+   121.00 deg.: X-S =       0.003928 mb/sr,
+   126.00 deg.: X-S =       0.004231 mb/sr,
+   131.00 deg.: X-S =       0.004499 mb/sr,
+   136.00 deg.: X-S =       0.004725 mb/sr,
+   141.00 deg.: X-S =       0.004914 mb/sr,
+   146.00 deg.: X-S =       0.005073 mb/sr,
+                                           Integrated  2.1022E-02 mb, over [  66.000, 146.000] at     5.8900 MeV 
+ Finished all xsecs @   1.7252002E-02
+
+  The following files have been created:
+   3:local copy of User input.            6:standard output.                   
+   7:elastic  S-matrix elements.         13:total cross sections/state.        
+  16:tables of cross sections.           35:Astrophysics S-factors  / Ecm.     
+  38:cross sections for each J/pi.       39:cross sections for each Ecm.       
+  40:all cross sectns. for each Elab.    45:scat phase shift as E functions.   
+  46:bs wave functions & ANC ratios.     56:Fusion for each Jtotal.            
+  75:S-factors for lab energies.        201:Separate cross sections.           
+ 202:Separate cross sections.           
+
+ PARAMETERS : MAXQRN   MLOC  LMAX1 MCLIST     MFNL  MPWCOUP
+    ALLOWED :      7     17     30      5       25        0
+    REQUIRED:      1     11     15      2        0        0
+
+
+ ACCURACY ANALYSIS at     5.890 MeV :
+
+  Elastic h*k = 0.090 so OK       compared with 0.200
+
+   Real(S-el) > 0.01 first at J =       0.5
+   Real(S-el) > 0.10 first at J =       0.5
+   Real(S-el) > 0.50 first at J =       0.5
+   Real(S-el) > 0.90 first at J =       0.5
+   Real(S-el) > 0.99 first at J =       3.5
+   R-turn =    20.19 fm    at J =      10.5
+
+ Forward-angle excitation cut off below  63.395 deg by max JT =      10.5
+                              and below  30.928 deg by max R.
+
+ Total CPU  0 time =       0.02 seconds

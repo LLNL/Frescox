@@ -2976,6 +2976,7 @@ C
       IF(ABS(S1-S1P)+ABS(S2-S2P).GT.0.01 .OR. LAM.NE.0) RETURN
       IF(.NOT.(L.EQ.LP .AND. ABS(J-JP).LT.0.01)) RETURN
       if(TYPE==9) go to 15  ! effective mass correction is diagonal
+      if(TYPE==30) go to 25  ! L(L+1) volume
       GO TO (05,15,15,35), TYPE+1
          RETURN
 C
@@ -2983,6 +2984,9 @@ C
       RETURN
 C
   15  TENS0 = 1.0
+      RETURN
+C
+  25  TENS0 = L*(L+1.)
       RETURN
 C
   35  TENS0 = J * (J+1.) - L * (L+1.) - S1*(S1+1)

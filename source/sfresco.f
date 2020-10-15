@@ -745,6 +745,7 @@
         write(6,*) 
 
 	call freadf(ki,ko,koe,TMP,lmax,jbord,jump,.false.)	
+        
 	close(ki); close(koe)
         NANGL = (abs(THMAX) - THMIN)/abs(THINC) + 1 + 0.5
 	ntheory_pts = max(mdl,NANGL)
@@ -856,10 +857,10 @@ C			DO IT!
 
 
 	do ip=1,nvars
-	if(srch_kind(ip)==2) then
-	  write(6,1043) ip,srch_name(ip),srch_afrac_overlap(ip)
-1043	  format(' Note: variable ',i3,'=',a15,' is overlap ',a80)
-	endif
+!	if(srch_kind(ip)==2) then
+!	  write(6,1043) ip,srch_name(ip),srch_afrac_overlap(ip)
+!1043	  format(' Note: variable ',i3,'=',a15,' is overlap ',a80)
+!	endif
 !			Give variable names to Minuit
 	call MNPARM(ip,srch_name(ip),srch_value(ip),srch_step(ip),
      x		srch_minvalue(ip),srch_maxvalue(ip),ierflg)
@@ -1505,9 +1506,19 @@ C			DO IT!
            reffile = srch_reffile(ip)
            valmin = srch_minvalue(ip); valmax = srch_maxvalue(ip)
 	   t = srch_value(ip)
+	      pline2 = srch_pline2(ip); col2 = srch_col2(ip)
 
-           if(srch_kind(ip)==1)  then
+           if(srch_kind(ip)==1 .and. pline2*col2==0)  then
+              kp = srch_kp(ip); pline = srch_pline(ip); 
+              col = srch_col(ip)
               call write_var1(ip,304,name,kind,kp,pline,col,t,step)
+
+           else if(srch_kind(ip)==1 .and. pline2*col2>0)  then
+              ratio2 = srch_ratio2(ip) 
+              kp = srch_kp(ip); pline = srch_pline(ip); 
+              col = srch_col(ip)
+              call write_var12(ip,304,name,kind,kp,pline,col,t,step,
+     x                        pline2,col2,ratio2)
 
            else if(srch_kind(ip)==2)  then
           	nafrac = srch_nafrac(ip)
@@ -2324,6 +2335,17 @@ C                   Find dof for chisq fit
         integer kind,kp,pline,col
         real*8 potential,step
         namelist /variable/ name,kind,kp,pline,col,potential,step,ivar
+        write(i,nml=variable)
+        end
+
+        subroutine write_var12(ivar,i,name,kind,kp,pline,col,potential,
+     x                         step,pline2,col2,ratio2)
+        implicit real*8(a-h,o-z)
+        character*15 name
+        integer kind,kp,pline,col,pline2,col2
+        real*8 potential,step,ratio2
+        namelist /variable/ name,kind,kp,pline,col,potential,step,ivar,
+     x                      pline2,col2,ratio2
         write(i,nml=variable)
         end
 

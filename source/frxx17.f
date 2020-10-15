@@ -1950,7 +1950,7 @@ c -------------------------------------------------
          C = CHNO(INL,2)
          NONO = MOD(CHNO(INL,3),10)
          NREV = CHNO(INL,1).LT.0 .OR. C.EQ.D
-         IF(SH.or..true.) WRITE(6,22) INL,D,C,NLL,.NOT.NREV,FFR,NONO
+         IF(SH) WRITE(6,22) INL,D,C,NLL,.NOT.NREV,FFR,NONO
 22       FORMAT(' NL coupling #',I4,' to',I4,' from Ch.',2I4,
      &         ', Reverse=',L2,', Real =',L2,', NONO =',I2)
             SQH = SQRT(hcm(C)/hcm(D))
