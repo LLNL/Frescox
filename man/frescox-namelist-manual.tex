@@ -1,6 +1,6 @@
 %***********************************************************************
 % 
-%    Copyright 2018, I.J. Thompson
+%    Copyright 2020, I.J. Thompson
 %
 %    This file is part of FRESCOX.
 %
@@ -32,7 +32,7 @@
 \textheight 22.0cm \textwidth 17.00cm
 %
 \title{\Huge Frescox}
-\date{Version FRESCOX.7, June 2020\\ LLNL-CODE-811517 }
+\date{Version FRESCOX-7.1, June 2020\\ LLNL-CODE-811517 }
 \author{I.J. Thompson
 %
 \\Nuclear Theory and Modeling Group
@@ -41,14 +41,16 @@
 \\Telephone + 1 (925) 423 4978
 \\ %
 \\Email: I-Thompson@llnl.gov
-\\Available: https://github.com/LLNL/Frescox }
+\\Available: https://github.com/LLNL/Frescox
+\\More information: http://www.fresco.org.uk }
+
 
 \parskip 0pt
 \parindent 0pt
 
-\newcommand{\beqn}{\begin{eqnarray*}}
-\newcommand{\eeqn}{\end{eqnarray*}}
-\newcommand{\upq}{{\textsf '}}
+\newcommand{\beqn}{\begin{eqnarray}}
+\newcommand{\eeqn}{\end{eqnarray}}
+\newcommand{\upq}{\textsf{'}}
 %
 \begin{document}
 \maketitle
@@ -60,7 +62,7 @@
 \parskip 5pt
 \parindent 10pt
 
-FRESCO is a Coupled-Channels program that can have finite-range
+FRESCOX is a Coupled-Channels program that can have finite-range
 transfer interactions among any number of mass partitions, and any
 number of nuclear excitations in each partition.
 
@@ -97,11 +99,11 @@ S(R _ f ) = \int _ 0 ^ {R _ {match}}
 where RMATCH and HCM, the step size, are given in the \&Fresco namelist.
 Since the kernel function $K_{fi}(R_f,R_i)$ is usually rapidly varying with
 $D_{fi} = R_{f} - R_{i}$ (especially with heavy-ion reactions), and only slowly
-varying with $R_{f}$ (if $D_{fi}$ is constant),  FRESCO calculates and stores
+varying with $R_{f}$ (if $D_{fi}$ is constant),  FRESCOX calculates and stores
 the function $K_{fi}'(R_{f},D_{fi})$ at intervals of RINTP in $R_{f}$,
 and intervals of HNL in $D_{fi}$. The $D_{fi}$ range considered is
 CENTRE-RNL/2 to CENTRE+RNL/2, i.e. range of RNL centred at CENTRE,
-and FRESCO later suggests improved values for RNL \& CENTRE.
+and FRESCOX later suggests improved values for RNL \& CENTRE.
 The HNL reflects to physical variation of $K_{fi}'$ with $D_{fi}$, and can be
 a fraction of HCM (for heavy ion reactions) or a multiple of HCM
 (for light ion reactions especially with `prior' interactions).
@@ -859,9 +861,9 @@ If DIST0 $\geq 0$, cut off charged-particle elastic scattering at below DIST0 de
 
 \item[TMP]:  name of directory for temporary files: `/tmp' or `.'  Default = /tmp/
 
-\item[GRACE, BOLDPLOT] : for use after SFRESCO searches.\\
+\item[GRACE, BOLDPLOT] : for use after SFRESCOX searches.\\
 If GRACE=T, print plotting metadata for xmgrace, not xmgr. Default=T.\\
-BOLDPLOT: make width=2 lines in plots, not width=1, and all in monochrome. More suitable for publications.s
+BOLDPLOT: make width=2 lines in plots, not width=1, and all in monochrome. More suitable for publications.
 
 \end{description}
 %\newpage
@@ -995,7 +997,7 @@ AC$\equiv$p4  = diffuseness of charge distribution
 The values of AT and AP affect {\em only} the conversion from $r_0$ radii
 to R radii in the definition of potentials in these namelists.
 If however you adopt the convention that AT is the target mass number
-and AP the projectile's, then FRESCO can later display the
+and AP the projectile's, then FRESCOX can later display the
 fractional $\beta$ values corresponding to given deformation lengths.
 (These are for information only, and do not affect the couplings.)
 
@@ -1205,7 +1207,7 @@ The nodes are KP=P1 at energy P2, P3 at energy P4, etc., up to KP=P9 at energy P
 \bigskip
 
 The SHAPEs for the nucleon-nucleon SSC (C) potential (TYPE = 8) are
-taken from the subroutine SSCC in FRESCO.
+taken from the subroutine SSCC in FRESCOX.
 The input NUM is the number of angular momentum components stored,
 using the order
 \\
@@ -1771,7 +1773,7 @@ If NT(3,I) $<$ 0, then the I'th component of the pair summation is simply
 the product of cluster wave functions $u_1(r)  u_2(R) $
 where $u_{2}$ may be KIND = 0 or 1.
 
-NT(4,I) is not used in this version of FRESCO.
+NT(4,I) is not used in this version of FRESCOX.
 \end{description}
 
 
@@ -2004,8 +2006,8 @@ complex factors [QSCALE(Q), Q=max(0,-IP1):abs(IP1)]
 to scale the folded form factors for multipoles Q.
 
 IP4 = $Q_{\rm max}$, the max deformed core potential multipole\\
-IP5 = $\Lambda_{\rm max}$, the new multipole order for formfactor reduction
-%(see Appendix III).
+IP5 = $\Lambda_{\rm max}$, the new multipole order for formfactor reduction.\\
+For these core-excitation (XCDCC) options, the code needs to be compiled with the -Dcorex option.
 
  P1  = FLOAT( potential KP index for fragment - target interaction) \\
  P2  = FLOAT( potential KP index for core     - target interaction) \\
@@ -2042,7 +2044,7 @@ IP1 =\\
  (N.B. meaning of IP1 thus depends on ICTO \& ICFROM!!!)
 \\  $\le$ -1 : Use $\theta$ quadrature from $\theta = \pi$ down to $\theta = 0$.
  (Useful for finite-range knock-on with light projectiles)
-\\  $\le$ -3 : `VCORE' interaction:
+\\  $\le$ -3 : VCORE interaction:
 Use ONLY the core-core interaction potential
  (Useful for finite-range knock-on with light projectiles)
 \\ 2 : Surface transfer operator, on surface if {\em final} bound state $r' =$ P1. IP2 and IP3 ignored.
@@ -2198,7 +2200,7 @@ N.B. The amplitudes A are signed, and are NOT the spectroscopic
 factors, but will typically be the square roots of these factors.
 For transfers out of or into closed shells of N antisymmetrised nucleons,
 the spectroscopic factors will usually contain factors of N,
-so the spectroscopic amplitudes needed by FRESCO will typically 
+so the spectroscopic amplitudes needed by FRESCOX will typically 
 need to already contain factors of $\sqrt{N}$.
 \\
 The sign of A should be consistent with the spin coupling order used in
@@ -2264,7 +2266,7 @@ sumform, qc, la, static, expand, maxcoup
 
 \vspace{-3mm}
 \hangindent 5ex\hangafter 1
-are all the same as the {\bf \&FRESCO} namelist, except for:\\
+are all the same as the {\bf \&FRESCOX} namelist, except for:\\
 {\tt cdccc} which is an alias for {\tt cdcc} of \&Fresco namelist,\\
  %
 {\tt q} = {\tt ip1}, multiple for the projectile single-particle couplings,\\
@@ -2425,13 +2427,13 @@ CDCC
  &POTENTIAL part='Bi' a1=10 v=28.38 vr0=1.39 a=.52 vso=0.38 rso0=1.39 aso=0.52/
 \end{verbatim}
 \newpage
-\section{Input SFRESCO format}
+\section{Input SFRESCOX format}
 
 This is an program which search for a $\chi^2$ minimum when comparing
-the outputs of FRESCO with sets of data, using the {\sc Minuit} search
+the outputs of FRESCOX with sets of data, using the {\sc Minuit} search
 routines.
 
-The inputs for {\sc SFresco} specify the FRESCO input and output files,
+The inputs for {\sc SFrescox} specify the FRESCOX input and output files,
 the number and types of search variables, and the experimental data sets.
 
 \subsection{Search file}
@@ -2442,17 +2444,17 @@ input_file, output_file, nvariables, ndatasets
 \end{verbatim}
 \smallskip
 
-{\tt input\_file}: name of file (in single quotes) with regular FRESCO input\\
-{\tt output\_file}: name of file for the final FRESCO output\\
+{\tt input\_file}: name of file (in single quotes) with regular FRESCOX input\\
+{\tt output\_file}: name of file for the final FRESCOX output\\
 {\tt nvariables}: number of search variables\\
 {\tt ndatasets}:  number of experimental data sets.\\
 
 Repeated {\tt nvariables} times, a namelist with some of the following variables:
 \begin{verbatim}
 namelist  &variable:
-name,kind,step,valmin,valmax, kp,pline,col,potential,
+name,kind,step,valmin,valmax, kp,pline,col,potential,nopot,
 dataset,datanorm,dataEshift,reffile, nafrac,afrac,
-energy, damp, jtot,par,channel,width,rwa, leff
+energy, damp, jtot,par,channel,width,rwa,B, leff
 \end{verbatim}
 {\tt name} is name of variable (up to 10 characters),\\
 {\tt kind}: 0=ignore, 1=potential, 2=afrac, 3=R-matrix energy,\\
@@ -2463,13 +2465,13 @@ energy, damp, jtot,par,channel,width,rwa, leff
 {\tt null}: (default -124578) `undefined' value,\\
 
 {\tt kind=}{\bf 1: Variable potential parameter:}\\
-{\tt kp}: number of potential as on Card 10,\\
-{\tt pline}: order of which Card 10 within potential definition,\\
-{\tt col}:   number on Card 10: selecting P0--P7 ,\\
+{\tt kp}: number of potential as in \&pot namelist,\\
+{\tt pline}: order of which \&pot namelist within potential definition,\\
+{\tt col}:   number within namelist: selecting P0--P7 ,\\
 {\tt potential}: value of this potential parameter (default {\tt null}: use {\tt input\_file})\\
 
 {\tt kind=}{\bf 2: Variable spectroscopic amplitude:}\\
-{\tt nafrac}: order number of Cards 17 in {\tt input\_file}\\
+{\tt nafrac}: order number of \&cfp namelist in {\tt input\_file}\\
 {\tt afrac}: spectroscopic amplitude A (default {\tt null}: use {\tt input\_file})\\
 
 {\tt kind=}{\bf 3: Variable energy of R-matrix term:}\\
@@ -2481,7 +2483,7 @@ energy, damp, jtot,par,channel,width,rwa, leff
 {\tt nopot}: Disable potential \& Buttle correction for this J/pi set (logical T or F, default F)\\
 
 {\tt kind=}{\bf 4: Variable partial width of R-matrix term:}\\
-{\tt channel}: channel number (in order generated by FRESCO)\\
+{\tt channel}: channel number (in order generated by FRESCOX)\\
 {\tt term}: term number (default 1)\\
 {\tt rwa}: the {\tt width} is reduced width amplitude $\gamma$, else $\Gamma=2\gamma^2 P$.  (default T)\\
 {\tt B}: the boundary condition {\tt B}. (Default: from {\tt BNDX}).\\
@@ -2514,7 +2516,7 @@ corresponding data:
 \begin{verbatim}
 namelist \&data:
 type,data_file,points,delta,xmin,lab,energy,angle,
-idir,iscale,abserr,ic,ia,k,q,jtot,par,channel,value,error,leg,
+idir,iscale,abserr,ic,ia,k,q,jtot,par,channel,value,error,leg,ib,
 pel,exl,labe,lin,lex,term
 \end{verbatim}
 
@@ -2527,7 +2529,7 @@ pel,exl,labe,lin,lex,term
 \\ = 2 excitation cross section for fixed angle
 \\ = 3 excitation total cross section. Also: ic=0: {\tt ia}=0 is total reaction cross section;
 {\tt ia}=1 is total fusion cross section; 1$<${\tt ia}$<$NFUS+1 are fusion from potential
-KFUS (on Card 5) for inelastic state {\tt ia}--1.
+KFUS (in \&Fresco namelist) for inelastic state {\tt ia}--1.
 \\ = 4 excitation phase shift for fixed partial wave
 \\ = 5 desired factor for bound state search (binding energy or potential scale
  according to ISC).
@@ -2547,7 +2549,7 @@ KFUS (on Card 5) for inelastic state {\tt ia}--1.
  (default 0)\\
 {\tt lab}: T  for lab angles and cross sections (default F for cm frame).\\
 {\tt Aflip}: T to change cm calculated angles to $180-\theta$ (default F).\\
-{\tt energy}: lab energy for this {\tt type}=0 dataset (default: use {\tt ELAB(1)} from Card 19)\\{\tt pel,exl,labe,lin,lex}: specify input channels for this data set, as in Card 18
+{\tt energy}: lab energy for this {\tt type}=0 dataset (default: use {\tt ELAB(1)} from \&Fresco namelist)\\{\tt pel,exl,labe,lin,lex}: specify input channels for this data set.
 
 {\tt idir} (default 0)
 \\ =-1 cross-section data are given as astrophysical S-factors, but will be converted to absolute,
@@ -2581,6 +2583,12 @@ for phase shift\\
 {\tt error}: Error in value of search parameter, for {\tt type}=6\\
 ~\\
 
+{\tt ib}: if 0$<${\tt ib}$<${\tt ia}, then {\tt ib} is final state of gamma decay. (default 0)\\
+     If this is given for data {\tt type}=0,1,2, then the {\tt ia} is the initial state, and 
+     all angles are the {\em  gamma} detection angles, and cross sections are integrated over all ejectile particle angles.
+     Need to set {\tt dgam}=1, {\tt pp}=3, {\tt kqmax}$\geq 2\times$spin of state {\tt ia}, 
+        {\tt thmin}=0 and {\tt thmax}=180 degrees.\\`
+
 {\bf Data input} (free format):
 \\ if {\tt type}=1 or --2, read:  {\tt energy, angle, value, error}
 \\ if {\tt type}=5, read:  {\tt kn, target, error}
@@ -2591,7 +2599,7 @@ for phase shift\\
 
 ~~~~~ where {\tt x} is angle for {\tt type}=0, is {\tt leg} for {\tt type}=--1 or --2, and lab energy for {\tt type}=--3, 2, 3 and 4.\\
 
-\subsection{Sfresco commands}
+\subsection{Sfrescox commands}
 
 %\subsection*{{\tt SFresco} Input}
 The inputs to {\tt SFresco} are\\
@@ -2747,7 +2755,7 @@ NAMELIST
 File & Format & LRECL  & Common & Routines & Use \\
  no. & (Fix/Var) & (bytes) &suffix &  &  \\
 \hline
-1    &  V &             &     &     SFRESCO& FRESCO input when searching\\
+1    &  V &             &     &     SFRESCOX& FRESCOX input when searching\\
 2    &  V &             &    &     SFRESCO& Search specification file\\
 3    &  V &             &    &     FREADF, FR& Temporary namelist file\\
 4    &  F &     80      &    &     INTER & default for external KIND=1,9 couplings\\

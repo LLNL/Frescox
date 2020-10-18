@@ -1,19 +1,13 @@
 Changes from Fresco to Frescox
 
-1. RELA options for relativistic kinematics
-
-2. DGAM for decay angular distributions
+1. More RELA options for relativistic kinematics
 
 3. NUMNODE for MPI operation and NTHREAD for OPENMP
    CCREAL: all potentials and couplings are real-valued, to speed CC solutions
    ELPMAX = energy ELAB below which the LPMAX in each partition are applied 
 
-4. ISO for isocentrifugal approximations
-
 5. BTYPE for type of R-matrix boundary condition (including 'A' for Brune basis)
    BNDX replaces EBETA for value in boundary condition
-
-6. MELFIL to write coupling files in mel and spec formats for sturmxx
 
 7. Core-excitation options for XCDCC calculations, with more details in CDCC outputs in fort.57
 
@@ -28,8 +22,6 @@ Changes from Fresco to Frescox
     17         Target & projectile all-order coupled by matrix elements read in.
     20  NUM  Super-soft N-N potl. of de Tourreil & Sprung (SSC(C))
     21  NUM  User-supplied N-N potential via subroutine NNPOT.
-
-11. RSMIN, RSMAX,RSALPHA for truncating or damping single-particle states.
 
 12. NLAG for bound states: Use Lagrange mesh to find bound states with NLAG basis functions with code PLUTO
 
@@ -49,8 +41,6 @@ Searching:
 
 5. Aflip for changing angle to 180-angle
 
-6. IB for final state after decay step.
-
 7. More searching commands:
 
   V: query status of unfixed search variables
@@ -67,6 +57,7 @@ Searching:
   POLES {\tt emin emax}: vary only R-matrix poles in this energy range (others are fixed)
 
 Only Fresco has the stabilization method for coupled-channels solutions.
+Only Fresco has the RSALPHA exponential damping factor for overlap wave functions
    
 
 
