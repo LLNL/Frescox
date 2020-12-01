@@ -179,7 +179,7 @@
  1002 	format(' FRESCOX - version ',a,
      X      ': Coupled Reaction Channels             on ',a30/)
 	uu = .false.
-	inquire(file='fresco.in',exist=uu)
+!	inquire(file='fresco.in',exist=uu)
 	if(uu) then
 	      if(pr)
      X        write(koe,*) ' ***  USING AS INPUT FILE fresco.in,',
