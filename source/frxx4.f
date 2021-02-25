@@ -3190,10 +3190,10 @@ C
       IF(CHANS+LISTCC+SMATL.GE.3.and.final)  then
            WRITE(KO,1270) JTOTAL,PSIGN(PARITY+2),
      X                              NCH    ,IEX,R1,RTURN
- 1270 FORMAT( /,1X,118('#'),/,' #',116X,'#',/
+ 1270 FORMAT( /,1X,121('#'),/,' #',119X,'#',/
      X           ,' #',' Total SPIN and PARITY =',F8.1,1X,A1,',',I7,
      X' channels,',I5,' in 1st block.  Rmin & Coul turning =',
-     X   2F7.1,' fm.    #'/ ' #',116X,'#',/1X,118('#')/)
+     X   F7.1,1pe10.3,' fm.    #'/ ' #',119X,'#',/1X,121('#')/)
 	   else if(CHANS+LISTCC+SMATL.GE.1.and.final)  then
            WRITE(KO,1271) JTOTAL,PSIGN(PARITY+2),NCH,IEX,R1,RTURN
  1271 FORMAT(/' Total SPIN, PARITY =',F8.1,1X,A1,',',I7,

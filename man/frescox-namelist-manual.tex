@@ -890,10 +890,10 @@ If NEX $<$ 0, then cross sections for this partition are not printed\\
 QVAL = $Q$-value (in MeV) of this partition for Ep+Et=0.0. Only differences in $Q$-values between partitions are significant.\\
 PWF = use asymptotic piecewise methods in this partition (default is True).
 
-\item[READSTATES, PRMAX, LPMAX1, MIXPOT]  ~\\
+\item[READSTATES, PRMAX, LPMAX, MIXPOT]  ~\\
 READSTATES = read in specification of the NEX states from file number READSTATES. \\
 PRMAX = maximum radius in this partition. Useful for R-matrix calculations, but redefines what `local' interactions mean.\\
-LPMAX1 = maximum partial wave $L+1$ in this partition if the incident lab energy is below ELPMAX (given in the \&Fresco namelist),
+LPMAX = maximum partial wave $L$ in this partition if the incident lab energy is below ELPMAX (given in the \&Fresco namelist). Default=$-1$ (no limit),
 
 \item[MIXPOT] governs the couplings that are generated (in this partition) between levels that have {\em different} KP potential indices.
 It does not affect any couplings when the KP index values are identical.

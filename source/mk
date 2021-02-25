@@ -22,17 +22,20 @@ if(${MACH} == sun4) set MACH=sun4-spl
 
 set COMPILER = ''
 if( ${MACH} == 'x86_64' ) then
-      if( -X g95 )     set COMPILER = 'g95'
+      if( -X gfortran )     set COMPILER = 'gfortran'
       if( -X pathf90 ) set COMPILER = 'pathf90'
       if( -X pgf90 )   set COMPILER = 'pgf90'
       if( -X ifort )   set COMPILER = 'ifort'
 endif
+if( ${MACH} == 'arm64' ) then
+      if( -X gfortran )     set COMPILER = 'gfortran'
+endif
 if( ${MACH} == 'i386' ) then
-      if( -X g95 )     set COMPILER = 'g95'
+      if( -X gfortran )     set COMPILER = 'gfortran'
       if( -X ifort )   set COMPILER = 'ifort'
 endif
 if( ${MACH} == 'i686' ) then
-      if( -X g95 )     set COMPILER = 'g95'
+      if( -X gfortran )     set COMPILER = 'gfortran'
       if( -X pathf90 ) set COMPILER = 'pathf90'
       if( -X pgf90 )   set COMPILER = 'pgf90'
       if( -X ifort )   set COMPILER = 'intel'
