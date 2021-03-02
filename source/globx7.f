@@ -79,7 +79,7 @@
 	end module trace
 
 	module fresco1
-        character*120 headng
+        character*120 headng,tcfilename
       	character*1 iso,btype
       	character*2 rela
 	real*8 hcm,rmatch,hnl,rnl,centre,hnn,rnn,rmin,rasym,accrcy,rsp,

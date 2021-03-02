@@ -116,7 +116,7 @@
      X	 inh,TMP,MASFIL,unitmass,finec,pel,exl,lab,lin,lex,elab,nlab,
      x   vsearch,echan,enodes,gscouplonly,ccbins,sock,btype,boldplot,
      x   KRM, dist0,tcfile,dgam,eobs,grace,elpmax,relref,
-     x   numnode, sumform  ! not used: only for reading old inputs
+     x   tcfilename,numnode, sumform  ! not used: only for reading old inputs
 
 	namelist/partition/namep,massp,zp,nex,pwf,namet,masst,zt,qval,
      x	                   readstates,prmax,lpmax,mixpot
@@ -1948,6 +1948,7 @@ c        kind = 3 & 4 :    s.p. inelastic form factors of multipole 'ik'
 	 inh = 0; sumform=2; maxqrn=0; mclist=0; initwf=0
          ompform = -1; gscouplonly=.false.; pluto(:)=0; eobs=.false.
 	 dry = .false.; boldplot=.false.; tcfile=0; maxleg=-1
+         tcfilename = 'fort.5420'
          elpmax = 0.01; relref=1
 	 TMP='/tmp/'; grace=.true.
 	 MASFIL = '/netopt/PHS1IT/lib/m88lrb'

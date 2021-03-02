@@ -209,7 +209,7 @@ chans, listcc, treneg, cdetr, smats,
 
 \noindent
 {\em Output details:}
-xstabl, nlpl, waves, lampl, veff, kfus, nfus, wdisk, bpm, melfil, cdcc,  tcfile, \\
+xstabl, nlpl, waves, lampl, veff, kfus, nfus, wdisk, bpm, melfil, cdcc,  tcfile, tcfilename,  \\
 dist0, tmp, grace, boldplot
 
 
@@ -621,7 +621,7 @@ may be divergent before Pade acceleration).
 \subsubsection{Output details}
 
 \begin{description}
-\item[XSTABL, NLPL, WAVES, LAMPL, VEFF, KFUS, NFUS, WDISK, BPM, MELFIL, CDCC,  TCFILE]
+\item[XSTABL, NLPL, WAVES, LAMPL, VEFF, KFUS, NFUS, WDISK, BPM, MELFIL, CDCC,  TCFILE, tcfilename]
 
 \item[XSTABL] $\neq$ 0 : If XSTABL is non-zero, in file 16 punch output cross sections
 for all excitation levels in all partitions.
@@ -853,8 +853,11 @@ for each excited state pair in the entrance partition: IA=1,NEXB::
 \end{verbatim}
 }
 
+\item[TCFILENAME]: 
+File to write HF data, default fort.5420.
+
 \item[TCFILE]: 
-Print in fort.5420 data needed for Hauser-Feshbach code YAHFC. These are penetration probabilities and  all angular distributions.
+Print in file TCFILENAME data needed for Hauser-Feshbach code YAHFC. These are penetration probabilities and  all angular distributions.
 
 \item[DIST0] :
 If DIST0 $\geq 0$, cut off charged-particle elastic scattering at below DIST0 degrees, for making GNDS or ENDF evaluation files. Default --1.

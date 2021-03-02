@@ -1754,6 +1754,7 @@ C
        JN=JTOTAL
   761  CONTINUE
 	if(mod(tcfile,2)==1) then
+        open(5420,file=tcfilename,access='sequential',form='formatted')
 !	 write(5420,*) 0.,0,0,0.,-1, 'END full LSJ,JT',NSA,LUSED
            T = 0.
            do I=1,NSA
