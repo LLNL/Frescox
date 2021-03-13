@@ -180,7 +180,7 @@ C    ---------
 C
 C    INCOMING ENERGIES
 C    -----------------
-      REAL*8 K(MXP,MXX),ETA(MXP,MXX),ETOTAL,ENLAB,EOFF,EPOLE,
+      REAL*8 K(MXP,MXX),ETA(MXP,MXX),ETOTAL,ENLAB,EOFF,EPOLE,ETOTALR,
      X     RMK,RMKD,CFG(MAXMUL,4),DE,ELAST,CSIG(LMAX1,MXPEX),
      x     GAM(MXP,MXX),ECMC(MXP,MXX),dataEshift
       REAL*8 JTOTAL,JAP,JSWITCH,JAL,JN,LJMAX,SSWITCH,JNLAST
@@ -653,6 +653,7 @@ C    ----------------
      x            + 2.*T * EOFF
 	FAIL = .false.
 	BEST = HCM
+        ETOTALR = ETOTAL
       DO 145 IC=1,NCHAN
       NA = NEX(IC)
       DO 145 IA=1,NA
@@ -698,9 +699,13 @@ C    ----------------
      x        (MASS(1,IC)/sqrt(1.+TH2**2) + MASS(2,IC)/sqrt(1.+TH1**2))
 	  endif
           if(index(rela,'h')>0) then   ! get K and ETA from Hale method
-             TH1 = MASS(1,IC)  ! projectile in this partition
-             TH2 = MASS(2,IC)  ! target
+             TH1 = MASS(1,IC) + ENEX(1,IC,IA)/AMU ! projectile in this partition
+             TH2 = MASS(2,IC) + ENEX(2,IC,IA)/AMU ! target
              ECMC(IC,IA) = (RELS - (TH1+TH2)**2*AMU)/(2.*(TH1+TH2))
+             if (IC==relref.and.IA==1) then
+              T = ECMC(IC,IA) - ETOTAL
+              ETOTALR = ECMC(IC,IA)
+              endif
              XSC = (RELS-(TH1+TH2)**2*AMU)*(RELS-(TH1-TH2)**2*AMU)
      x               /(4.*RELS)
              K(IC,IA) = sqrt(abs(XSC)*AMU)/HBC
@@ -709,6 +714,7 @@ C    ----------------
           endif
 
          ENDIF     ! not gamma
+         ETOTAL = ETOTALR
 !@@
          ETA(IC,IA) = ETACNS * MASS(2+1,IC) * MASS(2+2,IC)
      X                       * SQRT(RMASS(IC)/ ABS(ECMC(IC,IA)))
