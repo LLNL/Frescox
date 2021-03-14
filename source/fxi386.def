@@ -24,10 +24,10 @@
 #    modification are contained in the file COPYING.
 #
 #***********************************************************************
-####            Mac and  g95:
-FC = g95
+####            gfortran 
+FC = gfortran -Wall
 F90C = $(FC)
-FORM =  -cpp -ffixed-line-length-132
+FORM =  -w  -cpp
 PARALLEL = frxx15
 BINSI = frxx4.$(O) frxx7a.$(O)
 BINS = frxx0.$(O) $(BINSI)
@@ -37,13 +37,15 @@ BINS = frxx0.$(O) $(BINSI)
 #
 NAG = nagstub.$(O)
 
-#### With blas library
+#### Without blas library:
 BLAS = lapack.$(O) 
-#LBLAS = -llapack -lblas
+#LBLAS = -llapack -lblas -lg2c -lm
 
 FFLAGS = -O2
-# FFLAGS = -g
-FFLAGS1 = -O1
+FFLAGS1 = -O1 
+# FFLAGS = -g -O2
+# FFLAGS1 = -g -O1
+LFLAGS  =  
 
 O = o
 E =
@@ -51,5 +53,5 @@ FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
 LINK = $(F90C) $(FFLAGS) -o frescox $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
 LINKS = $(F90C) $(FFLAGS) -o sfrescox $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
 # INST = install sfrescox frescox $(FRESCOXLIB)
-INST = cp  sfrescox frescox fr2nl $(HOME)/binw/i386 ; chmod a+rx $(HOME)/binw/i386/frescox $(HOME)/binw/i386/sfrescox 
+INST = cp  sfrescox frescox fr2nl $(HOME)/binw/i386 ; chmod a+rx $(HOME)/binw/i386/frescox $(HOME)/binw/i386/fr2nl
 RM = rm -f
