@@ -494,7 +494,7 @@ C                       Take K=7 as an inelastic monopole
        ELSE if(KK==0) then
 C			Normal KK=0 should exclude off-diagonal monopoles
 C                       BUT: Allow off-diagonal couplings for spin.spin monopoles
-          if(C/=C2.and.JFT/=8) GO TO 300
+          if(C/=C2.and.JFT/=8.and.JFT/=4) GO TO 300
             if(JFT==12) T = sqrt(2*JPROJ(C)+1.)   ! projectile couplings
             if(JFT==13) T = sqrt(2*JTARG(C)+1.)   ! target couplings
        ENDIF
