@@ -1090,7 +1090,7 @@ with R = P2 * CC, RH = (r - R)/P3, and E = exp(-(r-R)/P3),
 \\--1: Fourier-Bessel = $j_0$(RH) = $\sin$(RH)/RH
 
 
-For `SHAPE's 7-9, immediately read in free format from from {\em Input File 4}, or from {\bf datafile} if specified:
+For SHAPEs 7-9, immediately read in free format from from {\em Input File 4}, or from {\bf datafile} if specified:
 First a comment line,\\
 then (free format) NPOINTS, RSTEP, RFIRST, \\
 followed by NPOINTS potential points for the shape in steps of RSTEP starting at r=RFIRST.
@@ -1098,7 +1098,8 @@ followed by NPOINTS potential points for the shape in steps of RSTEP starting at
 Rescale the real part by P1, the imaginary part by P2,
 and use radius = P3 * CC for subsequent deformation calculations.
 \\
-If SHAPE = -7, -8, or -9, rewind file 4 before reading from it.
+If SHAPE = -7, -8, or -9, rewind file 4 or {\bf datafile} before reading from it.\\
+If {\bf datafile} = {\tt continue}, then continue reading the previous file (do not rewind or reopen).\\
 \bigskip
 
 The SHAPEs for surface potentials (TYPE=2), with R, RH and E as before,

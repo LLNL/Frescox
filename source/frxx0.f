@@ -85,7 +85,8 @@
      x  'ERWINRKC  ','ERWINRK   ','ERWINRK+NT','NL-SEARCH '/
 	character*8 namet,namep,name,CHME
 	character*4 word
-	character*30 comp,datafile
+	character*30 comp
+	character*200 datafile
 	data buttles/'complex+sh','real+shift',
      x               'complex-sh','real-shift','none    '/
 	character*2 ex(2)

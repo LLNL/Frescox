@@ -57,7 +57,7 @@
       CHARACTER cit,JL
       CHARACTER*7 datavals
       CHARACTER*80 COMMENT
-      CHARACTER*30 DATAFILE
+      CHARACTER*200 datafile
       DATA NNKIND /'V1S0','V3S1','V3S3D','V3D1','V1P1','V3P0','V3P1',
      &             'V3P2','V3P3F','V3F2','V1D2','V3D2' /
       DATA WHO /'Coulomb','Volume','Surface','Projtl S.O.','Target S.O.'
@@ -228,6 +228,7 @@ C     NIX = 1
       IR0 = 0
       CC = 0.0
 	datafile = ' '
+        SHNG = .False.
 	line(:) = 0
 10    continue
 !	READ(KI,12) KPI,TYPEI,itt,SHAPEI,(DEF(K),K=1,7)
@@ -814,10 +815,15 @@ C
 65    CONTINUE
       GO TO 100
 C
-70    INFORM = 4
-	if(lnbl(datafile)>1.and.datafile(1:1)/=' ') then
-           INFORM = 69
-	   open(INFORM, file = datafile)
+70    if(lnbl(datafile)>1.and.datafile(1:1)/=' ') then
+!           write(6,*) 'Read <'//trim(datafile)//'>'
+          INFORM = 69
+          if(index(datafile,'continue')==0) then
+            write(6,*) 'Open file <'//trim(datafile)//'>'
+            open(INFORM, file = datafile)
+            endif
+        else
+         INFORM = 4
 	endif
       IF(SHNG) REWIND INFORM
       DO 80 M=MIN(MF,NF),NF
@@ -826,13 +832,13 @@ C
          IF(K.GT.0) DF = DEF(K)
 	 READ(INFORM,'(a)') COMMENT
          READ(INFORM,*) NPOINTS,RSTEP,RFIRST
-	 if(INFORM==69) WRITE(KO,71) datafile
+	 if(INFORM==69) WRITE(KO,71) trim(datafile)
          datavals= '   real'
          if(SHAPE==8) datavals= '   imag'
          if(SHAPE==9) datavals= 'complex'
          WRITE(KO,701) COMMENT,M,NPOINTS,datavals,RSTEP,RFIRST,DF
-71       FORMAT('  File: ',a30)
-701      FORMAT(' Input:',a80/
+71       FORMAT(/' File : ',a)
+701      FORMAT( ' Input: ',a/
      x   '  Form at',I3,': Reading ',I4,1x,a7,' data points at '
      X   ,F8.4,' intervals, starting from r =',F8.4,', with ',
      X   'overall coefficient',F8.4)
@@ -854,7 +860,7 @@ C
 	  enddo
 	endif
 232   FORMAT(6E12.4)
-	if(INFORM==69) close(69)
+        
       RSTEPI = 1./RSTEP
       DO 80 I=1,N
       R = (I-1)*H
