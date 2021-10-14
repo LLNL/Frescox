@@ -1768,8 +1768,8 @@ C
              do L1=1,LUSED+1
               if(TCOEFS(L1,I)>1e-3) LAP=L1-1
               enddo
-	 write(5420,'(a1,2i4,a,f6.1)') '#',LAP,NSA, 
-     x            '  TC: J-L =',I-1-JEX(1,PEL,EXL)
+	 write(5420,'(a1,2i4,a,f6.1,10x,f10.4,'' MeV cm'')') '#',LAP,NSA, 
+     x            '  TC: J-L =',I-1-JEX(1,PEL,EXL),ECMC(PEL,EXL)
   	   RS = JEX(1,PEL,EXL)
            do L=0,LAP
             L1 = L+1
@@ -1780,8 +1780,9 @@ C
             T4 = RH* (2*JVALI+1.)/(2*RS+1.) * 10*PI/K(PEL,EXL)**2
             T = T+T4
            if(TCOEFS(L1,I)>1e-3)
-     x           write(5420,'(I4,1p,e14.7,0p,f6.1,2f14.5,f8.4)') 
+     x      write(5420,'(I4,1p,e14.7,0p,f6.1,2f14.5,f8.4,a5,f10.4)') 
      x     L,TCOEF(L1,I)/TCOEFS(L1,I),JVALI,T4,T,TCOEFS(L1,I)
+     x     , '  Ecm',ECMC(PEL,EXL)
  	   endif
 	
             enddo ! L
