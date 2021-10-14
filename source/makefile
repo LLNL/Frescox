@@ -59,7 +59,7 @@
 # MACH=vax		# Vax vms
 # MACH=xlf		# IBM xlf90, on mac
 
-# MACH=x86_64           # AMD 64 linux pgf90 without lapack and blas
+MACH=x86_64           # AMD 64 linux pgf90 without lapack and blas
 # MACH=g95              # Gnu fortran g95 without lapack and blas
 # MACH=altix            # SGI Altix 3700 IA64 arch with ifort v8.1
 

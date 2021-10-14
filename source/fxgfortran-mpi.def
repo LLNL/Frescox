@@ -24,12 +24,11 @@
 #    modification are contained in the file COPYING.
 #
 #***********************************************************************
-####          ifort with MacOSX and mpi, with mpe logging
-FC = mpif90 -mpe=mpilog
-F90C = $(FC) 
-#FPP = fpp -B -C -fixed -DMPI
-FORM = -FI -cm -w -fpp -DMPI # -Dcorex
-PARALLEL = frxx45
+####            gfortran 
+FC = gfortran-mp-9 -Wall
+F90C = $(FC)
+FORM =  -w  -cpp  -DMPI 
+PARALLEL = frxx15
 BINSI = frxx4.$(O) frxx7a.$(O)
 BINS = frxx0.$(O) $(BINSI)
 
@@ -40,18 +39,19 @@ NAG = nagstub.$(O)
 
 #### Without blas library:
 BLAS = lapack.$(O) 
-#LBLAS = -lmkl -lmkl_lapack64 # -L/usr/local/lib/mkl
+#LBLAS = -llapack -lblas -lg2c -lm
 
-FFLAGS  = -O3 -ip -zero  -m64
-FFLAGS1 = -O0     -zero -m64
-LFLAGS  = -m64
-
+FFLAGS = -O2
+FFLAGS1 = -O1 
+# FFLAGS = -g -O2
+# FFLAGS1 = -g -O1
+LFLAGS  =  
 
 O = o
 E =
 FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
-LINK = $(F90C) $(FFLAGS) -o frescom $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
-LINKS = $(F90C) $(FFLAGS) -o sfrescom $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
+LINK = $(F90C) $(FFLAGS) -o frescox $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
+LINKS = $(F90C) $(FFLAGS) -o sfrescox $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
 # INST = install sfrescox frescox $(FRESCOXLIB)
-INST = cp  intel64-mpech/sfrescom intel64-mpech/frescom $(HOME)/binw/x86_64
+INST = cp  sfrescox frescox fr2nl $(HOME)/binw/x86_64 ; chmod a+rx $(HOME)/binw/x86_64/frescox $(HOME)/binw/x86_64/fr2nl
 RM = rm -f

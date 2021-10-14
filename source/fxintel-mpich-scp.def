@@ -54,5 +54,5 @@ FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
 LINK = $(F90C) $(FFLAGS) -o frescom $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
 LINKS = $(F90C) $(FFLAGS) -o sfrescom $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
 # INST = install sfrescox frescox $(FRESCOXLIB)
-INST = cp  intel-mpich-scp/sfrescom intel-mpich-scp/frescom $(HOME)/binw/i386
+INST = cp  intel-mpich-scp/sfrescom intel-mpich-scp/frescom $(HOME)/binw/x86_64
 RM = rm -f

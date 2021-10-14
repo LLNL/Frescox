@@ -2,7 +2,7 @@
 
 get_version
 
-if(! $?ARCH) setenv ARCH `arch`
+if(! $?ARCH) setenv ARCH `uname -m`
 if( -X hostsurname ) setenv MACH `hostsurname`
 if(! $?MACH) then
      set try=$1
@@ -19,30 +19,6 @@ if(! $?MACH) set MACH = ${ARCH}
 # change to any local preferences: 
 #  copy & edit these lines yourself
 if(${MACH} == sun4) set MACH=sun4-spl
-
-set COMPILER = ''
-if( ${MACH} == 'x86_64' ) then
-      if( -X gfortran )     set COMPILER = 'gfortran'
-      if( -X pathf90 ) set COMPILER = 'pathf90'
-      if( -X pgf90 )   set COMPILER = 'pgf90'
-      if( -X ifort )   set COMPILER = 'ifort'
-endif
-if( ${MACH} == 'arm64' ) then
-      if( -X gfortran )     set COMPILER = 'gfortran'
-endif
-if( ${MACH} == 'i386' ) then
-      if( -X gfortran )     set COMPILER = 'gfortran'
-      if( -X ifort )   set COMPILER = 'ifort'
-endif
-if( ${MACH} == 'i686' ) then
-      if( -X gfortran )     set COMPILER = 'gfortran'
-      if( -X pathf90 ) set COMPILER = 'pathf90'
-      if( -X pgf90 )   set COMPILER = 'pgf90'
-      if( -X ifort )   set COMPILER = 'intel'
-endif
-if( -e fx${ARCH}-${COMPILER}.def ) then
-      ln -sf fx${ARCH}-${COMPILER}.def fx${ARCH}.def
-endif
 
 if( ! -e ${MACH}) mkdir ${MACH}
 

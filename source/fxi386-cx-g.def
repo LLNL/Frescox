@@ -54,5 +54,5 @@ FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
 LINK = $(F90C) $(FFLAGS) -o frescox $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
 LINKS = $(F90C) $(FFLAGS) -o sfrescox $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
 # INST = install sfrescox frescox $(FRESCOXLIB)
-INST = cp  sfrescox frescox fr2nl $(HOME)/binw/i386 ; chmod a+rx $(HOME)/binw/i386/frescox $(HOME)/binw/i386/sfrescox 
+INST = cp  sfrescox frescox fr2nl $(HOME)/binw/x86_64 ; chmod a+rx $(HOME)/binw/x86_64/frescox $(HOME)/binw/x86_64/sfrescox 
 RM = rm -f
