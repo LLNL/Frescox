@@ -1799,6 +1799,7 @@ C
 
          endif
         if(tcfile>0) deallocate(TCOEF,TCOEFS)
+        call flush(5420)
        
 
        deallocate (FUSUM)
@@ -2285,6 +2286,7 @@ C              give warning of limits for Coulomb excitations:
 	if(numthread>1)
      x  write(500+iame,*) ' Node ',iame,'  done cc set end'
       if(CDCC/=0) write(57,*) MCCSET,MAXCH
+	inquire(5420,opened=op); if(op) close(5420)
       RETURN
 CUNI  DEBUG SUBCHK
       END
