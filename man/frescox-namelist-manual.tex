@@ -571,6 +571,9 @@ Energy $\hbar^2k^2/2m$, where $k= f'/f$, the logarithmic derivative
 for all radial basis states at $r$=RMATR, with $k$ having the same
 sign as EBETA(i). 
 
+BTYPE = E,k, L,B, S : methods to calculate Bloch parameter B from BNDX.
+If BNDX(i)  is the energy for 'E' or  wave number for 'k, then B is inverse logarithmic derivative of Coulomb function there. Otherwise B = --L for 'L', B = BNDX(i) for 'B', and S (shift function) for 'S'.
+
 If WEAK$>$0, then non-elastic columns of the R-matrix are set to zero,
   when penetrabilities $<$ WEAK.
   
@@ -2251,7 +2254,6 @@ CP            index to the coupling set up
 
 \newpage
 \section{Input CDCC format}
-\hangindent 0ex\hangafter 1
 
 {\bf \&CDCC namelist}
 
@@ -2269,7 +2271,7 @@ sumform, qc, la, static, expand, maxcoup
 }\\
 
 \vspace{-3mm}
-\hangindent 5ex\hangafter 1
+
 are all the same as the {\bf \&FRESCOX} namelist, except for:\\
 {\tt cdccc} which is an alias for {\tt cdcc} of \&Fresco namelist,\\
  %
@@ -2458,7 +2460,8 @@ Repeated {\tt nvariables} times, a namelist with some of the following variables
 namelist  &variable:
 name,kind,step,valmin,valmax, kp,pline,col,potential,nopot,
 dataset,datanorm,dataEshift,reffile, nafrac,afrac,
-energy, damp, jtot,par,channel,width,rwa,B, leff
+energy, damp, jtot,par,channel,width,rwa,B, leff,
+pline2,col2,ratio2
 \end{verbatim}
 {\tt name} is name of variable (up to 10 characters),\\
 {\tt kind}: 0=ignore, 1=potential, 2=afrac, 3=R-matrix energy,\\
@@ -2473,6 +2476,8 @@ energy, damp, jtot,par,channel,width,rwa,B, leff
 {\tt pline}: order of which \&pot namelist within potential definition,\\
 {\tt col}:   number within namelist: selecting P0--P7 ,\\
 {\tt potential}: value of this potential parameter (default {\tt null}: use {\tt input\_file})\\
+{\tt pline2,col2}: if both assigned, then potential parameter at line {\tt pline2} and index {\tt col2} is automatically set to 
+a value of {\tt ratio2} times this parameter's value. \\
 
 {\tt kind=}{\bf 2: Variable spectroscopic amplitude:}\\
 {\tt nafrac}: order number of \&cfp namelist in {\tt input\_file}\\

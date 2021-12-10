@@ -25,7 +25,7 @@
 #
 #***********************************************************************
 ####            gfortran 
-FC = gfortran-mp-9 -Wall
+FC = gfortran-mp-11 -Wall
 F90C = $(FC)
 FORM =  -w  -cpp  -DMPI 
 PARALLEL = frxx15
