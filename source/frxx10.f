@@ -430,13 +430,14 @@ C
            DO 49 IL=1,KNL
               IF(CHNO(IL+NL0,6).EQ.0) GO TO 49
               LT = LVAL(IABS(CHNO(IL+NL0,1)))
+              KLT =MOD(LT,LRANG1)+1
                DO 48 IM=1,NM(IN,IL)
                   MV  = NINT(MCG(1,IM,IN,IL))
                   MVP = NINT(MCG(2,IM,IN,IL))
                   MM = MVP - MV
                DO 43 K=1,NNJ
  43            CG(K) =  GK(K) * MCG(3,IM,IN,IL)
-     X                * ALT(K,IABS(MM)+1,LT+1)
+     X                * ALT(K,IABS(MM)+1,KLT)
      X                * ALN(K,IABS(MV)+1,LN+1)
      X                * ALNP(K,IABS(MVP)+1,LNP+1)
                IF(FFREAL) THEN

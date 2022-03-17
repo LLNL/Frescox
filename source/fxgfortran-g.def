@@ -46,6 +46,7 @@ BLAS = lapack.$(O)
 FFLAGS = -fcheck=all -g -O2
 FFLAGS1 = -fcheck=all -g -O1
 LFLAGS  =  
+LFLAGS   =  -L /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/lib
 
 O = o
 E =
