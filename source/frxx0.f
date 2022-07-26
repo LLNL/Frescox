@@ -894,7 +894,7 @@ C     IF(PADE.GE.1) VEFF=0
 !      write(ko,1130) namep,massp,zp,nex,pwf,namet,masst,zt,qval,
 !    x                readstates,prmax,lpmax1,mixpot
       write(ko,nml=partition) 
- 1130 format(a8,2f8.4,i4,a1,1x,a8,2f8.4,f8.4,i4,f8.2,i8,f8.4,2i4)
+ 1130 format(a8,2f8.4,i4,a1,1x,a8,2f8.4,f8.4,i4,f8.2,2i4)
 	call flush(ko)
 	mxx = max(mxx,abs(nex))
 	if(ic>mmxp) then

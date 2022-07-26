@@ -1,49 +1,49 @@
-\contentsline {section}{\numberline {1}Introduction}{3}%
-\contentsline {section}{\numberline {2}Input card-image format}{4}%
-\contentsline {section}{\numberline {3}Input NAMELIST format}{4}%
-\contentsline {subsection}{\numberline {3.1}Initial Lines}{4}%
-\contentsline {subsection}{\numberline {3.2}The \&FRESCO namelist}{4}%
-\contentsline {subsubsection}{\numberline {3.2.1}Radial coordinates}{4}%
-\contentsline {subsubsection}{\numberline {3.2.2}Partial waves}{5}%
-\contentsline {subsubsection}{\numberline {3.2.3}Angular distributions}{6}%
-\contentsline {subsubsection}{\numberline {3.2.4}Defining coupled equations}{6}%
-\contentsline {subsubsection}{\numberline {3.2.5}Incident channel}{8}%
-\contentsline {subsubsection}{\numberline {3.2.6}Solving equations}{8}%
-\contentsline {subsubsection}{\numberline {3.2.7}R-matrix setup}{9}%
-\contentsline {subsubsection}{\numberline {3.2.8}Trace variables}{10}%
-\contentsline {subsubsection}{\numberline {3.2.9}Output details}{10}%
-\contentsline {subsection}{\numberline {3.3}\&PARTITION and \&STATES namelists}{14}%
-\contentsline {subsubsection}{\numberline {3.3.1}\&PARTITION namelist}{14}%
-\contentsline {subsubsection}{\numberline {3.3.2}\&STATES namelists}{15}%
-\contentsline {subsection}{\numberline {3.4}\&POT potential namelists}{16}%
-\contentsline {subsubsection}{\numberline {3.4.1}First kind of \&pot namelist}{16}%
-\contentsline {subsubsection}{\numberline {3.4.2}Second kind of \&pot namelist: TYPE$>$0}{16}%
-\contentsline {subsubsection}{\numberline {3.4.3}Deformations}{19}%
-\contentsline {subsubsection}{\numberline {3.4.4}Pairwise couplings}{20}%
-\contentsline {subsection}{\numberline {3.5}\&OVERLAP namelists for one- and two-particle form factors}{23}%
-\contentsline {subsubsection}{\numberline {3.5.1}One-particle KINDs}{25}%
-\contentsline {paragraph}{For KIND = 0:}{25}%
-\contentsline {paragraph}{For KIND = 1:}{26}%
-\contentsline {paragraph}{For KIND = 2:}{26}%
-\contentsline {paragraph}{For KIND = 3:}{26}%
-\contentsline {subsubsection}{\numberline {3.5.2}Two-particle KINDs}{26}%
-\contentsline {paragraph}{For KIND $\geq $ 6:}{26}%
-\contentsline {subsubsection}{\numberline {3.5.3}Namelist \&TWONT}{27}%
-\contentsline {paragraph}{For KIND = 6:}{28}%
-\contentsline {subsection}{\numberline {3.6}\&COUPLING namelists}{28}%
-\contentsline {paragraph}{For KIND = 1:}{29}%
-\contentsline {paragraph}{For KIND = 2:}{30}%
-\contentsline {paragraph}{For KIND = 3 or 4:}{31}%
-\contentsline {paragraph}{For KIND = 5 or 6:}{31}%
-\contentsline {paragraph}{For KIND = 7:}{32}%
-\contentsline {paragraph}{For KIND = 8:}{32}%
-\contentsline {paragraph}{For KIND = 9:}{32}%
-\contentsline {paragraph}{For KIND = 11:}{34}%
-\contentsline {subsubsection}{\numberline {3.6.1}\&CFP namelists}{34}%
-\contentsline {section}{\numberline {4}Input CDCC format}{35}%
-\contentsline {section}{\numberline {5}Input SFRESCOX format}{38}%
-\contentsline {subsection}{\numberline {5.1}Search file}{38}%
-\contentsline {subsection}{\numberline {5.2}Sfrescox commands}{41}%
-\contentsline {section}{\numberline {6}Test run: a CCBA calculation}{44}%
-\contentsline {section}{\numberline {7}File allocations}{45}%
-\contentsline {section}{\numberline {8}KIND=1 Spin Transfer Couplings}{47}%
+\contentsline {section}{\numberline {1}Introduction}{3}{}%
+\contentsline {section}{\numberline {2}Input card-image format}{4}{}%
+\contentsline {section}{\numberline {3}Input NAMELIST format}{4}{}%
+\contentsline {subsection}{\numberline {3.1}Initial Lines}{4}{}%
+\contentsline {subsection}{\numberline {3.2}The \&FRESCO namelist}{4}{}%
+\contentsline {subsubsection}{\numberline {3.2.1}Radial coordinates}{4}{}%
+\contentsline {subsubsection}{\numberline {3.2.2}Partial waves}{5}{}%
+\contentsline {subsubsection}{\numberline {3.2.3}Angular distributions}{6}{}%
+\contentsline {subsubsection}{\numberline {3.2.4}Defining coupled equations}{6}{}%
+\contentsline {subsubsection}{\numberline {3.2.5}Incident channel}{8}{}%
+\contentsline {subsubsection}{\numberline {3.2.6}Solving equations}{8}{}%
+\contentsline {subsubsection}{\numberline {3.2.7}R-matrix setup}{9}{}%
+\contentsline {subsubsection}{\numberline {3.2.8}Trace variables}{10}{}%
+\contentsline {subsubsection}{\numberline {3.2.9}Output details}{10}{}%
+\contentsline {subsection}{\numberline {3.3}\&PARTITION and \&STATES namelists}{14}{}%
+\contentsline {subsubsection}{\numberline {3.3.1}\&PARTITION namelist}{14}{}%
+\contentsline {subsubsection}{\numberline {3.3.2}\&STATES namelists}{15}{}%
+\contentsline {subsection}{\numberline {3.4}\&POT potential namelists}{16}{}%
+\contentsline {subsubsection}{\numberline {3.4.1}First kind of \&pot namelist}{16}{}%
+\contentsline {subsubsection}{\numberline {3.4.2}Second kind of \&pot namelist: TYPE$>$0}{16}{}%
+\contentsline {subsubsection}{\numberline {3.4.3}Deformations}{19}{}%
+\contentsline {subsubsection}{\numberline {3.4.4}Pairwise couplings}{20}{}%
+\contentsline {subsection}{\numberline {3.5}\&OVERLAP namelists for one- and two-particle form factors}{23}{}%
+\contentsline {subsubsection}{\numberline {3.5.1}One-particle KINDs}{25}{}%
+\contentsline {paragraph}{For KIND = 0:}{25}{}%
+\contentsline {paragraph}{For KIND = 1:}{26}{}%
+\contentsline {paragraph}{For KIND = 2:}{26}{}%
+\contentsline {paragraph}{For KIND = 3:}{26}{}%
+\contentsline {subsubsection}{\numberline {3.5.2}Two-particle KINDs}{26}{}%
+\contentsline {paragraph}{For KIND $\geq $ 6:}{26}{}%
+\contentsline {subsubsection}{\numberline {3.5.3}Namelist \&TWONT}{27}{}%
+\contentsline {paragraph}{For KIND = 6:}{28}{}%
+\contentsline {subsection}{\numberline {3.6}\&COUPLING namelists}{28}{}%
+\contentsline {paragraph}{For KIND = 1:}{29}{}%
+\contentsline {paragraph}{For KIND = 2:}{30}{}%
+\contentsline {paragraph}{For KIND = 3 or 4:}{31}{}%
+\contentsline {paragraph}{For KIND = 5 or 6:}{31}{}%
+\contentsline {paragraph}{For KIND = 7:}{32}{}%
+\contentsline {paragraph}{For KIND = 8:}{32}{}%
+\contentsline {paragraph}{For KIND = 9:}{32}{}%
+\contentsline {paragraph}{For KIND = 11:}{34}{}%
+\contentsline {subsubsection}{\numberline {3.6.1}\&CFP namelists}{34}{}%
+\contentsline {section}{\numberline {4}Input CDCC format}{35}{}%
+\contentsline {section}{\numberline {5}Input SFRESCOX format}{38}{}%
+\contentsline {subsection}{\numberline {5.1}Search file}{38}{}%
+\contentsline {subsection}{\numberline {5.2}Sfrescox commands}{41}{}%
+\contentsline {section}{\numberline {6}Test run: a CCBA calculation}{44}{}%
+\contentsline {section}{\numberline {7}File allocations}{45}{}%
+\contentsline {section}{\numberline {8}KIND=1 Spin Transfer Couplings}{47}{}%
