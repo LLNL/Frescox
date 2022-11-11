@@ -61,18 +61,17 @@ To run FRESCOX,
 
    2) The scripts include commands to construct temporary 'data' files. 
 	These scripts are run by just saying  e.g.
-       lane20.job
+           frescox < lane20.nin > lane20.out
+        See file 'do-all.bat' to run all the test cases
 
-   3) To save the output in a file .e.g. `out', run the scripts by
+   3) In the test/legacy directory there are executable 'job' run scripts
+      To save the output in a file .e.g. `out', run the scripts by
        lane20.job > out &
-         or simply
+         or simply (using the 'run' command in the 'aliases' file):;
        run lane20.job 
          to use input file lane20.job and produce output file lane20.out.
 
-   4) If you have separate `data' or `in' files, the command is
-       frescox < lane20.in > lane20.out
-
-   5) To save any other output files from frescox, e.g. fort.16 for 
+   4) To save any other output files from frescox, e.g. fort.16 for 
       cross sections, 
          touch lane20.xsecs
          ln -s lane20.xsecs fort.16
@@ -84,5 +83,5 @@ Please let me know if you have any questions or problems:
    I.Thompson@fresco.org.uk
 
 Cheers, Ian Thompson
-November 2018
+November 2022
 
