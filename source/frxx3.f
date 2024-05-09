@@ -1175,7 +1175,7 @@ C	   	Should be previous PHI, not current W
      &          'MAXICH','MRXY  ','MM    ','there ','      ','MCLIST'/
       IF(I.LE.LIM) RETURN
       WRITE(KO,833) LIM,LI(ABS(KIND)),I,WHO(ABS(KIND))
-833   FORMAT(' ****** THERE IS ONLY ROOM FOR',I10,1X,A19,' BUT',I10,
+833   FORMAT(' ****** THERE IS ONLY ROOM FOR',I15,1X,A19,' BUT',I15,
      & ' ARE REQUIRED,  SO INCREASE PARAMETER ',A6,' !!')
       DRY = .TRUE.
 	write(KO,20)

@@ -422,8 +422,10 @@ C    --------------------------------------------------------------
               OP = .true.
             endif
            endif
-            if(listcc>4) write(6,4801) MIXPOT(IC),PTYPE(1,JF),KPA,KPB,OP
-4801	    format('MIXPOT =',I2,' potl',I3,' KPA,B =',2i3,' => OP:',L1)
+            if(listcc>6 .or. listcc>4.and.OP) write(6,4801) 
+     #       C,C2,MIXPOT(IC),PTYPE(1,JF),KPA,KPB,OP
+4801	    format('C,C2=',2i4,' MIXPOT =',I2,' potl',I3,' KPA,B =',2i3,
+     #          ' => OP:',L1)
  
            if( .not. OP) go to 300
 
