@@ -1926,10 +1926,10 @@ C			Phase corrected, 27th August 1999
      X              LVAL(C1)+Z,  JPROJ(C1), JVAL(C1))
      X      * SQRT((TWO*JVAL(C1)+ONE)*(TWO*JVAL(C2)+ONE))
       if(IP3==2) then
-!       R4 = sqrt((TWO*JPROJ(C1)+ONE)*(TWO*JTARG(C2)+ONE))   ! scaling by rme when SP,ST=0
+!       R4 = sqrt((TWO*JPROJ(C1)+ONE)*(TWO*JTARG(C2)+ONE))   ! scaling by rme when SP=0 (no projectile change)
        R4 = sqrt((TWO*JPROJ(C1)+ONE))   ! scaling by rme of projectile
        R4 = R4*((TWO*JTARG(C1)+ONE)*(TWO*JTARG(C2)+ONE))**0.25  ! scaling (symmetric!) so monopoles are physical
-       else if(IP3==3) then
+       else if(IP3==3) then                                  ! scaling by rme when ST=0 (no target change)
        R4 = sqrt((TWO*JTARG(C1)+ONE))   ! scaling by rme of projectile
        R4 = R4*((TWO*JTARG(C1)+ONE)*(TWO*JTARG(C2)+ONE))**0.25  ! scaling (symmetric!) so monopoles are physical
        else
