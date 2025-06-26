@@ -51,7 +51,7 @@
      &        NCLIST(MAXCH,MAXCH),NFLIST(MAXCH,MAXCH,MCLIST),NC,QC,LA,
      &        CPOT(MXP,MXX),PTYPE(12,MLOC),NEX(MXP)
       INTEGER PARITYP,BAND(2,MXP,MXX),PARITYJ,JPWCOUP(9,MPWCOUP)
-      INTEGER KMMI(3),KMMF(3),NFS(MLOC),POTCAP(MLOC,2),TAU
+      INTEGER KMMI(3),KMMF(3),NFS(MLOC),POTCAP(MLOC,2),TAU,IDER
       LOGICAL REV,LOCAL,VREAL,REPEAT,LCL,MCL,R1DONE,REO,FAIL3,FRAC,PR,
      X   REVC,C1FR,LTRANS(MAXQRN),LCALL,MCALL,CPSO,SURF,  !,CPLD(NCH,NCH,0:4)
      x   LCLA,MCLA
@@ -1879,6 +1879,8 @@ C
        IA = MATRIX(2,IX)
        LN = MATRIX(3,IX)
        KN = MATRIX(4,IX)
+       LOP= MATRIX(5,IX)
+       IDER= MATRIX(6,IX)
        SN = SPINTR(1,IX)
        JN = SPINTR(2,IX)
       DO 18 C1=1,NCH
@@ -1886,9 +1888,9 @@ C
       DO 17 C2=1,NCH
         IF(ICFROM.NE.PART(C2) .or. EXCIT(C2,1).NE.IA) GO TO 17
 
-        IF(FAIL3(LVAL(C1)+Z,LVAL(C2)+Z,LN+Z)) GO TO 17
+        IF(IP4 <=0 .and. FAIL3(LVAL(C1)+Z,LVAL(C2)+Z,LN+Z)) GO TO 17
         IF(FAIL3(JVAL(C1),JVAL(C2),JN)) GO TO 17
-
+C       write(6,*) 'IX,KN,LN,IP4 =',IX,KN,LN,IP4
 
       IF(LISTCC.GE.4) WRITE(KO,921) IX,C1,C2,IB,IA,LN,SN,JN,KN
 921   format(' IX=',i5,': C1,C2,IB,IA,LN,SN,JN,KN =',5i6,2f5.1,i4)
@@ -1909,18 +1911,27 @@ C
        CH = R6 * R1 * R2 * R3
         IF(LISTCC.GE.1)WRITE(KO,922) R6,R1,R2,R3,real(CH)
 922     format('  KIND=1: R6,R1,R2,R3,CH =',4f10.4,f12.5)
-	else  ! IP3=0,2,3
+	else  ! IP3=0,2,3  LOCAL
 C			New derivation of above expressions, 4th March 1998
 C			The 1/sqrt(4pi) factor is included in INTER (frxp7.f)
 C			Phase corrected, 27th August 1999
-       R1 =  CLEB6(LVAL(C2)+Z,Z,LN+Z,Z,LVAL(C1)+Z,Z)
+
+      if(LOP>=1) then
+         lambda = 1 ! Vector operator
+         R1 = sqrt(LVAL(C1) * (LVAL(C1)+ONE) * (2*LVAL(C1)+ONE) )
+         R1 = R1 * 2.0    ! The 2 for 2 L.S
+     x           * (-1)**lambda  *  sqrt(2*lambda+ONE)  ! scaling for RME
+         
+         if (LVAL(C1) /= LVAL(C2)) R1 = 0.0  ! diagonal only, so far
+ 
+       else
+         R1 =  CLEB6(LVAL(C2)+Z,Z,LN+Z,Z,LVAL(C1)+Z,Z)
      X      * SQRT((TWO*LVAL(C2)+ONE)*(TWO*LN+ONE))
+       endif
+
        R2 = WIG6J(JVAL(C2),JTARG(C2),JTOTAL,JTARG(C1),JVAL(C1),JN)
      X	    * PHASE(NINT(JVAL(C2)+JN+JTARG(C1)+JTOTAL))
-        if(abs(R2)<1e-10) GO TO 17
-!      R3 =   WIG9J(LVAL(C1)+Z,  LN+Z,    LVAL(C2)+Z,
-!    X              JPROJ(C1),   SN,      JPROJ(C2),
-!    X              JVAL(C1),    JN,      JVAL(C2))
+
        R3 =   WIG9J(LVAL(C2)+Z,  JPROJ(C2), JVAL(C2),
      X              LN+Z,        SN,        JN,
      X              LVAL(C1)+Z,  JPROJ(C1), JVAL(C1))
@@ -1929,17 +1940,21 @@ C			Phase corrected, 27th August 1999
 !       R4 = sqrt((TWO*JPROJ(C1)+ONE)*(TWO*JTARG(C2)+ONE))   ! scaling by rme when SP=0 (no projectile change)
        R4 = sqrt((TWO*JPROJ(C1)+ONE))   ! scaling by rme of projectile
        R4 = R4*((TWO*JTARG(C1)+ONE)*(TWO*JTARG(C2)+ONE))**0.25  ! scaling (symmetric!) so monopoles are physical
+
        else if(IP3==3) then                                  ! scaling by rme when ST=0 (no target change)
        R4 = sqrt((TWO*JTARG(C1)+ONE))   ! scaling by rme of projectile
        R4 = R4*((TWO*JTARG(C1)+ONE)*(TWO*JTARG(C2)+ONE))**0.25  ! scaling (symmetric!) so monopoles are physical
+
        else
        R4 = 1.0
        endif
-       CH =  R1 * R2 * R3 * R4
-        IF(LISTCC.GE.1) 
-     x  WRITE(KO,123) IX,C1,C2,IB,IA,LN,SN,JN,KN,R1,R2,R3,R4,real(CH)
-123   format(' IX=',i5,': C1,C2,IB,IA,LT,ST,JT,KN =',5i6,2f5.1,i4,
-     X                  ' R1-4,CH =',5f8.4,f12.5)
+
+       CH =  R1 * R2 * R3 * R4 
+
+        IF(LISTCC.GE.1) WRITE(KO,123) IX,C1,C2,IB,IA,LN,SN,JN,KN,
+     X                                LOP,IDER,R1,R2,R3,R4,real(CH)
+123          format(' IX=',i5,': C1,C2,IB,IA,LT,ST,JT,KN,LOP,DER =',
+     X                 5i4,2f5.1,3i4, ' R1-4,CH =',5f8.4)
 	endif
             IF(ABS(CH).EQ.0.) GO TO 17
             IF(C1.NE.C2) ICH = MAX(ICH,C2)
@@ -4412,7 +4427,8 @@ c     IF(THETA.LT.0.01 .AND. IC.EQ.PEL .AND. IA.EQ.EXL) GO TO 260
 c258   FORMAT(1P,6E12.4)
 c258   FORMAT(6G12.5)
 c258   FORMAT(7G12.4)
-258   FORMAT(10G12.5)
+c258   FORMAT(10G12.5)
+258   FORMAT(10G12.4)
       if(CDCC/=0.and.IA>1) WRITE(57,265) (FAM(IAM)*BSIGN,IAM=1,MAM)
       IF(XSTRAC*LXSEC.LT.0) WRITE(LXSEC,*) THETA,XEL
 C---

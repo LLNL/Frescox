@@ -24,4 +24,4 @@
 #    modification are contained in the file COPYING.
 #
 #***********************************************************************
-FC=g95
+FC=gfortran -Wall -std=legacy

@@ -1822,7 +1822,7 @@ potentials then there will already be some couplings between
 excited states.
 
 \begin{description}
-\item[ICTO, ICFROM] ,KIND,  IP1,IP2,IP3,  P1,P2,  , IP4,IP5
+\item[ICTO, ICFROM] ,KIND,  IP1,IP2,IP3,  P1,P2,  IP4,IP5
 
 The coupling is from all the states in partition ICFROM
 to all the states in partition ICTO.
@@ -1875,6 +1875,8 @@ See section \ref{spintransfers} for more details.
 IP1\\
 ~~~  = 0 : local form factor
 \\   1 : non-local (two-dimensional) form factor
+\\   2 : derivative local form factor
+\\   3 : derivative non-local (two-dimensional) form factor (not implemented)
 
 
 
@@ -1901,28 +1903,30 @@ in section \ref{spintransfers} (except for the $1/\sqrt{4\pi}$ factor) for given
 The order of form factors in the file must agree with the order called by a double loop of channels, with the `to' channel number varying more rapidly.
 \\ --5 : call subroutine FNLREAD to read in non-local form factor for given {\tt IB,IA} final and initial excited states. 
 The order of form factors in the file must agree with the order called by a double loop of channels, with the `to' channel number varying more rapidly.
-
-
+\\
 
  P1,P2 : scaling for the real and imaginary parts (respectively).\\
 
    If IP3 $\geq$  0, read FROM FILE `INFILE'  the following lines
    (until a blank line):
 \begin{verbatim}
-     Format 16.2: I4, 3F8.4,          I4,  2F4.0,   2I4,   A35
-                NP ,HNP,RFS,FSCALE, LTR, PTR,TTR, IB,IA, COMMENT
-            for NP = number of radial points
-                HNP = step size
-                RFS = radius of first point
-                FSCALE = scaling factor to be applied
-                LTR = L-transfer
-                PTR = projectile spin transfer
-                TTR = target spin transfer
-                IB  = excited-state pair fed by coupling
-                IA  = excited-state pair feeding the coupling
-                COMMENT = comment for display in printout.
+Format 16.2: I4, 3F8.4,          I4,  2F4.0,   4I4,            4A8
+             NP ,HNP,RFS,FSCALE, LTR, PTR,TTR, IB,IA, LOP,DIR, COMMENT
+ for NP = number of radial points
+    HNP = step size
+    RFS = radius of first point
+    FSCALE = scaling factor to be applied
+    LTR = L-transfer
+    PTR = projectile spin transfer
+    TTR = target spin transfer
+    IB  = excited-state pair fed by coupling
+    IA  = excited-state pair feeding the coupling
+    LOP = 0 for angular momentum transfers, 1 for ang-mom. operator itself
+    DIR = 0 for radial scalar interaction, 1 for radial derivative
+    COMMENT = comment for display in printout.
 \end{verbatim}
-    ~~~~~~ then free format, repeatedly until sufficient data is read.\\
+If LOP, DIR cannot be read without error, they will be assumed both to be 0.\\
+ Then free format for the radial shapes, repeatedly until sufficient data is read.\\
 
 
  If IP1 =
@@ -2901,15 +2905,28 @@ Reduced matrix elements are defined everywhere in {\sc Fresco} by:
 % \hat{j}_f } < j_f || \hat{O}_j || j_i>
 \langle j_f m_f | \hat{O}_{\lambda \mu} | J_i m_i \rangle
  = (2j_f+1)^{-1/2} ~ \langle j_i m_i ,\lambda \mu | j_f m_f \rangle ~
-\langle j_f || \hat{O}_\lambda || j_i\rangle
+\langle j_f || \hat{O}_\lambda || j_i\rangle \ .
 \end{equation}
-\bigskip
-
-The  matrix elements of this operator are
+%\bigskip
+%
+The reduced matrix of a (LOP=0)  spherical harmonic  ${\bf S}(\ell) = Y_\ell (\hat{\bf R})$ is
 \begin{eqnarray}
-&& \langle(LI_p)J,I_t;J_TM_T | ~{\bf S}([\ell,s_p]s_t,s_t) ~| (L'I_p')J',I_t';J_TM_T \rangle
-   \nonumber \\
-& = &  (-1)^{s_t+J_T+J'+I_t}
+\langle L' \parallel Y_\ell  \parallel L \rangle = 
+\frac{\hat{\ell}\hat{L}}{\sqrt{4\pi}}  \langle L 0, \ell 0 | L' 0 \rangle   \label{transfer}
+\end{eqnarray}
+and the reduced matrix of a (LOP=1) vector angular momentum operator  ${\bf S}(\ell) = {\bf \ell}$ itself is, for $\lambda=1$ vectors, 
+\begin{eqnarray}
+\langle L' \parallel  \ell_\lambda  \parallel L \rangle = \delta_{LL'} ~ (-1)^\lambda \sqrt{2\lambda+1} ~ \sqrt{ L  (L+1) (2L+1) }  \ .
+  \label{operator}
+\end{eqnarray}
+A spin-orbit force, for example, must use LOP=1 with $\lambda=1$, since eq(\ref{transfer}) gives zero in this case for diagonal interactions.  
+This will use $\ell \equiv {\tt LTR} = 1$  and   $s_p \equiv {\tt PTR} = 1$ in the data file for the KIND=1 input.  There is not yet the coding for off-diagonal spin-orbit forces from e.g. deformations.
+
+The  matrix elements of the full coupling operator are
+\begin{eqnarray} 
+& \langle(LI_p)J,I_t;J_TM_T | ~{\bf S}([\ell,s_p]s_t,s_t) ~| (L'I_p')J',I_t';J_TM_T \rangle.
+\hspace{4cm}   \nonumber \\
+& =  (-1)^{s_t+J_T+J'+I_t}
    \left\{ \begin{array}{ccc}
     J'  & I_t' & J_T \\
     I_t & J    & s_t \\
@@ -2917,18 +2934,23 @@ The  matrix elements of this operator are
     \left\{ \begin{array}{ccc}
     L' & I_p' & J'  \\
     \ell & s_p & s_t  \\
-    L & I_p & J'  \\
-    \end{array} \right\}  ~
-     \frac{1}{\sqrt{4\pi}} ~ \hat{\ell} \hat{L} \langle L 0 \ \ell 0 | L'0 \rangle   \nonumber \\
-    &  &   \times \langle I_p||s_p||I_p'\rangle \langle I_t||s_t||I_t'\rangle
+    L & I_p & J  \\
+    \end{array} \right\}  ~   \langle L' \parallel {\bf S}(\ell)  \parallel L \rangle  
+     \nonumber \\
+   &  \times ~~ 
+       \langle I_p||s_p||I_p'\rangle ~~ \langle I_t||s_t||I_t'\rangle
 \end{eqnarray}
-In using KIND=1 couplings with IP3=0, the first line of these factors is generated automatically. \\
+In using KIND=1 couplings :
+
+With IP3=0, the first line of these factors is generated automatically. 
 The product of the
 reduced matrix elements for the intrinsic nuclear states,
 $\langle I_p||s_p||I_p'\rangle \langle I_t||s_t||I_t'\rangle$,
  has to be included explicitly in the factor FSCALE,
  or in the radial form factors.
-The radial shapes have to be read in from data files.\\
+These reduced matrix elements will be from eq(\ref{transfer}) or eq(\ref{operator}). 
+The radial shapes are to be read in from data files.
+\\
 
 With IP3=2, implying jlmP input for target-only couplings,
 \begin{itemize}

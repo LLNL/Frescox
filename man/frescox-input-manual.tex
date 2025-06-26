@@ -1982,14 +1982,14 @@ See Appendix V for more details.
 \hangindent 8ex\hangafter 1  IP1
 ~~~  = 0 : local form factor
 \\   1 : non-local (two-dimensional) form factor
-
+\\
 
 
 \hangindent 7ex\hangafter 1  IP2
 ~~~  = 0 : read in real values      (only if IP3 $\geq$ 0)
 \\   1 : read in imaginary values    (only if IP3 $\geq$ 0)
 \\   2 : read in complex values        (only if IP3 $\geq$ 0)
-
+\\
 
 
 \hangindent 8ex\hangafter 1  IP3
@@ -2008,8 +2008,11 @@ in Appendix V (except for the $1/\sqrt{4\pi}$ factor) for given {\tt IB,IA} fina
 The order of form factors in the file must agree with the order called by a double loop of channels, with the `to' channel number varying more rapidly.
 \\ --5 : call subroutine FNLREAD to read in non-local form factor for given {\tt IB,IA} final and initial excited states. 
 The order of form factors in the file must agree with the order called by a double loop of channels, with the `to' channel number varying more rapidly.
-
-
+\\
+\hangindent 8ex\hangafter 1 IP4 
+~~~  = 0 : spatial operator ${\bf S}(\ell) = Y_\ell (\hat{\bf R})$ (spherical harmonic)  (default)
+\\  1 : spatial operator ${\bf S}(\ell) = {\bf \ell}$ (angular momentum itself) 
+\\
 
 \hangindent 10ex\hangafter 1
  P1,P2 : scaling for the real and imaginary parts (respectively).\\
@@ -3153,21 +3156,26 @@ $ (-1)^\lambda (2\lambda+1)^{-1/2} $.
 
 \bigskip
 
-Reduced matrix elements are defined everywhere in {\sc Fresco} by:
-\begin{equation}
-% <j_f m_f | \hat{O}_{j m} | J_i m_i > = { <j_i m_i \ j m |\ j_f m_f > \over
-% \hat{j}_f } < j_f || \hat{O}_j || j_i>
-\langle j_f m_f | \hat{O}_{\lambda \mu} | J_i m_i \rangle
- = (2j_f+1)^{-1/2} ~ \langle j_i m_i ,\lambda \mu | j_f m_f \rangle ~
-\langle j_f || \hat{O}_\lambda || j_i\rangle
-\end{equation}
-\bigskip
-
-The  matrix elements of this operator are
+%\bigskip
+%
+The reduced matrix of a (LOP=0)  spherical harmonic  ${\bf S}(\ell) = Y_\ell (\hat{\bf R})$ is
 \begin{eqnarray}
-&& \langle(LI_p)J,I_t;J_TM_T | ~{\bf S}([\ell,s_p]s_t,s_t) ~| (L'I_p')J',I_t';J_TM_T \rangle
-   \nonumber \\
-& = &  (-1)^{s_t+J_T+J'+I_t}
+\langle L' \parallel Y_\ell  \parallel L \rangle = 
+\frac{\hat{\ell}\hat{L}}{\sqrt{4\pi}}  \langle L 0, \ell 0 | L' 0 \rangle   \label{transfer}
+\end{eqnarray}
+and the reduced matrix of a (LOP=1) vector angular momentum operator  ${\bf S}(\ell) = {\bf \ell}$ itself is, for $\lambda=1$ vectors, 
+\begin{eqnarray}
+\langle L' \parallel  \ell_\lambda  \parallel L \rangle = \delta_{LL'} ~ (-1)^\lambda \sqrt{2\lambda+1} ~ \sqrt{ L  (L+1) (2L+1) }  \ .
+  \label{operator}
+\end{eqnarray}
+A spin-orbit force, for example, must use LOP=1 with $\lambda=1$, since eq(\ref{transfer}) gives zero in this case for diagonal interactions.  
+This will use $\ell \equiv {\tt LTR} = 1$  and   $s_p \equiv {\tt PTR} = 1$ in the data file for the KIND=1 input.  There is not yet the coding for off-diagonal spin-orbit forces from e.g. deformations.\\
+
+The  matrix elements of the full coupling operator are
+\begin{eqnarray} 
+& \langle(LI_p)J,I_t;J_TM_T | ~{\bf S}([\ell,s_p]s_t,s_t) ~| (L'I_p')J',I_t';J_TM_T \rangle.
+\hspace{4cm}   \nonumber \\
+& =  (-1)^{s_t+J_T+J'+I_t}
    \left\{ \begin{array}{ccc}
     J'  & I_t' & J_T \\
     I_t & J    & s_t \\
@@ -3175,18 +3183,24 @@ The  matrix elements of this operator are
     \left\{ \begin{array}{ccc}
     L' & I_p' & J'  \\
     \ell & s_p & s_t  \\
-    L & I_p & J'  \\
-    \end{array} \right\}  ~
-     \frac{1}{\sqrt{4\pi}} ~ \hat{\ell} \hat{L} \langle L 0 \ \ell 0 | L'0 \rangle   \nonumber \\
-    &  &   \times \langle I_p||s_p||I_p'\rangle \langle I_t||s_t||I_t'\rangle
+    L & I_p & J  \\
+    \end{array} \right\}  ~   \langle L' \parallel {\bf S}(\ell)  \parallel L \rangle  
+     \nonumber \\
+   &  \times ~~ 
+       \langle I_p||s_p||I_p'\rangle ~~ \langle I_t||s_t||I_t'\rangle
 \end{eqnarray}
-In using KIND=1 couplings with IP3=0, the first line of these factors is generated automatically. \\
+In using KIND=1 couplings :
+
+With IP3=0, the first line of these factors is generated automatically. 
 The product of the
 reduced matrix elements for the intrinsic nuclear states,
 $\langle I_p||s_p||I_p'\rangle \langle I_t||s_t||I_t'\rangle$,
  has to be included explicitly in the factor FSCALE,
  or in the radial form factors.
-The radial shapes have to be read in using Cards 16.2.\\
+These reduced matrix elements will be from eq(\ref{transfer}) or eq(\ref{operator}). 
+The radial shapes are to be read in from data files.
+\\
+
 
 With IP3=2, implying jlmP input for target-only couplings,
 \begin{itemize}

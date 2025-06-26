@@ -1202,7 +1202,7 @@ C    ---------
      X       ,SPINTR(2,MPAIR),ICORE,ICOREPP,KICORE,KICOREP,JCOM,JCOMP
       REAL*8 CCFRAC(MXPEX,2,MXPEX)
       INTEGER CP,ICTO,ICFROM,KIND,QQ,MATRIX(6,MPAIR),fails,
-     &        QC,QCMIN,QCMAX,QCM,LA,QCINC,
+     &        QC,QCMIN,QCMAX,QCM,LA,QCINC,DER,
      &        LOCF,FPT(7,MAXQRN),NKP(2),FIL,USEDLOW(MSP),USEDHIGH(MSP),
      &        ICOR(MAXCPL,2),ICOM(MAXCPL,2),GPT(2,MAXQRN),FILE,NFI(3)
       INTEGER FPT2(8,MAXQRN2)
@@ -1294,13 +1294,20 @@ C
 	RFS = HNP
 	NP = nint(FNP)
        else
-        READ(KF,12,END=50) NP,HNP,RFS,FSCALE,LTR,PTR,TTR,IB,IA,COMM
-         write(6,12) NP,HNP,RFS,FSCALE,LTR,PTR,TTR,IB,IA,COMM
+        READ(KF,12,END=50,ERR=11) NP,HNP,RFS,FSCALE,LTR,PTR,TTR,
+     x                            IB,IA,LOP,DER,COMM
+        go to 15
+11      LOP = -1
+        DER = -1
+        READ(KF,121,END=50,ERR=11) NP,HNP,RFS,FSCALE,LTR,PTR,TTR,
+     x                             IB,IA,COMM
        endif
-	write(6,*) ' IP3 =',IP3
 119   FORMAT(3F8.4,I4,2F4.0,2I4,4A8)
-12    FORMAT(I4,3F8.4,I4,2F4.0,2I4,4A8)
-      IF(ABS(FSCALE).LT.1E-20) GO TO 50
+12    FORMAT(I4,3F8.4,I4,2F4.0,4I4,4A8)
+121   FORMAT(I4,3F8.4,I4,2F4.0,2I4,4A8)
+15    IF(ABS(FSCALE).LT.1E-20) GO TO 50
+!       write(6,12) NP,HNP,RFS,FSCALE,LTR,PTR,TTR,IB,IA,LOP,DER,COMM
+
       CALL CHECK(NP,MMX*MAXM,7)
       IF(IB.EQ.0) IB = 1
       IF(IA.EQ.0) IA = 1
@@ -1347,7 +1354,10 @@ C
       WRITE(KO,21) FSCALE,LTR,PTR,TTR,abs(IB),IA
 21    FORMAT( ' Scaled by',F9.4,' for L-transfer',I3,
      X',  projectile transfer',F4.1, ', and target transfer =',F5.1,
-     X   ' to excited pair ',I6,' from pair',I6/)
+     X   ' to excited pair ',I6,' from pair',I6)
+      WRITE(KO,210) LOP,DER
+210   FORMAT(' Angular momentum operator itself:',i4,
+     x       '   on wf derivative:',I4/)
       SN = JEX(1,ICTO,ABS(IB))
       SNP= JEX(1,ICFROM,IA)
         if(FAIL3(SN,SNP,PTR).or.FRAC(SN+SNP+PTR)) then
@@ -1413,6 +1423,8 @@ C
       MATRIX(2,NIX) = IA
       MATRIX(3,NIX) = LTR
       MATRIX(4,NIX) = NF
+      MATRIX(5,NIX) = LOP
+      MATRIX(6,NIX) = DER
       MEK(NIX) = 0.0
       SPINTR(1,NIX) = PTR
       SPINTR(2,NIX) = TTR
@@ -1428,9 +1440,9 @@ C
        if(TRENEG>=1.and.IP1==0) then
         call openif(89)
         WRITE(89,'(''#'',4i5)') NF,N,MR,3
-        WRITE(89,141) NIX,NF,IA,LTR,PTR,TTR,abs(IB)
+        WRITE(89,141) NIX,NF,IA,LTR,PTR,TTR,LOP,DER,abs(IB)
 141     FORMAT('# General multipole form factor ',i4,' at',I5,
-     &    ': <',I3,' /',I2,2f4.0,' /',I3,'>')
+     &    ': <',I3,' /',I2,2f4.0,2i4,' /',I3,'>')
         DO 143 I=1,N,MR
 143     WRITE(89,144) (I-1)*HTARG,FORMF(I,NF)
 144   FORMAT(1X,F8.3,1p,2g13.5)
