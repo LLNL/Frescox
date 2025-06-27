@@ -52,5 +52,5 @@ FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
 LINK = $(F90C) $(FFLAGS) -o frescom $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
 LINKS = $(F90C) $(FFLAGS) -o sfrescom $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
 # INST = install sfrescom frescom $(FRESCOXLIB)
-INST = cp  sfrescom frescom fr2nl $(HOME)/binw/x86_64 ; chmod a+rx $(HOME)/binw/x86_64/frescom $(HOME)/binw/x86_64/sfrescom 
+INST = cp  sfrescom frescom fr2nl $(HOME)/binw/`arch` ; chmod a+rx $(HOME)/binw/`arch`/frescom $(HOME)/binw/`arch`/sfrescom 
 RM = rm -f

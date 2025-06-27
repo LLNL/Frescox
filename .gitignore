@@ -3,6 +3,7 @@
 intel*
 i386
 gfortran*
+arm64*
 *.aux
 *.log
 *.synctex.gz

@@ -37,13 +37,13 @@
 \contentsline {paragraph}{For KIND = 5 or 6:}{31}{}%
 \contentsline {paragraph}{For KIND = 7:}{32}{}%
 \contentsline {paragraph}{For KIND = 8:}{32}{}%
-\contentsline {paragraph}{For KIND = 9:}{32}{}%
+\contentsline {paragraph}{For KIND = 9:}{33}{}%
 \contentsline {paragraph}{For KIND = 11:}{34}{}%
 \contentsline {subsubsection}{\numberline {3.6.1}\&CFP namelists}{34}{}%
-\contentsline {section}{\numberline {4}Input CDCC format}{35}{}%
-\contentsline {section}{\numberline {5}Input SFRESCOX format}{38}{}%
-\contentsline {subsection}{\numberline {5.1}Search file}{38}{}%
-\contentsline {subsection}{\numberline {5.2}Sfrescox commands}{41}{}%
-\contentsline {section}{\numberline {6}Test run: a CCBA calculation}{44}{}%
-\contentsline {section}{\numberline {7}File allocations}{45}{}%
-\contentsline {section}{\numberline {8}KIND=1 Spin Transfer Couplings}{47}{}%
+\contentsline {section}{\numberline {4}Input CDCC format}{36}{}%
+\contentsline {section}{\numberline {5}Input SFRESCOX format}{39}{}%
+\contentsline {subsection}{\numberline {5.1}Search file}{39}{}%
+\contentsline {subsection}{\numberline {5.2}Sfrescox commands}{42}{}%
+\contentsline {section}{\numberline {6}Test run: a CCBA calculation}{45}{}%
+\contentsline {section}{\numberline {7}File allocations}{46}{}%
+\contentsline {section}{\numberline {8}KIND=1 Spin Transfer Couplings}{48}{}%

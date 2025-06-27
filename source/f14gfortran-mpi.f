@@ -62,7 +62,7 @@ C  SUBROUTINES NEEDED ON SOME MACHINES, E.G. NOT CRAY
 
 	subroutine compiler(comp)
 	character*30 comp
-	comp = 'gfortran'
+	comp = 'gfortran-mpi'
 	call system('echo Running on `hostname`')
 	return
 	end

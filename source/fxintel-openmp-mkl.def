@@ -56,5 +56,5 @@ FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
 LINK = $(F90C) $(FFLAGS) -o frescoo $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
 LINKS = $(F90C) $(FFLAGS) -o sfrescoo $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
 # INST = install sfrescoo frescoo $(FRESCOXLIB)
-INST = cp  sfrescoo frescoo fr2nl $(HOME)/binw/x86_64 ; chmod a+rx $(HOME)/binw/x86_64/frescoo $(HOME)/binw/x86_64/fr2nl
+INST = cp  sfrescoo frescoo fr2nl $(HOME)/binw/`arch` ; chmod a+rx $(HOME)/binw/`arch`/frescoo $(HOME)/binw/`arch`/fr2nl
 RM = rm -f

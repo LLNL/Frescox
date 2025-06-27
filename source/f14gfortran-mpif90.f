@@ -26,26 +26,16 @@
 !    modification are contained in the file COPYING.
 !
 !***********************************************************************
-!      include 'nlmod-mpi2.f'
-C  SUBROUTINES NEEDED ON SOME MACHINES, E.G. NOT CRAY
       FUNCTION SECOND()
-      use mpi
       IMPLICIT REAL*8(A-H,O-Z)
       REAL*4 TARRAY(2),ETIME
-      SECOND = MPI_WTIME()
-C IBM-----------------
-C     CALL CPTIME(I)
-C     SECOND = I/100.0
 
-C SUN/ALPHA---------
-C      SECOND = ETIME(TARRAY)
-
-C F90 real-time clock (NOT cpu time!)
-!	call system_clock(ic,icr,icm)
-!	if(icm*icr.ne.0) SECOND = real(ic)/real(icr)
+      call cpu_time(etime)
+      second = etime
 
       RETURN
       END
+C  SUBROUTINES NEEDED ON SOME MACHINES, E.G. NOT CRAY
       FUNCTION ICAMAX(N,A,I)
 	use io
       COMPLEX*16 A(N)
@@ -57,12 +47,12 @@ C F90 real-time clock (NOT cpu time!)
       RETURN
       END
 	subroutine machine(mach)
-!                0 : Unknown
-!                1 : standard serial Fortran90
-!                2 : standard serial Fortran90 with BLAS
-!                3 : MPI with SGI SHMEM
-!                4 : MPI with RMA
-	mach = 4
+!                       0 : Unknown
+!                       1-7 (incl.) standard serial Fortran90 
+!                       8 : Intel iPSC/860 hypercube
+!                       9 : CRAY T3D (planned)
+!                       10 : other MIMD computer
+	mach = 1 ! =2 when linked to BLAS
 	return
 	end
 !				Change stdout recl on some machines
@@ -72,6 +62,7 @@ C F90 real-time clock (NOT cpu time!)
 
 	subroutine compiler(comp)
 	character*30 comp
-	comp = 'intel-op-mpi'
+	comp = 'gfortran-mpif90'
+	call system('echo Running on `hostname`')
 	return
 	end
