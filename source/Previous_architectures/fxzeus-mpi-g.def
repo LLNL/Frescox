@@ -24,12 +24,12 @@
 #    modification are contained in the file COPYING.
 #
 #***********************************************************************
-####            SUN Unix f90
-####		with no sun performance library
-FC = f90
+####         zeus with linux and intel ifort and mpi
+FC = mpiifort
 F90C = $(FC)
-FORM = -fixed -fpp
-PARALLEL = frxx15
+#FPP = fpp -B -C -fixed 
+FORM = -FI -cm -w -fpp -Dcorex
+PARALLEL = frxx45
 BINSI = frxx4.$(O) frxx7a.$(O)
 BINS = frxx0.$(O) $(BINSI)
 
@@ -38,34 +38,21 @@ BINS = frxx0.$(O) $(BINSI)
 #
 NAG = nagstub.$(O)
 
-BLAS =  lapack.o 
-# LBLAS =  -xlic_lib=sunperf
+#### Without blas library:
+#BLAS = lapack.$(O)
+LBLAS = -lacml -lacml_mv -L/usr/local/lib/acml/intel -Wl,--auto_rpath
+#LBLAS = -lmkl -lmkl_lapack64 -L/usr/local/intel/mkl/lib/em64t
+#LBLAS = -lm -lg2c -llapack
 
-FFLAGS = -fast
-FFLAGS1 = -O1 -dalign
-LFLAGS =
+FFLAGS  = -O3     -zero -g -mpif90base -DMPI
+FFLAGS1 = -O0     -zero -g -mpif90base -DMPI
+LFLAGS  =  -g -mpif90base -DMPI
 
-# FFLAGS = -O3
-# FFLAGS1 = -O1
-
-# 		DEBUGGING OPTIONS:
-##FFLAGS = -g  -dalign -fns -ftrap=%none
-#FFLAGS = -g  -dalign -fns
-##FFLAGS1 = -g  -dalign -fns -ftrap=%none
-FFLAGS = -g  -dalign -fnonstd -C
-FFLAGS1 = -g  -dalign -fnonstd -C
-LFLAGS =  -g -fnonstd -C
-
-# 		PROFILING OPTIONS:
-# FFLAGS = -fast -pg
-# FFLAGS1 = -O1 -dalign -pg
-# LFLAGS =  -pg
 O = o
 E =
-
 FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
-LINK = $(F90C) $(FFLAGS) -o frescox $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
-LINKS = $(F90C) $(FFLAGS) -o sfrescox $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
-INST = install sfrescox frescox $(FRESCOXLIB); install fr2nl $(FRESCOXLIB)
-# INST =
+LINK = $(F90C) $(FFLAGS) -o frescom $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
+LINKS = $(F90C) $(FFLAGS) -o sfrescom $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
+# INST = install sfrescoxg frescoxg $(FRESCOXLIB)
+INST = cp  zeus-mpi/sfrescom zeus-mpi/frescom $(HOME)/binw/zeus
 RM = rm -f

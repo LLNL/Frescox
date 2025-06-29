@@ -1541,6 +1541,7 @@ C    .......................................................
 C    SO NOW NAME(1,IC1) IS LIKE D & NAME(1,IC2) LIKE P IN (D,P) REACTION
       T =      HP(IC1)/HP(IC2)
 C                               T > 1
+         LCLA = .false.; MCLA = .false.
          MAXMV = 1
          DO 60 IN=1,NG(2)
          KN = GPT(2,IN)

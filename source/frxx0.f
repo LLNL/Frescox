@@ -1881,7 +1881,9 @@ c        kind = 3 & 4 :    s.p. inelastic form factors of multipole 'ik'
      X	    / '   required:',5i9/)
 	write(ko,1500) headng
  1500   format(/a120,/,'NAMELIST')
-        write (ko,fresco)
+        line = ''
+        write (ko,fresco, iomsg=line)
+!       write(6,*) line
 	call flush(ko)
 	pi = 4d0 * atan(1d0);r4pi = sqrt(0.25/pi)
 	acc8 = epsilon(acc8);fpmax = huge(acc8)**0.8d0

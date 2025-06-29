@@ -24,10 +24,11 @@
 #    modification are contained in the file COPYING.
 #
 #***********************************************************************
-####            SUN Unix f90:
-FC = f90
+####            IBM xlf90 eg on Mac
+FC = xlf90
 F90C = $(FC)
-FORM = -fixed -fpp
+##FORM = -fixed
+FORM = -qfixed=132
 PARALLEL = frxx15
 BINSI = frxx4.$(O) frxx7a.$(O)
 BINS = frxx0.$(O) $(BINSI)
@@ -37,26 +38,22 @@ BINS = frxx0.$(O) $(BINSI)
 #
 NAG = nagstub.$(O)
 
-BLAS =
-LBLAS = -xlic_lib=sunperf
+BLAS = lapack.$(O) 
+LBLAS =
 
-FFLAGS = -fast -stackvar
-FFLAGS1 = -O3 -dalign -stackvar
-
-# FFLAGS = -O3
-# FFLAGS1 = -O1
-
-FFLAGS = -g  -C
+#FFLAGS = -O
+ FFLAGS = -g -C
+#FFLAGS1 =
 FFLAGS1 = -g -C
 
-
-LFLAGS = -C
 O = o
 E =
 
 FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
-LINK = $(F90C) $(FFLAGS) -o frescox $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
-LINKS = $(F90C) $(FFLAGS) -o sfrescox $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
-INST = install sfrescox frescox $(FRESCOXLIB); install fr2nl $(FRESCOXLIB)
-# INST =
+##LINK = $(F90C) $(FFLAGS) -o frescoxg $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
+##LINKS = $(F90C) $(FFLAGS) -o sfrescoxg $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
+LINK = $(F90C) $(FORM) $(FFLAGS) -o frescoxg $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
+LINKS = $(F90C) $(FORM) $(FFLAGS) -o sfrescoxg $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
+INST =
+INST = install sfrescoxg frescoxg $(FRESCOXLIB); install fr2nl $(FRESCOXLIB)
 RM = rm -f

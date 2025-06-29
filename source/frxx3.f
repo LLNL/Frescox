@@ -442,6 +442,8 @@ C     IF(.NOT.(NLPL.GT.0.AND.NL.LE.1)) GO TO 100
       HIRS = 1.0/RINS
       HIRC = 1.0/RINC
       RDRPM = 1.0/((NLL-1)*RINTO)**2
+      VR0 = 0.; VR1 = 0.
+
       NW=2*NWW
       DO 1 N=1,NWW
       NN=NW-N+1

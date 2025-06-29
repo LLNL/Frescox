@@ -24,35 +24,35 @@
 #    modification are contained in the file COPYING.
 #
 #***********************************************************************
-####            Linux and  Gnu g95:
+####            Mac and  g95:
 FC = g95
 F90C = $(FC)
-FORM = -ffixed-form -cpp
+FORM =  -cpp -ffixed-line-length-132  -Dcorex
 PARALLEL = frxx15
 BINSI = frxx4.$(O) frxx7a.$(O)
 BINS = frxx0.$(O) $(BINSI)
-
 
 
 #### Without nag library:
 #
 NAG = nagstub.$(O)
 
-#### Without blas library:
-BLAS = lapack.$(O)
-LBLAS =
+#### With blas library
+BLAS = lapack.$(O) 
+#LBLAS = -llapack -lblas
 
-#FFLAGS = -O2
-#FFLAGS1 = -O1
-FFLAGS = -g -fbounds-check -ftrace=full 
-FFLAGS1 = $(FFLAGS)
-LFLAGS  =  -g -fbounds-check -ftrace=full 
+FFLAGS = -O2
+# FFLAGS = -g
+FFLAGS1 = -O1
+ FFLAGS  = -g -fbounds-check -ftrace=full
+ FFLAGS1 = -g -fbounds-check -ftrace=full
+
 
 O = o
 E =
 FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
-LINK = $(F90C) $(FFLAGS) -o frescox $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
-LINKS = $(F90C) $(FFLAGS) -o sfrescox $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
-# INST = install sfrescox frescox $(FRESCOXLIB)
-INST = cp  sfrescox frescox fr2nl $(HOME)/binw/`arch` ; chmod a+x $(HOME)/binw/`arch`/frescox $(HOME)/binw/`arch`/fr2nl
+LINK = $(F90C) $(FFLAGS) -o frescoxg $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
+LINKS = $(F90C) $(FFLAGS) -o sfrescoxg $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
+# INST = install sfrescoxg frescoxg $(FRESCOXLIB)
+INST = cp  sfrescoxg frescoxg fr2nl $(HOME)/binw/`arch` ; chmod a+rx $(HOME)/binw/`arch`/frescoxg $(HOME)/binw/`arch`/sfrescoxg 
 RM = rm -f
