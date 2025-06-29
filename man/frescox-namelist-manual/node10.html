@@ -88,7 +88,7 @@ excited states.
 <P>
 <DL>
 <DT><STRONG>ICTO, ICFROM</STRONG></DT>
-<DD>,KIND,  IP1,IP2,IP3,  P1,P2,  , IP4,IP5
+<DD>,KIND,  IP1,IP2,IP3,  P1,P2,  IP4,IP5
 
 <P>
 The coupling is from all the states in partition ICFROM
@@ -97,16 +97,19 @@ to all the states in partition ICTO.
 <P>
 Couplings in the reverse direction are also included unless
 ICTO <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.49ex; vertical-align: -0.19ex; " SRC="img14.svg"
+ STYLE=""
+ SRC="img14.svg"
  ALT="$&lt;$"></SPAN> 0, except for KINDs 1 &amp; 2 where finer control is allowed.
 
 <P>
 </DD>
 <DT><STRONG>JMAX, RMX</STRONG></DT>
 <DD>Couplings are only active for J <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.49ex; vertical-align: -0.19ex; " SRC="img14.svg"
+ STYLE=""
+ SRC="img14.svg"
  ALT="$&lt;$"></SPAN> JMAX and Radius <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.49ex; vertical-align: -0.19ex; " SRC="img14.svg"
+ STYLE=""
+ SRC="img14.svg"
  ALT="$&lt;$"></SPAN> RMX,
 (if JMAX=0, use JTMAX, and if RMX=0, use  RMATCH).
 
@@ -122,9 +125,11 @@ ICTO <SPAN CLASS="MATH"><IMG
 <BR>            = 4 : single-particle excitation of the target
 <BR>            = 5 : zero-range or LEA transfer with strength P1 and finite range radius P2 (in fm.)
 <BR>            = 6 : LEA transfer using <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.00ex; vertical-align: -0.46ex; " SRC="img199.svg"
+ STYLE=""
+ SRC="img199.svg"
  ALT="$D_0$"></SPAN>. &amp; <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.64ex; vertical-align: -0.10ex; " SRC="img198.svg"
+ STYLE=""
+ SRC="img198.svg"
  ALT="$D$"></SPAN> from bound states
 <BR>            = 7 : finite-range transfer
 <BR>            = 8 : non-orthogonality correction to a KIND 5,6,7 transfer
@@ -135,7 +140,8 @@ ICTO <SPAN CLASS="MATH"><IMG
 <BR>
 <P>
 After &amp;coupling namelists for KINDs 2,3,4,5,6,7 (&amp; 8 if IP2<SPAN CLASS="MATH"><IMG
- STYLE="height: 1.49ex; vertical-align: -0.19ex; " SRC="img1.svg"
+ STYLE=""
+ SRC="img1.svg"
  ALT="$&gt;$"></SPAN>0),
 spectroscopic amplitudes are read in by means of <B>&amp;cfp</B> namelists.
 These coupling types are those for which ICTO &amp; ICFROM are
@@ -171,20 +177,29 @@ IP1
 <BR>
 1 : non-local (two-dimensional) form factor
 
+<BR>
+2 : derivative local form factor
+
+<BR>
+3 : derivative non-local (two-dimensional) form factor (not implemented)
+
 <P>
 IP2
 <BR>&nbsp;&nbsp;&nbsp;  = 0 : read in real values      (only if IP3 <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.90ex; vertical-align: -0.39ex; " SRC="img2.svg"
+ STYLE=""
+ SRC="img2.svg"
  ALT="$\geq $"></SPAN> 0)
 
 <BR>
 1 : read in imaginary values    (only if IP3 <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.90ex; vertical-align: -0.39ex; " SRC="img2.svg"
+ STYLE=""
+ SRC="img2.svg"
  ALT="$\geq $"></SPAN> 0)
 
 <BR>
 2 : read in complex values        (only if IP3 <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.90ex; vertical-align: -0.39ex; " SRC="img2.svg"
+ STYLE=""
+ SRC="img2.svg"
  ALT="$\geq $"></SPAN> 0)
 
 <P>
@@ -201,52 +216,62 @@ IP3
 0 : no jlmP or CHEX2 scaling factors, only P1, P2 and FSCALE
 
 <BR>&ndash;1 : write out typical non-local grid <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.44ex; vertical-align: -0.66ex; " SRC="img200.svg"
+ STYLE=""
+ SRC="img200.svg"
  ALT="$(R,R')$"></SPAN> coordinates
 
 <BR>&ndash;2 : calculate non-local grid <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.44ex; vertical-align: -0.66ex; " SRC="img200.svg"
+ STYLE=""
+ SRC="img200.svg"
  ALT="$(R,R')$"></SPAN> coordinates,
 and call subroutine FFNL to calculate form factor.
 
 <BR>&ndash;3 : calculate non-local grid <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.44ex; vertical-align: -0.66ex; " SRC="img200.svg"
+ STYLE=""
+ SRC="img200.svg"
  ALT="$(R,R')$"></SPAN> coordinates,
 call subroutine FNLSET to calculate an initial form factor, and the call
 FNLCC for each pair of coupled partial waves, for L-dependent factors.
 
 <BR>&ndash;4 : call subroutine FNLREAD to read in non-local form factor, and multiplying it by the Racah-algebra factor
 in section <A HREF="node18.html#spintransfers">8</A> (except for the <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.77ex; vertical-align: -0.66ex; " SRC="img201.svg"
+ STYLE=""
+ SRC="img201.svg"
  ALT="$1/\sqrt{4\pi}$"></SPAN> factor) for given <SPAN style="font-family:monospace">IB,IA</SPAN> final and initial excited states. 
 The order of form factors in the file must agree with the order called by a double loop of channels, with the `to' channel number varying more rapidly.
 
 <BR>&ndash;5 : call subroutine FNLREAD to read in non-local form factor for given <SPAN style="font-family:monospace">IB,IA</SPAN> final and initial excited states. 
 The order of form factors in the file must agree with the order called by a double loop of channels, with the `to' channel number varying more rapidly.
 
+<BR>
 <P>
 P1,P2 : scaling for the real and imaginary parts (respectively).
 <BR>
 <P>
 If IP3 <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.90ex; vertical-align: -0.39ex; " SRC="img2.svg"
+ STYLE=""
+ SRC="img2.svg"
  ALT="$\geq $"></SPAN> 0, read FROM FILE `INFILE'  the following lines
    (until a blank line):
 <PRE>
-     Format 16.2: I4, 3F8.4,          I4,  2F4.0,   2I4,   A35
-                NP ,HNP,RFS,FSCALE, LTR, PTR,TTR, IB,IA, COMMENT
-            for NP = number of radial points
-                HNP = step size
-                RFS = radius of first point
-                FSCALE = scaling factor to be applied
-                LTR = L-transfer
-                PTR = projectile spin transfer
-                TTR = target spin transfer
-                IB  = excited-state pair fed by coupling
-                IA  = excited-state pair feeding the coupling
-                COMMENT = comment for display in printout.
+Format 16.2: I4, 3F8.4,          I4,  2F4.0,   4I4,            4A8
+             NP ,HNP,RFS,FSCALE, LTR, PTR,TTR, IB,IA, LOP,DIR, COMMENT
+ for NP = number of radial points
+    HNP = step size
+    RFS = radius of first point
+    FSCALE = scaling factor to be applied
+    LTR = L-transfer
+    PTR = projectile spin transfer
+    TTR = target spin transfer
+    IB  = excited-state pair fed by coupling
+    IA  = excited-state pair feeding the coupling
+    LOP = 0 for angular momentum transfers, 1 for ang-mom. operator itself
+    DIR = 0 for radial scalar interaction, 1 for radial derivative
+    COMMENT = comment for display in printout.
 </PRE>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; then free format, repeatedly until sufficient data is read.
+If LOP, DIR cannot be read without error, they will be assumed both to be 0.
+<BR>
+Then free format for the radial shapes, repeatedly until sufficient data is read.
 <BR>
 <P>
 If IP1 =
@@ -266,10 +291,12 @@ with default value RFS=HNP.
 For KIND = 2:</A>
 </H4>
 <SPAN ID="txt354">Electromagnetic one-photon couplings</SPAN> (for <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.89ex; vertical-align: -0.14ex; " SRC="img202.svg"
+ STYLE=""
+ SRC="img202.svg"
  ALT="$E\lambda$"></SPAN> and
 <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.89ex; vertical-align: -0.14ex; " SRC="img203.svg"
+ STYLE=""
+ SRC="img203.svg"
  ALT="$M\lambda$"></SPAN> processes).
 
 <P>
@@ -279,25 +306,31 @@ ICTO is the gamma partition and ICFROM the particle partition.
 
 <P>
 IP1 = <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.89ex; vertical-align: -0.14ex; " SRC="img204.svg"
+ STYLE=""
+ SRC="img204.svg"
  ALT="$\lambda$"></SPAN> : The multipolarity of the radiation.
  If <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.94ex; vertical-align: -0.19ex; " SRC="img205.svg"
+ STYLE=""
+ SRC="img205.svg"
  ALT="$\lambda &gt;$"></SPAN> 0, include all multipoles 1,...,<SPAN CLASS="MATH"><IMG
- STYLE="height: 1.89ex; vertical-align: -0.14ex; " SRC="img204.svg"
+ STYLE=""
+ SRC="img204.svg"
  ALT="$\lambda$"></SPAN>
 permitted by parity, whereas if IP1 <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.49ex; vertical-align: -0.19ex; " SRC="img14.svg"
+ STYLE=""
+ SRC="img14.svg"
  ALT="$&lt;$"></SPAN> 0, include only the multipole
 <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.89ex; vertical-align: -0.14ex; " SRC="img204.svg"
+ STYLE=""
+ SRC="img204.svg"
  ALT="$\lambda$"></SPAN> = abs(IP1).
 
 <P>
 IP2
 <BR>&nbsp;&nbsp;   = 0,4 : Calculates both electric and magnetic couplings
 (reads <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.62ex; vertical-align: -0.55ex; " SRC="img206.svg"
+ STYLE=""
+ SRC="img206.svg"
  ALT="$g$"></SPAN>-factors from P1&amp;P2)
 
 <BR>
@@ -305,7 +338,8 @@ IP2
 
 <BR>
 2 : for magnetic only (reads <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.62ex; vertical-align: -0.55ex; " SRC="img206.svg"
+ STYLE=""
+ SRC="img206.svg"
  ALT="$g$"></SPAN>-factors from P1&amp;P2)
 
 <BR>
@@ -316,11 +350,13 @@ IP3:  <EM>not implemented yet</EM>
 
 <P>
 P1  = projectile <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.62ex; vertical-align: -0.55ex; " SRC="img206.svg"
+ STYLE=""
+ SRC="img206.svg"
  ALT="$g$"></SPAN>-factor  
 <BR>
 P2  = target <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.62ex; vertical-align: -0.55ex; " SRC="img206.svg"
+ STYLE=""
+ SRC="img206.svg"
  ALT="$g$"></SPAN>-factor  
 <BR>
 <P>
@@ -349,10 +385,12 @@ generated to or from the ICFROM partition, only within ICTO partition.
 <P>
 IP1 = Q : The multipole order of the deforming potential due to
 the colliding nucleus. If Q <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.49ex; vertical-align: -0.19ex; " SRC="img1.svg"
+ STYLE=""
+ SRC="img1.svg"
  ALT="$&gt;$"></SPAN> 0, include all multipoles 0,1,...,Q
 permitted by parity, whereas if IP1 <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.49ex; vertical-align: -0.19ex; " SRC="img14.svg"
+ STYLE=""
+ SRC="img14.svg"
  ALT="$&lt;$"></SPAN> 0, include only the multipole
 Q = abs(IP1).
 
@@ -371,7 +409,8 @@ IP3
 <BR>= 0 or 10 : include all re-orientation terms
 
 <BR>= 1 or 11 : no re-orientation terms for <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.09ex; vertical-align: -0.51ex; " SRC="img207.svg"
+ STYLE=""
+ SRC="img207.svg"
  ALT="$Q &gt; 0$"></SPAN>
 
 <BR>= 2 or 12 : ONLY re-orientation terms
@@ -386,21 +425,24 @@ IP3
                 and  couplings to and from any bound state
 
 <BR><SPAN CLASS="MATH"><IMG
- STYLE="height: 1.90ex; vertical-align: -0.39ex; " SRC="img2.svg"
+ STYLE=""
+ SRC="img2.svg"
  ALT="$\geq $"></SPAN> 10      : read namelist <B>&amp;scale</B> for
 complex factors [QSCALE(Q), Q=max(0,-IP1):abs(IP1)]
 to scale the folded form factors for multipoles Q.
 
 <P>
 IP4 = <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.09ex; vertical-align: -0.51ex; " SRC="img208.svg"
+ STYLE=""
+ SRC="img208.svg"
  ALT="$Q_{\rm max}$"></SPAN>, the max deformed core potential multipole
 <BR>
 IP5 = <!-- MATH
  $\Lambda_{\rm max}$
  -->
 <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.07ex; vertical-align: -0.45ex; " SRC="img209.svg"
+ STYLE=""
+ SRC="img209.svg"
  ALT="$\Lambda_{\rm max}$"></SPAN>, the new multipole order for formfactor reduction.
 <BR>
 For these core-excitation (XCDCC) options, the code needs to be compiled with the -Dcorex option.
@@ -426,7 +468,8 @@ For KIND=5,
 
 <BR>
 P1 = <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.00ex; vertical-align: -0.46ex; " SRC="img199.svg"
+ STYLE=""
+ SRC="img199.svg"
  ALT="$D_0$"></SPAN> - ZR coupling constant
 
 <BR>
@@ -435,16 +478,19 @@ in LEA (in units of fm.)
 
 <P>
 For KIND=6, use <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.00ex; vertical-align: -0.46ex; " SRC="img199.svg"
+ STYLE=""
+ SRC="img199.svg"
  ALT="$D_0$"></SPAN> and FNRNG = <!-- MATH
  $\sqrt{(D/D_0 - 1)/k^2}$
  -->
 <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.94ex; vertical-align: -0.75ex; " SRC="img210.svg"
+ STYLE=""
+ SRC="img210.svg"
  ALT="$\sqrt{(D/D_0 - 1)/k^2}$"></SPAN>. from the projectile
 bound states.  With unbound states, or if IP3 = 1,
 use <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.00ex; vertical-align: -0.46ex; " SRC="img199.svg"
+ STYLE=""
+ SRC="img199.svg"
  ALT="$D_0$"></SPAN> from state, but FNRNG = P2
 from this namelist.
 
@@ -472,30 +518,37 @@ IP1 =
  (N.B. meaning of IP1 thus depends on ICTO &amp; ICFROM!!!)
 
 <BR><SPAN CLASS="MATH"><IMG
- STYLE="height: 1.90ex; vertical-align: -0.39ex; " SRC="img177.svg"
+ STYLE=""
+ SRC="img177.svg"
  ALT="$\le$"></SPAN> -1 : Use <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.76ex; vertical-align: -0.14ex; " SRC="img60.svg"
+ STYLE=""
+ SRC="img60.svg"
  ALT="$\theta$"></SPAN> quadrature from <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.76ex; vertical-align: -0.14ex; " SRC="img211.svg"
+ STYLE=""
+ SRC="img211.svg"
  ALT="$\theta = \pi$"></SPAN> down to <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.76ex; vertical-align: -0.14ex; " SRC="img212.svg"
+ STYLE=""
+ SRC="img212.svg"
  ALT="$\theta = 0$"></SPAN>.
  (Useful for finite-range knock-on with light projectiles)
 
 <BR><SPAN CLASS="MATH"><IMG
- STYLE="height: 1.90ex; vertical-align: -0.39ex; " SRC="img177.svg"
+ STYLE=""
+ SRC="img177.svg"
  ALT="$\le$"></SPAN> -3 : VCORE interaction:
 Use ONLY the core-core interaction potential
  (Useful for finite-range knock-on with light projectiles)
 
 <BR>
 2 : Surface transfer operator, on surface if <EM>final</EM> bound state <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.89ex; vertical-align: -0.10ex; " SRC="img213.svg"
+ STYLE=""
+ SRC="img213.svg"
  ALT="$r' =$"></SPAN> P1. IP2 and IP3 ignored.
 
 <BR>
 3 : Surface transfer operator, on surface if <EM>initial</EM> bound state <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.16ex; vertical-align: -0.10ex; " SRC="img214.svg"
+ STYLE=""
+ SRC="img214.svg"
  ALT="$r =$"></SPAN> P1. (Not yet implemented)
 
 <BR>
@@ -559,7 +612,8 @@ IP1 =
 IP2
 
 <BR><SPAN CLASS="MATH"><IMG
- STYLE="height: 1.49ex; vertical-align: -0.19ex; " SRC="img1.svg"
+ STYLE=""
+ SRC="img1.svg"
  ALT="$&gt;$"></SPAN> 0 : read in spectroscopic factors as &amp;cfp namelists
  (Only useful if you did NOT have a previous KIND 5, 6 or s7
 interaction, which would have needed the amplitudes then.)
@@ -568,19 +622,25 @@ interaction, which would have needed the amplitudes then.)
 
 <P>
 Note that you should <EM>either</EM> use KIND=7, <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.41ex; vertical-align: -0.66ex; " SRC="img21.svg"
+ STYLE=""
+ SRC="img21.svg"
  ALT="$\vert$"></SPAN>IP2<SPAN CLASS="MATH"><IMG
- STYLE="height: 2.41ex; vertical-align: -0.66ex; " SRC="img21.svg"
+ STYLE=""
+ SRC="img21.svg"
  ALT="$\vert$"></SPAN>=2,
 <EM>or</EM> use  KIND=7, <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.41ex; vertical-align: -0.66ex; " SRC="img21.svg"
+ STYLE=""
+ SRC="img21.svg"
  ALT="$\vert$"></SPAN>IP2<SPAN CLASS="MATH"><IMG
- STYLE="height: 2.41ex; vertical-align: -0.66ex; " SRC="img21.svg"
+ STYLE=""
+ SRC="img21.svg"
  ALT="$\vert$"></SPAN>=1  and a KIND=8.
 If you have KIND=7, <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.41ex; vertical-align: -0.66ex; " SRC="img21.svg"
+ STYLE=""
+ SRC="img21.svg"
  ALT="$\vert$"></SPAN>IP2<SPAN CLASS="MATH"><IMG
- STYLE="height: 2.41ex; vertical-align: -0.66ex; " SRC="img21.svg"
+ STYLE=""
+ SRC="img21.svg"
  ALT="$\vert$"></SPAN>=2 and a KIND=8 namelist, then this is
 double counting.
 
@@ -647,15 +707,19 @@ The reverse coupling is also included if REV is true.
 
 <P>
 If IB or IA is zero, match any state. If JVALi <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.49ex; vertical-align: -0.19ex; " SRC="img14.svg"
+ STYLE=""
+ SRC="img14.svg"
  ALT="$&lt;$"></SPAN>0, then match any JVALi. If PARITY=0, match any parity.
 If JTOTAL<SPAN CLASS="MATH"><IMG
- STYLE="height: 1.49ex; vertical-align: -0.19ex; " SRC="img14.svg"
+ STYLE=""
+ SRC="img14.svg"
  ALT="$&lt;$"></SPAN>0, match any JTOTAL.  If LVALi <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.49ex; vertical-align: -0.19ex; " SRC="img14.svg"
+ STYLE=""
+ SRC="img14.svg"
  ALT="$&lt;$"></SPAN> 0, then match any LVALi.
 If LVAL1=LVAL2<SPAN CLASS="MATH"><IMG
- STYLE="height: 1.49ex; vertical-align: -0.19ex; " SRC="img14.svg"
+ STYLE=""
+ SRC="img14.svg"
  ALT="$&lt;$"></SPAN>0, then require partial wave coupling to be diagonal for equal LVAL=&ndash;LVALi-1.
 
 <P>
@@ -677,34 +741,45 @@ For KIND = 11:</A>
 <SPAN ID="txt390">Projectile-valence non-orthogonality</SPAN>
 Construct non-orthogonality overlap, for use in R-matrix or Lagrange-mesh methods,  for the case when a 
 projectile <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.62ex; vertical-align: -0.55ex; " SRC="img215.svg"
+ STYLE=""
+ SRC="img215.svg"
  ALT="$p$"></SPAN> scattering on a target consisting of {core <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.19ex; vertical-align: -0.13ex; " SRC="img216.svg"
+ STYLE=""
+ SRC="img216.svg"
  ALT="$c$"></SPAN> + valence <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.20ex; vertical-align: -0.14ex; " SRC="img217.svg"
+ STYLE=""
+ SRC="img217.svg"
  ALT="$v$"></SPAN>} can be rearranged in another partition 
 to be projectile<SPAN CLASS="MATH"><IMG
- STYLE="height: 1.89ex; vertical-align: -0.10ex; " SRC="img218.svg"
+ STYLE=""
+ SRC="img218.svg"
  ALT="$'$"></SPAN> <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.20ex; vertical-align: -0.14ex; " SRC="img217.svg"
+ STYLE=""
+ SRC="img217.svg"
  ALT="$v$"></SPAN> scattering on a target<SPAN CLASS="MATH"><IMG
- STYLE="height: 1.89ex; vertical-align: -0.10ex; " SRC="img218.svg"
+ STYLE=""
+ SRC="img218.svg"
  ALT="$'$"></SPAN> consisting of {core <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.19ex; vertical-align: -0.13ex; " SRC="img216.svg"
+ STYLE=""
+ SRC="img216.svg"
  ALT="$c$"></SPAN> + valence <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.62ex; vertical-align: -0.55ex; " SRC="img215.svg"
+ STYLE=""
+ SRC="img215.svg"
  ALT="$p$"></SPAN>}.
 
 <P>
 ICTO, ICFROM are the two partitions with <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.62ex; vertical-align: -0.55ex; " SRC="img215.svg"
+ STYLE=""
+ SRC="img215.svg"
  ALT="$p$"></SPAN> and <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.20ex; vertical-align: -0.14ex; " SRC="img217.svg"
+ STYLE=""
+ SRC="img217.svg"
  ALT="$v$"></SPAN> as projectiles (either order).
 
 <P>
 IP1 = ICORE is the partition in which the target is the bare  core  <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.19ex; vertical-align: -0.13ex; " SRC="img216.svg"
+ STYLE=""
+ SRC="img216.svg"
  ALT="$c$"></SPAN>.
 
 <P>
@@ -712,12 +787,14 @@ Spectroscopic amplitudes need to have been defined for <!-- MATH
  $\langle c | c+v = t \rangle$
  -->
 <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.41ex; vertical-align: -0.66ex; " SRC="img219.svg"
+ STYLE=""
+ SRC="img219.svg"
  ALT="$\langle c \vert c+v = t \rangle$"></SPAN> and <!-- MATH
  $\langle c | c+p = t'  \rangle$
  -->
 <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.44ex; vertical-align: -0.66ex; " SRC="img220.svg"
+ STYLE=""
+ SRC="img220.svg"
  ALT="$\langle c \vert c+p = t' \rangle$"></SPAN>. 
 NO amplitudes in &amp;cfp namelists are to be read in after this coupling.
 
@@ -751,7 +828,8 @@ For transfers out of or into closed shells of N antisymmetrised nucleons,
 the spectroscopic factors will usually contain factors of N,
 so the spectroscopic amplitudes needed by FRESCOX will typically 
 need to already contain factors of <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.50ex; vertical-align: -0.41ex; " SRC="img221.svg"
+ STYLE=""
+ SRC="img221.svg"
  ALT="$\sqrt{N}$"></SPAN>.
 
 <BR>
@@ -767,7 +845,8 @@ the program, which is
  -->
 <TABLE CLASS="equation" WIDTH="100%">
 <TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
- STYLE="height: 2.42ex; vertical-align: -0.66ex; " SRC="img222.svg"
+ STYLE=""
+ SRC="img222.svg"
  ALT="$\displaystyle (\ell,s)j, J_{core}; J_{com}$"></TD>
 <TD>&nbsp;</TD>
 <TD>&nbsp;</TD>
@@ -775,16 +854,20 @@ the program, which is
 (<SPAN CLASS="arabic">12</SPAN>)</TD></TR>
 </TABLE></DIV>
 for binding a <SPAN CLASS="MATH"><IMG
- STYLE="height: 2.19ex; vertical-align: -0.57ex; " SRC="img223.svg"
+ STYLE=""
+ SRC="img223.svg"
  ALT="$\ell sj$"></SPAN> nucleon onto a core of spin <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.99ex; vertical-align: -0.45ex; " SRC="img151.svg"
+ STYLE=""
+ SRC="img151.svg"
  ALT="$J_{core}$"></SPAN> to form <SPAN CLASS="MATH"><IMG
- STYLE="height: 1.99ex; vertical-align: -0.45ex; " SRC="img152.svg"
+ STYLE=""
+ SRC="img152.svg"
  ALT="$J_{com}$"></SPAN>.
 
 <BR>
 If IN<SPAN CLASS="MATH"><IMG
- STYLE="height: 1.49ex; vertical-align: -0.19ex; " SRC="img14.svg"
+ STYLE=""
+ SRC="img14.svg"
  ALT="$&lt;$"></SPAN>0, use abs(IN) in this the last &amp;cfp namelist
 <BR>
 If IN=0, no more &amp;cfp namelists to be read.

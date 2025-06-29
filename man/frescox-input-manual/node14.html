@@ -1,0 +1,184 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2021 (Released January 1, 2021) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Appendix II : A Test Run (a CCBA calculation)</TITLE>
+<META NAME="description" CONTENT="Appendix II : A Test Run (a CCBA calculation)">
+<META NAME="keywords" CONTENT="frescox-input-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2021">
+
+<LINK REL="STYLESHEET" HREF="frescox-input-manual.css">
+
+<LINK REL="next" HREF="node15.html">
+<LINK REL="previous" HREF="node11.html">
+<LINK REL="next" HREF="node15.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node15.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="frescox-input-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node13.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node15.html">Appendix III : CDCC</A>
+<B> Up:</B> <A
+ HREF="frescox-input-manual.html">Fresco</A>
+<B> Previous:</B> <A
+ HREF="node13.html">Glossary of Indexing Variables</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00040000000000000000">
+Appendix II : A Test Run (a CCBA calculation)</A>
+</H1>
+
+<P><P>
+<BR>
+0ex1
+
+<P>
+The following test case calculates the inelastic and transfer cross sections
+for the reactions induced by <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img215.svg"
+ ALT="$^{19}$"></SPAN>F on <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img216.svg"
+ ALT="$^{28}$"></SPAN>Si at 60.0 MeV.   A Triton-Oxygen
+cluster structure is assumed for <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img215.svg"
+ ALT="$^{19}$"></SPAN>F, with the potentials for the triton
+and the oxygen core being folded together to give a diagonal Watanabe
+potential for elastic <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img215.svg"
+ ALT="$^{19}$"></SPAN>F scattering as well as the couplings to the
+inelastic 1/2+ state.
+These elastic and inelastic channels are coupled together to all orders,
+then a finite-range transfer step is calculated for the <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img217.svg"
+ ALT="$^{16}$"></SPAN>O + <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img218.svg"
+ ALT="$^{31}$"></SPAN>P channel,
+thus performing a CCBA calculation.
+
+<P>
+The Card types and line numbers added here only for convenience:
+<SPAN CLASS="SPAN"></SPAN><PRE>
+0   04 Test run: CCBA calculation 28Si(19F,16O) 31P, cluster form factors.
+1   05 0.10     25.0   0.50    0.100     3.
+2   06   0. 80.   .01   F F
+3   07 1 0.0   60.0    2.5
+4   08 0.00       1 2 0  30         0 0.0
+5   09  1 2 0 0 1 0 0 0 0 0
+6   10 19-F     19.0   9.0        2  28-SI   28.0    14.0    0.0
+7   11 0.5   +1 0.0       0          0.0   +1 0.0
+7   12 2.5   +1 0.2
+6   13 16-O     16.0   8.0        1  31-P    31.0    15.0    6.199
+7   14 0.0   +1 0.0       0          0.5   +1 0.0
+8   15
+9   16   1 0  0 28.0     19.0   1.2
+9   17   2 0  0 31.0     16.0   1.35
+10  18   2 1  0 31.20  1.45    0.47    15.10   1.270   0.310
+10  19   2 3  0  0.75  1.24    0.37
+9   20   3 0  0 19.0   0.0      1.25    0.65
+10  21   3 1  0 115.00 1.250   0.650
+10  22   3 3  0  6.30  1.25    0.650
+9   23   4 0  0 31.0   0.0      1.25    0.65
+10  24   4 1  0 99.000 1.250   0.650
+10  25   4 3  0  6.30  1.25    0.650
+9   26   5 0  0 28.0      0.0   1.2
+10  27   5 1  0 27.00  2.42452 0.460   11.66   2.14456 0.238
+9   28   6 0  0 28.0   0.0      1.25    0.65
+10  29   6 1  0 160.00 1.07    0.72    37.0    1.35    0.88
+10  30   6 3  0  10.0  0.85    0.850
+12  31 0
+13  32   1    1 2 1 0   4 0   0.5   0.5    3  0  11.73   1  0  0
+13  33   2    1 2 2 0   4 0   0.5   0.5    4  0  17.899  1  0  0
+13  34   3    1 2 1 0   3 2   0.5   2.5    3  0  11.53   1  0  0
+13  35  0
+15  36    2   1   7 0 0 0
+16  37        1   1   1   1  1.00
+16  38        1   2   1   3  1.00
+16  39       -2   1   1   2  1.00
+15  40    1   2   3 4 1 0  6.0     5.0
+16  41
+18  42    0   1   1
+19  43 60.0
+</PRE><SPAN CLASS="SPAN">
+</SPAN>
+<P>
+<SPAN CLASS="SPAN">
+A namelist version of the above input is:
+</SPAN><PRE>
+Test run: CCBA calculation 28Si(19F,16O) 31P, cluster form factors.
+NAMELIST
+ &amp;FRESCO
+ hcm=.10 rmatch=25 rintp=0.50  hnl=0.100  rnl=3.
+ jtmin=0. jtmax=80 absend=.01 kqmax=1  thmin=0. thmax=60.0  thinc=2.5
+ iter=1   iblock=2 nnu=30 chans=1  listcc=2 smats=1 elab=60.0
+ /
+ &amp;PARTITION
+   namep='19-F' massp=19. zp=9 nex=2 namet='28-SI' masst=28 zt=14 /
+ &amp;states Jp=0.5   Bandp=+1 Ep=0.0  cpot=1          Jt=0.0   bandt=+1 Et=0.0 /
+ &amp;states Jp=2.5   Bandp=+1 Ep=0.2 /
+
+ &amp;PARTITION
+   namep='16-O' massp=16. zp=8 nex=1  namet='31-P' masst=31 zt=15 qval=6.199/
+ &amp;states Jp=0.0   Bandp=+1 Ep=0.0  cpot=2          Jt=0.5   bandt=+1 Et=0.0 /
+ &amp;partition /
+
+ &amp;pot kp=1 At=28.0     Ap=19.0   Rc=1.2 /
+ &amp;pot kp=2 At=31.0     Ap=16.0   Rc=1.35
+           V=31.20  rv=1.45    av=0.47    W=15.10   rw=1.270   aw=0.310
+           Vso=0.75 rso=1.24    aso=0.37 /
+ &amp;pot kp=3 At=19.0     Rc=1.25    ac=0.65
+           V=115.00 rv=1.250   av=0.650 Vso=6.30 rso=1.25    aso=0.650 /
+ &amp;pot kp=4 At=31.0     Rc=1.25    ac=0.65 V=99.000 rv=1.250   av=0.650
+           Vso=6.30 rso=1.25    aso=0.650 /
+ &amp;pot kp=5 At=28.0     Rc=1.2
+           V=27.00  rv=2.42452 av=0.460   W=11.66   rw=2.14456 aw=0.238 /
+ &amp;pot kp=6 At=28.0     Rc=1.25    ac=0.65
+           V=160.00 rv=1.07    av=0.72    W=37.0    rw=1.35    aw=0.88
+           Vso=10.0 rso=0.85    aso=0.850 /
+ &amp;pot  /
+
+ &amp;OVERLAP kn1=1 ic1=1 ic2=2 in=1 kind=0 nn=4 l=0 sn=.5 j=0.5 kbpot=3 be=11.73 isc=1 /
+ &amp;OVERLAP kn1=2 ic1=1 ic2=2 in=2 kind=0 nn=4 l=0 sn=.5 j=0.5 kbpot=4 be=17.899 isc=1 /
+ &amp;OVERLAP kn1=3 ic1=1 ic2=2 in=1 kind=0 nn=3 l=2 sn=.5 j=2.5 kbpot=3 be=11.53 isc=1 /
+ &amp;overlap /
+
+ &amp;COUPLING icto=2   icfrom=1   kind=7 ip1=0 ip2=0 ip3=0/
+ &amp;cfp     in=1   ib=1   ia=1   kn=1  a=1.00 /
+ &amp;cfp     in=1   ib=2   ia=1   kn=3  a=1.00 /
+ &amp;cfp     in=2   ib=1   ia=1   kn=2  a=1.00 /
+ &amp;cfp     /
+
+ &amp;COUPLING icto=1   icfrom=2   kind=3 ip1=4 ip2=1 ip3=0 kfrag=6 kcore=5/
+</PRE><SPAN CLASS="SPAN">
+</SPAN>
+<P>
+<SPAN CLASS="SPAN">
+</SPAN>
+<BR><HR>
+
+</BODY>
+</HTML>

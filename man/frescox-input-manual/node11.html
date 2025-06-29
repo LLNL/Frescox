@@ -1,0 +1,474 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2021 (Released January 1, 2021) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Appendix I : FRESCO Namelist input in Fortran 90 version</TITLE>
+<META NAME="description" CONTENT="Appendix I : FRESCO Namelist input in Fortran 90 version">
+<META NAME="keywords" CONTENT="frescox-input-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2021">
+
+<LINK REL="STYLESHEET" HREF="frescox-input-manual.css">
+
+<LINK REL="next" HREF="node14.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="next" HREF="node12.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node12.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="frescox-input-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node10.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node12.html">Mass and charge constants</A>
+<B> Up:</B> <A
+ HREF="frescox-input-manual.html">Fresco</A>
+<B> Previous:</B> <A
+ HREF="node10.html">Additional Cards on Fortran</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00030000000000000000">
+Appendix I : FRESCO Namelist input in Fortran 90 version</A>
+</H1>
+
+<P><P>
+<BR>
+This Fortran 90 version does dynamic allocation of arrays of the
+required sizes, and therefore does not need the PARAMETER declarations
+which were a feature of previous FRESCO input specfications. The
+FRESCO executable can be now completely compiled in advance,
+and does not require other files (such as, previously, frxp0.f and
+libfrxp.a) to run.
+
+<P>
+
+<P><P>
+<BR>
+The f90 version reads card sequences as above, but can also read NAMELIST
+input, which is more flexible in allowable number formats.
+
+<P>
+After the usual Card 0 with title information, the line
+<PRE>
+Card 1:
+NAMELIST
+</PRE>
+indicates namelist input is to be assumed.
+A namelist group starts with a &amp;NAME and ends with a /. Upper and lower
+case names are treated as equivalent. For a sample input, see Appendix II.
+
+<P>
+If Card 1 begins with 'CDCC', then CDCC input is assumed, see Appendix III.
+
+<P>
+
+<P><P>
+<BR>
+A utility routine <SPAN style="font-family:monospace">fr2nl.f</SPAN> is provided which will convert card-image
+line input to the new namelist input.
+Please check that your input numbers have sufficient
+range and accuracy in the formats chosen for the namelists,
+and that `unitmass' is correct for your masses (see discussion  below).
+
+<P>
+
+<P><P>
+<BR>
+The first namelist read is &amp;FRESCO ... / :
+
+<P>
+
+<BR><B>&amp;FRESCO namelist</B>
+
+<P>
+This contains all the variables in Cards 1,1a, 2, 3, 4, 5 and  18 and 19:
+<BR><SPAN style="font-family:monospace">hcm, rmatch, rintp, hnl, rnl, centre, hnn, rnn, rmin,
+    rasym, accrcy, switch, ajswtch,  
+<BR>
+jtmin, jtmax, absend, dry, rela, nearfa, 
+<BR>
+kqmax, pp, thmin, thmax, thinc, koords, cutl, cutr, cutc, elpmax,
+<BR>
+nrbases, nrbmin, buttle, pralpha, pcon, meigs, rmatr, ebeta, 
+<BR>
+ips, it0, iter, iblock, pade, iso, nnu, maxl, minl, mtmin, epc, erange, dk, 
+<BR>
+inh, plane, smallchan, smallcoup, 
+<BR>
+chans, listcc, treneg, cdetr, smats, xstabl, nlpl, waves,
+   lampl, veff, kfus, wdisk, bpm, melfil, 
+<BR>
+pel, exl, lab, lin, lex, elab, nlab
+</SPAN>
+<BR>
+along with new variables <SPAN style="font-family:monospace">fatal, nosol, nangle, pset, jset, inh, psiren, tmp, masfil, unitmass, finec</SPAN>.
+
+<P>
+The new variables are:
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">fatal</SPAN> = T/F, if to stop or not when CRC iterations do not converge
+        (previously ITER<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN>0).
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">nosol</SPAN> = T/F, if not to solve the CRC equations, only construct couplings
+        (previously |ITER|<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN>IT0).
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">nangle</SPAN> = number of additional angle in ANGLE(:) for cross sections.
+ (setting of ANGLE(:) is not yet implemented)
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">pset</SPAN> = -1 or +1, to restrict parity of total CRC set (0 = no restriction)
+        (previously from CSET).
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">jset</SPAN> = number of CRC sets to calculate before stopping (0 = all sets)
+        (previously from CSET).
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">inh</SPAN> = 0 : zero-range transfer forms in intervals of HCM exactly
+        (previously a PARAMETER).
+
+<P>
+5ex1
+
+<P>
+5ex0
+    = 1 : stored in steps of HCM * (proj. core)/(proj. composite mass)
+<BR>    = 2 : stored in steps of HCM * (targ. core)/(targ. composite mass)
+<BR>
+So <SPAN style="font-family:monospace">inh</SPAN>=2 corrects for longitudinal recoil during transfers
+with zero-range projectiles.
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">psiren</SPAN> = T/F, to do simple renormalisation of channel wfs after Pade acceleration
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">tmp</SPAN> = name of directory for temporary files: `/tmp' or `.'
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">masfil</SPAN> = name of file of masses of isotopes (used to find masses and charges
+from the nuclide name, if read-in MASSes are zero).
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">unitmass</SPAN> = unit (in amu) for MASS values read in.
+Default = 1.000
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">finec</SPAN> = fine-structure constant: used to determine electrostatic <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img213.svg"
+ ALT="$e^2$"></SPAN>.
+Default = 137.03599d0.
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">jump,jbord</SPAN> = namelist input jump(1) is stored in jump(2) etc for the program.
+
+<P>
+
+<BR><B>&amp;PARTITION namelist</B>
+
+<P>
+This has the information on Card 6, but the names have been made unique:
+<PRE>
+namep    massp    zp      nex   pwf    namet    masst    zt      qval
+(char*8   real    real    int   logical char*8  real     real    real)
+</PRE>
+
+<P>
+
+<BR><B>&amp;STATES namelist</B>
+Card 7 information: repeat NEX times before the next <SPAN style="font-family:monospace">partition</SPAN> namelist:
+<PRE>
+Jp,  COPYp,BANDp ,Ep, KKp,Tp, CPOT,PWF,
+-------projectile state-----
+
+Jt,  COPYt,BANDt ,Et, KKt,Tt,  EXTRA,SPIFL,IGNORE
+-----target state-----------
+</PRE>
+Here, PTYp and PTYt are synonyms for BANDp and BANDt, respectively.
+<BR>
+KP has been renamed CPOT, and the band-head projections are KK*.
+
+<P>
+
+<P><P>
+<BR>
+End reading partitions with an empty namelist <SPAN style="font-family:monospace">&amp;partition /</SPAN> (Card 8)
+
+<P>
+
+<BR><B>&amp;POT namelist</B>
+This has the information on Cards 9 and 10.
+You can either input individual <SPAN style="font-family:monospace">&amp;pot</SPAN> namelists corresponding to each
+separate Card 9 and Card 10, or you can combine TYPEs 0,1,2,3, 10 and 11 potentials
+into a larger namelist.
+
+<P>
+
+<H5><A ID="SECTION00030001000000000000">
+Individual namelists:</A>
+</H5>
+
+<P>
+Variables <SPAN style="font-family:monospace">kp, type, shape, itt, p(1:7)</SPAN>, where <SPAN style="font-family:monospace">itt</SPAN> is a logical variable.
+The <SPAN style="font-family:monospace">p(1:7)</SPAN> is synonymous to the set <SPAN style="font-family:monospace">p1, p2, p3, p4, p5, p6, P7</SPAN>,
+and with the array <SPAN style="font-family:monospace">def(:)</SPAN>.
+
+<P>
+The equivalent to Card 9 is obtained if <SPAN style="font-family:monospace">shape</SPAN>=0,
+then  A#1=<SPAN style="font-family:monospace">p1</SPAN>, A#2=<SPAN style="font-family:monospace">p2</SPAN>,  R0C=<SPAN style="font-family:monospace">p3</SPAN>, and AC=<SPAN style="font-family:monospace">p4</SPAN>.
+
+<P>
+
+<H5><A ID="SECTION00030002000000000000">
+Combined namelists:</A>
+</H5>
+All the following variables may be set independently in the <SPAN style="font-family:monospace">&amp;pot</SPAN> namelist
+<PRE>
+kp    shape itt
+ap    at    rc    ac
+v     rv    av    w    rw   aw
+wd    wdr   wda   vd   vdr  vda
+vso   rso   aso   vsoi rsoi asoi
+defp(:)  deft(:)  mnet(:)  mnep(:)=0
+</PRE>
+so  A#1=<SPAN style="font-family:monospace">at</SPAN>,A#2=<SPAN style="font-family:monospace">ap</SPAN>,  R0C=<SPAN style="font-family:monospace">rc</SPAN>, and AC=<SPAN style="font-family:monospace">ac</SPAN> etc.
+All the potentials will have the same <SPAN style="font-family:monospace">shape</SPAN>.
+<BR>
+The <SPAN style="font-family:monospace">mnep(k)</SPAN> and <SPAN style="font-family:monospace">mnet(k)</SPAN> are the TYPE=11 and 12 Coulomb reduced matrix elements,
+and
+the <SPAN style="font-family:monospace">defp(k)</SPAN> and <SPAN style="font-family:monospace">deft(k)</SPAN> are the TYPE=11 and 12 nuclear deformation lengths.
+matrix elements, for multipolarity <SPAN style="font-family:monospace">k</SPAN>.
+<BR>
+This combined namelist is a pre-processing option only: the FRESCO output
+will be the same as from individual namelists.
+
+<P>
+
+<P><P>
+<BR>
+More complicated potentials  may be formed as usual by having multiple
+<SPAN style="font-family:monospace">&amp;pot</SPAN> namelists, but keep only <B>one</B> Coulomb potential by having
+<SPAN style="font-family:monospace">rc</SPAN> non-zero in only <B>one</B> of them.
+
+<P>
+
+<P><P>
+<BR>
+End reading potentials with an empty namelist <SPAN style="font-family:monospace">&amp;pot /</SPAN> (Card 12),
+or by having <SPAN style="font-family:monospace">kp</SPAN><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN>0 in the last namelist.
+
+<P>
+
+<H5><A ID="SECTION00030003000000000000">
+&amp;STEP namelist</A>
+</H5>
+
+<P>
+The information on Card 11 is give by a <SPAN style="font-family:monospace">&amp;step</SPAN> namelist with variables
+<SPAN style="font-family:monospace">IB,IA,k, STR</SPAN>.
+
+<P>
+
+<BR><B>&amp;OVERLAP namelist</B>
+This namelist has the standard variables of Card 13
+<SPAN style="font-family:monospace">kn1, kn2, ic1, ic2, in, kind, ch1, nn, l, lmax, sn,
+        ia, j, ib, kbpot, krpot, be, isc, ipc, nfl, nam, ampl</SPAN>
+with the same names.
+<BR>
+<P>
+
+<P><P>
+<BR>
+Extra variables <SPAN style="font-family:monospace">keep, dm,nk,er,e</SPAN> are also defined:
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">keep</SPAN> = T to <B>not</B> reset all the variables to zero before reading next namelist.
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">dm</SPAN> = mass of bound particle, if to override default difference.
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">nk</SPAN> = number of integration steps to form continuum bin.
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">er</SPAN> = range (width) of continuum bin (if to override <SPAN style="font-family:monospace">erange</SPAN>).
+That is, if er <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN> 0, then <B>ratio</B> of the upper and lower bin
+energies; and if er <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, then er is the  <B>difference</B> of the energies in MeV.
+
+<P>
+5ex1
+<SPAN style="font-family:monospace">e</SPAN> : If <SPAN style="font-family:monospace">e</SPAN><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img59.svg"
+ ALT="$\ne$"></SPAN>0, then replace <SPAN style="font-family:monospace">be <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img129.svg"
+ ALT="$\leftarrow$"></SPAN> - e</SPAN>.
+<BR>
+So <SPAN style="font-family:monospace">be</SPAN> = binding energy, and <SPAN style="font-family:monospace">e</SPAN> = eigenenergy.
+
+<P>
+0ex1
+
+<P>
+
+<BR><B>&amp;COUPLING namelist</B>
+
+<P>
+This gives the information previously on Card 15.
+<PRE>
+icto,icfrom,kind,ip1,ip2,ip3,p1,p2,jmax,rmax,kfrag,kcore
+int  int    int  int int int 4*real          int   int
+</PRE>
+If(<SPAN style="font-family:monospace">kfrag</SPAN><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN>0) <SPAN style="font-family:monospace">p1</SPAN> <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img129.svg"
+ ALT="$\leftarrow$"></SPAN> <SPAN style="font-family:monospace">kfrag</SPAN>, and
+if(<SPAN style="font-family:monospace">kcore</SPAN><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN>0) <SPAN style="font-family:monospace">p2</SPAN> <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img129.svg"
+ ALT="$\leftarrow$"></SPAN> <SPAN style="font-family:monospace">kcore</SPAN>.
+
+<P>
+
+<H5><A ID="SECTION00030004000000000000">
+&amp;INEL namelist</A>
+</H5>
+
+<P>
+The information on Card 16 is give by a <SPAN style="font-family:monospace">&amp;inel</SPAN> namelist with variables
+<SPAN style="font-family:monospace">ib,ia,k,no,kp,a</SPAN>.
+
+<P>
+
+<H5><A ID="SECTION00030005000000000000">
+&amp;CFP namelist</A>
+</H5>
+
+<P>
+The information on Card 17 is give by a <SPAN style="font-family:monospace">&amp;cfp</SPAN> namelist with variables
+<SPAN style="font-family:monospace">in,ib,ia,kn,a,keep</SPAN>.
+
+<P>
+
+<H5><A ID="SECTION00030006000000000000">
+&amp;SCALE namelist</A>
+</H5>
+
+<P>
+The information for Coupling KINDS 3 and 4  is given by a <SPAN style="font-family:monospace">&amp;scale</SPAN> namelist with
+variables <SPAN style="font-family:monospace">QSCALE(0:11)</SPAN>.
+
+<P>
+
+<P><P>
+<BR>
+<BR><HR>
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><UL>
+<LI><UL>
+<LI><UL>
+<LI><A ID="tex2html86"
+  HREF="node11.html#SECTION00030001000000000000">Individual namelists:</A>
+<LI><A ID="tex2html87"
+  HREF="node11.html#SECTION00030002000000000000">Combined namelists:</A>
+<LI><A ID="tex2html88"
+  HREF="node11.html#SECTION00030003000000000000">&amp;STEP namelist</A>
+<LI><A ID="tex2html89"
+  HREF="node11.html#SECTION00030004000000000000">&amp;INEL namelist</A>
+<LI><A ID="tex2html90"
+  HREF="node11.html#SECTION00030005000000000000">&amp;CFP namelist</A>
+<LI><A ID="tex2html91"
+  HREF="node11.html#SECTION00030006000000000000">&amp;SCALE namelist</A>
+</UL>
+</UL>
+</UL>
+<BR>
+<LI><A ID="tex2html92"
+  HREF="node12.html">Mass and charge constants</A>
+<LI><A ID="tex2html93"
+  HREF="node13.html">Glossary of Indexing Variables</A>
+</UL>
+<!--End of Table of Child-Links-->
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node12.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="frescox-input-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node10.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node12.html">Mass and charge constants</A>
+<B> Up:</B> <A
+ HREF="frescox-input-manual.html">Fresco</A>
+<B> Previous:</B> <A
+ HREF="node10.html">Additional Cards on Fortran</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

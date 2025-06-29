@@ -1,0 +1,341 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2021 (Released January 1, 2021) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Partitions and Excited States</TITLE>
+<META NAME="description" CONTENT="Partitions and Excited States">
+<META NAME="keywords" CONTENT="frescox-input-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2021">
+
+<LINK REL="STYLESHEET" HREF="frescox-input-manual.css">
+
+<LINK REL="next" HREF="node6.html">
+<LINK REL="previous" HREF="node4.html">
+<LINK REL="next" HREF="node6.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node6.html">Potentials</A>
+<B> Up:</B> <A
+ HREF="node2.html">Input Cards</A>
+<B> Previous:</B> <A
+ HREF="node4.html">Trace Control Variables:</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html75"
+  HREF="node5.html#SECTION00023100000000000000">Card 6</A>
+<LI><A ID="tex2html76"
+  HREF="node5.html#SECTION00023200000000000000">Card 7</A>
+<LI><A ID="tex2html77"
+  HREF="node5.html#SECTION00023300000000000000">Card A3</A>
+<LI><A ID="tex2html78"
+  HREF="node5.html#SECTION00023400000000000000">Card 8</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H2><A ID="SECTION00023000000000000000">
+Partitions and Excited States</A>
+</H2>
+
+<H3><A ID="SECTION00023100000000000000">
+Card 6</A>
+</H3>
+(for each partition IC=1,2,... repeat until a blank card 8) :
+<PRE>
+A8,      2F8.4,           I4,   L1,1X, A8,      2F8.4,           F8.4,
+NAME(1,),MASS(1,),ZZ(1,), NEX(),PWF(), NAME(2,),MASS(2,),ZZ(2,), QVAL(IC),
+
+name-----mass-----charge-              name-----mass----charge-  Qvalue   
+----projectile----------               ---------target--------
+
+I8,        F8.4, 2I4
+READSTATES,PRMAX,LPMAX1(IC),MIXPOT
+</PRE>
+
+<P>
+Abs(NEX) = number of pairs of excitations of projectile and/or target,
+
+<P>
+PWF = T, if acceleration of long-range Coulomb couplings to be
+performed when card 1a present. Default is T.
+
+<P>
+QVAL = <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img65.svg"
+ ALT="$Q$"></SPAN> value of this partition,
+relative to the <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img65.svg"
+ ALT="$Q$"></SPAN>-values of the other partitions, for Ep = Et = 0.
+
+<P>
+If NEX <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, then cross sections for this partition are not printed.
+
+<P>
+If PRMAX <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img59.svg"
+ ALT="$\ne$"></SPAN> 0, then use PRMAX for matching radius in this partition
+
+<P>
+If LPMAX1<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN>0, then LPMAX=LPMAX1-1 is the maximum partial wave in this partition.
+Applied for incident energies ELAB below ELPMAX.
+
+<P>
+MIXPOT governs the couplings that are generated (in this partition) between levels that have <EM>different</EM> KP potential indices.
+It does not affect any couplings when the KP index values are identical.
+8ex1
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img66.svg"
+ ALT="$\leq$"></SPAN> 0: <EM>no</EM> couplings (default)
+
+<BR>= 1:  couplings only to or from the first state in that partition
+
+<BR>= 2:  couplings only according to the KP value of the destination level
+
+<BR>= 3:  <EM>all</EM> couplings produced by either KP value.
+
+<P>
+
+<H3><A ID="SECTION00023200000000000000">
+Card 7</A>
+</H3>
+(repeat NEX times before the next Card 6) :
+<PRE>
+F4.1,I2,   I2,    F8.4,2F4.1, I4,1X,A1
+Jp,  COPYp,BANDp ,Ep,  KKp,Tp,KP,PWF,
+-------projectile state-----
+
+F4.1,I2,   I2,    F8.4,2F4.1,  2L2,         2I4
+Jt,  COPYt,BANDt ,Et,  KKt,Tt, EXCH,IGNORE, INFAM,OUTFAM
+-----target state-----------
+</PRE>
+
+<P>
+0ex
+This card is repeated NEX times, IA=1,NEX
+
+<P>
+7ex1
+For both projectile (p) and target (t), the following are read :
+
+<P>
+7ex1
+J     = spin of the state
+
+<P>
+7ex1
+BAND  <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN> 0 for positive parity state, and <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0 for negative parity.
+The value of BAND defines the rotational band : all states of the
+same BAND may be coupled by rotational mechanisms.
+
+<P>
+7ex1
+If COPY is positive, then this level is a copy of a
+previous level number (COPY <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> IA) in the same partition.
+
+<P>
+7ex1
+If COPYp <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, then this level is an exchange copy of
+<EM>the same IA numbered</EM>
+level in the previous partition abs(COPY).
+That is, a copy with projectile and target nuclei exchanged.
+
+<P>
+7ex1
+If COPYt = -IC, then the target state is an exchanged projectile.
+If that state has spin zero, then only even partial waves are allowed.
+
+<P>
+7ex1
+COPYs are needed to define identical states of one nucleus in different
+pairings IA.   Spectroscopic amplitudes (see Cards 17) should be defined
+for only the original `copied' level.
+
+<P>
+7ex1
+E     = excitation energy of state relative to ground state.
+
+<P>
+7ex1
+KK     = K of rotation band containing this state.
+(If zero, use spin of first level in this band.)
+
+<P>
+7ex1
+T     = isospin of this state (if zero, use INT((mass-2*charge)/2))
+(The T value is not used by this version of FRESCO).
+
+<P>
+7ex1
+KP = index of optical potential for this pair of excited states.
+
+<P>
+7ex1
+PWF= T to use CRCWFN  coupled Coulomb wave functions in this
+partition (see Cards 1,1a)
+
+<BR>
+If zero, use as default KP = IC, the number of this partition.
+
+<P>
+10ex1
+If EXCH = T calculate and write out all cross sections and amplitudes
+for <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img67.svg"
+ ALT="$180-\theta$"></SPAN>.
+
+<P>
+10ex1
+If IGNORE = T, ignore the convergence of this  state pair
+(see IPS discussion on Card 4).
+
+<P>
+10ex1
+If INFAM <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img59.svg"
+ ALT="$\ne$"></SPAN> 0,  read in complex amplitudes later to add to
+calculated scattering amplitudes (see cards A3).
+(If INFAM <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, read in <SPAN ID="txt121">only one</SPAN> amplitude (non spin-flip)
+for each scattering angle.)
+
+<P>
+10ex1
+If OUTFAM <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img59.svg"
+ ALT="$\ne$"></SPAN> 0,  write out complex amplitudes later to add to
+calculated scattering amplitudes (see cards A3).
+(If OUTFAM <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, write out <SPAN ID="txt122">only one</SPAN> amplitude (non spin-flip)
+for each scattering angle: the average of diagonal amplitudes.)
+
+<P>
+
+<H3><A ID="SECTION00023300000000000000">
+Card A3</A>
+</H3>
+
+<P>
+Cards A3 :  Extra scattering amplitudes &ndash;
+
+<P><P>
+<BR>
+
+<P>
+10ex1
+If INFAM on a Card 7 is non-zero, then read on file <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img23.svg"
+ ALT="$\vert$"></SPAN>INFAM<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img23.svg"
+ ALT="$\vert$"></SPAN>, on a new card
+for each scattering angle, some complex amplitudes <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img68.svg"
+ ALT="$f(\theta)$"></SPAN>,
+to be added to those calculated by the program before the cross
+sections are calculated.
+
+<P>
+10ex1
+If INFAM <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, then only
+<EM>one</EM> f(external) is read, and this is used for all the diagonal
+f(mM:mM), the off-diagonal values being zero.
+
+<P>
+10ex1
+If INFAM <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN> 0, then all the <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img69.svg"
+ ALT="$f(m'M':mM)$"></SPAN> are read in.
+
+<H3><A ID="SECTION00023400000000000000">
+Card 8</A>
+</H3>
+<PRE>
+Blank card for end of reading partitions.
+</PRE>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node6.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node4.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node6.html">Potentials</A>
+<B> Up:</B> <A
+ HREF="node2.html">Input Cards</A>
+<B> Previous:</B> <A
+ HREF="node4.html">Trace Control Variables:</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

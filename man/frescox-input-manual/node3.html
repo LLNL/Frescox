@@ -1,0 +1,718 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2021 (Released January 1, 2021) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Definition Cards</TITLE>
+<META NAME="description" CONTENT="Definition Cards">
+<META NAME="keywords" CONTENT="frescox-input-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2021">
+
+<LINK REL="STYLESHEET" HREF="frescox-input-manual.css">
+
+<LINK REL="next" HREF="node4.html">
+<LINK REL="previous" HREF="node2.html">
+<LINK REL="next" HREF="node4.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node4.html">Trace Control Variables:</A>
+<B> Up:</B> <A
+ HREF="node2.html">Input Cards</A>
+<B> Previous:</B> <A
+ HREF="node2.html">Input Cards</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html67"
+  HREF="node3.html#SECTION00021100000000000000">Card 0</A>
+<LI><A ID="tex2html68"
+  HREF="node3.html#SECTION00021200000000000000">Card 1</A>
+<LI><A ID="tex2html69"
+  HREF="node3.html#SECTION00021300000000000000">Card 1a</A>
+<LI><A ID="tex2html70"
+  HREF="node3.html#SECTION00021400000000000000">Card 2</A>
+<LI><A ID="tex2html71"
+  HREF="node3.html#SECTION00021500000000000000">Card 3</A>
+<LI><A ID="tex2html72"
+  HREF="node3.html#SECTION00021600000000000000">Card 4</A>
+<LI><A ID="tex2html73"
+  HREF="node3.html#SECTION00021700000000000000">Card 4.5</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H2><A ID="SECTION00021000000000000000">
+Definition Cards</A>
+</H2>
+
+<H3><A ID="SECTION00021100000000000000">
+Card 0</A>
+</H3>
+<PRE>
+A120      HEADNG
+</PRE>
+
+<P></P>
+
+<P>
+Heading to describe the nature of this run, for user's information only.
+
+<P><P>
+<BR>
+
+<P>
+
+<H3><A ID="SECTION00021200000000000000">
+Card 1</A>
+</H3>
+<PRE>
+10F8.4  HCM,RMATCH,RINTP,HNL,RNL,CENTRE,HNN,RNN,RMIN,RSP
+</PRE>
+
+<P>
+Wave functions calculated at intervals of HCM up to abs(RMATCH).
+
+<P>
+If RMATCH <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, then read Card 1a for  coupled Coulomb wave functions.
+
+<P>
+5ex1
+Non-local kernels <!-- MATH
+ $K_{fi}'(R_{f},D_{fi})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img6.svg"
+ ALT="$K_{fi}'(R_{f},D_{fi})$"></SPAN> calculated at <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img13.svg"
+ ALT="$R_f$"></SPAN> intervals of RINTP,
+and for a non-local (<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img5.svg"
+ ALT="$D_{fi}$"></SPAN>) range of RNL centred at CENTRE in steps of HNL.
+RMATCH and RINTP are rounded to multiples of HCM, and HNL is rounded either to
+a multiple or a sub-multiple of HCM.
+
+<P>
+5ex1
+For two-nucleon transfers, the nucleon-nucleon distance is
+discretised from RMIN to RNN in a multiple of 6 Gaussian quadrature
+points to give step size approx. HNN.
+
+<P>
+5ex1
+When folding single-particle states (bound states or continuum bins) with
+KIND=3 or 4 couplings, the state radii are limited to RSP.
+
+<P><P>
+<BR>
+
+<P>
+=0em
+
+<H3><A ID="SECTION00021300000000000000">
+Card 1a</A>
+</H3>
+<PRE>
+2F8.6, 2F8.2    RASYM,ACCUR,SWITCH,AJSWITCH
+</PRE>
+
+<P>
+7ex1
+Use coupled Coulomb wave functions from CRCWFN out to asymptotic radius RASYM from
+inner radius abs(RMATCH) for those partitions in which PWF is TRUE.
+
+<BR>
+If RASYM <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, then determine the outer radius in order that classical
+Coulomb trajectories reach an angle abs(RASYM) degrees.
+
+<P>
+7ex1
+ACCUR is an accuracy parameter controlling the piecewise step length.
+Default is 0.01: smaller values give greater accuracy.
+
+<P>
+7ex1
+SWITCH is the radius at which to switch from Airy functions
+to sines and cosines in piecewise method.  Default is 1000 fm.
+
+<P>
+7ex1
+AJSWITCH - default is 0.0
+
+<BR>
+Normally the Coupled Coulomb wfns are matched to zero
+and the Numerov integration is omitted,
+when the Coulomb distance of closest approach is more than 4.5 fm outside
+abs(RMATCH) (or  the  -CUTR distance if   CUTR negative).
+This is only allowed when <!-- MATH
+ $J_{total} \geq$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img14.svg"
+ ALT="$J_{total} \geq $"></SPAN>AJSWITCH.
+
+<P><P>
+<BR>
+
+<P>
+
+<H3><A ID="SECTION00021400000000000000">
+Card 2</A>
+</H3>
+<PRE>
+2F4.0,      F8.4,  L2, I2,   A2,   I2     4(I4,F4.0)
+JTMIN,JTMAX,ABSEND,DRY,CSET, RELA, NEARFA,(JUMP(i),JBORD(i),i=2,5)
+</PRE>
+
+<P>
+5ex1
+Calculate coupled-channels sets with total J in the interval
+max(0,JTMIN) <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> J  <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> JTMAX,
+stopping sooner if the absorbtion from the elastic channel
+is less than ABSEND millibarns of three successive J/parity sets.
+(If ABSEND <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, this takes the full J interval.)
+
+<BR>
+If JTMIN <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, then for J <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> abs(JTMIN) include only the incoming channel
+in the calculations, ignoring tranfers and excited states.
+This is needed if the elastic scattering cross sections are to be given
+correctly.
+
+<P>
+5ex1
+DRY is normally F (false), but if T (true) the code does a `dry run'
+to check that all arrays are of sufficient size.
+All coupled channel sets are generated, but only the elastic
+channels should be non-zero.
+
+<P>
+5ex1
+CSET = number of coupled-channels sets to be solved, for each energy
+on Card 19.  CSET = 0, blank or F, for no special limit.
+<BR>
+If CSET = `P', include only positive parity coupled channels sets,
+<BR>
+If CSET = `M', include only negative parity coupled channels sets.
+<BR>
+If CSET = `N', include only natural parity coupled channels sets,
+<BR>
+If CSET = `U', include only unnatural parity coupled channels sets.
+<BR>
+Here, `natural parity' is defined as parity = (&ndash;1)**nint(JTOTAL+1).
+
+<P>
+5ex1
+RELA ne `', use relativistic kinematics for the incident projectile:
+<BR>
+If RELA contains `a', use Ingemarsson eq(16) for kinematics
+<BR>
+If RELA contains `b', use Ingemarsson eq(17) for kinematics
+<BR>
+If RELA contains `h', use kinematics of G.Hale (LANL), EDA code
+<BR>
+If RELA contains `f', use Ingemarsson eq(19) to scale potentials
+<BR>
+If RELA contains `g', use Ingemarsson eq(21) to scale potentials
+<BR>
+If RELA contains `r', get reduced mass from ratios of total energies
+
+<P>
+8ex1  NEARFA
+
+<BR>
+mod(NEARFA,10) = 0 or 1 for the usual cross sections,
+
+<BR>= 2 or -2 for printing `far side' cross sections too,
+
+<BR>= 3 or -3 for printing far and near side cross sections too.
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN> 0 for printing far &amp; near-sides for elastic channel only.
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0 for printing far &amp; near-sides for all channels.
+<BR>
+If abs(NEARFA)<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN>10, also split the Coulomb amplitude according to Cha, CPC 176 (2007) 318.
+
+<P>
+5ex1
+JUMP(i),JBORD(i) : Calculate coupled-channels sets not for every J
+value, but at intervals of JUMP(i) for J <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> JBORD(i), for i=1,5.
+(The program sets JUMP(1)=1 &amp; JBORD(1)=JTMIN, to give no J jumping initially).
+The omitted J values are provided by interpolation on the scattering
+amplitudes <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img17.svg"
+ ALT="$A(m'M':mM; L)$"></SPAN> prior to calculating cross sections.
+
+<P>
+
+<H3><A ID="SECTION00021500000000000000">
+Card 3</A>
+</H3>
+<PRE>
+2I1,F6.4,F8.4,F7.4,I1,3F8.4  KQMAX,PP,THMIN,THMAX,THINC,KOORDS,CUTL,CUTR,CUTC
+</PRE>
+
+<P>
+5ex1
+Give cross sections (and tensor analysing powers up to rank K = KQMAX)
+for centre-of-mass scattering angle from THMIN
+to abs(THMAX) in steps of THINC.
+<BR>
+Elastic channels normally output the ratio to Rutherford, unless THMAX <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img18.svg"
+ ALT="$&lt; 0$"></SPAN>.
+<BR>
+Calculate analysing powers/polarisations for projectile (PP=0 or blank),
+target (PP=1), ejectile (PP=2) or residual nucleus (PP=3).
+PP=4 gives projectile (PP=0) analysing powers, along with Kyy results.
+
+<P>
+5ex1
+KOORDS determines the coordinate systems used for the analysing powers:
+
+<P>
+8ex1  KOORDS
+
+<BR>= 0 : Madison coordinates (default)
+
+<BR>= 1 : Madison + Transverse
+
+<BR>= 2 : Madison + Transverse + Recoil
+
+<BR>= 3 : Madison + Transverse + Recoil + Hooton-Johnson
+
+<P>
+5ex1
+CUTL = radial points per L (angular momentum of partial wave)
+of lower radial cutoff when integrating the radial equations. Default = -1.6
+<BR>
+When CUTL<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN>0, use <!-- MATH
+ $\ell=J_{total}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img19.svg"
+ ALT="$\ell=J_{total}$"></SPAN> (total angular momentum of CC set),
+<BR>
+When CUTL<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN>0, use <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img20.svg"
+ ALT="$\ell=L_{in}$"></SPAN> (orbital angular momentum of incoming partial wave).
+<BR>
+Using  CUTL<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN>0 gives more accurate analysing powers.
+
+<P>
+5ex1
+CUTR = lower radial cutoff (fm).  Use max(CUTL*<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img21.svg"
+ ALT="$\ell$"></SPAN>*HCM,CUTR).
+<BR>
+If CUTR <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, put cutoff at point-Coulomb turning point <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img22.svg"
+ ALT="$- \vert$"></SPAN>CUTR<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img23.svg"
+ ALT="$\vert$"></SPAN>.
+
+<P>
+5ex1
+CUTC = lower radial cutoff (in fm) for off-diagonal couplings.
+
+<P><P>
+<BR>
+
+<P>
+
+<H3><A ID="SECTION00021600000000000000">
+Card 4</A>
+</H3>
+<PRE>
+F6.4,I2, I4,  I2,    I2,  A1,  I3, 2I4        I2,    F6.4
+IPS, IT0,ITER,IBLOCK,PADE,ISO, NNU,MAXL,MINL, MTMIN, EPC,
+
+2F8.4     2I2,      2f8.6,              i4,     i2,     l1,    F8.4
+ERANGE,DK,INH,plane,smallchan,smallcoup,NUMNODE,NTHREAD,CCREAL,ELPMAX
+</PRE>
+
+<P>
+5ex1
+Solve the coupled channels equations by at least IT0 iterations, and
+up to ITER iterations.
+Stop sooner if the absolute differences between successive S-matrix
+elements (scaled by (2J+1)/(2.JTMAX+1)) are less than IPS percent.
+(Excited state pairs with IGNORE set on Card 7
+are not counted against IPS).
+
+<P>
+5ex1
+Putting IT0=ITER zero solves only the elastic channel (along with the
+IBLOCK channels: see below).
+Putting IT0=ITER = 1 or 2 etc. gives 1 or 2-step DWBA.
+
+<BR>
+Normally, a run is terminated if more than ITER steps are required for
+convergence. Setting ITER <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0 allows continuation even after
+convergence has failed after abs(ITER) iterations.
+
+<BR>
+Iterations are normally also stopped if the successive differences are smaller
+than the errors estimated for the numerical integration of the coupled
+equations. Setting IPS <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img18.svg"
+ ALT="$&lt; 0$"></SPAN> uses abs(IPS), without this extra check.
+
+<P>
+5ex1
+IBLOCK is the number of pairs of excitation levels
+(starting from partition 1, excitation 1) that are coupled exactly by
+blocking together.
+<BR>
+If IBLOCK<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN>1, then read Card 4.5 (see below) for R-matrix solution of the
+coupled equations.
+
+<P>
+8ex1
+PADE
+
+<BR>= 0 for no Pade acceleration,
+
+<BR>= 1 for Pade acceleration by the epsilon algorithm,
+
+<BR>= 2 for Pade acceleration by finding the N/D polynomials.
+
+<P>
+8ex1
+ISO
+
+<BR>= 0 or blank, for no isocentrifugal approximations,
+
+<BR>= A or J, for replacing all barriers by <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img24.svg"
+ ALT="$L = J_{total}$"></SPAN> barrier
+
+<BR>= B or L, for replacing all barriers by <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img25.svg"
+ ALT="$L = L_{in}$"></SPAN> barrier.
+
+<P>
+Of course, the <EM>simplest and fastest</EM> way to use the isocentrifugal
+approximation is to put all spins and parities to <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img26.svg"
+ ALT="$0^+$"></SPAN>, and all
+transition multipoles to <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img27.svg"
+ ALT="$k=0$"></SPAN>. The ISO variable is not needed then.
+
+<P>
+5ex1
+NNU is the number of Gaussian integration points
+in the angular
+integration used for the non-local transfer kernels. NNU should
+be a multiple of 6; NNU = 18 is the minimum, and 24 or 36 give
+acceptable accuracy for all the reactions tried so far.
+
+<P>
+5ex1
+MAXL,MINL are the maximum and minimum L values
+for the non-local
+kernels. If zero, MAXL has the default value JTMAX+6, and
+if MINL <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0 it takes the default value <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img23.svg"
+ ALT="$\vert$"></SPAN>JTMIN<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img23.svg"
+ ALT="$\vert$"></SPAN>-6.
+
+<P>
+5ex1
+MTMIN is the lowest L-transfer for calculating transfer form factors
+using the m-dependent expressions for spherical harmonics.
+Putting MTMIN = 0 gives default value MTMIN = 6 (use MTMIN <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0 to avoid
+invoking default, if all transfers are to use this method).
+
+<P>
+5ex1
+EPC = percentage cutoff accuracy in the
+NNU angular integration.
+If zero, the default is (30/NNU)<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img28.svg"
+ ALT="$^2$"></SPAN>%.
+
+<P>
+5ex1
+ERANGE = range of energies of the upper and lower boundaries
+of continuum bins: if ERANGE <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN> 0, then RATIO of these energies;
+if ERANGE <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, then DIFFERENCE of the energies in MeV.
+
+<P>
+5ex1
+DK     = step size of <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img29.svg"
+ ALT="$k$"></SPAN> (fm<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img30.svg"
+ ALT="$^{-1}$"></SPAN>) for integration over
+the ERANGE to construct the continuum bin.
+
+<P>
+8ex1  INH
+
+<BR>= 0 : zero-range transfer forms in intervals of HCM exactly
+
+<BR>= 1 : stored in steps of HCM * (proj. core)/(proj. composite mass)
+
+<BR>= 2 : stored in steps of HCM * (targ. core)/(targ. composite mass)
+<BR>
+So INH=2 corrects for longitudinal recoil during transfers with zero-range projectiles.
+
+<P>
+9ex1
+PLANE = 1,3: zero Coulomb potential for elastic channel
+<BR>      = 2,3: zero Coulomb potentials for all nonelastic channels.
+
+<P>
+5ex1
+SMALLCHAN = fraction of unitarity to define a 'small channel'.
+<BR>
+A channel that is 'small' for NSMALL=2 times is dropped permanently.
+
+<P>
+5ex1
+SMALLCOUP = if all nonelastic channels are weaker than the fraction
+SMALLCOUP of unitarity, then permanently change from coupled-channels to DWBA.
+
+<P>
+5ex1
+NUMNODE = number of parallel nodes for MPI operation
+
+<P>
+5ex1
+NTHREAD = number of threads/node for OPENMP operation, so number of CPUS is NUMNODE*NTHREAD
+
+<P>
+5ex1
+CCREAL = T: assume all potentials and couplings real-valued
+
+<P>
+5ex1
+ELPMAX = energy ELAB below which the LPMAX in each partition are applied 
+
+<P>
+
+<H3><A ID="SECTION00021700000000000000">
+Card 4.5</A>
+</H3>
+If IBLOCK<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN>0, then read:
+<PRE>
+2i4,           I1,    L1,     I2,  i2,   f6.4, 3f8.4,1x,A1
+NRBASES,NRBMIN,BUTTLE,PRALPHA,PCON,MEIGS,RMATR,BNDX(2),WEAK,BTYPE
+</PRE>
+
+<P>
+5ex1
+NRBASES = target number of radial basis states in each channel.
+(Use 2*NRBASES for the elastic and first-inelastic channel for more accuracy).
+<BR>
+If NRBASES <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, then use <B>Lagrange mesh</B> with NLAG=&ndash;NRBASES basis functions.
+
+<P>
+5ex1
+NRBMIN = minimum number of radial basis states.
+
+<P>
+5ex1
+BUTTLE = 4 for none, 0,2 for complex, 1,3 for real
+(2,3 without energy shift) Buttle correction (default 0)
+
+<P>
+5ex1
+PRALPHA = print basis-state eigenvalues to files fort.60,61,62,63
+
+<P>
+5ex1
+PCON = trace variable for calculation of radial basis states (same
+meaning as IPC on Cards 13 for single-particle bound states).
+
+<P>
+5ex1
+MEIGS = maximum number of bound states to find, if ENLAB <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0 on Card 19.
+
+<P>
+5ex1
+RMATR = R-matrix matching radius (default is RMATCH on Card 1).
+Warning: RMATR will be changed to an even multiple of HCM.
+
+<P>
+5ex1
+BNDX(i) is used to set the R-matrix Boundary Condition number depending on BTYPE.
+Use i=1,2 for positive,negative parity coupled channels sets (respectively).
+
+<P>
+Energy <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img31.svg"
+ ALT="$\hbar^2k^2/2m$"></SPAN>, where <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img32.svg"
+ ALT="$k= f'/f$"></SPAN>, the logarithmic derivative
+for all radial basis states at <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img33.svg"
+ ALT="$r$"></SPAN>=RMATR, with <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img29.svg"
+ ALT="$k$"></SPAN> having the same
+sign as EBETA(i). 
+
+<P>
+5ex1
+If R-matrix solutions are selected (by IBLOCK<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN>0) then all channels
+are `blocked' together and solved in a full CRC procedure.
+
+<P>
+5ex1
+If WEAK<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN>0, then non-elastic columns of the R-matrix are set to zero,
+  when penetrabilities <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> WEAK.
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node4.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node4.html">Trace Control Variables:</A>
+<B> Up:</B> <A
+ HREF="node2.html">Input Cards</A>
+<B> Previous:</B> <A
+ HREF="node2.html">Input Cards</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

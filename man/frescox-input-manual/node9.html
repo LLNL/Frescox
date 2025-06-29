@@ -1,0 +1,91 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2021 (Released January 1, 2021) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Incoming Channel, Energy</TITLE>
+<META NAME="description" CONTENT="Incoming Channel, Energy">
+<META NAME="keywords" CONTENT="frescox-input-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2021">
+
+<LINK REL="STYLESHEET" HREF="frescox-input-manual.css">
+
+<LINK REL="next" HREF="node10.html">
+<LINK REL="previous" HREF="node8.html">
+<LINK REL="next" HREF="node10.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node10.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node8.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node10.html">Additional Cards on Fortran</A>
+<B> Up:</B> <A
+ HREF="node2.html">Input Cards</A>
+<B> Previous:</B> <A
+ HREF="node8.html">Couplings</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H2><A ID="SECTION00027000000000000000">
+Incoming Channel, Energy</A>
+</H2>
+
+<P>
+<PRE>
+Card 18: (has the first 4 columns blank or zero : ie card 15 with ICTO=0)
+
+ 3I4,      3I2
+ 0,PEL,EXL,LAB,LIN,LEX
+</PRE>
+
+<P>
+10ex1
+Incoming plane waves are present in partition PEL with excitation
+pair EXL.  The energies on card 19 are the laboratory energies for
+partition LAB's nucleus LIN (1 or 2 for projectile or target)
+in excitation pair LEX.
+
+<P>
+10ex1
+The defaults for PEL,EXL,LIN &amp; LEX are all 1, and the default
+for LAB is PEL, so this card can be completely blank usually.
+
+<P><P>
+<BR>
+
+<P>
+<PRE>
+Card 19 :  Projectile Energies
+3(F8.4,I8),F8.4) :  (ELAB(i),NLAB(i),i=1,3),ELAB(4)
+</PRE>
+A series of runs at different
+(real)
+energies until ELAB(i) = 0 is found.
+ If NLAB(i) <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN> 1, then the range from ELAB(i) to ELAB(i+1) is covered
+in NLAB(i) linear intervals.
+
+<P>
+<BR><HR>
+
+</BODY>
+</HTML>

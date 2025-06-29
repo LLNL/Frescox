@@ -28,7 +28,7 @@
 FC = gfortran-mp-14 -Wall
 F90C = $(FC)
 FORM =  -w  -cpp  -DMPI 
-PARALLEL = frxx15
+PARALLEL = frxx15 frxx45.f
 BINSI = frxx4.$(O) frxx7a.$(O)
 BINS = frxx0.$(O) $(BINSI)
 
@@ -50,8 +50,8 @@ LFLAGS  =
 O = o
 E =
 FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
-LINK = $(F90C) $(FFLAGS) -o frescox $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
-LINKS = $(F90C) $(FFLAGS) -o sfrescox $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
-# INST = install sfrescox frescox $(FRESCOXLIB)
-INST = cp  sfrescox frescox fr2nl $(HOME)/binw/`arch` ; chmod a+rx $(HOME)/binw/`arch`/frescox $(HOME)/binw/`arch`/fr2nl
+LINK = $(F90C) $(FFLAGS) -o frescom $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
+LINKS = $(F90C) $(FFLAGS) -o sfrescom $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
+# INST = install sfrescom frescom $(FRESCOXLIB)
+INST = cp  sfrescom frescom fr2nl $(HOME)/binw/`arch` ; chmod a+rx $(HOME)/binw/`arch`/frescom $(HOME)/binw/`arch`/fr2nl
 RM = rm -f

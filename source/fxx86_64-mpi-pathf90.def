@@ -51,6 +51,6 @@ E =
 FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
 LINK = $(F90C) $(FFLAGS) -o frescom $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
 LINKS = $(F90C) $(FFLAGS) -o sfrescom $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
-# INST = install sfrescox frescom $(FRESCOXLIB)
+# INST = install sfrescom frescom $(FRESCOXLIB)
 INST = cp fx`arch`-mpi/frescom $(FRESCOXLIB) 
 RM = rm -f

@@ -1,0 +1,16 @@
+# Fdb version 4
+["latex"] 1751210927.77936 "telp.tex" "telp.dvi" "telp" 1751210927.87896 0
+  "/opt/local/etc/texmf/texmf.cnf" 1742315751.51129 40069 ce14c196fe9bd47b524cf7aa0bdfb84d ""
+  "/opt/local/share/texmf-texlive/fonts/tfm/public/cm/cmbx12.tfm" 1520409951 1324 c910af8c371558dc20f2d7822f66fe64 ""
+  "/opt/local/share/texmf-texlive/fonts/tfm/public/cm/cmr12.tfm" 1520409951 1288 655e228510b4c2a1abe905c368440826 ""
+  "/opt/local/share/texmf-texlive/tex/latex/base/article.cls" 1738800715 20144 63d8bacaf52e5abf4db3bc322373e1d4 ""
+  "/opt/local/share/texmf-texlive/tex/latex/base/size10.clo" 1738800716 8448 5cf247d4bd0c7d5d711bbbdf111fae2e ""
+  "/opt/local/share/texmf-texlive/tex/latex/l3backend/l3backend-dvips.def" 1738800747 35454 e0048b54d7d6f7c79a7bd63a786c3eee ""
+  "/opt/local/var/db/texmf/web2c/pdftex/latex.fmt" 1742316054 1928491 5f772b8d4ac57104ed1a54ac58113cd6 ""
+  "telp.aux" 1751210927.87436 192 4271d4ac79f30dda9f9fb5dba96d189b "latex"
+  "telp.tex" 1593112265 2456 f3baf73743798bc25c06a5745cda5394 ""
+  (generated)
+  "telp.aux"
+  "telp.dvi"
+  "telp.log"
+  (rewritten before read)

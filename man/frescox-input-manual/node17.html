@@ -1,0 +1,397 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2021 (Released January 1, 2021) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Appendix V : KIND=1 Spin Transfer Couplings</TITLE>
+<META NAME="description" CONTENT="Appendix V : KIND=1 Spin Transfer Couplings">
+<META NAME="keywords" CONTENT="frescox-input-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2021">
+
+<LINK REL="STYLESHEET" HREF="frescox-input-manual.css">
+
+<LINK REL="next" HREF="node18.html">
+<LINK REL="previous" HREF="node16.html">
+<LINK REL="next" HREF="node18.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node18.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="frescox-input-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node16.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node18.html">Appendix VI : Search</A>
+<B> Up:</B> <A
+ HREF="frescox-input-manual.html">Fresco</A>
+<B> Previous:</B> <A
+ HREF="node16.html">Appendix IV : FORTRAN</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+
+<H1><A ID="SECTION00070000000000000000">
+Appendix V : KIND=1 Spin Transfer Couplings</A>
+</H1><SPAN CLASS="SPAN">
+</SPAN>
+<P>
+<SPAN CLASS="SPAN"><SPAN CLASS="LARGE"></SPAN></SPAN>
+<P>
+<SPAN CLASS="SPAN"><SPAN CLASS="LARGE">The definition of the KIND=1 spin transfer couplings is not given
+in the Computer Physics Reports article, so in versions after March 1998 these
+are redefined for IP3=0 or 1, and new Racah algebra factors included.
+</SPAN></SPAN>
+<P>
+<SPAN CLASS="SPAN"><SPAN CLASS="LARGE"></SPAN></SPAN>
+<P><P>
+<BR>
+<SPAN CLASS="SPAN"><SPAN CLASS="LARGE"></SPAN></SPAN>
+<P>
+<SPAN CLASS="SPAN"><SPAN CLASS="LARGE">We want to calculate the coupling interactions of the monopole operator
+<!-- MATH
+ ${\bf S}([\ell,s_p]s_t,s_t)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img233.svg"
+ ALT="${\bf S}([\ell,s_p]s_t,s_t) $"></SPAN>, where <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img234.svg"
+ ALT="$s_p$"></SPAN> is the spin transfer of the
+projectile <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img235.svg"
+ ALT="$I_p$"></SPAN>,  <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img236.svg"
+ ALT="$s_t$"></SPAN> is the spin transfer of the
+target <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img237.svg"
+ ALT="$I_t$"></SPAN>, and <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img21.svg"
+ ALT="$\ell$"></SPAN> is the orbital angular momentum transfer.
+ These coupled operators are defined following in Bohr &amp; Mottelson, Vol.
+1, section 1A-5c, as
+</SPAN></SPAN>
+<DIV CLASS="displaymath">
+
+<!-- MATH
+ \begin{equation}
+(F_{\lambda_1} G_{\lambda_2})_{\lambda \mu}
+  = \sum_{\mu_1 \mu_2} \langle \lambda_1 \mu_1 ,  \lambda_2 \mu_2
+  |  \lambda \mu \rangle F_{\lambda_1\mu_1} G_{\lambda_2\mu_2} \ ,
+\end{equation}
+ -->
+ &nbsp;  <IMG
+ STYLE=""
+ SRC="img238.svg"
+ ALT="$\displaystyle (F_{\lambda_1} G_{\lambda_2})_{\lambda \mu}
+= \sum_{\mu_1 \mu_2}...
+...a_2 \mu_2
+\vert \lambda \mu \rangle F_{\lambda_1\mu_1} G_{\lambda_2\mu_2} \ ,
+$"> <SPAN class="FLOATRIGHT">
+(<SPAN CLASS="arabic">1</SPAN>)</SPAN>
+</DIV><SPAN CLASS="SPAN"><SPAN CLASS="LARGE">
+applied for the case of <!-- MATH
+ $F_{s_t} = [\ell,s_p]s_t$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img239.svg"
+ ALT="$F_{s_t} = [\ell,s_p]s_t$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img240.svg"
+ ALT="$G_{s_t}=s_t$"></SPAN>.
+The overall <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img241.svg"
+ ALT="${\bf S}$"></SPAN> operator is a monopole (scalar), for which the tensor
+product is thus of the kind
+</SPAN></SPAN>
+<DIV CLASS="displaymath">
+
+<!-- MATH
+ \begin{equation}
+(F_{\lambda} G_{\lambda})_{00}
+  = (2\lambda+1)^{-1/2} \sum_{\mu} (-1)^{\lambda-\mu} ~ F_{\lambda\mu}
+  G_{\lambda-\mu} \ .
+\end{equation}
+ -->
+ &nbsp;  <IMG
+ STYLE=""
+ SRC="img242.svg"
+ ALT="$\displaystyle (F_{\lambda} G_{\lambda})_{00}
+= (2\lambda+1)^{-1/2} \sum_{\mu} (-1)^{\lambda-\mu} ~ F_{\lambda\mu}
+G_{\lambda-\mu} \ .
+$"> <SPAN class="FLOATRIGHT">
+(<SPAN CLASS="arabic">2</SPAN>)</SPAN>
+</DIV><SPAN CLASS="SPAN"><SPAN CLASS="LARGE">
+This differs from common definitions (eg of Satchler) by a factor of
+<!-- MATH
+ $(-1)^\lambda (2\lambda+1)^{-1/2}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img243.svg"
+ ALT="$(-1)^\lambda (2\lambda+1)^{-1/2} $"></SPAN>.
+</SPAN></SPAN>
+<P>
+<SPAN CLASS="SPAN"><SPAN CLASS="LARGE"></SPAN></SPAN>
+<P><P>
+<BR>
+<SPAN CLASS="SPAN"><SPAN CLASS="LARGE"></SPAN></SPAN>
+<P>
+<SPAN CLASS="SPAN"><SPAN CLASS="LARGE">The reduced matrix of a (LOP=0)  spherical harmonic  <!-- MATH
+ ${\bf S}(\ell) = Y_\ell (\hat{\bf R})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img189.svg"
+ ALT="${\bf S}(\ell) = Y_\ell (\hat{\bf R})$"></SPAN> is
+</SPAN></SPAN>
+<BR>
+<DIV CLASS="displaymath"><A ID="transfer"></A>
+<!-- MATH
+ \begin{eqnarray}
+\langle L' \parallel Y_\ell  \parallel L \rangle =
+\frac{\hat{\ell}\hat{L}}{\sqrt{4\pi}}  \langle L 0, \ell 0 | L' 0 \rangle
+\end{eqnarray}
+ -->
+<TABLE CLASS="equation" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ STYLE=""
+ SRC="img244.svg"
+ ALT="$\displaystyle \langle L' \parallel Y_\ell \parallel L \rangle =
+\frac{\hat{\ell}\hat{L}}{\sqrt{4\pi}} \langle L 0, \ell 0 \vert L' 0 \rangle$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">3</SPAN>)</TD></TR>
+</TABLE></DIV><SPAN CLASS="SPAN"><SPAN CLASS="LARGE">
+and the reduced matrix of a (LOP=1) vector angular momentum operator  <!-- MATH
+ ${\bf S}(\ell) = {\bf\ell}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img190.svg"
+ ALT="${\bf S}(\ell) = {\bf\ell}$"></SPAN> itself is, for <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img245.svg"
+ ALT="$\lambda=1$"></SPAN> vectors, 
+</SPAN></SPAN>
+<BR>
+<DIV CLASS="displaymath"><A ID="operator"></A>
+<!-- MATH
+ \begin{eqnarray}
+\langle L' \parallel  \ell_\lambda  \parallel L \rangle = \delta_{LL'} ~ (-1)^\lambda \sqrt{2\lambda+1} ~ \sqrt{ L  (L+1) (2L+1) }  \ .
+\end{eqnarray}
+ -->
+<TABLE CLASS="equation" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT"><IMG
+ STYLE=""
+ SRC="img246.svg"
+ ALT="$\displaystyle \langle L' \parallel \ell_\lambda \parallel L \rangle = \delta_{LL'} ~ (-1)^\lambda \sqrt{2\lambda+1} ~ \sqrt{ L (L+1) (2L+1) } \ .$"></TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">4</SPAN>)</TD></TR>
+</TABLE></DIV><SPAN CLASS="SPAN"><SPAN CLASS="LARGE">
+A spin-orbit force, for example, must use LOP=1 with <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img245.svg"
+ ALT="$\lambda=1$"></SPAN>, since eq(<A HREF="#transfer"><IMG  ALT="[*]" SRC="crossref.png"></A>) gives zero in this case for diagonal interactions.  
+This will use <!-- MATH
+ $\ell \equiv {\tt LTR} = 1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img247.svg"
+ ALT="$\ell \equiv {\tt LTR} = 1$"></SPAN> and   <!-- MATH
+ $s_p \equiv {\tt PTR} = 1$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img248.svg"
+ ALT="$s_p \equiv {\tt PTR} = 1$"></SPAN> in the data file for the KIND=1 input.  There is not yet the coding for off-diagonal spin-orbit forces from e.g. deformations.
+<BR></SPAN></SPAN>
+<P>
+<SPAN CLASS="SPAN"><SPAN CLASS="LARGE">The  matrix elements of the full coupling operator are
+</SPAN></SPAN>
+<BR>
+<DIV CLASS="displaymath">
+
+<!-- MATH
+ \begin{eqnarray}
+& \langle(LI_p)J,I_t;J_TM_T | ~{\bf S}([\ell,s_p]s_t,s_t) ~| (L'I_p')J',I_t';J_TM_T \rangle.
+\hspace{4cm}   \nonumber \\
+& =  (-1)^{s_t+J_T+J'+I_t}
+   \left\{ \begin{array}{ccc}
+    J'  & I_t' & J_T \\
+    I_t & J    & s_t \\
+    \end{array} \right\}   \hat{J} \hat{J'}
+    \left\{ \begin{array}{ccc}
+    L' & I_p' & J'  \\
+    \ell & s_p & s_t  \\
+    L & I_p & J  \\
+    \end{array} \right\}  ~   \langle L' \parallel {\bf S}(\ell)  \parallel L \rangle
+     \nonumber \\
+   &  \times ~~ 
+       \langle I_p||s_p||I_p'\rangle ~~ \langle I_t||s_t||I_t'\rangle
+\end{eqnarray}
+ -->
+<TABLE CLASS="equation" WIDTH="100%">
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP><IMG
+ STYLE=""
+ SRC="img249.svg"
+ ALT="$\textstyle \langle(LI_p)J,I_t;J_TM_T \vert ~{\bf S}([\ell,s_p]s_t,s_t) ~\vert (L'I_p')J',I_t';J_TM_T \rangle.
+\hspace{4cm}$"></TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP><IMG
+ STYLE=""
+ SRC="img250.svg"
+ ALT="$\textstyle = (-1)^{s_t+J_T+J'+I_t}
+\left\{ \begin{array}{ccc}
+J' &amp; I_t' &amp; J_T \...
+...
+\end{array} \right\} ~ \langle L' \parallel {\bf S}(\ell) \parallel L \rangle$"></TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+&nbsp;</TD></TR>
+<TR VALIGN="MIDDLE"><TD NOWRAP ALIGN="RIGHT">&nbsp;</TD>
+<TD ALIGN="CENTER" NOWRAP><IMG
+ STYLE=""
+ SRC="img251.svg"
+ ALT="$\textstyle \times ~~
+\langle I_p\vert\vert s_p\vert\vert I_p'\rangle ~~ \langle I_t\vert\vert s_t\vert\vert I_t'\rangle$"></TD>
+<TD>&nbsp;</TD>
+<TD CLASS="eqno" WIDTH=10 ALIGN="RIGHT">
+(<SPAN CLASS="arabic">5</SPAN>)</TD></TR>
+</TABLE></DIV><SPAN CLASS="SPAN"><SPAN CLASS="LARGE">
+In using KIND=1 couplings :
+</SPAN></SPAN>
+<P>
+<SPAN CLASS="SPAN"><SPAN CLASS="LARGE">With IP3=0, the first line of these factors is generated automatically. 
+The product of the
+reduced matrix elements for the intrinsic nuclear states,
+<!-- MATH
+ $\langle I_p||s_p||I_p'\rangle \langle I_t||s_t||I_t'\rangle$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img252.svg"
+ ALT="$\langle I_p\vert\vert s_p\vert\vert I_p'\rangle \langle I_t\vert\vert s_t\vert\vert I_t'\rangle$"></SPAN>,
+ has to be included explicitly in the factor FSCALE,
+ or in the radial form factors.
+These reduced matrix elements will be from eq(<A HREF="#transfer"><IMG  ALT="[*]" SRC="crossref.png"></A>) or eq(<A HREF="#operator"><IMG  ALT="[*]" SRC="crossref.png"></A>). 
+The radial shapes are to be read in from data files.
+
+<BR></SPAN></SPAN>
+<P>
+<SPAN CLASS="SPAN"><SPAN CLASS="LARGE">With IP3=2, implying jlmP input for target-only couplings,
+</SPAN></SPAN>
+<UL>
+<LI>the projectile diagonal reduced matrix element
+<!-- MATH
+ $\langle I_p||s_p=0||I_p\rangle = \hat{I_p}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img253.svg"
+ ALT="$\langle I_p\vert\vert s_p=0\vert\vert I_p\rangle = \hat{I_p}$"></SPAN> is supplied by Fresco,
+</LI>
+<LI>the factor <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img188.svg"
+ ALT="$1/\sqrt{4\pi}$"></SPAN> is omitted above,
+</LI>
+<LI>and an additional symmetric factor of
+<!-- MATH
+ $((2I_t'+1)(2I_t+1))^{1/4}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img254.svg"
+ ALT="$((2I_t'+1)(2I_t+1))^{1/4}$"></SPAN>
+is supplied to allow the
+monopole radial form factors to have their physical
+values for any target spin.
+</LI>
+<LI>The forward and reverse form factors should be identical for Hermitian couplings.
+
+<P>
+</LI>
+</UL><SPAN CLASS="SPAN"><SPAN CLASS="LARGE">
+With IP3=3, implying a similar input for projectile-only couplings,
+</SPAN></SPAN>
+<UL>
+<LI>the target diagonal reduced matrix element
+ <!-- MATH
+ $\langle I_t||s_t=0||I_t\rangle = \hat{I_t}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img255.svg"
+ ALT="$\langle I_t\vert\vert s_t=0\vert\vert I_t\rangle = \hat{I_t}$"></SPAN> is supplied by Fresco,
+</LI>
+<LI>the factor <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img188.svg"
+ ALT="$1/\sqrt{4\pi}$"></SPAN> is omitted above,
+</LI>
+<LI>and an additional symmetric factor of <!-- MATH
+ $((2I_t'+1)(2I_t+1))^{1/4}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img254.svg"
+ ALT="$((2I_t'+1)(2I_t+1))^{1/4}$"></SPAN>
+ is supplied to allow the monopole radial form factors to have their physical
+ values for any target spin.
+ The forward and reverse form factors should be identical for Hermitian couplings.
+</LI>
+</UL><SPAN CLASS="SPAN"><SPAN CLASS="LARGE">
+</SPAN></SPAN>
+<P>
+<SPAN CLASS="SPAN"><SPAN CLASS="LARGE">
+</SPAN></SPAN>
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node18.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="frescox-input-manual.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node16.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node18.html">Appendix VI : Search</A>
+<B> Up:</B> <A
+ HREF="frescox-input-manual.html">Fresco</A>
+<B> Previous:</B> <A
+ HREF="node16.html">Appendix IV : FORTRAN</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

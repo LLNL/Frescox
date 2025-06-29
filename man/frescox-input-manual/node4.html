@@ -1,0 +1,677 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2021 (Released January 1, 2021) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Trace Control Variables:</TITLE>
+<META NAME="description" CONTENT="Trace Control Variables:">
+<META NAME="keywords" CONTENT="frescox-input-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2021">
+
+<LINK REL="STYLESHEET" HREF="frescox-input-manual.css">
+
+<LINK REL="next" HREF="node5.html">
+<LINK REL="previous" HREF="node3.html">
+<LINK REL="next" HREF="node5.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node5.html">Partitions and Excited States</A>
+<B> Up:</B> <A
+ HREF="node2.html">Input Cards</A>
+<B> Previous:</B> <A
+ HREF="node3.html">Definition Cards</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html74"
+  HREF="node4.html#SECTION00022100000000000000">Card 5</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H2><A ID="SECTION00022000000000000000">
+Trace Control Variables:</A>
+</H2>
+
+<H3><A ID="SECTION00022100000000000000">
+Card 5</A>
+</H3>
+<PRE>
+14I2
+CHANS,LISTCC,TRENEG,CDETR,SMATS,XSTABL,NLPL,WAVES,LAMPL,VEFF,KFUS,WDISK,BPM,MELFIL,CDCC,NFUS
+</PRE>
+A value of 0 gives no trace,
+increasing values give progressively more printed output.
+
+<BR><EM>Decremented</EM> variables are decreased by 1 on each use.
+
+<P>
+
+<P><P>
+<BR>
+
+<P>
+12ex1
+CHANS  <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 1 : Print the sets of coupled partial waves for each J,parity.
+Decremented.
+
+<P>
+8ex1  LISTCC
+
+<BR>= 1 : Print coupling coefficients between these channels. Decremented.
+
+<BR>= 1,2,... Print progressively more detail of couplings.
+
+<P>
+8ex1  TRENEG
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 1 : Print all potentials as they are calculated from Cards 10
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 3 : Print all potentials as they are calculated from Cards 9
+
+<P>
+8ex1  CDETR
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 1 : Print information on the solving of the coupled equations.
+(decremented).
+
+<P>
+8ex1
+SMATS
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 1 : Print absorbtion &amp; reaction cross sections for successive
+partitions and excitations.
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 2 : Print elastic S-matrix elements (<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img34.svg"
+ ALT="$S_{el}$"></SPAN>).
+Also `punch' these elastic <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img34.svg"
+ ALT="$S_{el}$"></SPAN> on output file 7,
+in format (2F15.10,L,J,JTOT) for <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img34.svg"
+ ALT="$S_{el}$"></SPAN> complex, L, J and JTOT.
+See WDISK below for description of these quantum numbers.
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 3 : Print all S-matrix elements for the `grazing partial waves'
+defined by <!-- MATH
+ $0.05 < Re(S_{el}) < 0.95$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img35.svg"
+ ALT="$0.05 &lt; Re(S_{el}) &lt; 0.95$"></SPAN>
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 4 : Always print all the S-matrix elements.
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 5 : Print all S-matrix elements at each iteration of the coupled
+equations (or, if PADE  <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN> 0, the Pade approximant)
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 6 : Print all actual S-matrix elements at each iteration (these
+may be divergent before Pade acceleration).
+
+<P>
+12ex1
+XSTABL <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img36.svg"
+ ALT="$\neq$"></SPAN> 0 : If XSTABL is non-zero, in file 16 punch output cross sections
+for all excitation levels in all partitions.
+A header card in FORMAT(5I6) gives partition IC, level pair IA,
+number of tensor ranks of analysing powers 1 <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> KQ1PR <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> XSTABL,
+number of angles NANGL, and NEARF.  NEARF=1 for total cross section,
+2 for far-side component, and 3 for near-side component.
+
+<BR>
+Then follow NANGL print operations in
+<SPAN style="font-family:monospace">FORMAT(1P,6E12.4)</SPAN>, repeating
+the <SPAN style="font-family:monospace">FORMAT</SPAN> for each operation if KQ1PR is large,
+of THETA, elastic xs (mb), <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img37.svg"
+ ALT="$T_{10}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img38.svg"
+ ALT="$iT_{11}$"></SPAN>,
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img39.svg"
+ ALT="$T_{20}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img40.svg"
+ ALT="$T_{21}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img41.svg"
+ ALT="$T_{22}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img42.svg"
+ ALT="$iT_{30}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img43.svg"
+ ALT="$iT_{31}$"></SPAN>
+etc.
+
+<P>
+12ex1
+NLPL   <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN> 0 : print a `contour plot' of the non-local kernels
+<!-- MATH
+ $K_{fi}(R_{f},D_{fi})$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img44.svg"
+ ALT="$K_{fi}(R_{f},D_{fi})$"></SPAN>.  This is useful to determine if the parameters on card 1
+are adequate.  Decremented.
+
+<P>
+8ex1  WAVES
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img45.svg"
+ ALT="$\pm$"></SPAN>1 or <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img45.svg"
+ ALT="$\pm$"></SPAN>3 : print out wave function solutions of the coupled
+equations at the end of the iterations.
+(If WAVES<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN>0 : print out the RATIO of the w/f to its asymptotic
+form <!-- MATH
+ $((G-iF) - S.(G+iF)).i/2$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img46.svg"
+ ALT="$((G-iF) - S.(G+iF)).i/2$"></SPAN>)
+
+<BR>
+2 or 3     : print out the source terms at
+<EM>each</EM> iteration of the coupled equations.
+
+<P>
+8ex1  LAMPL
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img36.svg"
+ ALT="$\neq$"></SPAN> 0: Print out (on Fortran file 36)
+the coefficients <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img17.svg"
+ ALT="$A(m'M':mM; L)$"></SPAN> for the Legendre
+coefficients in the scattering amplitude for the partition number
+abs(LAMPL),
+<EM>and</EM>
+print out the <!-- MATH
+ $f(m'M':mM; \theta)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img47.svg"
+ ALT="$f(m'M':mM; \theta)$"></SPAN> for each angle <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img48.svg"
+ ALT="$\theta$"></SPAN>.
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN>0 : only print out on file 37 the amplitudes <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img49.svg"
+ ALT="$f$"></SPAN>, not the <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img50.svg"
+ ALT="$A$"></SPAN>'s,
+for partition abs(LAMPL).
+
+<BR>
+The phase convention here is that there is no Coulomb phase shift
+for <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img51.svg"
+ ALT="$L = 0$"></SPAN> in the Coulomb scattering amplitude : factors such as
+<!-- MATH
+ $\exp i(\sigma_L-\sigma_0))$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img52.svg"
+ ALT="$\exp i(\sigma_L-\sigma_0))$"></SPAN> appear in the <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img50.svg"
+ ALT="$A$"></SPAN>'s.
+
+<P>
+8ex1
+VEFF
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img36.svg"
+ ALT="$\neq$"></SPAN> 0 : Calculate the `coupled channels effective potential'
+found be averaging the `trivially equivalent potential' over all
+the <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img53.svg"
+ ALT="$J,\pi$"></SPAN> sets, with weights of the elastic wave functions
+times the reaction cross section, in each set.
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0 : Add this effective potential to optical potential
+of the elastic channel before printing.
+
+<BR>= -2 or +2 : Exclude partial waves with elastic <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img54.svg"
+ ALT="$S$"></SPAN>-matrix element
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img55.svg"
+ ALT="$S_\ell&lt; 0.1$"></SPAN> from the averaging sum.
+
+<BR>
+The results show the real and imaginary parts for successive
+values of <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img56.svg"
+ ALT="$J-L$"></SPAN>, for the projectile only.
+
+<P>
+8ex1
+KFUS,NFUS
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN> 0 :  Calculate `core fusion' using the imaginary and scalar
+parts of potential number KFUS (i.e. cards 10 with TYPE = 1 or 2,
+and KP = KFUS), also for the first NFUS inelastic chamnels
+
+<P>
+8ex1  WDISK
+
+<BR>= 1 :  Print elastic wave functions on output file 17, FORMATTED
+
+<BR>= 2 :  Print   all   wave functions on output file 17, FORMATTED
+
+<BR>=-1 :  Print elastic wave functions on output file 17, UNFORMATTED
+
+<BR>=-2 :  Print   all   wave functions on output file 17, UNFORMATTED
+
+<P>
+<BLOCKQUOTE>
+The following data formats are used when WDISK <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN> 0 :
+</BLOCKQUOTE><PRE>
+card A: (I4,2F8.4,F8.1,I3)
+         NR,H,ENLAB,JTOTAL,PARITY,MP,MT,ZP,ZT :
+           number radial points, step size, lab. energy,  J,pi,
+           projectile and target masses and charges
+card B: (2I4,2F6.1,I4,F6.1,2F15.10,f12.8)
+         IT,L,J,JTOT,LIN,JIN,SMAT (complex), ETA
+</PRE><BLOCKQUOTE>
+where
+</BLOCKQUOTE>
+<P>
+<BLOCKQUOTE>8ex1
+IT = index to excited state pair, counts cards 7.
+<BR>
+L  = partial wave
+<BR>
+J  = L + projectile spin
+<BR>
+JTOT = total spin = J<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img57.svg"
+ ALT="$_{total}$"></SPAN> = J + target spin
+<BR>
+LIN  = incoming partial wave
+<BR>
+JIN  = incoming J value.
+<BR>
+SMAT = S matrix element for this partial wave.
+<BR></BLOCKQUOTE>
+<P><PRE>
+card C: (6E12.4)   (psi(I),I=1,NR)   wave function
+card C is repeated until NR complex values given
+NB: the first point psi(1) = 0 always, as at r=0
+</PRE><BLOCKQUOTE>
+Cards B &amp; C are repeated for each channel, until IT <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0.
+
+<BR>
+When WDISK <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, successive records contain the two real values
+of psi(I), starting IN THIS CASE, from I=2 (i.e. <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img58.svg"
+ ALT="$r=h$"></SPAN>).
+
+</BLOCKQUOTE>
+
+<P>
+8ex1  BPM
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 1 : Calculate fusion cross sections in the Barrier Penetration
+Model using first the bare potential, and then the bare potential + the
+`weighted equivalent potential' calculated when VEFF <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img36.svg"
+ ALT="$\neq$"></SPAN> 0.
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 2 : Print out L-distributions of the fusion cross section.
+
+<P>
+8ex1  MELFIL
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img59.svg"
+ ALT="$\ne$"></SPAN> 0 : Write real files 53 and 54 in the `mel' and `spec' format
+        for use e.g. by R-matrix program <SPAN style="font-family:monospace">sturmxx</SPAN>.
+
+<BR>= <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img45.svg"
+ ALT="$\pm$"></SPAN>2 : Write complex files 53 and 54 in the `mel' and `spec' format.
+
+<BR><SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0 : Write file 53 `mel' in text format format.
+
+<P>
+12ex1  
+CDCC   <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img60.svg"
+ ALT="$=$"></SPAN> 1:
+Print out the <!-- MATH
+ $f(m'M':mM; \theta)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img47.svg"
+ ALT="$f(m'M':mM; \theta)$"></SPAN> for each angle <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img48.svg"
+ ALT="$\theta$"></SPAN>
+on file 57 for partition <SPAN style="font-family:monospace">PEL</SPAN>, after the following information for <EM>uncoupled</EM> bin states:
+<SPAN CLASS="SPAN"></SPAN><PRE>
+card Y:(i2)  1    (indicating CDCC=1 format below)
+card Z: (A120)   HEADNG from Fresco input card 0.
+card A: (F10.4,3F8.4)   ENLAB,Bproj,H2SM,e^2,Btarg,inp, (Qval if inp=1)
+              lab energy,projectile binding energy, hbar^2/2.m, e^2, 
+              target binding energy,inp, Qval if inp=1
+                                                
+card B: (7f8.4)         massp,masst,massc,massv,massr  
+                                         masses: projectile,target,core,valence,residual
+card C: (7f8.4)         Zp,Zt,Zc,Zv,Zr                charges
+card D: (7A8)           namep,namet,namec,namev,namer names
+card E: (7f8.1)         Jp,Jt,Jc,Jv,Jr                g.s. spins
+card F: (7i8)           Pp,Pt,Pc,Pv,Pr                g.s. parities
+   If inp=1, cards B-F (incl) have further #6 and #7 values 
+                for 'initial projectile' and 'initial target' too.
+   
+card G: (4I4)           NBINS,NKMAX,NEXB,NNJMAX no. CDCC bins, max NK,
+                                                no. excited states, max(2*Jex+1)
+card H: (I4,2f8.4)      NANGL,THMIN,THINC       (cm angular range from Card 3)
+for each of the NBINS bins:
+ card I:(i2,2f4.1,3f8.4,2i4)
+         l,j,Emid,kmin,kmax,NK,KN,ISC
+            l,j: quantum numbers  (s==Jv)
+            Emid:  centre of bin with respect to continuum threshold
+            kmin,kmax,NK: Min,max and number of k values in bin integral
+            KN:  original KN index for bin state
+            ISC:  normalisation used for bin
+     for each IK=1,NK
+         card J: (10f8.4) delta(IK): nuclear phase shift used in bin integral (radians)
+
+for each excited state pair in the entrance partition: IA=1,NEXB::
+    card K: (f4.1,i4,f8.4,i4) Jex,Parity,Eex,IBIN:
+            Jex :          spin of this projectile excited state  (not including core spin)
+            Parity:        parity of this projectile state
+            Eex:           excitation energy of this state above g.s.
+            IBIN:          (first) bin defined for this excited state
+    for each IANG=1,NANGL: read complex numbers:
+    card L: (6E12.4): ((FAM(MEX,MP,IANG,IA),MEX=1,2*Jex(IA)+1),MP=1,2*Jp+1)
+</PRE><SPAN CLASS="SPAN"></SPAN>
+
+<P>
+The phase convention for all CDCC values is that there is no Coulomb phase shift
+for <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img51.svg"
+ ALT="$L = 0$"></SPAN> in the Coulomb scattering amplitude : factors such as
+<!-- MATH
+ $\exp i(\sigma_L-\sigma_0))$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img52.svg"
+ ALT="$\exp i(\sigma_L-\sigma_0))$"></SPAN> appear in the <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img50.svg"
+ ALT="$A$"></SPAN>'s.t
+
+<P>
+&nbsp;
+<BR>
+Summary of bin normalisation factors for different ISC values:
+
+<P>
+8ex1
+ISC
+
+<BR>= 2:  <!-- MATH
+ $\exp(-i\delta(k))$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img61.svg"
+ ALT="$\exp(-i\delta(k))$"></SPAN>
+
+<BR>= 4:  <!-- MATH
+ $\sin(\delta(k))\exp(-i\delta(k))$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img62.svg"
+ ALT="$\sin(\delta(k))\exp(-i\delta(k))$"></SPAN>
+
+<BR>= 12:  <!-- MATH
+ $k\exp(-i\delta(k))$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img63.svg"
+ ALT="$k\exp(-i\delta(k))$"></SPAN>
+
+<BR>= 14:  <!-- MATH
+ $k\sin(\delta(k))\exp(-i\delta(k))$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img64.svg"
+ ALT="$k\sin(\delta(k))\exp(-i\delta(k))$"></SPAN>
+
+<P>
+12ex1
+CDCC  <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img60.svg"
+ ALT="$=$"></SPAN> 2:
+Print out the <!-- MATH
+ $f(m'M':mM; \theta)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img47.svg"
+ ALT="$f(m'M':mM; \theta)$"></SPAN> for each angle <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img48.svg"
+ ALT="$\theta$"></SPAN>
+on file 57 for partition <SPAN style="font-family:monospace">PEL</SPAN>, after the following information for <EM>coupled bin states</EM>:
+
+<P>
+<SPAN CLASS="SPAN"></SPAN><PRE>
+card Y:(i2)  2    (indicating CDCC=2 format below)
+card Z: (A120)   HEADNG from Fresco input card 0.
+card A: (F10.4,3F8.4)   ENLAB,Bproj,H2SM,e^2,Btarg,inp, Qval if inp=1
+                  lab energy,projectile binding energy, hbar^2/2.m, e^2, 
+                  target binding energy,inp, Qval 
+card B: (7f8.4)         massp,masst,massc,massv,massr  
+                                         masses: projectile,target,core,valence,residual
+card C: (7f8.4)         Zp,Zt,Zc,Zv,Zr                charges
+card D: (7A8)           namep,namet,namec,namev,namer names
+card E: (7f8.1)         Jp,Jt,Jc,Jv,Jr                g.s. spins
+card F: (7i8)           Pp,Pt,Pc,Pv,Pr                g.s. parities
+   If inp=1, cards B-F (incl) have further #6 and #7 values 
+                for 'initial projectile' and 'initial target' too.
+
+card G: (5I4)           NBINS,NKMAX,NEXB,NNJMAX,NCHMAX
+                                                no. CDCC bins, max NK,
+                                                no. excited states, max(2*Jex+1), max nch
+card H: (I4,2f8.4)      NANGL,THMIN,THINC       (cm angular range from Card 3)
+card I: (I4)                NCE              (number of excited states. NCE=0 for only gs).
+for each of the ICE=1...NCE core excited states  (card skipped if NCE=0)
+cards J: (I4,2f8.4)      IPARCE, JCE, ECE    (parity -1,+1; spin; energy of excited states)
+                         (for the gs: parity=Pc, spin=Jc, energy=0.0)
+for each of the NBINS bins:
+ card K:(f4.1,2I4,f4.1,3f8.4,2i4)
+         Jex,Pex,nch,Emid,kmin,kmax,NK,KN,ISC
+            Jex: overall spin  [ (l s)j, JCE(ICE); Jex&gt;
+            Pex: overall parity = parity(ICE) * (-1)**l
+            nch: number of partial wave channels coupled to Jex/Pex.
+            IL: incident channel (1&lt;= IL &lt;= nch)
+            Emid:  centre of bin with respect to continuum threshold
+            kmin,kmax,NK: Min,max and number of k values in bin integral
+            KN:  original KN index for bin state
+            ISC:  normalisation used for bin
+         For each partial wave c=1..nch
+         card L: (i4,f4.1,i4)
+            l,j,ICE: quantum numbers. Use s=Jv.            
+     for each IK=1,NK for    k=kmin+(IK-1)*kinc where kinc = (kmax-kmin)/(NK-1)
+         card M: (2f10.6) delta(IK),k: any nuclear phase shift used in bin integral (radians)
+         card N: (10f10.6) S(:,:)     the full scattering S matrix for nch channels 
+                                        (always nch*nch, so closed channels included)
+
+for each excited state pair in the entrance partition: IA=1,NEXB::
+    card K: (f4.1,i4,f8.4,i4) Jex,Parity,Eex,IBIN:
+            Jex :          spin of this projectile excited state (including core spin)
+            Pex:           parity of this projectile state
+            Eex:           excitation energy of this state above g.s. (including core energy)
+            IBIN:          (first) bin defined for this excited state
+    for each IANG=1,NANGL: read complex numbers:
+    card L: (6E12.4): ((FAM(MEX,MP,IANG,IA),MEX=1,2*Jex(IA)+1),MP=1,2*Jp+1)
+</PRE><SPAN CLASS="SPAN"></SPAN>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node5.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node3.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node5.html">Partitions and Excited States</A>
+<B> Up:</B> <A
+ HREF="node2.html">Input Cards</A>
+<B> Previous:</B> <A
+ HREF="node3.html">Definition Cards</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -1,0 +1,59 @@
+#***********************************************************************
+# 
+#    Copyright 2018, I.J. Thompson
+#
+#    This file is part of FRESCOX.
+#
+#    FRESCOX is free software: you can redistribute it and/or modify it
+#    under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    FRESCOX is distributed in the hope that it will be useful, but
+#    WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with FRESCOX. If not, see <http://www.gnu.org/licenses/>.
+#
+#    OUR NOTICE AND TERMS AND CONDITIONS OF THE GNU GENERAL PUBLIC
+#    LICENSE
+#
+#    The precise terms and conditions for copying, distribution and
+#    modification are contained in the file COPYING.
+#
+#***********************************************************************
+####         intel with linux and intel ifort and mpi
+FC = mpif90
+F90C = $(FC)
+#FPP = fpp -B -C -fixed 
+FORM = -FI -cm -w -fpp # -Dcorex
+PARALLEL = frxx45
+BINSI = frxx4.$(O) frxx7a.$(O)
+BINS = frxx0.$(O) $(BINSI)
+
+
+#### Without nag library:
+#
+NAG = nagstub.$(O)
+
+#### Without blas library:
+BLAS = lapack.$(O)
+#LBLAS = -lacml -lacml_mv -L/usr/local/lib/acml/intel -Wl,--auto_rpath
+#LBLAS = -lacml -lacml_mv -L/usr/local/tools/acml-ifort-4.4.0/lib -Wl,--auto_rpath
+#LBLAS = -lmkl -lmkl_lapack64 -L/usr/local/intel/mkl/lib/em64t
+#LBLAS = -lm -lg2c -llapack
+
+FFLAGS  = -O3     -zero -qopenmp  -DMPI
+FFLAGS1 = -O1     -zero -qopenmp  -DMPI
+LFLAGS  =  -qopenmp
+
+O = o
+E =
+FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
+LINK = $(F90C) $(FFLAGS) -o frescoom $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
+LINKS = $(F90C) $(FFLAGS) -o sfrescoom $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
+# INST = install sfrescom frescom $(FRESCOXLIB)
+INST = cp  intel-op+mpi/sfrescoom intel-op+mpi/frescoom $(HOME)/binw/`arch`
+RM = rm -f

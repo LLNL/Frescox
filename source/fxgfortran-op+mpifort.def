@@ -24,11 +24,11 @@
 #    modification are contained in the file COPYING.
 #
 #***********************************************************************
-####         intel with linux and intel ifort and mpi
-FC = mpif90
+####            gfortran 
+# FC = gfortran-mp-14 -Wall
+FC = mpifort -fc=gfortran -Wall  -fallow-argument-mismatch
 F90C = $(FC)
-#FPP = fpp -B -C -fixed 
-FORM = -FI -cm -w -fpp # -Dcorex
+FORM =  -w  -cpp  
 PARALLEL = frxx45
 BINSI = frxx4.$(O) frxx7a.$(O)
 BINS = frxx0.$(O) $(BINSI)
@@ -39,21 +39,20 @@ BINS = frxx0.$(O) $(BINSI)
 NAG = nagstub.$(O)
 
 #### Without blas library:
-BLAS = lapack.$(O)
-#LBLAS = -lacml -lacml_mv -L/usr/local/lib/acml/intel -Wl,--auto_rpath
-#LBLAS = -lacml -lacml_mv -L/usr/local/tools/acml-ifort-4.4.0/lib -Wl,--auto_rpath
-#LBLAS = -lmkl -lmkl_lapack64 -L/usr/local/intel/mkl/lib/em64t
-#LBLAS = -lm -lg2c -llapack
+BLAS = lapack.$(O) 
+#LBLAS = -llapack -lblas -lg2c -lm
 
-FFLAGS  = -O3     -zero -qopenmp  -DMPI
-FFLAGS1 = -O1     -zero -qopenmp  -DMPI
-LFLAGS  =  -qopenmp
+FFLAGS = -O2 
+FFLAGS1 = -O1  
+# FFLAGS = -g -O2
+# FFLAGS1 = -g -O1
+LFLAGS  =  
 
 O = o
 E =
 FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
-LINK = $(F90C) $(FFLAGS) -o frescoom $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
-LINKS = $(F90C) $(FFLAGS) -o sfrescoom $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
-# INST = install sfrescox frescox $(FRESCOXLIB)
-INST = cp  intel-op-mpi/sfrescoom intel-op-mpi/frescoom $(HOME)/binw/`arch`
+LINK = $(F90C) $(FFLAGS) -o frescom $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
+LINKS = $(F90C) $(FFLAGS) -o sfrescom $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
+# INST = install sfrescom frescom $(FRESCOXLIB)
+INST = cp  sfrescom frescom fr2nl $(HOME)/binw/`arch` ; chmod a+rx $(HOME)/binw/`arch`/frescom $(HOME)/binw/`arch`/fr2nl
 RM = rm -f

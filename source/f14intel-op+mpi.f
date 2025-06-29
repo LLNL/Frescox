@@ -72,6 +72,6 @@ C F90 real-time clock (NOT cpu time!)
 
 	subroutine compiler(comp)
 	character*30 comp
-	comp = 'intel-op-mpi'
+	comp = 'intel-op+mpi'
 	return
 	end

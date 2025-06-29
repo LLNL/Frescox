@@ -1,0 +1,1136 @@
+<!DOCTYPE HTML>
+
+<!--Converted with LaTeX2HTML 2021 (Released January 1, 2021) -->
+<HTML lang="en">
+<HEAD>
+<TITLE>Potentials</TITLE>
+<META NAME="description" CONTENT="Potentials">
+<META NAME="keywords" CONTENT="frescox-input-manual">
+<META NAME="resource-type" CONTENT="document">
+<META NAME="distribution" CONTENT="global">
+
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<META NAME="viewport" CONTENT="width=device-width, initial-scale=1.0">
+<META NAME="Generator" CONTENT="LaTeX2HTML v2021">
+
+<LINK REL="STYLESHEET" HREF="frescox-input-manual.css">
+
+<LINK REL="next" HREF="node7.html">
+<LINK REL="previous" HREF="node5.html">
+<LINK REL="next" HREF="node7.html">
+</HEAD>
+
+<BODY >
+
+<DIV CLASS="navigation"><!--Navigation Panel-->
+<A
+ HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node7.html">One- and Two-Particle Form</A>
+<B> Up:</B> <A
+ HREF="node2.html">Input Cards</A>
+<B> Previous:</B> <A
+ HREF="node5.html">Partitions and Excited States</A>
+<BR>
+<BR></DIV>
+<!--End of Navigation Panel-->
+<!--Table of Child-Links-->
+<A ID="CHILD_LINKS"><STRONG>Subsections</STRONG></A>
+
+<UL CLASS="ChildLinks">
+<LI><A ID="tex2html79"
+  HREF="node6.html#SECTION00024100000000000000">Card 9</A>
+<LI><A ID="tex2html80"
+  HREF="node6.html#SECTION00024200000000000000">Card 10</A>
+<LI><A ID="tex2html81"
+  HREF="node6.html#SECTION00024300000000000000">Card 11</A>
+<LI><A ID="tex2html82"
+  HREF="node6.html#SECTION00024400000000000000">Card 12</A>
+</UL>
+<!--End of Table of Child-Links-->
+<HR>
+
+<H2><A ID="SECTION00024000000000000000">
+Potentials</A>
+</H2>
+
+<P><P>
+<BR>
+
+<P>
+Cards 9,10 (to define the potentials to be indexed by KP) :
+
+<P>
+5ex1
+Each potential is defined by a Card 9, defining the radii to be used
+and the diagonal Coulomb potential, followed by any number of Cards 10
+which cumulatively construct the components of the nuclear potential.
+The first input on each card is KP, identifying the potential of which this
+is to be a component.
+
+<P>
+
+<H3><A ID="SECTION00024100000000000000">
+Card 9</A>
+</H3>
+<PRE>
+Card 9: I3,I2,3X,2F8.4,    2F8.4
+        KP, 0,   A#1,A#2,  R0C,AC  (i.e. would be Card 10, but TYPE=0)
+</PRE>
+    All the radii are multiplied by CC,
+       which is updated by a TYPE=0 Card 9 to CC = A#1<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img70.svg"
+ ALT="$^{1/3}$"></SPAN> + A#2<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img70.svg"
+ ALT="$^{1/3}$"></SPAN>
+       and by TYPE<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN>0 Cards 10, if P0 <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN> 0,  to CC = P0<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img70.svg"
+ ALT="$^{1/3}$"></SPAN>
+
+<P>
+R0C = radius (when multiplied by CC) of charge distribution
+
+<BR>
+AC  = diffuseness of charge distribution
+
+<P><P>
+<BR>
+
+<P>
+4ex1
+The values of A#1 and A#2 affect <EM>only</EM> the conversion from <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img71.svg"
+ ALT="$r_0$"></SPAN> radii
+to R radii in the definition of potentials in Cards 9 &amp; 10.
+If however you adopt the convention that A#1 is the target mass number
+and A#2 the projectile's, then FRESCO can later display the
+fractional <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img72.svg"
+ ALT="$\beta$"></SPAN> values corresponding to given deformation lengths.
+(These are for information only, and do not affect the couplings.)
+
+<H3><A ID="SECTION00024200000000000000">
+Card 10</A>
+</H3>
+
+<P>
+<PRE>
+Card 10:  I3,I2,  A1,I2,     3F8.4,      3F8.4,       F8.4
+          KP,TYPE,IT,SHAPE,  P1,P2,P3,   P4,P5,P6,    P0
+                             ---REAL---  -IMAGINARY-  A#
+                             V,Vr0,Va,   W,Wr0,Wa,    A#
+</PRE>
+<BR>
+<PRE><TT>
+      
+<BR>
+for		TYPE
+<BR>
+9		SHAPE		Effective mass: reduction from unity
+<BR>
+0		 		Coulomb potential (see Card 9 above)
+<BR>
+1		SHAPE		Central potential, Volume
+<BR>
+2		SHAPE		Central potential, Derivative (i.e. surface)
+<BR>
+3		SHAPE		Spin-orbit for projectile
+<BR>
+4		SHAPE		Spin-orbit for target
+<BR>
+5		SHAPE		Tr tensor force for projectile
+<BR>
+6		SHAPE		Tr tensor force for target
+<BR>
+7		SHAPE		Tensor force between L and combined projectile+target spins(e.g.&nbsp;n-p tensor force)
+<BR>
+8		SHAPE		Spin.spin force for target &amp; projectile spins
+<BR>
+10		SHAPE		Deformed projectile   (matrix elements from ROTOR)
+<BR>
+11		SHAPE		Deformed target       (matrix elements from ROTOR)
+<BR>
+12		SHAPE		Projectile coupled by matrix elements read in.
+<BR>
+13		SHAPE		Target     coupled by matrix elements read in.
+<BR>
+14		SHAPE		Projectile second-order coupled by matrix elements read in.
+<BR>
+15		SHAPE		Target second-order coupled by matrix elements read in.
+<BR>
+16		SHAPE		Target &amp; projectile simultaneous second-order coupled by matrix elements read in.
+<BR>
+17		 		Target &amp; projectile all-order coupled by matrix elements read in.
+<BR>
+20		NUM		Super-soft N-N potl. of de Tourreil &amp; Sprung (SSC(C))
+<BR>
+21		NUM		User-supplied N-N potential via subroutine NNPOT.
+<BR>
+0		-		Coulomb potential : see Card 9.
+</TT></PRE>
+8ex1  Where
+      TYPE indicates type of spin tensor or excitation coupling,
+
+<BR>
+IT is `1' or `3' to make this component included only iteratively,
+<BR>   `2' or `3' to NOT subtract this component in KIND=3,4 single-particle
+ couplings,
+
+<BR>
+the SHAPE indicates the radial shape of the form factor,
+
+<BR>
+and P1-P3 &amp; P4-P6 are parameters for the real and imaginary
+parts (respectively).
+
+<P>
+
+<P>
+<BR>
+
+<P>
+5ex1
+If TYPE <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, add new potential numerically into previous potential,
+and use abs(TYPE) instead.   This saves space, and is necessary if adding
+together components to be deformed by a following card 10 <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img66.svg"
+ ALT="$\leq$"></SPAN> TYPE <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img66.svg"
+ ALT="$\leq$"></SPAN> 13.
+
+<P>
+5ex1
+If KP <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 0, this will be the last Card 10.  Use abs(KP) below,
+and omit Card 12.
+
+<P><P>
+<BR>
+
+<P>
+5ex3
+The SHAPEs for volume potentials (TYPE=1, 8 &amp; 15) are,
+
+<BR>
+with R = P2 * CC, RH = (r - R)/P3, and E = exp(-(r-R)/P3),
+
+<BR>(replacing (P1,P2,P3) by (P4,P5,P6) throughout for the imaginary parts)
+<BR>
+0: Woods-Saxon  = - P1 / (1 + 1/E)
+
+<BR>
+1: WS squared   = - P1 / (1 + 1/E)<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img28.svg"
+ ALT="$^2$"></SPAN>.
+
+<BR>
+2: Gaussian     = - P1 * exp(-RH<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img28.svg"
+ ALT="$^2$"></SPAN>.)
+
+<BR>
+3: Yukawa       = - P1 * E / r
+
+<BR>
+4: Exponential  = - P1 * E
+
+<BR>
+5: Reid soft core for <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img73.svg"
+ ALT="$T$"></SPAN>=0, central part
+
+<BR>
+6: Reid soft core for <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img73.svg"
+ ALT="$T$"></SPAN>=1, central part
+
+<BR>
+7: Read Real
+
+<BR>
+8: Read Imaginary
+
+<BR>
+9: Read Complex
+
+<BR>&ndash;1: Fourier-Bessel = <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img74.svg"
+ ALT="$j_0$"></SPAN>(RH) = <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img75.svg"
+ ALT="$\sin$"></SPAN>(RH)/RH
+
+<P>
+5ex1
+For `SHAPE's 7-9, immediately read in a comment card,
+then (free format) NPOINTS, RSTEP, RFIRST,
+followed by NPOINTS potential points
+for the shape in steps of RSTEP starting at r=RFIRST,
+reading card images all from <EM>Input File 4</EM> in free format.
+
+<BR>
+Rescale the real part by P1, the imaginary part by P2,
+and use radius = P3 * CC for subsequent deformation calculations.
+
+<BR>
+If SHAPE = -7, -8, or -9, rewind file 4 before reading from it.
+
+<P><P>
+<BR>
+
+<P>
+5ex1
+The SHAPEs for surface potentials (TYPE=2), with R, RH and E as before,
+are the first derivative forms (normalised to &ndash;1 when E=1,
+if reasonable):
+
+<P>
+8ex0
+      0 : Woods-Saxon  = - P1 * 4 * E / (1+E)<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img28.svg"
+ ALT="$^2$"></SPAN> 
+<BR>
+1 : WS squared   = - P1 * 8 * E*E / (1+E)<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img76.svg"
+ ALT="$^3$"></SPAN>
+<BR>
+2 : Gaussian     = - P1 * 2 * exp(-RH*RH) * RH
+<BR>
+3 : Yukawa       = - P1 * E * (1 + r/P3) / (r*r)
+<BR>
+4 : Exponential  = - P1 * E
+<BR>
+5 : Reid soft core for <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img73.svg"
+ ALT="$T$"></SPAN>=0, spin-orbit part <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img77.svg"
+ ALT="$\times r$"></SPAN>,
+<BR>
+6 : Reid soft core for <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img73.svg"
+ ALT="$T$"></SPAN>=1, spin-orbit part <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img77.svg"
+ ALT="$\times r$"></SPAN>,
+<BR>
+7,8,9 : Read from cards, as above.
+
+<P><P>
+<BR>
+5ex1
+The SHAPEs for spin-orbit potentials (TYPE=3 or 4) are the following surface
+shapes, 
+<BR>
+where CONLS = <!-- MATH
+ $\hbar^2/(m_\pi^2 c^2)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img78.svg"
+ ALT="$\hbar^2/(m_\pi^2 c^2)$"></SPAN> = 2.000.
+
+<P>
+8ex0
+      0 : Woods-Saxon  = &ndash; CONLS * P1 *  E / [(1+E)<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img28.svg"
+ ALT="$^2$"></SPAN> * P3 * r] 
+<BR>
+1 : WS squared   = &ndash; CONLS * P1 * E*E / (1+E)<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img76.svg"
+ ALT="$^3$"></SPAN> / (2*r*P3) 
+<BR>
+2 : Gaussian     = &ndash; CONLS * P1 * exp(-RH*RH) * RH  / (2*r*P3) 
+<BR>
+3 : Yukawa       = &ndash; CONLS * P1 * E * (1 + r/P3) / (4*r<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img76.svg"
+ ALT="$^3$"></SPAN>*P3)
+<BR>
+4 : Exponential  = &ndash; CONLS * P1 * E / (4*r*P3)
+<BR>
+5 : Reid soft core for <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img73.svg"
+ ALT="$T$"></SPAN>=0, spin-orbit part
+<BR>
+6 : Reid soft core for <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img73.svg"
+ ALT="$T$"></SPAN>=1, spin-orbit part
+<BR>
+7,8,9 : Read from cards, as above.
+
+<P>
+To become interaction potentials,
+these form factors will be multiplied by
+<!-- MATH
+ $j(j+1) - l(l+1) - s(s+1)= 2{\bf l}.{\bf s}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img79.svg"
+ ALT="$j(j+1) - l(l+1) - s(s+1)= 2{\bf l}.{\bf s}$"></SPAN>, where <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img80.svg"
+ ALT="$s$"></SPAN> = spin of projectile or target
+in each of its ground state and excited levels. There is no option here for
+state-dependent spin-orbit forces.
+
+<P><P>
+<BR>
+
+<P>
+5ex1
+The SHAPEs for tensor potentials (TYPE=5, 6 &amp; 7), with R, RH and E as before,
+are the second derivative forms (normalised to unity when E=1,
+if reasonable):
+
+<P>
+8ex0
+      0 : Woods-Saxon  = P1 * 8 * E*(E-1) / (1+E)<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img76.svg"
+ ALT="$^3$"></SPAN>
+<BR>
+1 : WS squared   = P1 * 4 * E*E / (1+E)<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img76.svg"
+ ALT="$^3$"></SPAN>
+<BR>
+2 : Gaussian     = P1 * 2 * exp(-RH*RH) * RH
+<BR>
+3 : Yukawa       = P1 * E * (1/P3<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img28.svg"
+ ALT="$^2$"></SPAN>. + 2/r<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img28.svg"
+ ALT="$^2$"></SPAN>.) / r
+<BR>
+4 : Exponential  = P1 * E
+<BR>
+5 : Reid soft core, 12 * tensor part
+<BR>
+6 : Vol Gaussian = 12 * P1 * exp(-RH*RH)
+<BR>
+7,8,9 : Read from cards, as above.
+
+<P>
+
+<P>
+<BR>
+
+<P>
+5ex1
+If SHAPE <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 30, then use SHAPE-30, and define a
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img81.svg"
+ ALT="$J$"></SPAN>- or  <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img82.svg"
+ ALT="$L$"></SPAN>-dependent potential by a factor defined
+by reading in Card 10.5:
+<PRE>
+Card 10.5    4X,A1,I3,2F8.4       JL,LSHAPE,XLVARY,ALVARY
+</PRE>
+so that the potential is multiplied by a form factor:
+
+<P>
+9ex1
+LSHAPE=0 : Woods-Saxon  = 1 / (1 + 1/E), 
+<BR>      =1 : WS squared   = 1 / (1 + 1/E)<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img28.svg"
+ ALT="$^2$"></SPAN>
+<BR>      =2 : Gaussian     = exp(-RH<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img28.svg"
+ ALT="$^2$"></SPAN>), 
+<BR>
+where X=L (for JL=`L'), X=J (JL=`J'),
+RH = (X-XLVARY)/ALVARY, and E=exp(-RH).
+
+<P>
+
+<P>
+<BR>
+
+<P>
+5ex1
+If SHAPE <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 10 and <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 19, then use SHAPE-10, and write out the
+resulting potential to <EM>Output file 25</EM> in FORMAT(6E12.4):
+a form suitable for subsequent reading by a SHAPE <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 20.
+
+<P>
+
+<P>
+<BR>
+
+<P>
+5ex1
+If SHAPE <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 20 and <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 30, then a <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img83.svg"
+ ALT="$J_{T}/\pi$"></SPAN>-dependent
+potential is defined.
+
+<BR>
+For each subsequent coupled-channels set with total angular momentum
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img84.svg"
+ ALT="$J_{T}$"></SPAN>, a form factor is read into this potential from
+<EM>Input file # SHAPE</EM>, reading M = RMATCH/HCM+1 complex numbers
+in FORMAT(6E12.4) from the
+file as a random-access set of card images, with (M-1)/3+1 card images
+for each form factor.
+
+<BR>
+For each CC set, form factor number
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img85.svg"
+ ALT="$int(J_{T})+1$"></SPAN> (for SHAPE <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 24) or
+1/2 for +/- parity (for SHAPE <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN> 24) is read.
+
+<P>
+5ex1
+If SHAPE = 40, then a <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img86.svg"
+ ALT="$\pi$"></SPAN>-dependent potential is defined:
+use KP = P1 for + parity CC sets, and P2 for - parity.
+
+<P>
+5ex1
+If SHAPE = 41, then a L-dependent potential is defined:
+use KP = P(L+1) for L=0&ndash;5, and P0 for L<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN>6.
+
+<P>
+5ex1
+If SHAPE = 42, then a J-dependent potential is defined:
+use KP = P(J+1) for J=0&ndash;5, and P0 for J<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN>6, with J = int(<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img87.svg"
+ ALT="$J_T$"></SPAN>).
+
+<P>
+5ex1
+If SHAPE = 43, then a L-parity-dependent potential is defined:
+use KP = P1 for L even, and P2 for L odd.
+
+<BR>
+There need only be one Card 9 or 10 for 40 <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img66.svg"
+ ALT="$\leq$"></SPAN> SHAPE<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img66.svg"
+ ALT="$\leq$"></SPAN>43. The values of TYPE
+and P2-P7 are ignored. No files are used. Choices are listed in fort.48
+
+<P>
+5ex1
+If SHAPE = 45, then an energy-dependent potential is defined, using linear interpolation of the potential forms.
+The nodes are KP=P1 at energy P2, P3 at energy P4, etc., up to KP=P9 at energy P10 (MeV).
+
+<P>
+0ex1
+
+<P><P>
+<BR>
+<EM>Nucleon - nucleon Potentials</EM>
+
+<P><P>
+<BR>
+
+<P>
+9ex1
+The SHAPEs for the nucleon-nucleon SSC (C) potential (TYPE = 8) are
+taken from the subroutine SSCC in FRESCO.
+The input NUM is the number of angular momentum components stored,
+using the order
+
+<BR> <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img88.svg"
+ ALT="$^1S_{0}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img89.svg"
+ ALT="$^3S_{1}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img90.svg"
+ ALT="$^3S-^3D$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img91.svg"
+ ALT="$^3D_{1}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img92.svg"
+ ALT="$^1P_{1}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img93.svg"
+ ALT="$^3P_{0}$"></SPAN>
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img94.svg"
+ ALT="$^3P_{1}$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img95.svg"
+ ALT="$^3P_2$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img96.svg"
+ ALT="$^3P-^3F$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img97.svg"
+ ALT="$^3F_2$"></SPAN>, <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img98.svg"
+ ALT="$^1D_2$"></SPAN>, and <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img99.svg"
+ ALT="$^3D_2$"></SPAN>
+
+<BR>
+Note that TYPEs 8 &amp; 9 can only be used in KIND = 1 (<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img100.svg"
+ ALT="$LS$"></SPAN>-coupled)
+single-particle states.
+
+<P><P>
+<BR>
+
+<P>
+9ex1
+The SHAPEs for the user's nucleon-nucleon potential (TYPE = 9) are
+taken from the subroutine NNPOT, with NUM the same meaning as above.
+
+<P>
+0ex1
+
+<P><P>
+<BR>
+<EM>Deformations</EM>
+
+<P><P>
+<BR>
+
+<P>
+5ex1
+The SHAPEs for deformed potentials (TYPE <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 10) are constructed either
+by reading external forms (SHAPE = 7, 8 or 9) for each P(k) non-zero
+(the input k-form being multiplied by P(k)),
+or (for SHAPE <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img16.svg"
+ ALT="$\geq$"></SPAN> 10) by deforming the potential on the
+<EM>immediately preceding</EM> input card.
+This preceding card must be of TYPE=0 for Coulomb deformations,
+or TYPE = 1 or 2 for nuclear deformations: deformation of non-central
+forces is not yet implemented.
+
+<P><P>
+<BR>
+
+<P>
+9ex1
+For Nuclear deformations P(k) = DEF(k), the deformation lengths (in fm.).
+(P0 = DEF(0) for <EM>inelastic</EM> monopoles.)
+0ex1
+
+<P><P>
+<BR>
+
+<P>
+3ex1
+For Coulomb deformations P(k) = Mn(Ek), the intrinsic reduced matrix elements
+in units of <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img101.svg"
+ ALT="$e.fm^k$"></SPAN> (P0 gives Mn(0) for <EM>inelastic</EM> monopoles).
+These intrinsic matrix elements Mn(Ek)  use
+the reduced matrix elements <!-- MATH
+ $\langle I ' || Ek || I \rangle$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img102.svg"
+ ALT="$\langle I ' \vert\vert Ek \vert\vert I \rangle$"></SPAN> given by the
+definitions of Alder &amp; Winther (not by those of Brink &amp; Satchler),
+by assuming a rotational model where <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img103.svg"
+ ALT="$K$"></SPAN> is a good quantum number:
+ <DIV class=CENTER>
+<!-- MATH
+ \begin{eqnarray*}
+Mn(Ek) = \langle I ' || Ek || I \rangle
+                     / (\sqrt {2I+1}  \langle IK k0 | I ' K \rangle ) \ .
+\end{eqnarray*}
+ -->
+<IMG
+ STYLE=""
+ SRC="img104.svg"
+ ALT="\begin{eqnarray*}
+Mn(Ek) = \langle I ' \vert\vert Ek \vert\vert I \rangle
+/ (\sqrt {2I+1} \langle IK k0 \vert I ' K \rangle ) \ .
+\end{eqnarray*}"></DIV>
+Thus, for (possibly hypothetical) <!-- MATH
+ $0 \rightarrow k$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img105.svg"
+ ALT="$0 \rightarrow k$"></SPAN> transitions, <!-- MATH
+ $Mn(Ek)= \langle k || Ek || 0 \rangle$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img106.svg"
+ ALT="$Mn(Ek)= \langle k \vert\vert Ek \vert\vert 0 \rangle$"></SPAN>.
+<BR>
+Mn(E2) is related to the intrinsic quadrupole moment in the rotational model by
+<!-- MATH
+ $Mn(Ek) = Q _ 0 ~ \sqrt {5 / {16 \pi}}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img107.svg"
+ ALT="$Mn(Ek) = Q _ 0 ~ \sqrt {5 / {16 \pi}}$"></SPAN>.
+For a uniformly charged sphere of radius <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img108.svg"
+ ALT="$R$"></SPAN>, to first order in <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img109.svg"
+ ALT="$\beta_k$"></SPAN> we have
+<DIV class=CENTER>
+<!-- MATH
+ \begin{eqnarray*}
+Mn(Ek) = {{3 ~ Z ~ \beta _ k ~ R^k} \over {4 \pi}}  \ .
+\end{eqnarray*}
+ -->
+<IMG
+ STYLE=""
+ SRC="img110.svg"
+ ALT="\begin{eqnarray*}
+Mn(Ek) = {{3 ~ Z ~ \beta _ k ~ R^k} \over {4 \pi}} \ .
+\end{eqnarray*}"></DIV>
+The Mn(Ek) are thus of the same sign as <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img72.svg"
+ ALT="$\beta$"></SPAN> and <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img111.svg"
+ ALT="$Q_{0}$"></SPAN> for all rotational
+bands.
+
+<BR>
+<P><P>
+<BR>
+TYPES 12 &amp; 13, for detailed and model-independent specifications,
+directly use the reduced matrix element
+<DIV class=CENTER>
+<!-- MATH
+ \begin{eqnarray*}
+M(Ek) & = &i^{ I-I ' + |I-I ' | } ~ \langle I ' || Ek || I \rangle \\
+     & =& \pm \sqrt{ (2I+1) ~ B(Ek, I \rightarrow I ' ) } \ ,
+\end{eqnarray*}
+ -->
+<IMG
+ STYLE=""
+ SRC="img112.svg"
+ ALT="\begin{eqnarray*}
+M(Ek) &amp; = &amp;i^{ I-I ' + \vert I-I ' \vert } ~ \langle I ' \ver...
+...le \\
+&amp; =&amp; \pm \sqrt{ (2I+1) ~ B(Ek, I \rightarrow I ' ) } \ ,
+\end{eqnarray*}"></DIV>
+where the sign convention has been chosen to make M(Ek) real and symmetric under <!-- MATH
+ $I \leftrightarrow I'$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img113.svg"
+ ALT="$I \leftrightarrow I'$"></SPAN> interchange.
+The diagonal reduced matrix element gives the spectroscopic quadrupole moment
+<DIV class=CENTER>
+<!-- MATH
+ \begin{eqnarray*}
+Q_2 = \sqrt {{16 \pi} /5} ~ (2I+1)^{-1/2} ~ \langle II 20 | II \rangle ~\langle I || E2 || I \rangle \ .
+\end{eqnarray*}
+ -->
+<IMG
+ STYLE=""
+ SRC="img114.svg"
+ ALT="\begin{eqnarray*}
+Q_2 = \sqrt {{16 \pi} /5} ~ (2I+1)^{-1/2} ~ \langle II 20 \vert II \rangle ~\langle I \vert\vert E2 \vert\vert I \rangle \ .
+\end{eqnarray*}"></DIV>
+The intrinsic and reduced matrix elements are therefore connected by
+<DIV class=CENTER>
+<!-- MATH
+ \begin{eqnarray*}
+M(Ek) = Mn(Ek) ~ (-1)^{ [I-I ' +|I-I ' |]/2} ~ \sqrt{2I+1}  \langle IK k0 | I ' K \rangle
+\end{eqnarray*}
+ -->
+<IMG
+ STYLE=""
+ SRC="img115.svg"
+ ALT="\begin{eqnarray*}
+M(Ek) = Mn(Ek) ~ (-1)^{ [I-I ' +\vert I-I ' \vert]/2} ~ \sqrt{2I+1} \langle IK k0 \vert I ' K \rangle
+\end{eqnarray*}"></DIV>
+in the rotational model where <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img103.svg"
+ ALT="$K$"></SPAN> is a good quantum number,
+ for states of spin <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img116.svg"
+ ALT="$I,I'$"></SPAN>, projection <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img103.svg"
+ ALT="$K$"></SPAN>, charge <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img117.svg"
+ ALT="$Z$"></SPAN>, and radius <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img108.svg"
+ ALT="$R$"></SPAN>
+(DEF(k) = <!-- MATH
+ $\beta_k \times R$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img118.svg"
+ ALT="$\beta_k \times R$"></SPAN> for such states).
+
+<P>
+
+<P><P>
+<BR>
+So Mn(Ek) is the square root of <!-- MATH
+ $B(Ek, 0 \rightarrow k)$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img119.svg"
+ ALT="$B(Ek, 0 \rightarrow k)$"></SPAN> with some sign
+within <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img120.svg"
+ ALT="$K=0$"></SPAN> bands. Mn(Ek) always has the same sign as <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img72.svg"
+ ALT="$\beta$"></SPAN>.
+
+<BR>
+<P>
+5ex1
+<EM>IN OTHER CASES, DO <B>NOT</B> ASSUME THAT ALL TRANSITIONS HAVE THE SAME M(Ek) VALUES.
+THUS Mn(Ek) ARE THE SAME FOR ALL PURE ROTOR TRANSITIONS, IN CONTRAST TO
+M(Ek).</EM>
+ In order to guide the user here,
+effective <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img72.svg"
+ ALT="$\beta$"></SPAN> values are calculated from the given Mn(Ek) or M(Ek), for
+each possible transition.
+<EM>From version FRV onward, Mn(Ek) is used in place of M(Ek) for TYPE
+10 &amp; 11 potentials.</EM>
+
+<P><P>
+<BR>
+
+<P>
+
+<H3><A ID="SECTION00024300000000000000">
+Card 11</A>
+</H3>
+5ex1
+For TYPEs 12&ndash;13, Cards 11 are read to determine the details of the
+required couplings between each pair of excited states
+and of the reorientation terms for each individual state.
+<PRE>
+Card 11      4X,3I4,F8.4       IB,IA,k, STR
+</PRE>
+    to put in a coupling <EM>to</EM> state IB <EM>from</EM> state IA,
+of multipolarity k and strength STR.
+Note: monopole potentials are included automatically, even if not listed here.
+
+<P>
+For each k used here, P(k) must have been non-zero,
+and the required coupling has the same form factor but with relative strength
+STR / P(k).   That is, STR is the reduced matrix element <!-- MATH
+ $<IB | M(Ek) | IA>$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img121.svg"
+ ALT="$&lt;IB \vert M(Ek) \vert IA&gt;$"></SPAN>
+= M(Ek, IA<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img122.svg"
+ ALT="$\rightarrow$"></SPAN>IB)
+for Coulomb transitions (<B>NOT</B> Mn(Ek)),
+and is the `<EM>reduced</EM> deformation length'
+RDEF(k) for nuclear transitions.
+
+<P>
+This `reduced deformation length' in the rotational model is
+<DIV class=CENTER>
+<!-- MATH
+ \begin{eqnarray*}
+RDEF(k, I \rightarrow I')
+         &=& DEF(k) (-1)^{ [I-I'+|I-I'|]/2}  \sqrt{2I+1} ~ \langle IK k0 | I'K\rangle\\
+         &=& M(Ek) * 4\pi / [ 3 Z R^{k-1} ]
+\end{eqnarray*}
+ -->
+<IMG
+ STYLE=""
+ SRC="img123.svg"
+ ALT="\begin{eqnarray*}
+RDEF(k, I \rightarrow I')
+&amp;=&amp; DEF(k) (-1)^{ [I-I'+\vert I-I'...
+...le IK k0 \vert I'K\rangle\\
+&amp;=&amp; M(Ek) * 4\pi / [ 3 Z R^{k-1} ]
+\end{eqnarray*}"></DIV>
+but may in general be varied independently of DEF(k) and M(Ek).
+Both these nuclear and Coulomb interactions are thus designed to give
+channel couplings which are <EM>in</EM>dependent of
+the projection K values read in the Cards 7.
+This of course requires making RDEF(k) and M(Ek) dependent on the
+spins of the excited states, not on any simple model.
+
+<P>
+
+<P><P>
+<BR>
+The SHAPEs for deformed potentials (TYPE=10 to 13) are constructed by:
+
+<P>
+8ex1
+SHAPE
+= 0 to 6 : not used (as card gives deformation strengths).
+
+<BR>     = 7,8,9 : Read from cards, as above for TYPE=1.
+The multipoles are then multiplied by P(k) (by 1.0 for k=0), and
+should end up as scaled to replace the form factors calculated
+below:
+
+<BR>= 10 : Coulomb multipoles have the usual simple form for a
+deformed charged sphere to produce M(Ek) = P(k),
+varying at large distances as
+<DIV class=CENTER>
+<!-- MATH
+ \begin{eqnarray*}
+F(r) = M(Ek) ~ e^2 ~ {\sqrt{4\pi}   \over  (2k+1)}~  r^{-k-1}
+\end{eqnarray*}
+ -->
+<IMG
+ STYLE=""
+ SRC="img124.svg"
+ ALT="\begin{eqnarray*}
+F(r) = M(Ek) ~ e^2 ~ {\sqrt{4\pi} \over (2k+1)}~ r^{-k-1}
+\end{eqnarray*}"></DIV>
+where <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img125.svg"
+ ALT="$e^2=1.440$"></SPAN>, and where this form factor will later be multiplied
+by the charge number of the opposing nucleus.
+
+<BR>= 10 : Nuclear multipoles are the deformation length DEF(k) = P(k)
+times the derivative of the undeformed potential times <!-- MATH
+ $-1/\sqrt{4\pi}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img126.svg"
+ ALT="$-1/\sqrt{4\pi}$"></SPAN>:
+<DIV class=CENTER>
+<!-- MATH
+ \begin{eqnarray*}
+F(r) = - DEF(k) ~  \frac{1}{\sqrt{4\pi}} ~ \frac{dU(r)}{dr}
+\end{eqnarray*}
+ -->
+<IMG
+ STYLE=""
+ SRC="img127.svg"
+ ALT="\begin{eqnarray*}
+F(r) = - DEF(k) ~ \frac{1}{\sqrt{4\pi}} ~ \frac{dU(r)}{dr}
+\end{eqnarray*}"></DIV>
+The shape is the same for all multipoles k <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN> 0.
+
+<BR>= 11: Nuclear multipoles calculated by numerically deforming the radii
+of the previous potential, and projecting by Gaussian quadrature
+onto the required multipoles (those k <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN> 0 for which P(k) is non-zero).
+For small deformation lengths, these SHAPEs are the same as for
+SHAPE = 10.
+
+<BR>= 12: Same as SHAPE = 11, except that the monopole k = 0 part of
+the potential is also recalculated by quadrature. A first order
+correction is made to the radius to improve volume conservation.
+
+<BR>= 13: Same as SHAPE = 12, except that <B>no</B> first order
+correction is made to the radius to improve volume conservation.
+
+<P>
+
+<P><P>
+<BR>
+
+<P>
+5ex1
+For TYPEs 14&ndash;17, Cards 11 are read to determine the details of the
+required couplings between each pair of excited states
+and of the reorientation terms for each individual state.
+Only nuclear couplings are yet implemented.
+<PRE>
+Card 11      4X,3I4,F8.4       IB,IA,k, STR
+</PRE>
+to put in a coupling <EM>to</EM> state IB <EM>from</EM> state IA,
+of multipolarity <SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img23.svg"
+ ALT="$\vert$"></SPAN>k<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img23.svg"
+ ALT="$\vert$"></SPAN> and strength STR. For TYPEs=14&ndash;17, the IB and IA
+can reference any combination of projectile and target states,
+but k<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img15.svg"
+ ALT="$&gt;$"></SPAN>0 for projectile and k<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img12.svg"
+ ALT="$&lt;$"></SPAN>0 for target states.
+STR refers to the RDEF(k) measure above;
+the factor  <!-- MATH
+ $(-1)^{ [I-I'+|I-I'|]/2}$
+ -->
+<SPAN CLASS="MATH"><IMG
+ STYLE=""
+ SRC="img128.svg"
+ ALT="$(-1)^{ [I-I'+\vert I-I'\vert]/2}$"></SPAN> must be included.
+The SHAPE and P0-P6 parameters on the TYPE=17 card 10 are not used.
+
+<P>
+For TYPE=17, couplings, to all orders in RDEF, are calculated between all
+pairs of projectile and target states using the matrix eigensolution
+method of Kermode and Rowley, Phys. Rev. <B>C48</B> (1993) 2326.
+
+<P>
+
+<P><P>
+<BR>
+
+<H3><A ID="SECTION00024400000000000000">
+Card 12</A>
+</H3>
+
+<P>
+<PRE>
+Blank card for end of reading potential parameters.
+            (Unless the last KP on card 10 was negative)
+</PRE>
+
+<P>
+
+<DIV CLASS="navigation"><HR>
+<!--Navigation Panel-->
+<A
+ HREF="node7.html">
+<IMG WIDTH="37" HEIGHT="24" ALT="next" SRC="next.png"></A> 
+<A
+ HREF="node2.html">
+<IMG WIDTH="26" HEIGHT="24" ALT="up" SRC="up.png"></A> 
+<A
+ HREF="node5.html">
+<IMG WIDTH="63" HEIGHT="24" ALT="previous" SRC="prev.png"></A>   
+<BR>
+<B> Next:</B> <A
+ HREF="node7.html">One- and Two-Particle Form</A>
+<B> Up:</B> <A
+ HREF="node2.html">Input Cards</A>
+<B> Previous:</B> <A
+ HREF="node5.html">Partitions and Excited States</A></DIV>
+<!--End of Navigation Panel-->
+
+</BODY>
+</HTML>

@@ -6,7 +6,15 @@ $key = q/files/;
 $external_labels{$key} = "$URL/" . q|node17.html|; 
 $noresave{$key} = "$nosave";
 
+$key = q/operator/;
+$external_labels{$key} = "$URL/" . q|node18.html|; 
+$noresave{$key} = "$nosave";
+
 $key = q/spintransfers/;
+$external_labels{$key} = "$URL/" . q|node18.html|; 
+$noresave{$key} = "$nosave";
+
+$key = q/transfer/;
 $external_labels{$key} = "$URL/" . q|node18.html|; 
 $noresave{$key} = "$nosave";
 
@@ -21,8 +29,16 @@ $key = q/files/;
 $external_latex_labels{$key} = q|7|; 
 $noresave{$key} = "$nosave";
 
+$key = q/operator/;
+$external_latex_labels{$key} = q|17|; 
+$noresave{$key} = "$nosave";
+
 $key = q/spintransfers/;
 $external_latex_labels{$key} = q|8|; 
+$noresave{$key} = "$nosave";
+
+$key = q/transfer/;
+$external_latex_labels{$key} = q|16|; 
 $noresave{$key} = "$nosave";
 
 1;
