@@ -193,18 +193,18 @@
       	if(iame==0.or.STDINALL)read(ki,1005) line
 !	 write(6,'(a)') 'Line   : <'//line//'>'
  1005 	format(a120)
-#ifdef MPI
+#ifdef ALTIXMPI
         if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(MPI_BOTTOM,1,headng_struct,
      >                           0,MPI_COMM_WORLD,ierr)
-#endif /* MPI */
+#endif /* ALTIXMPI */
         nml = line(1:1)=='N'.or.line(1:1)=='n'
         cdc = line(1:1)=='C'.or.line(1:1)=='c'
 	trnl = line(1:1)=='N' .or. line(1:1)=='C'
-#ifdef MPI
+#ifdef ALTIXMPI
         if(MPIC.and..not.STDINALL.and..not.nml)
      >   write(koe,*)'MPI WITH ONLY ROOT STDIN REQUIRES NAMELIST INPUT'
-#endif /* MPI */
+#endif /* ALTIXMPI */
 ! 	write(koe,*) 'nml,cdc =',nml,cdc,' as read ',trim(line)
 	if(cdc) then
 	   if(pr) write(koe,*) 'Assuming CDC input.'
@@ -240,11 +240,11 @@
             write (koe,fresco)
             stop
          endif
-#ifdef MPI
+#ifdef ALTIXMPI
          if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(MPI_BOTTOM,1,nlfresco_struct,
      >                           0,MPI_COMM_WORLD,ierr)
-#endif /* MPI */
+#endif /* ALTIXMPI */
          endif
       if(pr)write(koe,1009) headng
  1009 format(/1x,a120/) 
@@ -825,11 +825,11 @@ C     IF(PADE.GE.1) VEFF=0
             write (koe,partition)
             stop
          endif
-#ifdef MPI
+#ifdef ALTIXMPI
          if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(MPI_BOTTOM,1,nlpartition_struct,
      >                           0,MPI_COMM_WORLD,ierr)
-#endif /* MPI */
+#endif /* ALTIXMPI */
 	else
 	 read(ki,1130) namep,massp,zp,nex,cpwf,namet,masst,zt,qval,
      x                 readstates,prmax,lpmax1,mixpot
@@ -929,11 +929,11 @@ C     IF(PADE.GE.1) VEFF=0
             write (koe,states)
             stop
          endif
-#ifdef MPI
+#ifdef ALTIXMPI
        if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(MPI_BOTTOM,1,nlstates_struct,
      >                           0,MPI_COMM_WORLD,ierr)
-#endif /* MPI */
+#endif /* ALTIXMPI */
         else
        read(kii,1150)  jp,  copyp,bandp ,ep,  kkp,tp, cpot,
      X		jt,  copyt,bandt ,et,  kkt,tt,  ex,infam,outfam
@@ -1026,11 +1026,11 @@ C     IF(PADE.GE.1) VEFF=0
             write (koe,pot)
             stop
 	  endif
-#ifdef MPI
+#ifdef ALTIXMPI
          if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(MPI_BOTTOM,1,nlpot_struct,
      >                           0,MPI_COMM_WORLD,ierr)
-#endif /* MPI */
+#endif /* ALTIXMPI */
 	  if(abs(ap)+abs(at)<eps) at=1d0
 	  if(maxval(abs(p))+maxval(abs(def))>0) loop=-2  ! Ordinary input only
 	else
@@ -1123,11 +1123,11 @@ c                        remove next line when coul quadrature written.
 	  ib=0; ia=0; k=0; str=0
 	  if(iame==0.or.STDINALL)
      >            read(ki,nml=step)
-#ifdef MPI
+#ifdef ALTIXMPI
           if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(MPI_BOTTOM,1,nlstep_struct,
      >                           0,MPI_COMM_WORLD,ierr)
-#endif /* MPI */
+#endif /* ALTIXMPI */
 	  else
 !	  read(ki,*) ib,ia,k,str	! must be able to read blank line
 	  read(ki,1302) ib,ia,k,str
@@ -1156,11 +1156,11 @@ c                        remove next line when coul quadrature written.
 1361    if(nml) then
           ib=0; ia=0; k=0; str=0
           if(iame==0.or.STDINALL)read(ki,nml=step)
-#ifdef MPI
+#ifdef ALTIXMPI
           if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(MPI_BOTTOM,1,nlstep_struct,
      >                           0,MPI_COMM_WORLD,ierr)
-#endif /* MPI */
+#endif /* ALTIXMPI */
           else
           read(ki,*) ib,ia,k,str
           endif
@@ -1227,11 +1227,11 @@ c                        remove next line when coul quadrature written.
             write (koe,overlap)
             stop
 	  endif
-#ifdef MPI
+#ifdef ALTIXMPI
           if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(MPI_BOTTOM,1,nloverlap_struct,
      >                           0,MPI_COMM_WORLD,ierr)
-#endif /* MPI */
+#endif /* ALTIXMPI */
 	 if(abs(e)>eps) be = -e
  	else
 	dm=0;er=0;nk=0;e=0; datafile=' '
@@ -1365,11 +1365,11 @@ c     	   DM = DM + (QVAL(ICP)-QVAL(ICR))/AMU
 	 triton=0
 	 if(iame==0.or.STDINALL)
      >            read(ki,nml=dalitz)
-#ifdef MPI
+#ifdef ALTIXMPI
          if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(MPI_BOTTOM,1,nldalitz_struct,
      >                           0,MPI_COMM_WORLD,ierr)
-#endif /* MPI */
+#endif /* ALTIXMPI */
 	else
 	 if(iame==0.or.STDINALL)
      >            read(ki,*) triton
@@ -1383,11 +1383,11 @@ c     	   DM = DM + (QVAL(ICP)-QVAL(ICR))/AMU
 	  if(nk.le.mp) then
 	   if(nml) then
             if(iame==0.or.STDINALL)read(ki,nml=twont)
-#ifdef MPI
+#ifdef ALTIXMPI
             if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(MPI_BOTTOM,1,nltwont_struct,
      >                           0,MPI_COMM_WORLD,ierr)
-#endif /* MPI */
+#endif /* ALTIXMPI */
 	   else
             read(ki,8626) ((tnt(i,jj),i=1,4),coef(jj),jj=1,nk)
 8626  		format(3(4i3,f8.4))
@@ -1424,14 +1424,14 @@ c     	   DM = DM + (QVAL(ICP)-QVAL(ICR))/AMU
   118    if ( ios < 0 ) then
             nlcouplingend=1
           endif 
-#ifdef MPI
+#ifdef ALTIXMPI
         if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(nlcouplingend,1,MPI_INTEGER,
      >                           0,MPI_COMM_WORLD,ierr)
         if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(MPI_BOTTOM,1,nlcoupling_struct,
      >                           0,MPI_COMM_WORLD,ierr)
-#endif /* MPI */
+#endif /* ALTIXMPI */
         if(nlcouplingend==1)goto 119
       else
 	kfrag=0;kcore=0
@@ -1498,11 +1498,11 @@ c     	   DM = DM + (QVAL(ICP)-QVAL(ICR))/AMU
 	     endif
 	     if(iame==0.or.STDINALL)read(ki,nml=cfp,end=8738) 
 8738         continue
-#ifdef MPI
+#ifdef ALTIXMPI
              if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(MPI_BOTTOM,1,nlcfp_struct,
      >                           0,MPI_COMM_WORLD,ierr)
-#endif /* MPI */
+#endif /* ALTIXMPI */
 	    else
 	     read(ki,8739) in,ib,ia,kn,a
 	    endif
@@ -1584,11 +1584,11 @@ c     	   DM = DM + (QVAL(ICP)-QVAL(ICR))/AMU
 	 if(nml) then
 	 qscale(:)=(0.,0.)
          if(iame==0.or.STDINALL)read(ki,nml=scale) 
-#ifdef MPI
+#ifdef ALTIXMPI
          if(MPIC.and..not.STDINALL)
      >            call MPI_BCAST(MPI_BOTTOM,1,nlscale_struct,
      >                           0,MPI_COMM_WORLD,ierr)
-#endif /* MPI */
+#endif /* ALTIXMPI */
 	 else
          read(ki,232) (qscale(i),i=max(0,-qq),abs(qq))
 232   		format(6e12.4)
