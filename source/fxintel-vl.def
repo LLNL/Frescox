@@ -24,7 +24,7 @@
 #    modification are contained in the file COPYING.
 #
 #***********************************************************************
-####            Linux and  Intel ifc:
+####            Linux and Intel ifort with Mac vecLib:
 #FC = ifc7
 FC = ifort
 F90C = $(FC)

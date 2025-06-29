@@ -40,7 +40,8 @@ NAG = nagstub.$(O)
 
 #### With mkl blas library:
 #BLAS = lapack.$(O) 
-LBLAS =-lmkl_intel -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
+#LBLAS =-lmkl_intel -lmkl_intel_thread -lmkl_core -liomp5 -lpthread
+LBLAS =-lmkl_intel_lp64 -lmkl_sequential -lmkl_core -lpthread -lm  # LLNL 2025
 
 # FFLAGS = -fast
 FFLAGS =  -O2 -qopenmp
@@ -48,7 +49,9 @@ FFLAGS1 = -O2 -qopenmp
 #FFLAGS =  -g -CA -CB -CS     -CV
 #FFLAGS1 = -g -CA -CB -CS     -CV
 LFLAGS  = -O2 -qopenmp
-LIBS = -L /opt/intel/mkl/lib
+# LIBS = -L /opt/intel/mkl/lib
+LIBS1 = -L /usr/tce/packages/mkl/mkl-2022.1.0/lib/intel64   # LLNL 2025
+LIBS = $(LIBS1) -Wl,-rpath=/usr/tce/packages/mkl/mkl-2022.1.0/lib/intel64  # put absolute path in binary
 
 O = o
 E =

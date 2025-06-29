@@ -210,12 +210,12 @@ C-----------------------------------------------------------------------
      x    ihelper, ' in commgroup: node =',ihelper+iame
 
 !            write(500+iame,*) 'FIMD to receive as ',NBL*NEQS,' real'      
- 	call MPI_recv(FIMD(1,1,ITHR),NBL*NEQS,MPI_DOUBLE_PRECISION,ihelper,
-     x                                 100,commgroup,status,ierr)
+ 	call MPI_recv(FIMD(1,1,ITHR),NBL*NEQS,MPI_DOUBLE_PRECISION,
+     x                ihelper,100,commgroup,status,ierr)
 !	 write(500+iame,*) ' Node ',iame,'  received FIMD from ',ihelper
       if(MINTL>1) then
-	call MPI_recv(FIM(1,1,ITHR),NBL*NEQS,MPI_DOUBLE_PRECISION,ihelper,
-     x                                 101,commgroup,status,ierr)
+	call MPI_recv(FIM(1,1,ITHR),NBL*NEQS,MPI_DOUBLE_PRECISION,
+     x                            ihelper,101,commgroup,status,ierr)
 	 write(500+iame,*) ' Node ',iame,'  received FIM from ',ihelper
 	 else
       call MPI_recv(FI(1,1,ITHR),NBL*NEQS,MPI_DOUBLE_PRECISION,ihelper,

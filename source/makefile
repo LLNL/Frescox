@@ -126,6 +126,7 @@ frxx17.$(O): globx7.$(O) frxx17.f boundstate.f usescatwf.f
 frxx21.$(O): globx7.$(O) frxx21.f boundstate.f usescatwf.f
 frxx22.$(O): globx7.$(O) frxx22.f
 frxx27.$(O): globx7.$(O) frxx27.f  usescatr.f 
+frxx45.$(O): globx7.$(O) frxx45.f
 cdc.$(O): globx7.$(O) cdc.f
 lagmesh.$(O): lagmesh.f frxx21.$(O)
 minuit-cern.$(O): minuit-cern.f # d506cm.inc
