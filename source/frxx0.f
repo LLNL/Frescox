@@ -74,7 +74,7 @@
 	!real, allocatable:: afrac(:,:,:,:,:,:)
 	logical*1, allocatable:: afrac(:,:,:,:,:,:),usedcc(:,:,:)
         logical*1 alogic
-        character*120 line
+        character*120 line,input_file
 	character*70 TMP,MASFIL
         character*20 CCSPLIT
         character*14 version
@@ -179,19 +179,22 @@
     	if(pr) write(koe,1002) version,comp
  1002 	format(' FRESCOX - version ',a,
      X      ': Coupled Reaction Channels             on ',a30/)
+        call GET_COMMAND_ARGUMENT(1,input_file,I)
+!        write(6,*) 'Command argument <'//trim(input_file)//'>',I
 	uu = .false.
- 	inquire(file='fresco.in',exist=uu)
+ 	inquire(file=input_file,exist=uu)
 	if(uu) then
 	      if(pr)
-     X        write(koe,*) ' ***  USING AS INPUT FILE fresco.in,',
-     X		' NOT stdin  ***'
-  	      open(ki,file='fresco.in',status='old')
+     X        write(koe,*) ' Using as input filE <'//
+     X          trim(input_file)//'>  NOT stdin'
+  	      open(ki,file=input_file,status='old')
 	      rewind ki
               else
-              if(MPIC) write(6,*) 'Recommend use fresco.in file'
+              if(MPIC) write(6,*) 
+     x    'For MPI, recommend use command line argument for input file'
 	      endif
- 1003 	inquire (UNIT=ki,NAME=TMP) 
-        write(6,*) 'Reading from',TMP
+ 1003 	inquire (UNIT=ki,NAME=input_file) 
+!       write(6,*) 'Reading from <'//trim(input_file)//'>'
         if(iame==0.or.STDINALL)read(ki,1005) headng
 !	 write(6,'(a)') 'Heading: <'//headng//'>'
       	if(iame==0.or.STDINALL)read(ki,1005) line
@@ -199,7 +202,7 @@
  1005 	format(a120)
 #ifdef ALTIXMPI
         if(MPIC.and..not.STDINALL)
-     >            call MPI_BCAST(MPI_BOTTOM,1,headng_struct,
+     !            call MPI_BCAST(MPI_BOTTOM,1,headng_struct,
      >                           0,MPI_COMM_WORLD,ierr)
 #endif /* ALTIXMPI */
         nml = line(1:1)=='N'.or.line(1:1)=='n'
@@ -227,7 +230,7 @@
 	   go to 1003
 	endif
 	if(nml.and.pr)
-     >  write(koe,*) 'Assuming NAMELIST input from ki=',ki,STDINALL
+     >  write(koe,*) ' Using NAMELIST input'
 !@	call defaults(TMP,MASFIL,gailitis)
 	call defaults(TMP,MASFIL)
 	jbord(:) = 0.; jump(:) = 0
