@@ -52,7 +52,7 @@ C  SUBROUTINES NEEDED ON SOME MACHINES, E.G. NOT CRAY
 !                       8 : Intel iPSC/860 hypercube
 !                       9 : CRAY T3D (planned)
 !                       10 : other MIMD computer
-	mach = 1 ! =2 when linked to BLAS
+	mach = 4 
 	return
 	end
 !				Change stdout recl on some machines

@@ -180,15 +180,19 @@
  1002 	format(' FRESCOX - version ',a,
      X      ': Coupled Reaction Channels             on ',a30/)
 	uu = .false.
-!	inquire(file='fresco.in',exist=uu)
+ 	inquire(file='fresco.in',exist=uu)
 	if(uu) then
 	      if(pr)
      X        write(koe,*) ' ***  USING AS INPUT FILE fresco.in,',
      X		' NOT stdin  ***'
   	      open(ki,file='fresco.in',status='old')
 	      rewind ki
+              else
+              if(MPIC) write(6,*) 'Recommend use fresco.in file'
 	      endif
- 1003 	if(iame==0.or.STDINALL)read(ki,1005) headng
+ 1003 	inquire (UNIT=ki,NAME=TMP) 
+        write(6,*) 'Reading from',TMP
+        if(iame==0.or.STDINALL)read(ki,1005) headng
 !	 write(6,'(a)') 'Heading: <'//headng//'>'
       	if(iame==0.or.STDINALL)read(ki,1005) line
 !	 write(6,'(a)') 'Line   : <'//line//'>'
@@ -223,7 +227,7 @@
 	   go to 1003
 	endif
 	if(nml.and.pr)
-     >  write(koe,*) 'Assuming NAMELIST input.'
+     >  write(koe,*) 'Assuming NAMELIST input from ki=',ki,STDINALL
 !@	call defaults(TMP,MASFIL,gailitis)
 	call defaults(TMP,MASFIL)
 	jbord(:) = 0.; jump(:) = 0

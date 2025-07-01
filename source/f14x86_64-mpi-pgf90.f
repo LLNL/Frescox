@@ -60,7 +60,7 @@ C F90 real-time clock (NOT cpu time!)
 !                       8 : Intel iPSC/860 hypercube
 !                       9 : CRAY T3D (planned)
 !                       10 : other MIMD computer
-	mach = 1
+	mach = 4
 	return
 	end
 !				Change stdout recl on some machines

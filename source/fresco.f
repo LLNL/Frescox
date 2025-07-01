@@ -55,6 +55,8 @@
 *  3) MPI on SGI Altix ( at MSU ) which could only read in from the master thread so had to pass all input variables to the other threads
 *  4) MPI on all other architectures
 *  		(note 3 and 4 both use BLAS too)
+*  STDINALL if all threads can read from stdin
+
 	call machine(mach)
         MPIC=.false.
         STDINALL=.false.
