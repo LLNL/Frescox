@@ -26,7 +26,7 @@
 #***********************************************************************
 ####            gfortran 
 # FC = gfortran-mp-14 -Wall
-FC = mpifort -fc=gfortran -Wall  -fallow-argument-mismatch
+FC = mpifort -Wall
 F90C = $(FC)
 FORM =  -w  -cpp  
 PARALLEL = frxx45
@@ -42,17 +42,17 @@ NAG = nagstub.$(O)
 BLAS = lapack.$(O) 
 #LBLAS = -llapack -lblas -lg2c -lm
 
-FFLAGS = -O2 
-FFLAGS1 = -O1  
+FFLAGS = -O2  -fopenmp -DMPI -fallow-argument-mismatch
+FFLAGS1 = -O1   -fopenmp -DMPI -fallow-argument-mismatch
 # FFLAGS = -g -O2
 # FFLAGS1 = -g -O1
-LFLAGS  =  
+LFLAGS  =   -fopenmp
 
 O = o
 E =
 FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
-LINK = $(F90C) $(FFLAGS) -o frescom $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
-LINKS = $(F90C) $(FFLAGS) -o sfrescom $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
-# INST = install sfrescom frescom $(FRESCOXLIB)
-INST = cp  sfrescom frescom fr2nl $(HOME)/binw/`arch` ; chmod a+rx $(HOME)/binw/`arch`/frescom $(HOME)/binw/`arch`/fr2nl
+LINK = $(F90C) $(FFLAGS) -o frescoom $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
+LINKS = $(F90C) $(FFLAGS) -o sfrescoom $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
+# INST = install sfrescoom frescoom $(FRESCOXLIB)
+INST = cp  sfrescoom frescoom fr2nl $(HOME)/binw/`arch` ; chmod a+rx $(HOME)/binw/`arch`/frescoom $(HOME)/binw/`arch`/fr2nl
 RM = rm -f
