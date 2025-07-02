@@ -29,7 +29,7 @@
 ****ERWINRC4**************************************************************
       SUBROUTINE ERWINRC4(ECM,COEF,FORMF,NF,FORMFR,CH,REPEAT,NBL,
      $  EL,SMAT,L,JVAL,CORESP,LL1,NEQS,N,H,M,MD,SCL,RENORM,MINTL,
-     $  AL,RE,IC,SHOW,SHSMAT,SMATEL,CUTOFF,PTYPE,FIM,FIMD,LOCFIL,
+     $  AL,RE,ICUTC,SHOW,SHSMAT,SMATEL,CUTOFF,PTYPE,FIM,FIMD,LOCFIL,
      $  CFMAT,CGMAT,FCWFN,FJSWTCH,CRCRAT,CUTVAL,CLIST,NCLIST,NFLIST)
 	use io
 	use factorials
@@ -498,7 +498,7 @@ C     IF(AL.GT.1D10.OR.AL*RE.GT..03) WRITE(KO,205) LOG10(MAX(AL,1D0)),
 ****ERWINCC4**************************************************************
       SUBROUTINE ERWINCC4(ECM,COEF,FORMF,NF,FORMFR,CH,REPEAT,NBL,
      $  EL,SMAT,L,JVAL,CORESP,LL1,NEQS,N,H,M,MD,SCL,RENORM,
-     $  AL,RE,IC,SHOW,SHSMAT,SMATEL,CUTOFF,PTYPE,FIM,FIMD,LOCFIL,
+     $  AL,RE,ICUTC,SHOW,SHSMAT,SMATEL,CUTOFF,PTYPE,FIM,FIMD,LOCFIL,
      $  CFMAT,CGMAT,FCWFN,FJSWTCH,CRCRAT,CUTVAL,CLIST,NCLIST,NFLIST)
 	use io
 	use factorials
@@ -667,7 +667,7 @@ C-----------------------------------------------------------------------
 
          DO 20 K=1,NEQS
            COUPL(K,:,ITHR) = 0.0
-           IF(I.LT.IC) GO TO 20
+           IF(I.LT.ICUTC) GO TO 20
            DO 19 J=1,NEQS
             C = 0d0
 	    if(K==J) go to 19
