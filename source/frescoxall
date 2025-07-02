@@ -1,0 +1,67 @@
+#
+# Run all files
+#
+set noglob
+
+echo Run frescox with $argv 
+# echo \rm for*.*
+# \rm for*.*
+
+foreach file ($argv)
+echo frescox \< $file
+frescox<  $file>!  $file:r.out
+#sumbins-mc < $file:r.xsum
+\mv -f fort.16 $file:r.xsec
+\mv -f fort.17 $file:r.swf
+\mv -f fort.37 $file:r.fam
+mxsecoh < $file:r.fam > $file:r.xsecoh
+#\mv -f fort.22 $file:r.wf
+\mv -f fort.7 $file:r.smats
+\mv -f fort.56 $file:r.fusl
+# awk '{print $1, $3}' $file:r.fusl > $file:r.reac 
+\mv -f fort.35 $file:r.sf
+\mv -f fort.75 $file:r.lsf
+\mv -f fort.38 $file:r.xjp
+\mv -f fort.39 $file:r.efus
+#awk '{print $1, $5}' < $file:r.efus > $file:r.xne
+\mv -f fort.40 $file:r.fus
+# awk '{print $1, $3}' < $file:r.efus > $file:r.reaction
+# awk '{print $1, $4}' < $file:r.efus > $file:r.total
+#ln -fs $file:r.total  $file:r.totals
+# awk '{print $1, $4-$3}' < $file:r.efus > $file:r.elastic
+\mv -f fort.44 $file:r.phe
+#\mv -f fort.157 $file:r.pphe
+#\mv -f fort.47 $file:r.mek
+\mv -f fort.13 $file:r.xst
+# \mv -f fort.57 $file:r.cdcc
+\mv -f fort.58 $file:r.wfs
+# \mv -f fort.59 $file:r.vrt
+\mv -f fort.87 $file:r.pnl
+\mv -f fort.89 $file:r.vff
+\mv -f fort.60 $file:r.imp
+\mv -f fort.104 $file:r.104
+\mv -f fort.105 $file:r.105
+\mv -f fort.106 $file:r.106
+\mv -f fort.310 $file:r.310
+\mv -f fort.311 $file:r.311
+\mv -f fort.71 $file:r.phs
+\mv -f fort.171 $file:r.pha
+\mv -f fort.90 $file:r.veff
+\mv -f fort.91 $file:r.vpol
+\mv -f fort.200 $file:r.xsel
+\mv -f fort.201 $file:r.xs1
+\mv -f fort.202 $file:r.xs2
+\mv -f fort.203 $file:r.xs3
+\mv -f fort.204 $file:r.xs4
+\mv -f fort.205 $file:r.xs5
+\mv -f fort.206 $file:r.xs6
+\mv -f fort.207 $file:r.xs7
+\mv -f fort.5420 $file:r.tc
+\mv -f fort.239 $file:r.239
+#\rm -f fort.3
+
+#scatwf < $file:r.swf
+#\mv -f plot.psi $file:r.wf
+
+
+end

@@ -1,0 +1,47 @@
+#
+# Run all files
+#
+set noglob
+set no = $1
+shift
+
+echo Run mpirun -np $no frescom with $argv 
+echo \rm for*.*
+\rm for*.*
+
+foreach file ($argv)
+
+echo mpirun -np $no frescom $file to $file:r-n$no.out
+mpirun -np $no frescom $file >&!  $file:r-n$no.out
+\mv -f fort.16 $file:r-n$no.xsec
+#\mv -f fort.22 $file:r-n$no.wf
+\mv -f fort.7 $file:r-n$no.smats
+\mv -f fort.56 $file:r-n$no.fusl
+awk '{print $1, $3}' $file:r-n$no.fusl>! $file:r-n$no.reac
+\mv -f fort.35 $file:r-n$no.sf
+\mv -f fort.75 $file:r-n$no.lsf
+\mv -f fort.38 $file:r-n$no.xjp
+\mv -f fort.39 $file:r-n$no.efus
+\mv -f fort.40 $file:r-n$no.fus
+\mv -f fort.44 $file:r-n$no.phe
+\mv -f fort.47 $file:r-n$no.mek
+\mv -f fort.48 $file:r-n$no.log
+\mv -f fort.13 $file:r-n$no.xst
+# \mv -f fort.57 $file:r-n$no.cdcc
+\mv -f fort.58 $file:r-n$no.wfs
+# \mv -f fort.59 $file:r-n$no.vrt
+\mv -f fort.60 $file:r-n$no.imp
+\mv -f fort.71 $file:r-n$no.phs
+#\mv -f fort.90 $file:r-n$no.veff
+#\mv -f fort.91 $file:r-n$no.vpol
+\mv -f fort.201 $file:r-n$no.xsel
+\mv -f fort.202 $file:r-n$no.xs2
+\mv -f fort.203 $file:r-n$no.xs3
+\mv -f fort.204 $file:r-n$no.xs4
+\mv -f fort.205 $file:r-n$no.xs5
+\mv -f fort.206 $file:r-n$no.xs6
+\mv -f fort.207 $file:r-n$no.xs7
+#\rm -f fort.3
+
+\rm fresco.in
+end
