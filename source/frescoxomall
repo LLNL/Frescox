@@ -1,0 +1,50 @@
+#
+# Run all files
+#
+set noglob
+set no = $1
+shift
+
+echo Run $no threads frescoo with $argv 
+echo \rm for*.*
+\rm for*.*
+
+foreach file ($argv)
+
+# echo set OMP_NUM_THREADS=$no
+# set OMP_NUM_THREADS=$no
+setenv OMP_NUM_THREADS $no
+echo OMP_NUM_THREADS = $OMP_NUM_THREADS
+echo frescoo $file to $file:r-o$no.out
+frescoo $file >&!  $file:r-o$no.out
+\mv -f fort.16 $file:r-o$no.xsec
+#\mv -f fort.22 $file:r-o$no.wf
+\mv -f fort.7 $file:r-o$no.smats
+\mv -f fort.56 $file:r-o$no.fusl
+awk '{print $1, $3}' $file:r-o$no.fusl>! $file:r-o$no.reac
+\mv -f fort.35 $file:r-o$no.sf
+\mv -f fort.75 $file:r-o$no.lsf
+\mv -f fort.38 $file:r-o$no.xjp
+\mv -f fort.39 $file:r-o$no.efus
+\mv -f fort.40 $file:r-o$no.fus
+\mv -f fort.44 $file:r-o$no.phe
+\mv -f fort.47 $file:r-o$no.mek
+\mv -f fort.48 $file:r-o$no.log
+\mv -f fort.13 $file:r-o$no.xst
+# \mv -f fort.57 $file:r-o$no.cdcc
+\mv -f fort.58 $file:r-o$no.wfs
+# \mv -f fort.59 $file:r-o$no.vrt
+\mv -f fort.60 $file:r-o$no.imp
+\mv -f fort.71 $file:r-o$no.phs
+#\mv -f fort.90 $file:r-o$no.veff
+#\mv -f fort.91 $file:r-o$no.vpol
+\mv -f fort.201 $file:r-o$no.xsel
+\mv -f fort.202 $file:r-o$no.xs2
+\mv -f fort.203 $file:r-o$no.xs3
+\mv -f fort.204 $file:r-o$no.xs4
+\mv -f fort.205 $file:r-o$no.xs5
+\mv -f fort.206 $file:r-o$no.xs6
+\mv -f fort.207 $file:r-o$no.xs7
+#\rm -f fort.3
+
+end

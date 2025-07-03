@@ -43,7 +43,7 @@
      	complex qscale(0:5)
 	integer parityn(8),bandp(mp),bl(mp),q,nnp(mp,mp),pset,jset,
      x          lpp(8),nodpp(8,mp),pauli,trans,knex(mp),bia(mp),
-     x          n(mp),ngs(mp),pluto(10)
+     x          n(mp),ngs(mp),pluto(10),ompform
 	character*8 namep,namet,part,partn(8),name,namen(8)
 	character cpwf,citt,cset,btype
 	integer jump(6),cp,nlab(3),cpot,pade,pel,exl,reor,type,nchgs,
@@ -73,7 +73,8 @@ c CDCC NAMELISTS FOR INPUT:
      x 		lab,lin,lex,remnant,postprior,ipcgs,dry,hktarg,unitmass,
      x          llmax,sumform,qc,la,static,expand,maxcoup,eigens,btype,
      x          nfus,complexbins,treverse,mtmin,maxl,wdisk,waves,bndx,
-     x          sock,initwf,adia,pluto,nobinxs,surf,lampl,bloch,phase
+     x          sock,initwf,adia,pluto,nobinxs,surf,lampl,bloch,phase,
+     x          ompform
         namelist/nucleus/ part,name,mass,charge,spin,parity,be,
      X		   n,l,j,ia,a,kind,lmax,nch,nce,ampl,spx,nlag,er,isc,
      x             rsmin,rsmax
@@ -94,7 +95,7 @@ c FRESCO NAMELISTS FOR OUTPUT:
      x   ips,it0,iter,iblock,nnu,numnode, nfus,complexbins,
      X   nrbases,nrbmin,pralpha,pcon,meigs,rmatr,bndx,nlagcc,
      X   chans,listcc,treneg,cdetr,smats,xstabl,nlpl,waves,
-     x        lampl,veff,kfus,wdisk,bpm,melfil,cdccc,
+     x        lampl,veff,kfus,wdisk,bpm,melfil,cdccc,ompform,
      X	 pel,exl,lab,lin,lex,elab,nosol,dry,sumform,expand
 	namelist/partition/namep,massp,zp,nex,ppwf,namet,masst,zt,qval
 	namelist/states/ jp,  copyp,ptyp,bandp,ep,tp, cpot,
@@ -1230,6 +1231,8 @@ C				Transfer to allowed states
 	 enddo
 	 if(ii>0) write(ko3,2035) ii,pluto(1:ii)
 2035	 format('     pluto(1:',i2,')=',10i3)
+     	if(ompform>=0) write(ko3,2036) ompform
+2036	format('     ompform=',i2)
 
 
 	if(nfus<0) nfus = nex
@@ -1298,6 +1301,7 @@ C				Transfer to allowed states
          sa(:,:)=0.
          ccbins=.false. ; static=0; complexbins=.false.
          ldep(:)=.false.; pdep(:)=.false.
+         ompform = -1
          dry=.false.
          expand(:)=0.; maxcoup(:) = 0; sock(:,:)=1.0
          expand(1) = 1.2; expand(2) = 1.00; expand(3) = 0;

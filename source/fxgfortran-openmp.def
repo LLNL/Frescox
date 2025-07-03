@@ -42,11 +42,11 @@ NAG = nagstub.$(O)
 BLAS = lapack.$(O) 
 #LBLAS = -llapack -lblas -lg2c -lm
 
-FFLAGS = -O2  -fopenmp
-FFLAGS1 = -O1   -fopenmp
+FFLAGS = -O2  -fopenmp 
+FFLAGS1 = -O1   -fopenmp 
 # FFLAGS = -g -O2
 # FFLAGS1 = -g -O1
-LFLAGS  =  
+LFLAGS  =  -Wl,-stack_size,0x20000000,-stack_addr,0xf0000000
 
 O = o
 E =

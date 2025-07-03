@@ -662,9 +662,9 @@ C
      x  ' (out of node limit of ',i4,' processors) in each of ',
      x  i4,' MPI sets with ',i3,' helpers per set')
       if(numthread>1 .and. ompform<0)then
-       ompform = 2
+!       ompform = 2  ! use from /fresco/ namelist only
       elseif(numthread<2)then
-       ompform = 0
+!       ompform = 0
       endif
 !$    if(pr)write(koe,1099)ompform
  1099 format(/' Calculating formf using threaded version ',i1)
@@ -1956,7 +1956,7 @@ c        kind = 3 & 4 :    s.p. inelastic form factors of multipole 'ik'
 	 nlpl=0; waves=0; lampl=0; veff=0; kfus=0; wdisk=0
 	 cdcc=0; nfus=0; bpm=0; melfil=0; btype = ' '; KRM=0
 	 inh = 0; sumform=2; maxqrn=0; mclist=0; initwf=0
-         ompform = -1; gscouplonly=.false.; pluto(:)=0; eobs=.false.
+         ompform = 0; gscouplonly=.false.; pluto(:)=0; eobs=.false.
 	 dry = .false.; boldplot=.false.; tcfile=0; maxleg=-1
          tcfilename = 'fort.5420'
          elpmax = 0.01; relref=1
