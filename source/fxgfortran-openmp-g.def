@@ -1,0 +1,58 @@
+#***********************************************************************
+# 
+#    Copyright 2018, I.J. Thompson
+#
+#    This file is part of FRESCOX.
+#
+#    FRESCOX is free software: you can redistribute it and/or modify it
+#    under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 2 of the License, or
+#    (at your option) any later version.
+#
+#    FRESCOX is distributed in the hope that it will be useful, but
+#    WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with FRESCOX. If not, see <http://www.gnu.org/licenses/>.
+#
+#    OUR NOTICE AND TERMS AND CONDITIONS OF THE GNU GENERAL PUBLIC
+#    LICENSE
+#
+#    The precise terms and conditions for copying, distribution and
+#    modification are contained in the file COPYING.
+#
+#***********************************************************************
+####            gfortran 
+FC = gfortran-mp-14 -Wall
+# FC = mpifort -fc=gfortran -Wall 
+F90C = $(FC)
+FORM =  -w  -cpp  
+PARALLEL = frxx15
+BINSI = frxx4.$(O) frxx7a.$(O)
+BINS = frxx0.$(O) $(BINSI)
+
+
+#### Without nag library:
+#
+NAG = nagstub.$(O)
+
+#### Without blas library:
+BLAS = lapack.$(O) 
+#LBLAS = -llapack -lblas -lg2c -lm
+
+FFLAGS = -O2  -fopenmp  -fcheck=all -g 
+FFLAGS1 = -O1   -fopenmp  -fcheck=all -g
+# FFLAGS = -g -O2
+# FFLAGS1 = -g -O1
+LFLAGS  =  -Wl,-stack_size,0x20000000,-stack_addr,0xf0000000
+
+O = o
+E =
+FGO = $(F90C) $(FORM) $(FFLAGS) -o fr2nl
+LINK = $(F90C) $(FFLAGS) -o frescoog $(OBJ) $(LIBS) $(LFLAGS) $(LBLAS)
+LINKS = $(F90C) $(FFLAGS) -o sfrescoog $(OBJSRCH) $(LIBS) $(LFLAGS) $(LBLAS)
+# INST = install sfrescoog frescoog $(FRESCOXLIB)
+INST = cp  sfrescoog frescoog fr2nl $(HOME)/binw/`arch` ; chmod a+rx $(HOME)/binw/`arch`/frescoog $(HOME)/binw/`arch`/fr2nl
+RM = rm -f
