@@ -7,14 +7,14 @@ set noglob
 set no = $1
 shift
 
-echo Run mpirun -np $no frescom with $argv 
+echo Run mpirun -n $no frescom with $argv 
 echo \rm for*.*
 \rm for*.*
 
 foreach file ($argv)
 
-echo mpirun -np $no frescom $file to $file:r-n$no.out
-mpirun -np $no frescom $file >&!  $file:r-n$no.out
+echo mpirun -n $no frescom $file to $file:r-n$no.out
+mpirun -n $no frescom $file >&!  $file:r-n$no.out
 
 \mv -f fort.16 $file:r-n$no.xsec
 #\mv -f fort.22 $file:r-n$no.wf

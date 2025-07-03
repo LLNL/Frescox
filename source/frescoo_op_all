@@ -1,7 +1,7 @@
 #
 # Run all files with frescoo: OPENMP parallel code
 #
-set omp.lob
+set noglob
 
 # number of openmp threads on 1 nodee
 set omp = $1
