@@ -1,7 +1,9 @@
 #
-# Run all files
+# Run all files with frescom: MPI parallel code
 #
 set noglob
+
+# number of mpi nodes:
 set no = $1
 shift
 
@@ -13,6 +15,7 @@ foreach file ($argv)
 
 echo mpirun -np $no frescom $file to $file:r-n$no.out
 mpirun -np $no frescom $file >&!  $file:r-n$no.out
+
 \mv -f fort.16 $file:r-n$no.xsec
 #\mv -f fort.22 $file:r-n$no.wf
 \mv -f fort.7 $file:r-n$no.smats
@@ -43,5 +46,4 @@ awk '{print $1, $3}' $file:r-n$no.fusl>! $file:r-n$no.reac
 \mv -f fort.207 $file:r-n$no.xs7
 #\rm -f fort.3
 
-\rm fresco.in
 end

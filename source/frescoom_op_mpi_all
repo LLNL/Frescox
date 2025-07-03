@@ -1,0 +1,52 @@
+#
+# Run all files with frescoom: MPI parallel code with OPENMP threads on each node
+#
+set noglob
+set no  = $1
+set omp = $2
+shift
+shift
+
+echo Run mpirun -np ${no}o${omp}.frescoom with $omp openmp with $argv 
+echo \rm for*.*
+\rm for*.*
+
+foreach file ($argv)
+
+setenv OMP_NUM_THREADS $omp
+echo OMP_NUM_THREADS = $OMP_NUM_THREADS
+
+echo mpirun -np ${no}o${omp}.frescoom $file to $file:r-n$no.out
+mpirun -np ${no}o${omp}.frescoom $file >&!  $file:r-n$no.out
+
+\mv -f fort.16 $file:r-n${no}o${omp}.xsec
+#\mv -f fort.22 $file:r-n${no}o${omp}.wf
+\mv -f fort.7 $file:r-n${no}o${omp}.smats
+\mv -f fort.56 $file:r-n${no}o${omp}.fusl
+awk '{print $1, $3}o${omp}. $file:r-n${no}.fusl>! $file:r-n$no.reac
+\mv -f fort.35 $file:r-n${no}o${omp}.sf
+\mv -f fort.75 $file:r-n${no}o${omp}.lsf
+\mv -f fort.38 $file:r-n${no}o${omp}.xjp
+\mv -f fort.39 $file:r-n${no}o${omp}.efus
+\mv -f fort.40 $file:r-n${no}o${omp}.fus
+\mv -f fort.44 $file:r-n${no}o${omp}.phe
+\mv -f fort.47 $file:r-n${no}o${omp}.mek
+\mv -f fort.48 $file:r-n${no}o${omp}.log
+\mv -f fort.13 $file:r-n${no}o${omp}.xst
+# \mv -f fort.57 $file:r-n${no}o${omp}.cdcc
+\mv -f fort.58 $file:r-n${no}o${omp}.wfs
+# \mv -f fort.59 $file:r-n${no}o${omp}.vrt
+\mv -f fort.60 $file:r-n${no}o${omp}.imp
+\mv -f fort.71 $file:r-n${no}o${omp}.phs
+#\mv -f fort.90 $file:r-n${no}o${omp}.veff
+#\mv -f fort.91 $file:r-n${no}o${omp}.vpol
+\mv -f fort.201 $file:r-n${no}o${omp}.xsel
+\mv -f fort.202 $file:r-n${no}o${omp}.xs2
+\mv -f fort.203 $file:r-n${no}o${omp}.xs3
+\mv -f fort.204 $file:r-n${no}o${omp}.xs4
+\mv -f fort.205 $file:r-n${no}o${omp}.xs5
+\mv -f fort.206 $file:r-n${no}o${omp}.xs6
+\mv -f fort.207 $file:r-n${no}o${omp}.xs7
+#\rm -f fort.3
+
+end
