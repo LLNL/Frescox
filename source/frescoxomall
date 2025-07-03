@@ -11,8 +11,6 @@ echo \rm for*.*
 
 foreach file ($argv)
 
-# echo set OMP_NUM_THREADS=$no
-# set OMP_NUM_THREADS=$no
 setenv OMP_NUM_THREADS $no
 echo OMP_NUM_THREADS = $OMP_NUM_THREADS
 echo frescoo $file to $file:r-o$no.out

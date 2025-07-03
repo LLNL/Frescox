@@ -46,7 +46,7 @@ FFLAGS = -O2  -fopenmp -DMPI -fallow-argument-mismatch
 FFLAGS1 = -O1   -fopenmp -DMPI -fallow-argument-mismatch
 # FFLAGS = -g -O2
 # FFLAGS1 = -g -O1
-LFLAGS  =   -fopenmp
+LFLAGS  =   -fopenmp -Wl,-stack_size,0x20000000,-stack_addr,0xf0000000
 
 O = o
 E =
