@@ -1825,8 +1825,15 @@ C                             (DO THIS FOR KINDS 2, 3,4, 5,6,7,8)
       ENDIF
       DO 874 KN2=KN,NSP-1
       IF(QNF(1,KN2+1) .NE. KN) GO TO 8745
-!       IF(.not.sumccbins) AFRAC(ITC1,ITCO,IN,KN2+1) = A
+!       IF(.not.sumccbins) AFRAC(ITC1,ITCO,IN,KN2+1) = A  !! WHY REMOVED? 
+! This next block put in on Aug 6, 2026.
+! If it is wrong, change the logic so does not mess up e.g. cadprsc.in
+        IF(.not.sumccbins) then
+          AFRAC(ITC1,ITCO,IN,KN2+1) = A
+          write(KO,8741) KN2+1,A,KN
+          endif
 874   CONTINUE
+8741  format('  Setting AFRAC for form',i4,' also to',F8.4,' from',I4)
 8745  WRITE(KO,875) I,IB,IA,KN,A,NAME(IN,ICOM(CP,IN)),IB,
      &                       NAME(IN,ICOR(CP,IN)),IA,KN,A,BE(KN,1),KN2
 875   FORMAT(/' data =',4I3,F8.4, ',  so  < [',A8,' #',I3,'] / [',

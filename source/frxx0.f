@@ -1282,11 +1282,10 @@ c                        remove next line when coul quadrature written.
         kn2 = max(kn2,kn1)
         lsp(kn1:kn2) = l
         ssp = sn
-        if(ib==0)then
-!	   if(ccbins.and.kind.ne.3.and.im==2) ib=nexx(icp)+
-           if(.not.ccbins.or.(ccbins.and.kind.ne.3)) go to 820
-	   ib=kn1
-	   endif
+!       if(ib==0)then
+!          if(.not.ccbins.or.(ccbins.and.kind.ne.3)) go to 820
+!          ib=kn1
+!          endif
         jcom = jex(im,ib,icp)
         il1=0
         lmin=0
