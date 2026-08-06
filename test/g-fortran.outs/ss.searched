@@ -1,0 +1,102 @@
+ '=' 'p-cd.frout'
+           4           1
+
+p + 112Cd elastic
+NAMELIST
+ &FRESCO  hcm= 0.100 rmatch=  20.000 rintp=  1.00 hnl= 0.100 rnl= 10.00 centre=  0.00
+     jtmin=  0.0 jtmax=    20.0 absend=  0.0100
+     thmin=  0.00 thmax=180.00 thinc=  2.00
+     chans= 1 listcc= 0 treneg= 0 cdetr= 0 smats= 2 xstabl= 1 nlpl= 0
+     elab(1:2)=    27.9000  30.00 /
+
+ &PARTITION namep='Proton  ' massp=  1.0000 zp=  1 nex= 1 namet='112Cd   ' masst=112.0000 zt= 48 qval=  0.0000/
+ &STATES jp= 0.5 ptyp= 1 ep=  0.0000  cpot=  1 jt= 0.0 ptyt= 1 et=  0.0000/
+ &partition /   ! END OF DEFINING PARTITIONS
+
+ &pot kp= 1 type= 0 p(1:3)=  112.000  0.0000  1.2000 /
+ &pot kp= 1 type= 1 p(1:7)=   52.500  1.1700  0.7500  3.5000  1.3200  0.6100  0.0000 /
+ &pot kp= 1 type= 2 p(1:7)=    0.000  0.0000  0.0000  8.5000  1.3200  0.6100  0.0000 /
+ &pot kp= 1 type= 3 p(1:3)=    6.200  1.0100  0.7500 /
+ &pot /   ! END OF DEFINING POTENTIALS
+
+ &overlap /   ! END OF DEFINING OVERLAPS
+
+ &COUPLING /
+EOF
+
+&VARIABLE
+ NAME='r0             ',
+ KIND=1          ,
+ KP=1          ,
+ PLINE=2          ,
+ COL=2          ,
+ POTENTIAL=  1.1814306754760076     ,
+ STEP=  1.0000000000000000E-002,
+ IVAR=1          ,
+ /
+&VARIABLE
+ NAME='V              ',
+ KIND=1          ,
+ KP=1          ,
+ PLINE=2          ,
+ COL=1          ,
+ POTENTIAL=  52.182258396577083     ,
+ STEP= 0.10000000000000001     ,
+ IVAR=2          ,
+ /
+&VARIABLE
+ NAME='W              ',
+ KIND=1          ,
+ KP=1          ,
+ PLINE=2          ,
+ COL=4          ,
+ POTENTIAL=  2.8964390453770132     ,
+ STEP= 0.10000000000000001     ,
+ IVAR=3          ,
+ /
+&VARIABLE
+ NAME='WD             ',
+ KIND=1          ,
+ KP=1          ,
+ PLINE=3          ,
+ COL=4          ,
+ POTENTIAL=  8.1806228470064450     ,
+ STEP= 0.10000000000000001     ,
+ IVAR=4          ,
+ /
+&DATA
+ TYPE=0          ,
+ DATA_FILE='=                                                                               ',
+ POINTS=28         ,
+ LAB=F,
+ ENERGY=  27.899999999999999     ,
+ IDAT=1          ,
+ IDIR=1          ,
+ ISCALE=-1         ,
+ ABSERR=T,
+ IC=1          ,
+ IA=1          ,
+ K=0          ,
+ Q=0          ,
+ PEL=1          ,
+ EXL=1          ,
+ LABE=1          ,
+ LIN=1          ,
+ LEX=1          ,
+ /
+
+ &Cov nvariables =    4  variables(1:    4) = 
+    1    2    3    4
+     /
+ &Cov row=    1 emat(1:    4) = 
+      4.06801E-09 -1.14484E-06 -8.79814E-06  1.42297E-05
+     /
+ &Cov row=    2 emat(1:    4) = 
+     -1.14484E-06  5.53030E-04  1.27463E-03 -2.07175E-03
+     /
+ &Cov row=    3 emat(1:    4) = 
+     -8.79814E-06  1.27463E-03  2.76518E-02 -4.15838E-02
+     /
+ &Cov row=    4 emat(1:    4) = 
+      1.42297E-05 -2.07175E-03 -4.15838E-02  6.62150E-02
+     /
